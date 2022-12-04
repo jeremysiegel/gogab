@@ -1,36 +1,27 @@
-import React, { useContext, useState } from "react";
-import { ImageBackground, SafeAreaView, StyleSheet, View } from "react-native";
+import React from "react";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 import Constants from "expo-constants";
+import colors from "../config/colors";
 
-const backgrounds = {
-  background1: require("../assets/background1.png"),
-};
-
-function Screen({ children, style, backgroundLabel }) {
-  const background = "background1"; 
-
-  // Allows page to set background
-  let imageUri = backgrounds[background];
-  if (backgroundLabel) imageUri = backgrounds[backgroundLabel];
-  const image = imageUri;
-
+function Screen({ children, style }) {
   return (
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+    <View style={styles.container}>
       <SafeAreaView style={[styles.screen, style]}>
         <View style={[styles.view, style]}>{children}</View>
       </SafeAreaView>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
+  container: {
     flex: 1,
-    justifyContent: "center",
+    backgroundColor: colors.light,
   },
+
   screen: {
-    paddingTop: Constants.statusBarHeight,
+    paddingVertical: Constants.statusBarHeight,
     flex: 1,
     height: "100%",
   },
