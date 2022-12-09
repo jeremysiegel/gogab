@@ -4,7 +4,7 @@ import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
 import colors from "../config/colors";
 
-function AppPopover({ displayText, popoverText }) {
+function AppPopover({ style, displayText, popoverText }) {
   return (
     <View style={styles.container}>
       <Popover
@@ -12,7 +12,7 @@ function AppPopover({ displayText, popoverText }) {
         trigger={(triggerProps) => {
           return (
             <Text
-              style={[defaultStyles.text, styles.displayText]}
+              style={[defaultStyles.text, styles.displayText, style]}
               {...triggerProps}
             >
               {displayText}
@@ -32,12 +32,10 @@ function AppPopover({ displayText, popoverText }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignSelf: "flex-start",
-  },
+  container: {},
   displayText: {
-    color: colors.blue,
-    textDecorationLine: "underline",
+    color: colors.primary,
+    // textDecorationLine: "underline",
   },
 });
 

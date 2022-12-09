@@ -6,6 +6,7 @@ import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import BathroomScreen from "./app/screens/BathroomScreen";
+import NewWordScreen from "./app/screens/NewWordScreen";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {
@@ -44,7 +45,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
-        <BathroomScreen />
+        <NewWordScreen />
         <StatusBar style="auto" />
       </View>
     </NativeBaseProvider>

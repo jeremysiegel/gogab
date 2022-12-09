@@ -39,20 +39,23 @@ function BathroomScreen(props) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const renderItem = ({ item }) => (
-    <Pressable
-      key={item.name}
-      onPress={() => {
-        setCorrectAnswer(item.correct);
-        setModalVisible(true);
-      }}
-    >
-      <Icon
-        name={item.name}
-        size={80}
-        label={item.title}
-        backgroundColor={colors.secondary}
-      />
-    </Pressable>
+    console.log(colors),
+    (
+      <Pressable
+        key={item.name}
+        onPress={() => {
+          setCorrectAnswer(item.correct);
+          setModalVisible(true);
+        }}
+      >
+        <Icon
+          name={item.name}
+          size={80}
+          label={item.title}
+          backgroundColor={colors.secondary}
+        />
+      </Pressable>
+    )
   );
   return (
     <Screen>
