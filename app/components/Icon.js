@@ -25,7 +25,9 @@ function Icon({
       >
         <FontAwesome5 name={name} color={iconColor} size={iconSize} />
       </View>
-      {label && <AppText>{label}</AppText>}
+      {label && (
+        <AppText style={{ fontSize: 26, paddingTop: 7 }}>{label}</AppText>
+      )}
     </View>
   );
 }

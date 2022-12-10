@@ -8,7 +8,7 @@ import LearnWord from "../components/LearnWord";
 function NewWordScreen(props) {
   return (
     <View style={styles.container}>
-      <AppText style={styles.practiceText}>Practice saying</AppText>
+      <AppText style={styles.instructText}>Practice saying</AppText>
       <AppText style={styles.linebreak1}></AppText>
       <AppText style={styles.wordText}>Bathroom</AppText>
       <AppText style={styles.linebreak2}></AppText>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  practiceText: {
+  instructText: {
     fontSize: 24,
     color: colors.medium,
   },
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   linebreak1: {
-    fontSize: 10,
+    fontSize: 7,
   },
   linebreak2: {
     fontSize: 24,

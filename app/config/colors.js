@@ -2,9 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 const palete = {
-  primary: "#18bbbb",
+  primary: "#15a8a8",
   secondary: "#5E60CE",
-  periodDay: "#5E60CE",
   header: "#5E60CE",
   purple: "#5E60CE",
   orange: "#FF6347",
@@ -24,7 +23,6 @@ const palete = {
   danger: "#ff5252",
   prepDark: "#48D7D7",
   navigationButton: "#48D7D7",
-  prep: "#a0e3e3",
   exitButton: "#9eb3c4",
   category: "#f0f0f0",
 };

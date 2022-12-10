@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, StatusBar, View, StyleSheet } from "react-native";
+import { Text, StatusBar, View, StyleSheet, Pressable } from "react-native";
 import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
 import colors from "../config/colors";
 
 function AppPopover({ style, displayText, popoverText }) {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} hitSlop={20}>
       <Popover
         offset={StatusBar.currentHeight}
         trigger={(triggerProps) => {
@@ -27,7 +27,7 @@ function AppPopover({ style, displayText, popoverText }) {
           </Popover.Header>
         </Popover.Content>
       </Popover>
-    </View>
+    </Pressable>
   );
 }
 
