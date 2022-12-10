@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import RNModal from "react-native-modal";
 
+import { moderateScale } from "../utility/scaler";
 import AppText from "../components/AppText";
-import LearnWord from "../components/LearnWord";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import Icon from "../components/Icon";
+import ChoiceBox from "../components/ChoiceBox";
 
 const deviceHeight = Dimensions.get("screen").height;
 
@@ -32,38 +32,36 @@ const iconSelections = [
     title: "bathroom",
     correct: true,
   },
+  {
+    name: "tree",
+    title: "tree",
+    correct: false,
+  },
 ];
 
-function BathroomScreen(props) {
+function TestWordScreen(props) {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const renderItem = ({ item }) => (
-    <Pressable
-      key={item.name}
+    <ChoiceBox
+      title={item.title}
       onPress={() => {
         setCorrectAnswer(item.correct);
         setModalVisible(true);
       }}
-    >
-      <Icon
-        name={item.name}
-        size={80}
-        label={item.title}
-        backgroundColor={colors.secondary}
-      />
-    </Pressable>
+    />
   );
   return (
     <Screen>
       <View style={styles.container}>
         <View style={styles.topContainer}></View>
         <View style={styles.middleContainer}>
-          <AppText>Let's get ready to go!</AppText>
-          <AppText />
-          <AppText>Translate this word:</AppText>
-          <View style={styles.learnWord}>
-            <LearnWord translation={"bathroom"}>baño</LearnWord>
+          <AppText style={styles.instructionText}>
+            Select the correct word
+          </AppText>
+          <View>
+            <AppText style={styles.learnWord}>baño</AppText>
           </View>
         </View>
         <View style={styles.bottomContainer}>
@@ -72,8 +70,7 @@ function BathroomScreen(props) {
               data={iconSelections}
               keyExtractor={(item) => item.title} //has to be unique
               renderItem={renderItem} //method to render the data in the way you want using styling u need
-              numColumns={2}
-              columnWrapperStyle={styles.listContainer}
+              numColumns={1}
             />
           </View>
         </View>
@@ -137,21 +134,27 @@ const styles = StyleSheet.create({
   },
   middleContainer: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   bottomContainer: {
-    flex: 2,
+    flex: 3,
   },
   learnWord: {
-    marginLeft: 50,
+    fontSize: moderateScale(38),
+    paddingTop: 25,
+    color: colors.orange,
+  },
+  instructionText: {
+    fontSize: moderateScale(28),
   },
   selectorContainer: {
     marginTop: 20,
   },
   listContainer: {
     justifyContent: "space-around",
-    marginHorizontal: 40,
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
 });
 
-export default BathroomScreen;
+export default TestWordScreen;

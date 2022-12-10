@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import LearnWord from "../components/LearnWord";
 
-function TestScreen(props) {
+function SandboxScreen(props) {
   return (
     <View style={styles.container}>
       <LearnWord style={styles.item} translation={"bathroom"}>
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TestScreen;
+export default SandboxScreen;

@@ -5,8 +5,7 @@ import { NativeBaseProvider } from "native-base";
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
-import TestScreen from "./app/screens/TestScreen";
-import ReviewWordScreen from "./app/screens/ReviewWordScreen";
+import TestWordScreen from "./app/screens/TestWordScreen";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {
@@ -45,7 +44,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
-        <ReviewWordScreen />
+        <TestWordScreen />
         <StatusBar style="auto" />
       </View>
     </NativeBaseProvider>
