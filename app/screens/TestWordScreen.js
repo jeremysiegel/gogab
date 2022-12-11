@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Pressable,
-  FlatList,
-  Dimensions,
-} from "react-native";
-import RNModal from "react-native-modal";
+import { View, StyleSheet, FlatList, Button } from "react-native";
 
 import { moderateScale } from "../utility/scaler";
 import AppText from "../components/AppText";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ChoiceBox from "../components/ChoiceBox";
-
-const deviceHeight = Dimensions.get("screen").height;
+import CheckAnswerModal from "../components/CheckAnswerModal";
 
 const iconSelections = [
   {
@@ -39,7 +31,7 @@ const iconSelections = [
   },
 ];
 
-function TestWordScreen(props) {
+function TestWordScreen({ navigation }) {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -73,58 +65,20 @@ function TestWordScreen(props) {
               numColumns={1}
             />
           </View>
+          <Button title="Next" onPress={() => navigation.navigate("newWord")} />
         </View>
       </View>
 
-      <RNModal
-        animationIn={"slideInUp"}
-        // animationOutTiming={120}
-        hasBackdrop
-        coverScreen
-        deviceHeight={deviceHeight}
-        onBackdropPress={() => setModalVisible(!modalVisible)}
-        useNativeDriver
-        backdropColor="black"
-        backdropOpacity={0.4}
-        transparent={true}
-        isVisible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-        backdropTransitionOutTiming={0}
-        hideModalContentWhileAnimating
-        statusBarTranslucent
-        style={{ flex: 1, height: "100%" }}
-      >
-        <View
-          style={{
-            backgroundColor: colors.light,
-            padding: 10,
-            borderRadius: 10,
-            alignSelf: "center",
-          }}
-        >
-          {correctAnswer && (
-            <AppText style={{ color: colors.green }}>Correct!</AppText>
-          )}
-          {!correctAnswer && (
-            <AppText style={{ color: colors.red }}>Try again!</AppText>
-          )}
-        </View>
-      </RNModal>
+      <CheckAnswerModal
+        correctAnswer={correctAnswer}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  colorSelector: {
-    backgroundColor: colors.secondary,
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-    marginHorizontal: 17,
-    marginTop: 15,
-  },
   container: {
     marginHorizontal: 22,
     flex: 1,
@@ -150,10 +104,6 @@ const styles = StyleSheet.create({
   },
   selectorContainer: {
     marginTop: 20,
-  },
-  listContainer: {
-    justifyContent: "space-around",
-    paddingVertical: 30,
   },
 });
 

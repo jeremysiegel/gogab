@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
 
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
-import TestWordScreen from "./app/screens/TestWordScreen";
+import LessonNavigator from "./app/navigation/LessonNavigator";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {
@@ -42,12 +43,13 @@ export default function App() {
   }
 
   return (
-    <NativeBaseProvider>
-      <View style={styles.container}>
-        <TestWordScreen />
-        <StatusBar style="auto" />
-      </View>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider>
+        <View style={styles.container}>
+          <LessonNavigator />
+        </View>
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 }
 

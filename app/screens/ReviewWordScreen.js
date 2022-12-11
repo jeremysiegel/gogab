@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Pressable,
-  FlatList,
-  Dimensions,
-} from "react-native";
-import RNModal from "react-native-modal";
+import { View, StyleSheet, Pressable, FlatList, Button } from "react-native";
 
 import AppText from "../components/AppText";
 import LearnWord from "../components/LearnWord";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
-
-const deviceHeight = Dimensions.get("screen").height;
+import CheckAnswerModal from "../components/CheckAnswerModal";
 
 const iconSelections = [
   {
@@ -34,7 +26,7 @@ const iconSelections = [
   },
 ];
 
-function ReviewWordScreen(props) {
+function ReviewWordScreen({ navigation }) {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -78,43 +70,12 @@ function ReviewWordScreen(props) {
           </View>
         </View>
       </View>
-
-      <RNModal
-        animationIn={"slideInUp"}
-        // animationOutTiming={120}
-        hasBackdrop
-        coverScreen
-        deviceHeight={deviceHeight}
-        onBackdropPress={() => setModalVisible(!modalVisible)}
-        useNativeDriver
-        backdropColor="black"
-        backdropOpacity={0.4}
-        transparent={true}
-        isVisible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-        backdropTransitionOutTiming={0}
-        hideModalContentWhileAnimating
-        statusBarTranslucent
-        style={{ flex: 1, height: "100%" }}
-      >
-        <View
-          style={{
-            backgroundColor: colors.light,
-            padding: 10,
-            borderRadius: 10,
-            alignSelf: "center",
-          }}
-        >
-          {correctAnswer && (
-            <AppText style={{ color: colors.green }}>Correct!</AppText>
-          )}
-          {!correctAnswer && (
-            <AppText style={{ color: colors.red }}>Try again!</AppText>
-          )}
-        </View>
-      </RNModal>
+      <CheckAnswerModal
+        correctAnswer={correctAnswer}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
+      <Button title="Next" onPress={() => navigation.navigate("testWord")} />
     </Screen>
   );
 }
@@ -142,7 +103,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   bottomContainer: {
-    flex: 3,
+    flex: 4,
   },
   learnWord: {
     fontSize: 38,
