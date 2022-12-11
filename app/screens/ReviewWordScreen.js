@@ -7,26 +7,12 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import CheckAnswerModal from "../components/CheckAnswerModal";
+import sampleLesson from "../lessons/sampleLesson";
 
-const iconSelections = [
-  {
-    name: "bus",
-    title: "bus",
-    correct: false,
-  },
-  {
-    name: "umbrella",
-    title: "umbrella",
-    correct: false,
-  },
-  {
-    name: "toilet",
-    title: "bathroom",
-    correct: true,
-  },
-];
+function ReviewWordScreen({ route, navigation }) {
+  const { lessonId } = route.params;
+  const data = sampleLesson[lessonId];
 
-function ReviewWordScreen({ navigation }) {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -53,15 +39,15 @@ function ReviewWordScreen({ navigation }) {
         <View style={styles.middleContainer}>
           <AppText style={styles.learnWord}>Translate </AppText>
           <View>
-            <LearnWord style={styles.learnWord} translation={"bathroom"}>
-              baño
+            <LearnWord style={styles.learnWord} translation={data.word}>
+              {data.learnWord}
             </LearnWord>
           </View>
         </View>
         <View style={styles.bottomContainer}>
           <View style={styles.selectorContainer}>
             <FlatList
-              data={iconSelections}
+              data={data.iconSelections}
               keyExtractor={(item) => item.title} //has to be unique
               renderItem={renderItem} //method to render the data in the way you want using styling u need
               numColumns={2}
@@ -75,7 +61,12 @@ function ReviewWordScreen({ navigation }) {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      <Button title="Next" onPress={() => navigation.navigate("testWord")} />
+      <Button
+        title="Next"
+        onPress={() =>
+          navigation.push("testWord", { lessonId: data.nextLesson })
+        }
+      />
     </Screen>
   );
 }

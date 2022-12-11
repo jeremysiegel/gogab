@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler"; // must be at top
 import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
-import LessonNavigator from "./app/navigation/LessonNavigator";
+import AppNavigator from "./app/navigation/AppNavigator";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {
@@ -46,7 +46,7 @@ export default function App() {
     <NavigationContainer>
       <NativeBaseProvider>
         <View style={styles.container}>
-          <LessonNavigator />
+          <AppNavigator />
         </View>
       </NativeBaseProvider>
     </NavigationContainer>

@@ -7,31 +7,12 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ChoiceBox from "../components/ChoiceBox";
 import CheckAnswerModal from "../components/CheckAnswerModal";
+import sampleLesson from "../lessons/sampleLesson";
 
-const iconSelections = [
-  {
-    name: "bus",
-    title: "bus",
-    correct: false,
-  },
-  {
-    name: "umbrella",
-    title: "umbrella",
-    correct: false,
-  },
-  {
-    name: "toilet",
-    title: "bathroom",
-    correct: true,
-  },
-  {
-    name: "tree",
-    title: "tree",
-    correct: false,
-  },
-];
+function TestWordScreen({ route, navigation }) {
+  const { lessonId } = route.params;
+  const data = sampleLesson[lessonId];
 
-function TestWordScreen({ navigation }) {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -53,19 +34,24 @@ function TestWordScreen({ navigation }) {
             Select the correct word
           </AppText>
           <View>
-            <AppText style={styles.learnWord}>baño</AppText>
+            <AppText style={styles.learnWord}>{data.learnWord}</AppText>
           </View>
         </View>
         <View style={styles.bottomContainer}>
           <View style={styles.selectorContainer}>
             <FlatList
-              data={iconSelections}
+              data={data.boxSelections}
               keyExtractor={(item) => item.title} //has to be unique
               renderItem={renderItem} //method to render the data in the way you want using styling u need
               numColumns={1}
             />
           </View>
-          <Button title="Next" onPress={() => navigation.navigate("newWord")} />
+          <Button
+            title="Next"
+            onPress={() => {
+              navigation.push("newWord", { lessonId: data.nextLesson });
+            }}
+          />
         </View>
       </View>
 

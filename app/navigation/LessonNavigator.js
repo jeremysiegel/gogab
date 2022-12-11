@@ -12,6 +12,7 @@ export default function LessonNavigator() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: "fade",
       }}
     >
       <Stack.Screen name="newWord" component={NewWordScreen} />
