@@ -7,6 +7,7 @@ import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import AppNavigator from "./app/navigation/AppNavigator";
+import NewPhraseScreen from "./app/screens/NewPhraseScreen";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {
@@ -46,7 +47,7 @@ export default function App() {
     <NavigationContainer>
       <NativeBaseProvider>
         <View style={styles.container}>
-          <AppNavigator />
+          <NewPhraseScreen />
         </View>
       </NativeBaseProvider>
     </NavigationContainer>

@@ -101,12 +101,12 @@ const sampleLesson = {
       {
         name: "question",
         title: "Where",
-        correct: false,
+        correct: true,
       },
       {
         name: "toilet",
         title: "bathroom",
-        correct: true,
+        correct: false,
       },
       {
         name: "tree",
