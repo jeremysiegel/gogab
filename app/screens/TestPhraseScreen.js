@@ -7,11 +7,11 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ChoiceBox from "../components/ChoiceBox";
 import CheckAnswerModal from "../components/CheckAnswerModal";
-import sampleLesson from "../lessons/sampleLesson";
+import getLessonData from "../api/getLessonData";
 
 function TestPhraseScreen({ route, navigation }) {
   const { lessonId } = route.params;
-  const data = sampleLesson[lessonId];
+  const data = getLessonData.getLessonData(route.params.lessonId);
 
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
