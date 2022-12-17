@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { View, StyleSheet, Pressable, FlatList, Button } from "react-native";
 
 import AppText from "../components/AppText";
-import LearnWord from "../components/LearnWord";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import CheckAnswerModal from "../components/CheckAnswerModal";
-import sampleLesson from "../lessons/sampleLesson";
+import getLessonData from "../api/getLessonData";
+import RenderLearnWord from "../utility/RenderLearnWord";
 
-function ReviewWordScreen({ route, navigation }) {
-  const { lessonId } = route.params;
-  const data = sampleLesson[lessonId];
+function ReviewPhraseScreen({ route, navigation }) {
+  const data = getLessonData.getLessonData(route.params.lessonId);
+
+  const learnWords = data.learnWordArray;
+  const helpText = data.helpTextArray;
 
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,11 +39,9 @@ function ReviewWordScreen({ route, navigation }) {
       <View style={styles.container}>
         <View style={styles.topContainer}></View>
         <View style={styles.middleContainer}>
-          <AppText style={styles.learnWord}>Translate </AppText>
-          <View>
-            <LearnWord style={styles.learnWord} translation={data.word}>
-              {data.learnWord}
-            </LearnWord>
+          <View style={styles.phraseContainer}>
+            <AppText style={styles.learnWord}>Translate </AppText>
+            <RenderLearnWord learnWords={learnWords} helpText={helpText} />
           </View>
         </View>
         <View style={styles.bottomContainer}>
@@ -87,6 +87,12 @@ const styles = StyleSheet.create({
   topContainer: {
     flex: 1,
   },
+  phraseContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
   middleContainer: {
     flex: 1,
     justifyContent: "center",
@@ -97,8 +103,7 @@ const styles = StyleSheet.create({
     flex: 4,
   },
   learnWord: {
-    fontSize: 38,
-    paddingTop: 20,
+    fontSize: 40,
   },
   selectorContainer: {
     marginTop: 20,
@@ -109,4 +114,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ReviewWordScreen;
+export default ReviewPhraseScreen;

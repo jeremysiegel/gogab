@@ -1,9 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import NewWordScreen from "../screens/NewWordScreen";
-import ReviewWordScreen from "../screens/ReviewWordScreen";
-import TestWordScreen from "../screens/TestWordScreen";
+import ReviewPhraseScreen from "../screens/ReviewPhraseScreen";
+import TestPhraseScreen from "../screens/TestPhraseScreen";
+import NewPhraseScreen from "../screens/NewPhraseScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,9 +15,9 @@ export default function LessonNavigator() {
         animation: "fade",
       }}
     >
-      <Stack.Screen name="newWord" component={NewWordScreen} />
-      <Stack.Screen name="reviewWord" component={ReviewWordScreen} />
-      <Stack.Screen name="testWord" component={TestWordScreen} />
+      <Stack.Screen name="newWord" component={NewPhraseScreen} />
+      <Stack.Screen name="reviewWord" component={ReviewPhraseScreen} />
+      <Stack.Screen name="testWord" component={TestPhraseScreen} />
     </Stack.Navigator>
   );
 }

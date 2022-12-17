@@ -1,4 +1,4 @@
-import "react-native-gesture-handler"; // must be at top
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
@@ -44,13 +44,15 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <NativeBaseProvider>
-        <View style={styles.container}>
-          <NewPhraseScreen />
-        </View>
-      </NativeBaseProvider>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <NativeBaseProvider>
+          <View style={styles.container}>
+            <AppNavigator />
+          </View>
+        </NativeBaseProvider>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 

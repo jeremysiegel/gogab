@@ -6,28 +6,26 @@ import colors from "../config/colors";
 
 function AppPopover({ style, displayText, popoverText }) {
   return (
-    <Pressable style={styles.container} hitSlop={20}>
-      <Popover
-        offset={StatusBar.currentHeight}
-        trigger={(triggerProps) => {
-          return (
-            <Text
-              style={[defaultStyles.text, styles.displayText, style]}
-              {...triggerProps}
-            >
-              {displayText}
-            </Text>
-          );
-        }}
-      >
-        <Popover.Content>
-          <Popover.Arrow />
-          <Popover.Header _text={defaultStyles.popoverText}>
-            {popoverText}
-          </Popover.Header>
-        </Popover.Content>
-      </Popover>
-    </Pressable>
+    <Popover
+      offset={StatusBar.currentHeight}
+      trigger={(triggerProps) => {
+        return (
+          <Text
+            style={[defaultStyles.text, styles.displayText, style]}
+            {...triggerProps}
+          >
+            {displayText}
+          </Text>
+        );
+      }}
+    >
+      <Popover.Content>
+        <Popover.Arrow />
+        <Popover.Header _text={defaultStyles.popoverText}>
+          {popoverText}
+        </Popover.Header>
+      </Popover.Content>
+    </Popover>
   );
 }
 

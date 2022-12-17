@@ -1,45 +1,26 @@
 import React from "react";
-import { View, StyleSheet, Button, FlatList } from "react-native";
+import { View, StyleSheet, Button } from "react-native";
 
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import LearnWord from "../components/LearnWord";
 import Screen from "../components/Screen";
-import sampleLesson from "../lessons/sampleLesson";
+import getLessonData from "../api/getLessonData";
+import RenderLearnWord from "../utility/RenderLearnWord";
 
-function NewWordScreen({ route, navigation }) {
-  //const { lessonId } = route.params; //Need a getter here.
+function NewPhraseScreen({ route, navigation }) {
+  const data = getLessonData.getLessonData(route.params.lessonId);
 
-  const data = {
-    word: "Hello",
-    learnWord: "Hola",
-    transliteration: "Ola",
-  };
-
-  const wordArray = data.word.split(" ");
-  const learnWordArray = data.learnWord.split(" ");
-  const transliterationArray = data.transliteration.split(" ");
+  const words = data.wordArray;
+  const learnWords = data.learnWordArray;
+  const helpText = data.helpTextArray;
 
   const RenderPhrase = () => {
-    return wordArray.map((item, index) => {
+    return words.map((item, index) => {
       return (
         <AppText style={styles.wordText} key={index}>
           {item}{" "}
         </AppText>
-      );
-    });
-  };
-
-  const RenderLearnWord = () => {
-    return learnWordArray.map((item, index) => {
-      return (
-        <LearnWord
-          key={index}
-          style={styles.learnWordText}
-          translation={transliterationArray[index]}
-        >
-          {item}{" "}
-        </LearnWord>
       );
     });
   };
@@ -52,9 +33,15 @@ function NewWordScreen({ route, navigation }) {
           <RenderPhrase />
         </View>
         <View style={styles.phraseContainer}>
-          <RenderLearnWord />
+          <RenderLearnWord learnWords={learnWords} helpText={helpText} />
         </View>
       </View>
+      <Button
+        title="Next"
+        onPress={() =>
+          navigation.push("reviewWord", { lessonId: data.nextLesson })
+        }
+      />
     </Screen>
   );
 }
@@ -92,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewWordScreen;
+export default NewPhraseScreen;

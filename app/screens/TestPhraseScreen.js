@@ -9,7 +9,7 @@ import ChoiceBox from "../components/ChoiceBox";
 import CheckAnswerModal from "../components/CheckAnswerModal";
 import sampleLesson from "../lessons/sampleLesson";
 
-function TestWordScreen({ route, navigation }) {
+function TestPhraseScreen({ route, navigation }) {
   const { lessonId } = route.params;
   const data = sampleLesson[lessonId];
 
@@ -73,12 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   middleContainer: {
-    flex: 1,
+    flex: 2,
+    marginTop: 150,
     justifyContent: "center",
     alignItems: "center",
   },
   bottomContainer: {
-    flex: 3,
+    flex: 6,
   },
   learnWord: {
     fontSize: moderateScale(38),
@@ -93,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TestWordScreen;
+export default TestPhraseScreen;

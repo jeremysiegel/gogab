@@ -1,16 +1,16 @@
 const sampleLesson = {
   1: {
     screenType: "newWord",
-    word: "bathroom",
-    transliteration: "banyo",
-    learnWord: "baño",
+    word: "bathroom is there",
+    helpText: "banyo esta aki",
+    learnWord: "baño esta aki",
     nextLesson: 2,
   },
   2: {
     screenType: "reviewWord",
     word: "bathroom",
-    transliteration: "banyo",
-    learnWord: "baño",
+    helpText: "tanpp askdfjas aksdfa askldjfa",
+    learnWord: "baño asdfja aksdfjas askldfj",
     nextLesson: 3,
     iconSelections: [
       {
@@ -32,7 +32,7 @@ const sampleLesson = {
   },
   3: {
     screenType: "testWord",
-    learnWord: "baño",
+    learnWord: "baño askdn ksdmm askd ",
     nextLesson: 4,
     boxSelections: [
       {
@@ -60,14 +60,14 @@ const sampleLesson = {
   4: {
     screenType: "newWord",
     word: "Where",
-    transliteration: "d-own-day",
+    helpText: "d-own-day",
     learnWord: "dónde",
     nextLesson: 5,
   },
   5: {
     screenType: "reviewWord",
     word: "Where",
-    transliteration: "d-own-day",
+    helpText: "d-own-day",
     learnWord: "dónde",
     nextLesson: 6,
     iconSelections: [
