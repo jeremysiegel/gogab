@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Pressable, FlatList, Button } from "react-native";
 
 import AppText from "../components/AppText";
-import Screen from "../components/Screen";
+import LessonScreen from "../components/LessonScreen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import CheckAnswerModal from "../components/CheckAnswerModal";
@@ -34,16 +34,20 @@ function ReviewPhraseScreen({ route, navigation }) {
       />
     </Pressable>
   );
+
+  const instruction = "Translate";
+  const phrase = (
+    <RenderLearnWord learnWords={learnWords} helpText={helpText} />
+  );
+
   return (
-    <Screen>
+    <LessonScreen
+      navigation={navigation}
+      lessonData={data}
+      instruction={instruction}
+      phrase={phrase}
+    >
       <View style={styles.container}>
-        <View style={styles.topContainer}></View>
-        <View style={styles.middleContainer}>
-          <View style={styles.phraseContainer}>
-            <AppText style={styles.learnWord}>Translate </AppText>
-            <RenderLearnWord learnWords={learnWords} helpText={helpText} />
-          </View>
-        </View>
         <View style={styles.bottomContainer}>
           <View style={styles.selectorContainer}>
             <FlatList
@@ -61,13 +65,7 @@ function ReviewPhraseScreen({ route, navigation }) {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      <Button
-        title="Next"
-        onPress={() =>
-          navigation.push("testWord", { lessonId: data.nextLesson })
-        }
-      />
-    </Screen>
+    </LessonScreen>
   );
 }
 
