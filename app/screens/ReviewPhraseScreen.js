@@ -7,7 +7,8 @@ import colors from "../config/colors";
 import Icon from "../components/Icon";
 import CheckAnswerModal from "../components/CheckAnswerModal";
 import getLessonData from "../api/getLessonData";
-import RenderLearnWord from "../utility/RenderLearnWord";
+import RenderLearnWord from "../components/RenderLearnWord";
+import { moderateScale } from "../utility/scaler";
 
 function ReviewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
@@ -35,9 +36,13 @@ function ReviewPhraseScreen({ route, navigation }) {
     </Pressable>
   );
 
-  const instruction = "Translate";
+  const instruction = "Translate:";
   const phrase = (
-    <RenderLearnWord learnWords={learnWords} helpText={helpText} />
+    <RenderLearnWord
+      learnWords={learnWords}
+      helpText={helpText}
+      style={styles.learnWord}
+    />
   );
 
   return (
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 4,
   },
   learnWord: {
-    fontSize: 40,
+    fontSize: moderateScale(28),
   },
   selectorContainer: {
     marginTop: 20,

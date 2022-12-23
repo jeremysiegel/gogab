@@ -1,15 +1,11 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import LearnWord from "../components/LearnWord";
+import LearnWord from "./LearnWord";
 
-function RenderLearnWord({ learnWords, helpText }) {
+function RenderLearnWord({ learnWords, helpText, style }) {
   return learnWords.map((item, index) => {
     return (
-      <LearnWord
-        key={index}
-        style={styles.learnWordText}
-        translation={helpText[index]}
-      >
+      <LearnWord key={index} style={style} translation={helpText[index]}>
         {item}{" "}
       </LearnWord>
     );
@@ -18,7 +14,7 @@ function RenderLearnWord({ learnWords, helpText }) {
 
 const styles = StyleSheet.create({
   learnWordText: {
-    fontSize: 40,
+    //  fontSize: 40,
   },
 });
 

@@ -1,49 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Button } from "react-native";
 import AppText from "./AppText";
+import LessonHeader from "./LessonHeader";
 import Screen from "./Screen";
+import { moderateScale } from "../utility/scaler";
 import colors from "../config/colors";
 
 function LessonScreen({
-  phrase,
   lessonData,
   instruction,
   children,
   navigation,
+  instructionStyle,
+  phrase,
 }) {
   const data = lessonData;
 
   return (
     <Screen>
-      <AppText style={styles.instructionText}>{instruction}</AppText>
-      <View style={styles.phraseContainer}>{phrase}</View>
-      <View style={styles.view}>{children}</View>
-      <Button
-        style={{ justifyContent: "flex-end" }}
-        title="Next"
-        onPress={() =>
-          navigation.push(data.nextLessonType, { lessonId: data.nextLesson })
-        }
-      />
+      <LessonHeader currentIndex={data.index} quizLength={data.quizLength} />
+      <View style={styles.container}>
+        <AppText style={[styles.instructionText, instructionStyle]}>
+          {instruction}
+        </AppText>
+        <View style={styles.phraseContainer}>{phrase}</View>
+        <View style={styles.children}>{children}</View>
+        <Button
+          style={{ justifyContent: "flex-end" }}
+          title="Next"
+          onPress={() =>
+            navigation.push(data.nextLessonType, { lessonId: data.nextLesson })
+          }
+        />
+      </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  view: {
+  container: {
+    margin: 20,
+    flex: 1,
+  },
+  children: {
     flex: 1,
   },
   phraseContainer: {
-    marginTop: 12,
-    marginBottom: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    //justifyContent: "center",
+    //alignItems: "center",
+    marginTop: 10,
+    marginLeft: 10,
     flexDirection: "row",
     flexWrap: "wrap",
   },
   instructionText: {
-    fontSize: 24,
-    color: colors.medium,
+    fontSize: moderateScale(24),
+    fontWeight: "bold",
   },
 });
 

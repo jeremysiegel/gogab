@@ -2,17 +2,18 @@ import sampleLesson from "../lessons/sampleLesson";
 
 const getLessonData = (id) => {
   const data = sampleLesson[id];
-  const nextLessonType = sampleLesson[data.nextLesson].screenType;
+  const nextLessonType = sampleLesson[data.nextLesson].screenType
+    ? sampleLesson[data.nextLesson].screenType
+    : null;
 
-  const wordArray = data.word.split(" ");
-  const learnWordArray = data.learnWord.split(" ");
-  const helpTextArray = data.helpText.split(" ");
+  const lessonKeys = Object.keys(sampleLesson);
+  const index = lessonKeys.indexOf(id.toString());
+  const quizLength = lessonKeys.length;
 
   const returnData = {
-    wordArray: wordArray,
-    learnWordArray: learnWordArray,
-    helpTextArray: helpTextArray,
     nextLessonType: nextLessonType,
+    index: index,
+    quizLength: quizLength,
     ...data,
   };
 

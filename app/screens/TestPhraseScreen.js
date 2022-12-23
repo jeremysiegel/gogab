@@ -3,14 +3,13 @@ import { View, StyleSheet, FlatList, Button } from "react-native";
 
 import { moderateScale } from "../utility/scaler";
 import AppText from "../components/AppText";
-import Screen from "../components/Screen";
+import LessonScreen from "../components/LessonScreen";
 import colors from "../config/colors";
 import ChoiceBox from "../components/ChoiceBox";
 import CheckAnswerModal from "../components/CheckAnswerModal";
 import getLessonData from "../api/getLessonData";
 
 function TestPhraseScreen({ route, navigation }) {
-  const { lessonId } = route.params;
   const data = getLessonData.getLessonData(route.params.lessonId);
 
   const [correctAnswer, setCorrectAnswer] = useState(false);
@@ -25,18 +24,19 @@ function TestPhraseScreen({ route, navigation }) {
       }}
     />
   );
+
+  const instruction = "Select the correct word:";
+
+  const phrase = <AppText style={styles.learnWord}>{data.learnWord}</AppText>;
+
   return (
-    <Screen>
+    <LessonScreen
+      instruction={instruction}
+      lessonData={data}
+      navigation={navigation}
+      phrase={phrase}
+    >
       <View style={styles.container}>
-        <View style={styles.topContainer}></View>
-        <View style={styles.middleContainer}>
-          <AppText style={styles.instructionText}>
-            Select the correct word
-          </AppText>
-          <View>
-            <AppText style={styles.learnWord}>{data.learnWord}</AppText>
-          </View>
-        </View>
         <View style={styles.bottomContainer}>
           <View style={styles.selectorContainer}>
             <FlatList
@@ -46,12 +46,6 @@ function TestPhraseScreen({ route, navigation }) {
               numColumns={1}
             />
           </View>
-          <Button
-            title="Next"
-            onPress={() => {
-              navigation.push("newWord", { lessonId: data.nextLesson });
-            }}
-          />
         </View>
       </View>
 
@@ -60,7 +54,7 @@ function TestPhraseScreen({ route, navigation }) {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-    </Screen>
+    </LessonScreen>
   );
 }
 
@@ -82,13 +76,11 @@ const styles = StyleSheet.create({
     flex: 6,
   },
   learnWord: {
-    fontSize: moderateScale(38),
-    paddingTop: 25,
+    fontSize: moderateScale(26),
+
     color: colors.orange,
   },
-  instructionText: {
-    fontSize: moderateScale(28),
-  },
+
   selectorContainer: {
     marginTop: 20,
   },
