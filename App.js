@@ -7,7 +7,6 @@ import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import AppNavigator from "./app/navigation/AppNavigator";
-import NewPhraseScreen from "./app/screens/NewPhraseScreen";
 import useFonts from "./hooks/useFonts";
 
 export default function App() {

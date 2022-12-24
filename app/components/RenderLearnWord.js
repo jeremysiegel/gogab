@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import LearnWord from "./LearnWord";
 
 function RenderLearnWord({ learnWords, helpText, style }) {
@@ -11,11 +10,5 @@ function RenderLearnWord({ learnWords, helpText, style }) {
     );
   });
 }
-
-const styles = StyleSheet.create({
-  learnWordText: {
-    //  fontSize: 40,
-  },
-});
 
 export default RenderLearnWord;

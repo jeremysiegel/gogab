@@ -1,4 +1,5 @@
 import colors from "./colors";
+import { moderateScale } from "../utility/scaler";
 
 export default {
   colors,
@@ -7,8 +8,17 @@ export default {
     color: colors.darkText,
     fontFamily: "assistantMedium",
   },
+  practiceWord: {
+    fontSize: moderateScale(28),
+    color: colors.secondary,
+  },
   learnWord: {
-    color: colors.green,
+    fontSize: moderateScale(30),
+    color: colors.primary,
+  },
+  testWord: {
+    fontSize: moderateScale(30),
+    color: colors.orange,
   },
   popoverText: {
     fontFamily: "assistantMedium",

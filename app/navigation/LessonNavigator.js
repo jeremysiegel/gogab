@@ -1,9 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import ReviewPhraseScreen from "../screens/ReviewPhraseScreen";
-import TestPhraseScreen from "../screens/TestPhraseScreen";
-import NewPhraseScreen from "../screens/NewPhraseScreen";
+import ReviewPhraseScreen from "../screens/lessonScreens/ReviewPhraseScreen";
+import TestPhraseScreen from "../screens/lessonScreens/TestPhraseScreen";
+import NewPhraseScreen from "../screens/lessonScreens/NewPhraseScreen";
 
 const Stack = createNativeStackNavigator();
 

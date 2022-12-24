@@ -1,10 +1,12 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-import AppText from "../components/AppText";
-import LessonScreen from "../components/LessonScreen";
-import getLessonData from "../api/getLessonData";
-import RenderLearnWord from "../components/RenderLearnWord";
+import AppText from "../../components/AppText";
+import LessonScreen from "../../components/LessonScreen";
+import getLessonData from "../../api/getLessonData";
+import RenderLearnWord from "../../components/RenderLearnWord";
+import defaultStyles from "../../config/styles";
+import { moderateScale } from "../../utility/scaler";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
@@ -16,7 +18,7 @@ function NewPhraseScreen({ route, navigation }) {
   const RenderPhrase = () => {
     return words.map((item, index) => {
       return (
-        <AppText style={styles.wordText} key={index}>
+        <AppText style={defaultStyles.practiceWord} key={index}>
           {item}{" "}
         </AppText>
       );
@@ -34,28 +36,24 @@ function NewPhraseScreen({ route, navigation }) {
       navigation={navigation}
       phrase={phrase}
     >
-      <View style={styles.container}>
-        <View style={styles.phraseContainer}>
-          <RenderPhrase />
-        </View>
-        <View style={styles.activityContainer}>
-          <RenderLearnWord learnWords={learnWords} helpText={helpText} />
-        </View>
+      <View style={styles.activityContainer}>
+        <RenderLearnWord
+          learnWords={learnWords}
+          helpText={helpText}
+          style={[defaultStyles.learnWord, styles.renderLearnWord]}
+        />
       </View>
     </LessonScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 30,
-  },
   activityContainer: {
-    justifyContent: "center",
-    alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",
+    height: "100%",
+    alignSelf: "center",
+    marginTop: 100,
   },
   phraseContainer: {
     marginTop: 12,
@@ -66,9 +64,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  wordText: {
-    fontSize: 24,
-  },
+  renderLearnWord: { fontSize: moderateScale(35) },
 });
 
 export default NewPhraseScreen;

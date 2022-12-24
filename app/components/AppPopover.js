@@ -10,10 +10,7 @@ function AppPopover({ style, displayText, popoverText }) {
       offset={StatusBar.currentHeight}
       trigger={(triggerProps) => {
         return (
-          <Text
-            style={[defaultStyles.text, styles.displayText, style]}
-            {...triggerProps}
-          >
+          <Text style={[defaultStyles.text, style]} {...triggerProps}>
             {displayText}
           </Text>
         );
@@ -28,13 +25,5 @@ function AppPopover({ style, displayText, popoverText }) {
     </Popover>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-  displayText: {
-    color: colors.primary,
-    // textDecorationLine: "underline",
-  },
-});
 
 export default AppPopover;

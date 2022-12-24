@@ -24,7 +24,9 @@ function LessonScreen({
           {instruction}
         </AppText>
         <View style={styles.phraseContainer}>{phrase}</View>
-        <View style={styles.children}>{children}</View>
+        <View style={styles.children}>
+          <View>{children}</View>
+        </View>
         <Button
           style={{ justifyContent: "flex-end" }}
           title="Next"
@@ -44,10 +46,9 @@ const styles = StyleSheet.create({
   },
   children: {
     flex: 1,
+    justifyContent: "center",
   },
   phraseContainer: {
-    //justifyContent: "center",
-    //alignItems: "center",
     marginTop: 10,
     marginLeft: 10,
     flexDirection: "row",
