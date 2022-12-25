@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import AppText from "../../components/AppText";
-import LessonScreen from "../../components/LessonScreen";
+import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";

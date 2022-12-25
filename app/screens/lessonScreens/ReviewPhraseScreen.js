@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, Pressable, FlatList } from "react-native";
 
-import LessonScreen from "../../components/LessonScreen";
+import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import colors from "../../config/colors";
 import Icon from "../../components/Icon";
-import CheckAnswerModal from "../../components/CheckAnswerModal";
 import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";

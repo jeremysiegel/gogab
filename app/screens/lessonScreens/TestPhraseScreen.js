@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { FlatList } from "react-native";
 
 import AppText from "../../components/AppText";
-import LessonScreen from "../../components/LessonScreen";
+import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import ChoiceBox from "../../components/ChoiceBox";
-import CheckAnswerModal from "../../components/CheckAnswerModal";
 import getLessonData from "../../api/getLessonData";
 import defaultStyles from "../../config/styles";
 

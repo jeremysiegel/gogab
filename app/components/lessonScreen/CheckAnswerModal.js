@@ -2,10 +2,10 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import RNModal from "react-native-modal";
 
-import colors from "../config/colors";
-import Icon from "../components/Icon";
-import AppText from "./AppText";
-import AppButton from "./AppButton";
+import colors from "../../config/colors";
+import Icon from "../Icon";
+import AppText from "../AppText";
+import AppButton from "../AppButton";
 
 function CheckAnswerModal({
   correctAnswer,

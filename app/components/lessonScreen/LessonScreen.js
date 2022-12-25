@@ -1,12 +1,12 @@
-import React, { useState } from "react";
 import { View, StyleSheet, Button } from "react-native";
-import AppText from "./AppText";
+import React, { useState } from "react";
+import AppText from "../AppText";
 import LessonHeader from "./LessonHeader";
-import Screen from "./Screen";
-import { moderateScale } from "../utility/scaler";
-import colors from "../config/colors";
-import AppButton from "./AppButton";
+import Screen from "../Screen";
+import { moderateScale } from "../../utility/scaler";
+import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
+import LessonFooter from "./LessonFooter";
 
 function LessonScreen({
   lessonData,
@@ -17,13 +17,15 @@ function LessonScreen({
   phrase,
   answerIsCorrect,
 }) {
-  const data = lessonData;
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <Screen>
-        <LessonHeader currentIndex={data.index} quizLength={data.quizLength} />
+        <LessonHeader
+          currentIndex={lessonData.index}
+          quizLength={lessonData.quizLength}
+        />
         <View style={styles.container}>
           <AppText style={[styles.instructionText, instructionStyle]}>
             {instruction}
@@ -33,29 +35,15 @@ function LessonScreen({
             <View>{children}</View>
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <AppButton
-            title={answerIsCorrect === undefined ? "Next" : "Check"}
-            onPress={() => {
-              if (answerIsCorrect === undefined) {
-                navigation.push(data.nextLessonType, {
-                  lessonId: data.nextLesson,
-                });
-              } else {
-                setModalVisible(true);
-              }
-            }}
-          />
-        </View>
+
+        <LessonFooter
+          navigation={navigation}
+          data={lessonData}
+          answerIsCorrect={answerIsCorrect}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
       </Screen>
-      <CheckAnswerModal
-        navigation={navigation}
-        nextLesson={data.nextLesson}
-        nextLessonType={data.nextLessonType}
-        correctAnswer={answerIsCorrect}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-      />
     </>
   );
 }
