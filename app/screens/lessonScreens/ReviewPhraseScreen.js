@@ -15,15 +15,13 @@ function ReviewPhraseScreen({ route, navigation }) {
   const learnWords = data.learnWordArray;
   const helpText = data.helpTextArray;
 
-  const [correctAnswer, setCorrectAnswer] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
 
   const renderItem = ({ item }) => (
     <Pressable
       key={item.name}
       onPress={() => {
-        setCorrectAnswer(item.correct);
-        setModalVisible(true);
+        setAnswerIsCorrect(item.correct);
       }}
     >
       <Icon
@@ -50,6 +48,7 @@ function ReviewPhraseScreen({ route, navigation }) {
       lessonData={data}
       instruction={instruction}
       phrase={phrase}
+      answerIsCorrect={answerIsCorrect}
     >
       <FlatList
         data={data.iconSelections}
@@ -57,12 +56,6 @@ function ReviewPhraseScreen({ route, navigation }) {
         renderItem={renderItem} //method to render the data in the way you want using styling u need
         numColumns={2}
         columnWrapperStyle={styles.listContainer}
-      />
-
-      <CheckAnswerModal
-        correctAnswer={correctAnswer}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
       />
     </LessonScreen>
   );

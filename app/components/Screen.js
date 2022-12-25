@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
 
   screen: {
-    paddingVertical: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight,
     flex: 1,
     height: "100%",
   },

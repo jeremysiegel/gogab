@@ -11,15 +11,13 @@ import defaultStyles from "../../config/styles";
 function TestPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
 
-  const [correctAnswer, setCorrectAnswer] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
 
   const renderItem = ({ item }) => (
     <ChoiceBox
       title={item.title}
       onPress={() => {
-        setCorrectAnswer(item.correct);
-        setModalVisible(true);
+        setAnswerIsCorrect(item.correct);
       }}
     />
   );
@@ -36,18 +34,13 @@ function TestPhraseScreen({ route, navigation }) {
       lessonData={data}
       navigation={navigation}
       phrase={phrase}
+      answerIsCorrect={answerIsCorrect}
     >
       <FlatList
         data={data.boxSelections}
         keyExtractor={(item) => item.title} //has to be unique
         renderItem={renderItem} //method to render the data in the way you want using styling u need
         numColumns={1}
-      />
-
-      <CheckAnswerModal
-        correctAnswer={correctAnswer}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
       />
     </LessonScreen>
   );

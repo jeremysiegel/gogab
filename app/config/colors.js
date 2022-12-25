@@ -14,6 +14,7 @@ const palete = {
   pink: "#FF869E",
   black: "#000",
   white: "#fff",
+  grey: "#ececec",
   dark: "#0f0f0f",
   darkText: "#0c0c0c",
   medium: "#6e6969",

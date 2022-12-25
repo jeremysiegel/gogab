@@ -5,6 +5,8 @@ import LessonHeader from "./LessonHeader";
 import Screen from "./Screen";
 import { moderateScale } from "../utility/scaler";
 import colors from "../config/colors";
+import AppButton from "./AppButton";
+import CheckAnswerModal from "./CheckAnswerModal";
 
 function LessonScreen({
   lessonData,
@@ -13,33 +15,56 @@ function LessonScreen({
   navigation,
   instructionStyle,
   phrase,
+  answerIsCorrect,
 }) {
   const data = lessonData;
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <Screen>
-      <LessonHeader currentIndex={data.index} quizLength={data.quizLength} />
-      <View style={styles.container}>
-        <AppText style={[styles.instructionText, instructionStyle]}>
-          {instruction}
-        </AppText>
-        <View style={styles.phraseContainer}>{phrase}</View>
-        <View style={styles.children}>
-          <View>{children}</View>
+    <>
+      <Screen>
+        <LessonHeader currentIndex={data.index} quizLength={data.quizLength} />
+        <View style={styles.container}>
+          <AppText style={[styles.instructionText, instructionStyle]}>
+            {instruction}
+          </AppText>
+          <View style={styles.phraseContainer}>{phrase}</View>
+          <View style={styles.children}>
+            <View>{children}</View>
+          </View>
         </View>
-        <Button
-          style={{ justifyContent: "flex-end" }}
-          title="Next"
-          onPress={() =>
-            navigation.push(data.nextLessonType, { lessonId: data.nextLesson })
-          }
-        />
-      </View>
-    </Screen>
+        <View style={styles.buttonContainer}>
+          <AppButton
+            title={answerIsCorrect === undefined ? "Next" : "Check"}
+            onPress={() => {
+              if (answerIsCorrect === undefined) {
+                navigation.push(data.nextLessonType, {
+                  lessonId: data.nextLesson,
+                });
+              } else {
+                setModalVisible(true);
+              }
+            }}
+          />
+        </View>
+      </Screen>
+      <CheckAnswerModal
+        navigation={navigation}
+        nextLesson={data.nextLesson}
+        nextLessonType={data.nextLessonType}
+        correctAnswer={answerIsCorrect}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 10,
+  },
   container: {
     margin: 20,
     flex: 1,

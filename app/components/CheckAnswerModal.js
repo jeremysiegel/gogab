@@ -1,36 +1,73 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet } from "react-native";
 import RNModal from "react-native-modal";
 
 import colors from "../config/colors";
+import Icon from "../components/Icon";
 import AppText from "./AppText";
+import AppButton from "./AppButton";
 
-const deviceHeight = Dimensions.get("screen").height;
-
-function CheckAnswerModal({ correctAnswer, modalVisible, setModalVisible }) {
+function CheckAnswerModal({
+  correctAnswer,
+  modalVisible,
+  setModalVisible,
+  navigation,
+  nextLesson,
+  nextLessonType,
+}) {
   return (
     <RNModal
       animationIn={"slideInUp"}
-      hasBackdrop
-      coverScreen
-      deviceHeight={deviceHeight}
-      onBackdropPress={() => setModalVisible(!modalVisible)}
+      onBackdropPress={() => {
+        if (!correctAnswer) {
+          setModalVisible(!modalVisible);
+        }
+      }}
       useNativeDriver
-      backdropColor="black"
-      backdropOpacity={0.4}
+      backdropOpacity={0}
       transparent={true}
       isVisible={modalVisible}
-      // onRequestClose={() => {
-      //   setModalVisible(!modalVisible);
-      // }}
       backdropTransitionOutTiming={0}
       hideModalContentWhileAnimating
       statusBarTranslucent
-      style={styles.modal}
+      style={styles.modalContainer}
     >
-      <View style={styles.modalText}>
-        {correctAnswer && <AppText style={styles.correct}>Correct!</AppText>}
-        {!correctAnswer && <AppText style={styles.wrong}>Try again!</AppText>}
+      <View style={styles.modal}>
+        {correctAnswer && (
+          <>
+            <View style={styles.textContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name={"check"} size={23} backgroundColor={colors.green} />
+              </View>
+              <AppText style={styles.correct}>Correct!</AppText>
+            </View>
+            <AppButton
+              title={"Next"}
+              onPress={() => {
+                navigation.push(nextLessonType, {
+                  lessonId: nextLesson,
+                });
+              }}
+            />
+          </>
+        )}
+
+        {!correctAnswer && (
+          <>
+            <View style={styles.textContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name={"times"} size={23} backgroundColor={colors.red} />
+              </View>
+              <AppText style={styles.wrong}>Try again!</AppText>
+            </View>
+            <AppButton
+              title={"Okay"}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+            />
+          </>
+        )}
       </View>
     </RNModal>
   );
@@ -38,20 +75,36 @@ function CheckAnswerModal({ correctAnswer, modalVisible, setModalVisible }) {
 
 const styles = StyleSheet.create({
   correct: {
+    fontSize: 28,
+    fontWeight: "bold",
     color: colors.green,
+    paddingLeft: 7,
+  },
+  iconContainer: {
+    justifyContent: "center",
+    paddingTop: 3,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    margin: 0,
   },
   modal: {
-    flex: 1,
-    height: "100%",
-    justifyContent: "flex-end",
-  },
-  modalText: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.grey,
     padding: 10,
     borderRadius: 10,
     alignSelf: "center",
+    width: "100%",
+  },
+  textContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 10,
   },
   wrong: {
+    fontSize: 28,
+    fontWeight: "bold",
+    paddingLeft: 7,
     color: colors.red,
   },
 });
