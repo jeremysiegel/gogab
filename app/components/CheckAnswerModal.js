@@ -19,7 +19,8 @@ function CheckAnswerModal({
     <RNModal
       animationIn={"slideInUp"}
       onBackdropPress={() => {
-        if (!correctAnswer) {
+        if (true) {
+          //!correctAnswer) {
           setModalVisible(!modalVisible);
         }
       }}
@@ -29,6 +30,9 @@ function CheckAnswerModal({
       isVisible={modalVisible}
       backdropTransitionOutTiming={0}
       hideModalContentWhileAnimating
+      onRequestClose={() => {
+        setModalVisible(!modalVisible);
+      }}
       statusBarTranslucent
       style={styles.modalContainer}
     >
@@ -44,6 +48,7 @@ function CheckAnswerModal({
             <AppButton
               title={"Next"}
               onPress={() => {
+                setModalVisible(!modalVisible);
                 navigation.push(nextLessonType, {
                   lessonId: nextLesson,
                 });
