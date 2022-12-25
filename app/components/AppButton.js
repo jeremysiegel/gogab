@@ -4,9 +4,10 @@ import { moderateScale } from "../utility/scaler";
 
 import colors from "../config/colors";
 
-function AppButton({ title, color = "primary", onPress }) {
+function AppButton({ title, color = "primary", onPress, disabled }) {
   return (
     <TouchableOpacity
+      disabled={disabled}
       style={[{ backgroundColor: colors[color] }, styles.button]}
       onPress={onPress}
     >

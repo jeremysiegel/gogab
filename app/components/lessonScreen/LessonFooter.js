@@ -10,12 +10,15 @@ function LessonFooter({
   answerIsCorrect,
   modalVisible,
   setModalVisible,
+  touched,
 }) {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <AppButton
+          color={touched === false ? "grey" : undefined}
           title={answerIsCorrect === undefined ? "Next" : "Check"}
+          disabled={touched === false ? true : false}
           onPress={() => {
             if (answerIsCorrect === undefined) {
               navigation.push(data.nextLessonType, {

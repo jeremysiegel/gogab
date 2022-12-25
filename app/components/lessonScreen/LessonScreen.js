@@ -1,12 +1,11 @@
 import { View, StyleSheet, Button } from "react-native";
 import React, { useState } from "react";
+
 import AppText from "../AppText";
 import LessonHeader from "./LessonHeader";
 import Screen from "../Screen";
-import { moderateScale } from "../../utility/scaler";
-import AppButton from "../AppButton";
-import CheckAnswerModal from "./CheckAnswerModal";
 import LessonFooter from "./LessonFooter";
+import defaultStyles from "../../config/styles";
 
 function LessonScreen({
   lessonData,
@@ -16,6 +15,7 @@ function LessonScreen({
   instructionStyle,
   phrase,
   answerIsCorrect,
+  touched,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -27,7 +27,7 @@ function LessonScreen({
           quizLength={lessonData.quizLength}
         />
         <View style={styles.container}>
-          <AppText style={[styles.instructionText, instructionStyle]}>
+          <AppText style={[defaultStyles.instructionText, instructionStyle]}>
             {instruction}
           </AppText>
           <View style={styles.phraseContainer}>{phrase}</View>
@@ -37,6 +37,7 @@ function LessonScreen({
         </View>
 
         <LessonFooter
+          touched={touched}
           navigation={navigation}
           data={lessonData}
           answerIsCorrect={answerIsCorrect}
@@ -66,10 +67,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  instructionText: {
-    fontSize: moderateScale(24),
-    fontWeight: "bold",
   },
 });
 

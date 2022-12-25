@@ -6,6 +6,7 @@ import colors from "../../config/colors";
 import Icon from "../Icon";
 import AppText from "../AppText";
 import AppButton from "../AppButton";
+import defaultStyles from "../../config/styles";
 
 function CheckAnswerModal({
   correctAnswer,
@@ -43,7 +44,9 @@ function CheckAnswerModal({
               <View style={styles.iconContainer}>
                 <Icon name={"check"} size={23} backgroundColor={colors.green} />
               </View>
-              <AppText style={styles.correct}>Correct!</AppText>
+              <AppText style={[defaultStyles.checkAnswer, styles.correct]}>
+                Correct!
+              </AppText>
             </View>
             <AppButton
               title={"Next"}
@@ -63,7 +66,9 @@ function CheckAnswerModal({
               <View style={styles.iconContainer}>
                 <Icon name={"times"} size={23} backgroundColor={colors.red} />
               </View>
-              <AppText style={styles.wrong}>Try again!</AppText>
+              <AppText style={[defaultStyles.checkAnswer, styles.wrong]}>
+                Try again!
+              </AppText>
             </View>
             <AppButton
               title={"Okay"}
@@ -80,10 +85,12 @@ function CheckAnswerModal({
 
 const styles = StyleSheet.create({
   correct: {
-    fontSize: 28,
-    fontWeight: "bold",
     color: colors.green,
     paddingLeft: 7,
+  },
+  wrong: {
+    paddingLeft: 7,
+    color: colors.red,
   },
   iconContainer: {
     justifyContent: "center",
@@ -105,12 +112,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 10,
-  },
-  wrong: {
-    fontSize: 28,
-    fontWeight: "bold",
-    paddingLeft: 7,
-    color: colors.red,
   },
 });
 

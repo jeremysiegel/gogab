@@ -64,7 +64,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  renderLearnWord: { fontSize: moderateScale(35) },
+  renderLearnWord: {
+    fontSize: moderateScale(35),
+  },
 });
 
 export default NewPhraseScreen;
