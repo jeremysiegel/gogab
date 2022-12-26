@@ -11,12 +11,15 @@ function TestPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
 
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   const renderItem = ({ item }) => (
     <ChoiceBox
       title={item.title}
+      selected={selected}
       onPress={() => {
         setAnswerIsCorrect(item.correct);
+        setSelected(item.title);
       }}
     />
   );

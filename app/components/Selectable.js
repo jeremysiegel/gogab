@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable } from "react-native";
 import colors from "../config/colors";
 
 function Selectable({ children, onPress, name, selected, style }) {
@@ -15,9 +15,5 @@ function Selectable({ children, onPress, name, selected, style }) {
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default Selectable;

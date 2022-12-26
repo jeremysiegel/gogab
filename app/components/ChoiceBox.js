@@ -3,22 +3,27 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { moderateScale } from "../utility/scaler";
 
 import colors from "../config/colors";
+import Selectable from "./Selectable";
 
-function ChoiceBox({ title, color = "primary", onPress }) {
+function ChoiceBox({ title, onPress, selected }) {
   return (
-    <TouchableOpacity
-      style={[{ backgroundColor: colors[color] }, styles.button]}
+    <Selectable
+      name={title}
+      selected={selected}
       onPress={onPress}
+      style={styles.box}
     >
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
+      <Text style={styles.text}>{title}</Text>
+    </Selectable>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    padding: moderateScale(10),
-    borderRadius: 10,
+  box: {
+    padding: 10,
+    borderColor: colors.selectableBorder,
+    borderWidth: 3,
+    borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,
@@ -26,8 +31,8 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 350,
   },
-  buttonText: {
-    color: colors.light,
+  text: {
+    color: colors.dark,
     fontSize: moderateScale(24),
     textTransform: "lowercase",
     fontWeight: "bold",
