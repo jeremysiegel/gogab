@@ -37,6 +37,7 @@ function TestPhraseScreen({ route, navigation }) {
       navigation={navigation}
       phrase={phrase}
       answerIsCorrect={answerIsCorrect}
+      touched={selected}
     >
       <FlatList
         data={data.boxSelections}

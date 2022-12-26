@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonBorder: {
-    borderBottomLeftRadius: 10, // = borderRadius *2
+    borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderBottomWidth: 6,
     borderWidth: 2,
