@@ -1,6 +1,8 @@
 const pallete = {
   primary: "#15a8a8",
   secondary: "#5E60CE",
+  selected: "#3AB0FF50",
+  selectableBorder: "#3AB0FF",
   purple: "#5E60CE",
   orange: "#FF6347",
   yellow: "#ebae19",

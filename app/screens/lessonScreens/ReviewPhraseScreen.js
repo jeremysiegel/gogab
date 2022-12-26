@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Pressable, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import colors from "../../config/colors";
@@ -8,6 +8,7 @@ import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import ChoiceImage from "../../components/ChoiceImage";
+import Selectable from "../../components/Selectable";
 
 function ReviewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
@@ -19,25 +20,25 @@ function ReviewPhraseScreen({ route, navigation }) {
   const [selected, setSelected] = useState(false);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.name === selected ? "#6e3b6e" : "#f9c2ff";
-
     return (
-      <Pressable
-        key={item.name}
+      <Selectable
+        name={item.name}
+        selected={selected}
         onPress={() => {
           setAnswerIsCorrect(item.correct);
           setSelected(item.name);
-          console.log(selected);
         }}
-        style={{ backgroundColor: backgroundColor, padding: 10 }}
+        style={styles.selectableItem}
       >
-        <Icon
-          name={item.name}
-          size={100}
-          label={item.title}
-          backgroundColor={colors.secondary}
-        />
-      </Pressable>
+        <View style={styles.selectableItemContainer}>
+          <Icon
+            name={item.name}
+            size={100}
+            label={item.title}
+            backgroundColor={colors.secondary}
+          />
+        </View>
+      </Selectable>
     );
   };
 
@@ -73,8 +74,17 @@ function ReviewPhraseScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    justifyContent: "space-around",
-    paddingVertical: 30,
+    justifyContent: "center",
+  },
+
+  selectableItem: {
+    margin: 15,
+    width: 160,
+    height: 200,
+    justifyContent: "center",
+    borderColor: colors.selectableBorder,
+    borderWidth: 3,
+    borderRadius: 5,
   },
 });
 
