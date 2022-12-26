@@ -16,7 +16,7 @@ function LessonFooter({
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <AppButton
-          color={touched === false ? "grey" : undefined}
+          opacity={touched === false ? 70 : undefined}
           title={answerIsCorrect === undefined ? "Next" : "Check"}
           disabled={touched === false ? true : false}
           onPress={() => {
