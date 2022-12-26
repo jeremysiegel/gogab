@@ -1,5 +1,6 @@
 const pallete = {
   primary: "#15a8a8",
+  primaryTint: "#139797",
   secondary: "#5E60CE",
   selected: "#3AB0FF50",
   selectableBorder: "#3AB0FF",

@@ -14,22 +14,20 @@ function LessonFooter({
 }) {
   return (
     <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <AppButton
-          opacity={touched === false ? 70 : undefined}
-          title={answerIsCorrect === undefined ? "Next" : "Check"}
-          disabled={touched === false ? true : false}
-          onPress={() => {
-            if (answerIsCorrect === undefined) {
-              navigation.push(data.nextLessonType, {
-                lessonId: data.nextLesson,
-              });
-            } else {
-              setModalVisible(true);
-            }
-          }}
-        />
-      </View>
+      <AppButton
+        opacity={touched === false ? 70 : undefined}
+        title={answerIsCorrect === undefined ? "Next" : "Check"}
+        disabled={touched === false ? true : false}
+        onPress={() => {
+          if (answerIsCorrect === undefined) {
+            navigation.push(data.nextLessonType, {
+              lessonId: data.nextLesson,
+            });
+          } else {
+            setModalVisible(true);
+          }
+        }}
+      />
       <CheckAnswerModal
         navigation={navigation}
         nextLesson={data.nextLesson}
@@ -44,7 +42,7 @@ function LessonFooter({
 
 const styles = StyleSheet.create({
   container: {},
-  buttonContainer: {
+  container: {
     paddingHorizontal: 20,
     paddingBottom: 10,
   },
