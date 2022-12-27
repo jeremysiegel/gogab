@@ -11,8 +11,6 @@ import { moderateScale } from "../../utility/scaler";
 function NewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
 
-  const learnWords = data.learnWordArray;
-  const helpText = data.helpTextArray;
   const words = data.wordArray;
 
   const RenderPhrase = () => {
@@ -37,11 +35,7 @@ function NewPhraseScreen({ route, navigation }) {
       phrase={phrase}
     >
       <View style={styles.activityContainer}>
-        <RenderLearnWord
-          learnWords={learnWords}
-          helpText={helpText}
-          style={[defaultStyles.learnWord, styles.renderLearnWord]}
-        />
+        <RenderLearnWord data={data} />
       </View>
     </LessonScreen>
   );

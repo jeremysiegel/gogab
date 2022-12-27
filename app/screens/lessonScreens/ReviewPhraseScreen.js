@@ -6,15 +6,10 @@ import colors from "../../config/colors";
 import Icon from "../../components/Icon";
 import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
-import defaultStyles from "../../config/styles";
-import ChoiceImage from "../../components/ChoiceImage";
 import Selectable from "../../components/Selectable";
 
 function ReviewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
-
-  const learnWords = data.learnWordArray;
-  const helpText = data.helpTextArray;
 
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -43,13 +38,7 @@ function ReviewPhraseScreen({ route, navigation }) {
   };
 
   const instruction = "Translate:";
-  const phrase = (
-    <RenderLearnWord
-      learnWords={learnWords}
-      helpText={helpText}
-      style={defaultStyles.learnWord}
-    />
-  );
+  const phrase = <RenderLearnWord data={data} />;
 
   return (
     <LessonScreen
