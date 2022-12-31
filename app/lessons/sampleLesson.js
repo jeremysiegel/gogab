@@ -1,18 +1,18 @@
 const sampleLesson = {
   1: {
     screenType: "newWord",
-    word: "bathroom is there",
-    helpText: "banyo esta aki",
-    learnWord: "baño esta aki",
+    word: "bathroom",
+    helpText: "banyo",
+    learnWord: "baño",
     nextLesson: 2,
   },
   2: {
-    screenType: "reviewWord",
+    screenType: "pickImage",
     word: "bathroom",
-    helpText: "tanpp askdfjas aksdfa askldjfa",
-    learnWord: "baño asdfja aksdfjas askldfj",
+    helpText: "banyo",
+    learnWord: "baño",
     nextLesson: 3,
-    iconSelections: [
+    selections: [
       {
         name: "bus",
         title: "bus",
@@ -31,10 +31,11 @@ const sampleLesson = {
     ],
   },
   3: {
-    screenType: "testWord",
-    learnWord: "baño askdn ksdmm askd ",
+    screenType: "multipleChoice",
+    learnWord: "baño",
+    helpText: "banyo",
     nextLesson: 4,
-    boxSelections: [
+    selections: [
       {
         name: "bus",
         title: "bus",
@@ -65,12 +66,12 @@ const sampleLesson = {
     nextLesson: 5,
   },
   5: {
-    screenType: "reviewWord",
+    screenType: "pickImage",
     word: "Where",
     helpText: "d-own-day",
     learnWord: "dónde",
     nextLesson: 6,
-    iconSelections: [
+    selections: [
       {
         name: "bus",
         title: "bus",
@@ -89,10 +90,11 @@ const sampleLesson = {
     ],
   },
   6: {
-    screenType: "testWord",
+    screenType: "multipleChoice",
     learnWord: "dónde",
+    helpText: "d-own-day",
     nextLesson: 1,
-    boxSelections: [
+    selections: [
       {
         name: "bus",
         title: "bus",

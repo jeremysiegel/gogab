@@ -1,33 +1,39 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Pressable, Icon } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import Selectable from "./Selectable";
+import colors from "../config/colors";
+import Icon from "./Icon";
 
-function ChoiceImage(item) {
-  const [selected, setSelected] = useState(false);
-  const backgroundColor = item.name === selected ? "#6e3b6e" : "#f9c2ff";
-  const color = item.name === selected ? "white" : "black";
-
+function ChoiceImage({ item, onPress, selected }) {
   return (
-    <Pressable
-      key={item.name}
-      onPress={() => {
-        setAnswerIsCorrect(item.correct);
-        setSelected(!selected);
-        console.log(selected);
-      }}
-      style={{ backgroundColor: "red", padding: 10 }}
+    <Selectable
+      name={item.name}
+      selected={selected}
+      onPress={onPress}
+      style={styles.selectableItem}
     >
-      <Icon
-        name={item.name}
-        size={100}
-        label={item.title}
-        backgroundColor={colors.secondary}
-      />
-    </Pressable>
+      <View>
+        <Icon
+          name={item.name}
+          size={100}
+          label={item.title}
+          backgroundColor={colors.secondary}
+        />
+      </View>
+    </Selectable>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  selectableItem: {
+    margin: 15,
+    width: 160,
+    height: 200,
+    justifyContent: "center",
+    borderColor: colors.selectableBorder,
+    borderWidth: 3,
+    borderRadius: 5,
+  },
 });
 
 export default ChoiceImage;

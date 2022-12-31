@@ -7,6 +7,7 @@ import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import { moderateScale } from "../../utility/scaler";
+import instructionText from "../../lessons/instructionText";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
@@ -25,7 +26,7 @@ function NewPhraseScreen({ route, navigation }) {
 
   const phrase = <RenderPhrase />;
 
-  const instruction = "Practice saying:";
+  const instruction = instructionText.say;
 
   return (
     <LessonScreen

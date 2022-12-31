@@ -1,8 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import ReviewPhraseScreen from "../screens/lessonScreens/ReviewPhraseScreen";
-import TestPhraseScreen from "../screens/lessonScreens/TestPhraseScreen";
+import MultipleChoiceScreen from "../screens/lessonScreens/MultipleChoiceScreen";
+import PickImageScreen from "../screens/lessonScreens/PickImageScreen";
 import NewPhraseScreen from "../screens/lessonScreens/NewPhraseScreen";
 
 const Stack = createNativeStackNavigator();
@@ -16,8 +16,8 @@ export default function LessonNavigator() {
       }}
     >
       <Stack.Screen name="newWord" component={NewPhraseScreen} />
-      <Stack.Screen name="reviewWord" component={ReviewPhraseScreen} />
-      <Stack.Screen name="testWord" component={TestPhraseScreen} />
+      <Stack.Screen name="pickImage" component={PickImageScreen} />
+      <Stack.Screen name="multipleChoice" component={MultipleChoiceScreen} />
     </Stack.Navigator>
   );
 }

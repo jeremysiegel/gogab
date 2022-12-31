@@ -20,6 +20,7 @@ export default {
   learnWord: {
     fontSize: moderateScale(30),
     color: colors.primary,
+    //textDecorationLine: "underline",
   },
   testWord: {
     fontSize: moderateScale(30),

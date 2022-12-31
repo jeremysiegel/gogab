@@ -46,13 +46,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonBorder: {
+    borderTopWidth: 0,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    borderBottomWidth: 6,
+    borderBottomWidth: 5,
     borderWidth: 2,
   },
   buttonPressed: {
-    marginTop: 12, // = borderBottomWidth + borderWidth + marginTop
+    marginTop: 9,
   },
   buttonText: {
     color: colors.white,
