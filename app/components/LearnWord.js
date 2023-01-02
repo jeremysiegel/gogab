@@ -2,13 +2,9 @@ import React from "react";
 
 import AppPopover from "./AppPopover";
 
-function LearnWord({ style, children, translation }) {
+function LearnWord({ style, children, helpText }) {
   return (
-    <AppPopover
-      style={style}
-      displayText={children}
-      popoverText={translation}
-    />
+    <AppPopover style={style} displayText={children} popoverText={helpText} />
   );
 }
 

@@ -7,7 +7,7 @@ import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import { moderateScale } from "../../utility/scaler";
-import instructionText from "../../lessons/instructionText";
+import instructionText from "../../config/instructionText";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
@@ -36,7 +36,7 @@ function NewPhraseScreen({ route, navigation }) {
       phrase={phrase}
     >
       <View style={styles.activityContainer}>
-        <RenderLearnWord data={data} />
+        <RenderLearnWord data={data} helpText={data.helpTextArray} />
       </View>
     </LessonScreen>
   );

@@ -1,15 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import LearnWord from "../components/LearnWord";
+import Duolingo from "../Duolingo";
 
 function SandboxScreen(props) {
-  return (
-    <View style={styles.container}>
-      <LearnWord style={styles.item} translation={"bathroom"}>
-        bano
-      </LearnWord>
-    </View>
-  );
+  return <Duolingo />;
 }
 
 const styles = StyleSheet.create({

@@ -32,6 +32,7 @@ const sampleLesson = {
   },
   3: {
     screenType: "multipleChoice",
+    word: "bathroom",
     learnWord: "baño",
     helpText: "banyo",
     nextLesson: 4,
@@ -60,14 +61,14 @@ const sampleLesson = {
   },
   4: {
     screenType: "newWord",
-    word: "Where",
+    word: "where",
     helpText: "d-own-day",
     learnWord: "dónde",
     nextLesson: 5,
   },
   5: {
     screenType: "pickImage",
-    word: "Where",
+    word: "where",
     helpText: "d-own-day",
     learnWord: "dónde",
     nextLesson: 6,
@@ -92,6 +93,7 @@ const sampleLesson = {
   6: {
     screenType: "multipleChoice",
     learnWord: "dónde",
+    word: "where",
     helpText: "d-own-day",
     nextLesson: 1,
     selections: [
