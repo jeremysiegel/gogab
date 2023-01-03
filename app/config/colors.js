@@ -4,6 +4,7 @@ const pallete = {
   secondary: "#5E60CE",
   selected: "#3AB0FF50",
   selectableBorder: "#3AB0FF",
+  success: "#52C41A",
   purple: "#5E60CE",
   orange: "#FF6347",
   yellow: "#ebae19",
@@ -18,7 +19,7 @@ const pallete = {
   darkText: "#0c0c0c",
   medium: "#6e6969",
   light: "#f8fcfc",
-  danger: "#ff5252",
+  danger: "#ff190c",
 };
 
 export default pallete;

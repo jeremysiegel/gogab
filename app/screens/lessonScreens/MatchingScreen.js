@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AppText from "../../components/AppText";
 import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import MatchingGame from "../../components/MatchingGame";
 import getLessonData from "../../api/getLessonData";

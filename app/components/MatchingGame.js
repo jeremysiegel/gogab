@@ -7,7 +7,7 @@ import colors from "../config/colors";
 const wordArray = [];
 const matchArray = [];
 
-//Stack overflow
+// From Stack overflow
 function shuffle(array) {
   let shuffledArray = [...array];
   let currentIndex = array.length,
@@ -28,6 +28,7 @@ function shuffle(array) {
 
   return shuffledArray;
 }
+
 function MatchingGame({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
   useEffect(() => {
@@ -35,7 +36,7 @@ function MatchingGame({ data, setComplete }) {
     setShuffledData(shuffled);
   }, []);
 
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState([]);
   const [currentObjects, setCurrentObjects] = useState([]);
   const [correctObjects, setCorrectObjects] = useState([]);
   const [incorrectObjects, setIncorrectObjects] = useState([]);
@@ -130,6 +131,7 @@ function MatchingGame({ data, setComplete }) {
               keyExtractor={(item) => item.word} //has to be unique
               renderItem={({ item }) => renderChoiceBox(item.word)}
               numColumns={1}
+              extraData={selected}
             />
           </View>
           <View style={styles.listContainer}>
@@ -138,6 +140,7 @@ function MatchingGame({ data, setComplete }) {
               keyExtractor={(item) => item.match} //has to be unique
               renderItem={({ item }) => renderChoiceBox(item.match)}
               numColumns={1}
+              extraData={selected}
             />
           </View>
         </View>
@@ -157,7 +160,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   correct: {
-    backgroundColor: colors.green,
+    backgroundColor: colors.success,
   },
   incorrect: {
     backgroundColor: colors.danger,
