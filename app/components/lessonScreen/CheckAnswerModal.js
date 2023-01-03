@@ -40,7 +40,7 @@ function CheckAnswerModal({
       <View style={styles.modal}>
         {correctAnswer && (
           <>
-            <View style={styles.textContainer}>
+            <View style={styles.messageContainer}>
               <View style={styles.iconContainer}>
                 <Icon name={"check"} size={23} backgroundColor={colors.green} />
               </View>
@@ -62,7 +62,7 @@ function CheckAnswerModal({
 
         {!correctAnswer && (
           <>
-            <View style={styles.textContainer}>
+            <View style={styles.messageContainer}>
               <View style={styles.iconContainer}>
                 <Icon name={"times"} size={23} backgroundColor={colors.red} />
               </View>
@@ -108,10 +108,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "100%",
   },
-  textContainer: {
+  messageContainer: {
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 10,
+    marginBottom: 10,
   },
 });
 

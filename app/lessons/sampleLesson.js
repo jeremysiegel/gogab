@@ -35,7 +35,7 @@ const sampleLesson = {
     word: "bathroom",
     learnWord: "baño",
     helpText: "banyo",
-    nextLesson: 4,
+    nextLesson: 7,
     selections: [
       {
         name: "bus",
@@ -59,6 +59,7 @@ const sampleLesson = {
       },
     ],
   },
+  /*
   4: {
     screenType: "newWord",
     word: "where",
@@ -95,7 +96,7 @@ const sampleLesson = {
     learnWord: "dónde",
     word: "where",
     helpText: "d-own-day",
-    nextLesson: 1,
+    nextLesson: 7,
     selections: [
       {
         name: "bus",
@@ -118,6 +119,29 @@ const sampleLesson = {
         correct: false,
       },
     ],
+  },
+  */
+  7: {
+    screenType: "matching",
+    selections: [
+      {
+        word: "where",
+        match: "donde",
+      },
+      {
+        word: "bathroom",
+        match: "bano",
+      },
+      {
+        word: "is",
+        match: "esta",
+      },
+      {
+        word: "two",
+        match: "dos",
+      },
+    ],
+    nextLesson: 1,
   },
 };
 

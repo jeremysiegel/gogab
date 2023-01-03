@@ -3,8 +3,7 @@ import { Pressable } from "react-native";
 import colors from "../config/colors";
 
 function Selectable({ children, onPress, name, selected, style }) {
-  const backgroundColor = name === selected ? colors.selected : undefined;
-
+  const backgroundColor = selected ? colors.selected : undefined;
   return (
     <Pressable
       key={name}

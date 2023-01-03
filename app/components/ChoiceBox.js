@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { moderateScale } from "../utility/scaler";
 
 import colors from "../config/colors";
 import Selectable from "./Selectable";
+import AppText from "./AppText";
 
-function ChoiceBox({ title, onPress, selected }) {
+function ChoiceBox({ title, onPress, style, currentObjects }) {
+  const [selected, setSelected] = useState(false);
+  useEffect(() => {
+    setSelected(currentObjects.includes(title));
+  });
+
   return (
     <Selectable
       name={title}
       selected={selected}
       onPress={onPress}
-      style={styles.box}
+      style={[styles.box, style]}
     >
-      <Text style={styles.text}>{title}</Text>
+      <AppText style={styles.text}>{title}</AppText>
     </Selectable>
   );
 }
@@ -33,7 +39,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.dark,
-    fontSize: moderateScale(24),
+    fontSize: moderateScale(22),
     textTransform: "lowercase",
     fontWeight: "bold",
   },

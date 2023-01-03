@@ -11,7 +11,7 @@ function MultipleChoiceScreen({ route, navigation }) {
     return (
       <ChoiceBox
         title={item.title}
-        selected={selected}
+        currentObjects={[selected]}
         onPress={() => {
           setAnswerIsCorrect(item.correct);
           setSelected(item.title);

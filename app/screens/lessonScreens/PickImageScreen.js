@@ -11,7 +11,7 @@ function PickImageScreen({ route, navigation }) {
     return (
       <ChoiceImage
         item={item}
-        selected={selected}
+        selectedItem={selected}
         onPress={() => {
           setAnswerIsCorrect(item.correct);
           setSelected(item.name);

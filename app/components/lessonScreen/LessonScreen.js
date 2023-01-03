@@ -26,15 +26,13 @@ function LessonScreen({
           currentIndex={lessonData.index}
           quizLength={lessonData.quizLength}
         />
-        <View style={styles.container}>
+        <View style={styles.textContainer}>
           <AppText style={[defaultStyles.instructionText, instructionStyle]}>
             {instruction}
           </AppText>
           <View style={styles.phraseContainer}>{phrase}</View>
-          <View style={styles.children}>
-            <View>{children}</View>
-          </View>
         </View>
+        <View style={styles.children}>{children}</View>
 
         <LessonFooter
           touched={touched}
@@ -54,13 +52,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 10,
   },
-  container: {
+  textContainer: {
     margin: 20,
-    flex: 1,
   },
   children: {
     flex: 1,
-    justifyContent: "center",
   },
   phraseContainer: {
     marginTop: 10,

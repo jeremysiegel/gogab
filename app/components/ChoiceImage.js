@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import Selectable from "./Selectable";
 import colors from "../config/colors";
 import Icon from "./Icon";
 
-function ChoiceImage({ item, onPress, selected }) {
+function ChoiceImage({ item, onPress, selectedItem }) {
+  const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    setSelected(selectedItem === item.name);
+  });
+
   return (
     <Selectable
       name={item.name}

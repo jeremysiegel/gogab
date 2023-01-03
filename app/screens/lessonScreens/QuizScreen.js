@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 
 import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import getLessonData from "../../api/getLessonData";
@@ -30,13 +30,15 @@ function QuizScreen({
       answerIsCorrect={answerIsCorrect}
       touched={selected}
     >
-      <FlatList
-        data={data.selections}
-        keyExtractor={(item) => item.title} //has to be unique
-        renderItem={renderItems}
-        numColumns={numColumns}
-        columnWrapperStyle={numColumns > 1 ? styles.listContainer : null}
-      />
+      <View style={styles.container}>
+        <FlatList
+          data={data.selections}
+          keyExtractor={(item) => item.title} //has to be unique
+          renderItem={renderItems}
+          numColumns={numColumns}
+          columnWrapperStyle={numColumns > 1 ? styles.listContainer : null}
+        />
+      </View>
     </LessonScreen>
   );
 }
@@ -44,6 +46,9 @@ function QuizScreen({
 const styles = StyleSheet.create({
   listContainer: {
     justifyContent: "center",
+  },
+  container: {
+    marginTop: 40,
   },
 });
 
