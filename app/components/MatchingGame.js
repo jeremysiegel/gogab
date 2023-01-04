@@ -161,9 +161,11 @@ const styles = StyleSheet.create({
   },
   correct: {
     backgroundColor: colors.success,
+    borderColor: colors.success,
   },
   incorrect: {
     backgroundColor: colors.danger,
+    borderColor: colors.danger,
   },
 });
 

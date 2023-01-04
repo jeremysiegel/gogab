@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     width: 160,
     height: 200,
     justifyContent: "center",
-    borderColor: colors.selectableBorder,
-    borderWidth: 3,
+    borderColor: colors.selected,
+    borderWidth: 5,
     borderRadius: 5,
   },
 });

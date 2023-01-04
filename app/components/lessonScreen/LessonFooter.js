@@ -41,7 +41,6 @@ function LessonFooter({
 }
 
 const styles = StyleSheet.create({
-  container: {},
   container: {
     paddingHorizontal: 20,
     paddingBottom: 10,

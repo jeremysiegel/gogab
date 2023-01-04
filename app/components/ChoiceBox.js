@@ -27,8 +27,9 @@ function ChoiceBox({ title, onPress, style, currentObjects }) {
 const styles = StyleSheet.create({
   box: {
     padding: 10,
-    borderColor: colors.selectableBorder,
-    borderWidth: 3,
+    borderColor: colors.selected,
+    // backgroundColor: colors.selectableBorder,
+    borderWidth: 5,
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
