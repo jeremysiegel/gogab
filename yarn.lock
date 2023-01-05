@@ -1474,6 +1474,11 @@
   dependencies:
     "@babel/runtime" "^7.6.2"
 
+"@jamsch/react-native-duo-drag-drop@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@jamsch/react-native-duo-drag-drop/-/react-native-duo-drag-drop-1.1.1.tgz#40f552dccc2dac918c0dab9bc666c06840ea4c5b"
+  integrity sha512-xZfbAZzJJDivFdupiYsLzj+K4mwB/pZvJRNx0Rn/A4FizoptQBTXx/FaMsHaKHOz8QlVz8EnQ8AjdlEAA1y1Wg==
+
 "@jest/create-cache-key-function@^29.0.3":
   version "29.3.1"
   resolved "https://registry.npmjs.org/@jest/create-cache-key-function/-/create-cache-key-function-29.3.1.tgz"

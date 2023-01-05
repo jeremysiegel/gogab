@@ -4,7 +4,7 @@ const sampleLesson = {
     word: "bathroom",
     helpText: "banyo",
     learnWord: "baño",
-    nextLesson: 2,
+    nextLesson: 8,
   },
   2: {
     screenType: "pickImage",
@@ -141,6 +141,15 @@ const sampleLesson = {
         match: "dos",
       },
     ],
+    nextLesson: 1,
+  },
+
+  8: {
+    screenType: "sentenceBuilder",
+    word: "Please excuse my dear aunt Sally",
+    extra: "decoy1 decoy2 my",
+    learnWord: "lease xcuse y ear unt ally",
+    helpText: "Please excuse my dear aunt Sally",
     nextLesson: 1,
   },
 };

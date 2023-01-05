@@ -17,7 +17,7 @@ const getLessonData = (id) => {
     ...data,
   };
 
-  const dataObjects = ["word", "learnWord", "helpText"];
+  const dataObjects = ["word", "learnWord", "helpText", "extra"];
 
   dataObjects.forEach((element) => {
     if (data[element]) {
