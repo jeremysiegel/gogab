@@ -4,7 +4,7 @@ const sampleLesson = {
     word: "bathroom",
     helpText: "banyo",
     learnWord: "baño",
-    nextLesson: 8,
+    nextLesson: 2,
   },
   2: {
     screenType: "pickImage",
@@ -141,7 +141,7 @@ const sampleLesson = {
         match: "dos",
       },
     ],
-    nextLesson: 1,
+    nextLesson: 8,
   },
 
   8: {

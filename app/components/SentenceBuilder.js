@@ -8,6 +8,7 @@ import DuoDragDrop, {
 } from "@jamsch/react-native-duo-drag-drop";
 import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
+import { moderateScale } from "../utility/scaler";
 
 function SentenceBuilder({ data, setComplete }) {
   const bankArray = data.wordArray.concat(data.extraArray);
@@ -17,8 +18,6 @@ function SentenceBuilder({ data, setComplete }) {
     const shuffled = shuffle(bankArray);
     setShuffledData(shuffled);
   }, []);
-
-  const shuffledArray = shuffle(bankArray);
 
   const ref = useRef(DuoDragDropRef);
 
@@ -53,14 +52,23 @@ function SentenceBuilder({ data, setComplete }) {
             }}
             textStyle={{
               color: colors.light,
+              fontSize: moderateScale(19),
+              marginBottom: 2,
             }}
           />
         )}
         renderLines={(props) => (
           <Lines
-            numLines={0}
+            {...props}
+            lineStyle={{
+              borderWidth: 0,
+              borderBottomWidth: 0,
+              borderBottomColor: "transparent",
+            }}
+            renderTopLine={false}
             containerStyle={{
-              backgroundColor: "transparent",
+              backgroundColor: colors.selected + "30",
+              borderRadius: 4,
             }}
           />
         )}

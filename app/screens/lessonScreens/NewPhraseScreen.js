@@ -6,25 +6,10 @@ import LessonScreen from "../../components/lessonScreen/LessonScreen";
 import getLessonData from "../../api/getLessonData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
-import { moderateScale } from "../../utility/scaler";
 import instructionText from "../../config/instructionText";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getLessonData.getLessonData(route.params.lessonId);
-
-  const words = data.wordArray;
-
-  const RenderPhrase = () => {
-    return words.map((item, index) => {
-      return (
-        <AppText style={defaultStyles.practiceWord} key={index}>
-          {item}{" "}
-        </AppText>
-      );
-    });
-  };
-
-  const phrase = <RenderPhrase />;
 
   const instruction = instructionText.say;
 
@@ -33,8 +18,10 @@ function NewPhraseScreen({ route, navigation }) {
       instruction={instruction}
       lessonData={data}
       navigation={navigation}
-      phrase={phrase}
     >
+      <View style={styles.phraseContainer}>
+        <AppText style={defaultStyles.practiceWord}>{data.word}</AppText>
+      </View>
       <View style={styles.activityContainer}>
         <RenderLearnWord data={data} helpText={data.helpTextArray} />
       </View>
@@ -48,19 +35,17 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     height: "100%",
     alignSelf: "center",
-    marginTop: 100,
+    marginTop: 42,
+    marginHorizontal: 30,
   },
   phraseContainer: {
     marginTop: 12,
-    marginBottom: 12,
     flexDirection: "row",
     flexWrap: "wrap",
-    paddingStart: 8,
     alignItems: "center",
     justifyContent: "center",
-  },
-  renderLearnWord: {
-    fontSize: moderateScale(35),
+    textAlign: "center",
+    marginHorizontal: 30,
   },
 });
 

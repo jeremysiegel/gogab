@@ -16,6 +16,7 @@ export default {
   practiceWord: {
     fontSize: moderateScale(28),
     color: colors.secondary,
+    textAlign: "center",
   },
   learnWord: {
     fontSize: moderateScale(30),

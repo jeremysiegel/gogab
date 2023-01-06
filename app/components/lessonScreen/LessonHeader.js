@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Animated, Alert, Button, StyleSheet } from "react-native";
+import AppText from "../AppText";
 
 function LessonHeader(props) {
   let fromValue = (props.currentIndex - 1) / props.quizLength;
