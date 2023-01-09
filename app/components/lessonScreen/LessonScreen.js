@@ -16,6 +16,7 @@ function LessonScreen({
   phrase,
   answerIsCorrect,
   touched,
+  footer = true,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -34,14 +35,16 @@ function LessonScreen({
         </View>
         <View style={styles.children}>{children}</View>
 
-        <LessonFooter
-          touched={touched}
-          navigation={navigation}
-          data={lessonData}
-          answerIsCorrect={answerIsCorrect}
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-        />
+        {footer && (
+          <LessonFooter
+            touched={touched}
+            navigation={navigation}
+            data={lessonData}
+            answerIsCorrect={answerIsCorrect}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
+        )}
       </Screen>
     </>
   );

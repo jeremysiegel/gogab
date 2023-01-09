@@ -4,7 +4,7 @@ const sampleLesson = {
     word: "bathroom",
     helpText: "banyo",
     learnWord: "baño",
-    nextLesson: 2,
+    nextLesson: 8,
   },
   2: {
     screenType: "pickImage",

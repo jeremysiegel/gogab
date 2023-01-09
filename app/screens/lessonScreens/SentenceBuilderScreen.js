@@ -19,7 +19,8 @@ function SentenceBuilderScreen({ route, navigation }) {
       lessonData={data}
       instruction={instruction}
       navigation={navigation}
-      touched={complete}
+      touched={true}
+      answerIsCorrect={complete}
       phrase={phrase}
     >
       <View style={styles.container}>
