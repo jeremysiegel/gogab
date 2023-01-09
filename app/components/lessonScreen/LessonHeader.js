@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Animated, Alert, Button, StyleSheet } from "react-native";
-import AppText from "../AppText";
+import { View, Animated, StyleSheet } from "react-native";
+import colors from "../../config/colors";
 
 function LessonHeader(props) {
   let fromValue = (props.currentIndex - 1) / props.quizLength;
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     height: 20,
-    backgroundColor: "#FFFCF9",
+    backgroundColor: colors.light,
     elevation: 1,
 
     borderWidth: 2,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
   },
   progressBarFill: {
-    backgroundColor: "#FF6978",
+    backgroundColor: colors.red,
     borderRadius: 2.5,
     height: "100%",
   },

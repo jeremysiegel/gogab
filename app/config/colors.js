@@ -1,4 +1,4 @@
-const pallete = {
+const colors = {
   primary: "#15a8a8",
   primaryTint: "#139797",
   secondary: "#5E60CE",
@@ -9,7 +9,7 @@ const pallete = {
   purple: "#5E60CE",
   orange: "#FF6347",
   yellow: "#ebae19",
-  red: "#eb4747",
+  red: "#FF6978",
   green: "#36AE7C",
   blue: "#3AB0FF",
   pink: "#FF869E",
@@ -23,4 +23,4 @@ const pallete = {
   danger: "#ff190c",
 };
 
-export default pallete;
+export default colors;

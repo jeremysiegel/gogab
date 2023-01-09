@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   modal: {
-    backgroundColor: colors.grey,
+    backgroundColor: colors.primary + "30",
     padding: 10,
     borderRadius: 10,
     alignSelf: "center",
