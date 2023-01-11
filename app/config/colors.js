@@ -1,11 +1,10 @@
 const colors = {
   primary: "#15a8a8",
   primaryTint: "#139797",
+  primaryTint30: "#d0eded",
   secondary: "#5E60CE",
   selected: "#3AB0FF",
-  selectableBorder: "#3AB0FF",
   success: "#39FF12",
-  successBorder: "#00DD16",
   purple: "#5E60CE",
   orange: "#FF6347",
   yellow: "#ebae19",

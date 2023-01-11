@@ -4,6 +4,11 @@ import fonts from "./fonts";
 
 export default {
   colors,
+  border: {
+    borderWidth: 5,
+    borderRadius: 5,
+    borderColor: colors.selected,
+  },
   text: {
     fontSize: moderateScale(21),
     color: colors.darkText,
@@ -22,10 +27,6 @@ export default {
     fontSize: moderateScale(30),
     color: colors.primary,
     //textDecorationLine: "underline",
-  },
-  testWord: {
-    fontSize: moderateScale(30),
-    color: colors.orange,
   },
   popoverText: {
     fontFamily: fonts.main,

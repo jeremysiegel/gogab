@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 import Selectable from "./Selectable";
 import colors from "../config/colors";
 import Icon from "./Icon";
+import defaultStyles from "../config/styles";
 
 function ChoiceImage({ item, onPress, selectedItem }) {
   const [selected, setSelected] = useState(false);
@@ -16,7 +17,7 @@ function ChoiceImage({ item, onPress, selectedItem }) {
       name={item.name}
       selected={selected}
       onPress={onPress}
-      style={styles.selectableItem}
+      style={[defaultStyles.border, styles.selectableItem]}
     >
       <View>
         <Icon
@@ -36,9 +37,6 @@ const styles = StyleSheet.create({
     width: 160,
     height: 200,
     justifyContent: "center",
-    borderColor: colors.selected,
-    borderWidth: 5,
-    borderRadius: 5,
   },
 });
 

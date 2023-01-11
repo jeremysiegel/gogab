@@ -29,6 +29,7 @@ function LessonFooter({
         }}
       />
       <CheckAnswerModal
+        data={data}
         navigation={navigation}
         nextLesson={data.nextLesson}
         nextLessonType={data.nextLessonType}

@@ -15,6 +15,7 @@ function CheckAnswerModal({
   navigation,
   nextLesson,
   nextLessonType,
+  data,
 }) {
   return (
     <RNModal
@@ -38,46 +39,43 @@ function CheckAnswerModal({
       style={styles.modalContainer}
     >
       <View style={styles.modal}>
-        {correctAnswer && (
-          <>
+        <>
+          <View style={styles.answerContainer}>
             <View style={styles.messageContainer}>
               <View style={styles.iconContainer}>
-                <Icon name={"check"} size={23} backgroundColor={colors.green} />
+                <Icon
+                  name={correctAnswer ? "check" : "times"}
+                  size={23}
+                  backgroundColor={correctAnswer ? colors.green : colors.red}
+                />
               </View>
-              <AppText style={[defaultStyles.checkAnswer, styles.correct]}>
-                Correct!
-              </AppText>
+              {correctAnswer && (
+                <AppText style={[defaultStyles.checkAnswer, styles.correct]}>
+                  Correct!
+                </AppText>
+              )}
+              {!correctAnswer && (
+                <AppText style={[defaultStyles.checkAnswer, styles.wrong]}>
+                  Try again!
+                </AppText>
+              )}
             </View>
-            <AppButton
-              title={"Next"}
-              onPress={() => {
+            {false && <AppText>{data.word}</AppText>}
+          </View>
+          <AppButton
+            title={correctAnswer ? "Next" : "Okay"}
+            onPress={() => {
+              if (correctAnswer) {
                 setModalVisible(!modalVisible);
                 navigation.push(nextLessonType, {
                   lessonId: nextLesson,
                 });
-              }}
-            />
-          </>
-        )}
-
-        {!correctAnswer && (
-          <>
-            <View style={styles.messageContainer}>
-              <View style={styles.iconContainer}>
-                <Icon name={"times"} size={23} backgroundColor={colors.red} />
-              </View>
-              <AppText style={[defaultStyles.checkAnswer, styles.wrong]}>
-                Try again!
-              </AppText>
-            </View>
-            <AppButton
-              title={"Okay"}
-              onPress={() => {
+              } else {
                 setModalVisible(!modalVisible);
-              }}
-            />
-          </>
-        )}
+              }
+            }}
+          />
+        </>
       </View>
     </RNModal>
   );
@@ -102,9 +100,10 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   modal: {
-    backgroundColor: colors.primary + "30",
+    backgroundColor: colors.primaryTint30,
     padding: 10,
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     alignSelf: "center",
     width: "100%",
   },
@@ -112,6 +111,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 10,
+    marginBottom: 10,
+  },
+  answerContainer: {
     marginBottom: 10,
   },
 });

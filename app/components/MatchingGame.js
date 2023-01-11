@@ -3,43 +3,22 @@ import { View, StyleSheet, FlatList } from "react-native";
 import Screen from "./Screen";
 import ChoiceBox from "./ChoiceBox";
 import colors from "../config/colors";
-
-const wordArray = [];
-const matchArray = [];
-
-// From Stack overflow
-function shuffle(array) {
-  let shuffledArray = [...array];
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
-      shuffledArray[randomIndex],
-      shuffledArray[currentIndex],
-    ];
-  }
-
-  return shuffledArray;
-}
+import shuffle from "../utility/shuffle";
 
 function MatchingGame({ data, setComplete }) {
-  const [shuffledData, setShuffledData] = useState();
+  const [shuffledMatches, setshuffledMatches] = useState();
   useEffect(() => {
     const shuffled = shuffle(data);
-    setShuffledData(shuffled);
+    setshuffledMatches(shuffled);
   }, []);
 
   const [selected, setSelected] = useState([]);
   const [currentObjects, setCurrentObjects] = useState([]);
   const [correctObjects, setCorrectObjects] = useState([]);
   const [incorrectObjects, setIncorrectObjects] = useState([]);
+
+  const wordArray = [];
+  const matchArray = [];
 
   data.forEach((element) => {
     wordArray.push(element.word);
@@ -119,7 +98,7 @@ function MatchingGame({ data, setComplete }) {
     }
   };
 
-  if (shuffledData === undefined) {
+  if (shuffledMatches === undefined) {
     return <></>;
   } else {
     return (
@@ -136,7 +115,7 @@ function MatchingGame({ data, setComplete }) {
           </View>
           <View style={styles.listContainer}>
             <FlatList
-              data={shuffledData}
+              data={shuffledMatches}
               keyExtractor={(item) => item.match} //has to be unique
               renderItem={({ item }) => renderChoiceBox(item.match)}
               numColumns={1}
