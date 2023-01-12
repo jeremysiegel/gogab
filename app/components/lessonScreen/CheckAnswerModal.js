@@ -16,13 +16,13 @@ function CheckAnswerModal({
   nextLesson,
   nextLessonType,
   data,
+  skippable = true,
 }) {
   return (
     <RNModal
       animationIn={"slideInUp"}
       onBackdropPress={() => {
-        if (true) {
-          //!correctAnswer) {
+        if (!correctAnswer) {
           setModalVisible(!modalVisible);
         }
       }}
@@ -62,19 +62,34 @@ function CheckAnswerModal({
             </View>
             {false && <AppText>{data.word}</AppText>}
           </View>
-          <AppButton
-            title={correctAnswer ? "Next" : "Okay"}
-            onPress={() => {
-              if (correctAnswer) {
-                setModalVisible(!modalVisible);
-                navigation.push(nextLessonType, {
-                  lessonId: nextLesson,
-                });
-              } else {
-                setModalVisible(!modalVisible);
-              }
-            }}
-          />
+          <View style={styles.buttonContainer}>
+            <AppButton
+              title={correctAnswer ? "Next" : "Okay"}
+              style={{ width: skippable && !correctAnswer ? "45%" : "100%" }}
+              onPress={() => {
+                if (correctAnswer) {
+                  setModalVisible(!modalVisible);
+                  navigation.push(nextLessonType, {
+                    lessonId: nextLesson,
+                  });
+                } else {
+                  setModalVisible(!modalVisible);
+                }
+              }}
+            />
+            {skippable && !correctAnswer && (
+              <AppButton
+                style={{ width: "45%" }}
+                title={"Skip"}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  navigation.push(nextLessonType, {
+                    lessonId: nextLesson,
+                  });
+                }}
+              />
+            )}
+          </View>
         </>
       </View>
     </RNModal>
@@ -115,6 +130,11 @@ const styles = StyleSheet.create({
   },
   answerContainer: {
     marginBottom: 10,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+
+    justifyContent: "space-around",
   },
 });
 

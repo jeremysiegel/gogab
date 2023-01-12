@@ -10,6 +10,7 @@ function AppButton({
   buttonBorderColor = colors.primaryTint,
   onPress,
   disabled,
+  style,
   opacity = "",
 }) {
   const backgroundColor = color + opacity;
@@ -22,7 +23,7 @@ function AppButton({
       style={[
         { backgroundColor: backgroundColor, borderColor: borderColor },
         styles.button,
-
+        style,
         !pressed && styles.buttonBorder,
         pressed && styles.buttonPressed,
       ]}
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
     marginTop: 4,
     marginBottom: 5,
   },
