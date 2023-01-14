@@ -22,6 +22,7 @@ function SentenceBuilderScreen({ route, navigation }) {
       touched={true}
       answerIsCorrect={complete}
       phrase={phrase}
+      skippable
     >
       <View style={styles.container}>
         <SentenceBuilder data={data} setComplete={setComplete} />
@@ -32,6 +33,7 @@ function SentenceBuilderScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginHorizontal: 20,
   },
 });

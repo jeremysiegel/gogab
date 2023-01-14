@@ -106,6 +106,7 @@ function MatchingGame({ data, setComplete }) {
         <View style={styles.container}>
           <View style={styles.listContainer}>
             <FlatList
+              scrollEnabled={false}
               data={data}
               keyExtractor={(item) => item.word} //has to be unique
               renderItem={({ item }) => renderChoiceBox(item.word)}
@@ -115,6 +116,7 @@ function MatchingGame({ data, setComplete }) {
           </View>
           <View style={styles.listContainer}>
             <FlatList
+              scrollEnabled={false}
               data={shuffledMatches}
               keyExtractor={(item) => item.match} //has to be unique
               renderItem={({ item }) => renderChoiceBox(item.match)}

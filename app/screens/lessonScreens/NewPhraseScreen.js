@@ -19,17 +19,22 @@ function NewPhraseScreen({ route, navigation }) {
       lessonData={data}
       navigation={navigation}
     >
-      <View style={styles.phraseContainer}>
-        <AppText style={defaultStyles.practiceWord}>{data.word}</AppText>
-      </View>
-      <View style={styles.activityContainer}>
-        <RenderLearnWord data={data} helpText={data.helpTextArray} />
+      <View style={styles.container}>
+        <View style={styles.phraseContainer}>
+          <AppText style={defaultStyles.practiceWord}>{data.word}</AppText>
+        </View>
+        <View style={styles.activityContainer}>
+          <RenderLearnWord data={data} helpText={data.helpTextArray} />
+        </View>
       </View>
     </LessonScreen>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   activityContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -39,7 +44,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   phraseContainer: {
-    marginTop: 12,
+    marginTop: 22,
+
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",

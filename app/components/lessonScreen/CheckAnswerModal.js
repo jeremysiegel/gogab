@@ -16,7 +16,7 @@ function CheckAnswerModal({
   nextLesson,
   nextLessonType,
   data,
-  skippable = true,
+  skippable,
 }) {
   return (
     <RNModal

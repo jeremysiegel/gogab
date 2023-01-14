@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import Selectable from "./Selectable";
 import AppText from "./AppText";
 import defaultStyles from "../config/styles";
+import fonts from "../config/fonts";
 
 function ChoiceBox({ title, onPress, style, currentObjects }) {
   const [selected, setSelected] = useState(false);
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     color: colors.dark,
     fontSize: moderateScale(22),
     textTransform: "lowercase",
+    fontFamily: fonts.bold,
     fontWeight: "bold",
   },
 });

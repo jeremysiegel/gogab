@@ -30,8 +30,10 @@ function QuizScreen({
       answerIsCorrect={answerIsCorrect}
       touched={selected}
     >
-      <View style={styles.container}>
+      <View>
         <FlatList
+          key={numColumns}
+          scrollEnabled={false}
           data={data.selections}
           keyExtractor={(item) => item.title} //has to be unique
           renderItem={renderItems}
@@ -46,9 +48,6 @@ function QuizScreen({
 const styles = StyleSheet.create({
   listContainer: {
     justifyContent: "center",
-  },
-  container: {
-    marginTop: 40,
   },
 });
 

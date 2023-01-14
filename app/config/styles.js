@@ -16,6 +16,7 @@ export default {
   },
   instructionText: {
     fontSize: moderateScale(24),
+    fontFamily: fonts.bold,
     fontWeight: "bold",
   },
   practiceWord: {
@@ -29,14 +30,15 @@ export default {
     //textDecorationLine: "underline",
   },
   popoverText: {
-    fontFamily: fonts.main,
+    fontFamily: fonts.bold,
     fontSize: "md",
-    fontWeight: "700",
+    fontWeight: "bold",
     lineHeight: "sm",
     color: colors.darkText,
   },
   checkAnswer: {
     fontSize: moderateScale(28),
+    fontFamily: fonts.bold,
     fontWeight: "bold",
   },
 };

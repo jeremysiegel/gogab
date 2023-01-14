@@ -11,6 +11,7 @@ function LessonFooter({
   modalVisible,
   setModalVisible,
   touched,
+  skippable,
 }) {
   return (
     <View style={styles.container}>
@@ -36,6 +37,7 @@ function LessonFooter({
         correctAnswer={answerIsCorrect}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+        skippable={skippable}
       />
     </View>
   );
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingBottom: 10,
+    alignItems: "center",
   },
 });
 

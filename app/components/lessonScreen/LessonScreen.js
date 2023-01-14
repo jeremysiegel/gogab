@@ -1,4 +1,4 @@
-import { View, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, useWindowDimensions } from "react-native";
 import React, { useState } from "react";
 
 import AppText from "../AppText";
@@ -17,8 +17,10 @@ function LessonScreen({
   answerIsCorrect,
   touched,
   footer = true,
+  skippable,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const { height, width } = useWindowDimensions();
 
   return (
     <>
@@ -43,6 +45,7 @@ function LessonScreen({
             answerIsCorrect={answerIsCorrect}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
+            skippable={skippable}
           />
         )}
       </Screen>
@@ -60,6 +63,7 @@ const styles = StyleSheet.create({
   },
   children: {
     flex: 1,
+    justifyContent: "space-around",
   },
   phraseContainer: {
     marginTop: 10,

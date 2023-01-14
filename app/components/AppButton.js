@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 4,
     marginBottom: 5,
+    maxWidth: 600,
+    width: "100%",
   },
   buttonBorder: {
     borderTopWidth: 0,
