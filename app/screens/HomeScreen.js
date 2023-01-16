@@ -11,7 +11,7 @@ function HomeScreen({ navigation }) {
           onPress={() =>
             navigation.navigate("lessonNavigator", {
               screen: "newWord",
-              params: { lessonId: 1 },
+              params: { exerciseId: 1 },
             })
           }
         />

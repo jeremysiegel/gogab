@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import getLessonData from "../../api/getLessonData";
-import LessonScreen from "../../components/lessonScreen/LessonScreen";
+import getExerciseData from "../../api/getExerciseData";
+import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
 import shuffle from "../../utility/shuffle";
 
 function SentenceBuilderScreen({ route, navigation }) {
-  const data = getLessonData.getLessonData(route.params.lessonId);
+  const data = getExerciseData.getExerciseData(route.params.exerciseId);
   const instruction = instructionText[data.screenType];
   const [complete, setComplete] = useState(false);
 
   const phrase = <RenderLearnWord data={data} />;
 
   return (
-    <LessonScreen
-      lessonData={data}
+    <ExerciseScreen
+      exerciseData={data}
       instruction={instruction}
       navigation={navigation}
       touched={true}
@@ -27,7 +27,7 @@ function SentenceBuilderScreen({ route, navigation }) {
       <View style={styles.container}>
         <SentenceBuilder data={data} setComplete={setComplete} />
       </View>
-    </LessonScreen>
+    </ExerciseScreen>
   );
 }
 

@@ -2,7 +2,6 @@ import React from "react";
 import { Text, StatusBar, View, StyleSheet, Pressable } from "react-native";
 import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
-import colors from "../config/colors";
 
 function AppPopover({ style, displayText, popoverText }) {
   return (

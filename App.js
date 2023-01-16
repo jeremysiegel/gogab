@@ -9,7 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import AppNavigator from "./app/navigation/AppNavigator";
 import SandboxScreen from "./app/screens/SandboxScreen";
 import useFonts from "./hooks/useFonts";
-import MatchingScreen from "./app/screens/lessonScreens/MatchingScreen";
+import MatchingScreen from "./app/screens/exerciseScreens/MatchingScreen";
 
 export default function App() {
   const [isReady, setIsReady] = useState();

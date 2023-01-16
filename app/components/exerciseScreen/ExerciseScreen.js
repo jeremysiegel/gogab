@@ -2,13 +2,13 @@ import { View, StyleSheet, useWindowDimensions } from "react-native";
 import React, { useState } from "react";
 
 import AppText from "../AppText";
-import LessonHeader from "./LessonHeader";
+import ExerciseHeader from "./ExerciseHeader";
 import Screen from "../Screen";
-import LessonFooter from "./LessonFooter";
+import ExerciseFooter from "./ExerciseFooter";
 import defaultStyles from "../../config/styles";
 
-function LessonScreen({
-  lessonData,
+function ExerciseScreen({
+  exerciseData,
   instruction,
   children,
   navigation,
@@ -20,14 +20,13 @@ function LessonScreen({
   skippable,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const { height, width } = useWindowDimensions();
 
   return (
     <>
       <Screen>
-        <LessonHeader
-          currentIndex={lessonData.index}
-          quizLength={lessonData.quizLength}
+        <ExerciseHeader
+          currentIndex={exerciseData.index}
+          quizLength={exerciseData.quizLength}
         />
         <View style={styles.textContainer}>
           <AppText style={[defaultStyles.instructionText, instructionStyle]}>
@@ -38,10 +37,10 @@ function LessonScreen({
         <View style={styles.children}>{children}</View>
 
         {footer && (
-          <LessonFooter
+          <ExerciseFooter
             touched={touched}
             navigation={navigation}
-            data={lessonData}
+            data={exerciseData}
             answerIsCorrect={answerIsCorrect}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
@@ -73,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LessonScreen;
+export default ExerciseScreen;

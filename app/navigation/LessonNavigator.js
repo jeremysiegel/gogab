@@ -1,11 +1,11 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import MultipleChoiceScreen from "../screens/lessonScreens/MultipleChoiceScreen";
-import PickImageScreen from "../screens/lessonScreens/PickImageScreen";
-import NewPhraseScreen from "../screens/lessonScreens/NewPhraseScreen";
-import MatchingScreen from "../screens/lessonScreens/MatchingScreen";
-import SentenceBuilderScreen from "../screens/lessonScreens/SentenceBuilderScreen";
+import MultipleChoiceScreen from "../screens/exerciseScreens/MultipleChoiceScreen";
+import PickImageScreen from "../screens/exerciseScreens/PickImageScreen";
+import NewPhraseScreen from "../screens/exerciseScreens/NewPhraseScreen";
+import MatchingScreen from "../screens/exerciseScreens/MatchingScreen";
+import SentenceBuilderScreen from "../screens/exerciseScreens/SentenceBuilderScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,7 @@ export default function LessonNavigator() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        animation: "fade",
+        animation: "slide_from_right",
       }}
     >
       <Stack.Screen name="newWord" component={NewPhraseScreen} />

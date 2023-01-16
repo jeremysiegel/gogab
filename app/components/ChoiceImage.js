@@ -5,36 +5,30 @@ import colors from "../config/colors";
 import Icon from "./Icon";
 import defaultStyles from "../config/styles";
 
-let windowWidth = 0;
-let windowHeight = 0;
-
 function ChoiceImage({ item, onPress, selectedItem }) {
   const [selected, setSelected] = useState(false);
   const { height, width } = useWindowDimensions();
 
-  windowWidth = width;
-  windowHeight = height;
-
   useEffect(() => {
-    setSelected(selectedItem === item.name);
+    setSelected(selectedItem === item.word);
   });
 
   return (
     <Selectable
-      name={item.name}
+      name={item.word}
       selected={selected}
       onPress={onPress}
       style={[
         defaultStyles.border,
         styles.selectableItem,
-        { height: 0.24 * windowHeight, width: 0.39 * windowWidth },
+        { height: 0.24 * height, width: 0.39 * width },
       ]}
     >
       <View>
         <Icon
-          name={item.name}
-          size={Math.min(0.25 * windowWidth, 100)}
-          label={item.title}
+          name={item.icon}
+          size={Math.min(0.25 * width, 100)}
+          label={item.word}
           backgroundColor={colors.secondary}
         />
       </View>

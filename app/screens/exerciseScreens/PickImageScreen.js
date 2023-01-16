@@ -13,8 +13,10 @@ function PickImageScreen({ route, navigation }) {
         item={item}
         selectedItem={selected}
         onPress={() => {
-          setAnswerIsCorrect(item.correct);
-          setSelected(item.name);
+          item.correct
+            ? setAnswerIsCorrect(item.correct)
+            : setAnswerIsCorrect(false);
+          setSelected(item.word);
         }}
       />
     );
@@ -22,7 +24,7 @@ function PickImageScreen({ route, navigation }) {
 
   return (
     <QuizScreen
-      lessonId={route.params.lessonId}
+      exerciseId={route.params.exerciseId}
       navigation={navigation}
       renderItem={renderChoiceImage}
       answerIsCorrect={answerIsCorrect}

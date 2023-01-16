@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 
 import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
 
-function LessonFooter({
+function ExerciseFooter({
   navigation,
   data,
   answerIsCorrect,
@@ -21,8 +21,8 @@ function LessonFooter({
         disabled={touched === false ? true : false}
         onPress={() => {
           if (answerIsCorrect === undefined) {
-            navigation.push(data.nextLessonType, {
-              lessonId: data.nextLesson,
+            navigation.push(data.nextExerciseType, {
+              exerciseId: data.nextExercise,
             });
           } else {
             setModalVisible(true);
@@ -32,8 +32,8 @@ function LessonFooter({
       <CheckAnswerModal
         data={data}
         navigation={navigation}
-        nextLesson={data.nextLesson}
-        nextLessonType={data.nextLessonType}
+        nextExercise={data.nextExercise}
+        nextExerciseType={data.nextExerciseType}
         correctAnswer={answerIsCorrect}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LessonFooter;
+export default ExerciseFooter;

@@ -13,8 +13,8 @@ function CheckAnswerModal({
   modalVisible,
   setModalVisible,
   navigation,
-  nextLesson,
-  nextLessonType,
+  nextExercise,
+  nextExerciseType,
   data,
   skippable,
 }) {
@@ -69,8 +69,8 @@ function CheckAnswerModal({
               onPress={() => {
                 if (correctAnswer) {
                   setModalVisible(!modalVisible);
-                  navigation.push(nextLessonType, {
-                    lessonId: nextLesson,
+                  navigation.push(nextExerciseType, {
+                    exerciseId: nextExercise,
                   });
                 } else {
                   setModalVisible(!modalVisible);
@@ -83,8 +83,8 @@ function CheckAnswerModal({
                 title={"Skip"}
                 onPress={() => {
                   setModalVisible(!modalVisible);
-                  navigation.push(nextLessonType, {
-                    lessonId: nextLesson,
+                  navigation.push(nextExerciseType, {
+                    exerciseId: nextExercise,
                   });
                 }}
               />

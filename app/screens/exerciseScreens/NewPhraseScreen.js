@@ -2,21 +2,21 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import AppText from "../../components/AppText";
-import LessonScreen from "../../components/lessonScreen/LessonScreen";
-import getLessonData from "../../api/getLessonData";
+import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
+import getExerciseData from "../../api/getExerciseData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import instructionText from "../../config/instructionText";
 
 function NewPhraseScreen({ route, navigation }) {
-  const data = getLessonData.getLessonData(route.params.lessonId);
+  const data = getExerciseData.getExerciseData(route.params.exerciseId);
 
   const instruction = instructionText.say;
 
   return (
-    <LessonScreen
+    <ExerciseScreen
       instruction={instruction}
-      lessonData={data}
+      exerciseData={data}
       navigation={navigation}
     >
       <View style={styles.container}>
@@ -27,7 +27,7 @@ function NewPhraseScreen({ route, navigation }) {
           <RenderLearnWord data={data} helpText={data.helpTextArray} />
         </View>
       </View>
-    </LessonScreen>
+    </ExerciseScreen>
   );
 }
 

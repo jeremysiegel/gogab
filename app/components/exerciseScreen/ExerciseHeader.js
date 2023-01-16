@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Animated, StyleSheet } from "react-native";
 import colors from "../../config/colors";
 
-function LessonHeader(props) {
+function ExerciseHeader(props) {
   let fromValue = (props.currentIndex - 1) / props.quizLength;
   if (fromValue < 0) {
     fromValue = 0;
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LessonHeader;
+export default ExerciseHeader;

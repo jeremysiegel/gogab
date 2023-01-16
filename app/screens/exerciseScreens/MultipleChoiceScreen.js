@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useWindowDimensions } from "react-native";
-import getLessonData from "../../api/getLessonData";
+import getExerciseData from "../../api/getExerciseData";
 import ChoiceBox from "../../components/ChoiceBox";
 
 import QuizScreen from "./QuizScreen";
@@ -8,7 +8,7 @@ import QuizScreen from "./QuizScreen";
 function MultipleChoiceScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getLessonData.getLessonData(route.params.lessonId);
+  const data = getExerciseData.getExerciseData(route.params.exerciseId);
 
   const numItems = data.selections.length;
 
@@ -19,11 +19,13 @@ function MultipleChoiceScreen({ route, navigation }) {
   const renderChoiceBox = (item) => {
     return (
       <ChoiceBox
-        title={item.title}
+        title={item.word}
         currentObjects={[selected]}
         onPress={() => {
-          setAnswerIsCorrect(item.correct);
-          setSelected(item.title);
+          item.correct
+            ? setAnswerIsCorrect(item.correct)
+            : setAnswerIsCorrect(false);
+          setSelected(item.word);
         }}
         style={
           numColumns === 2
@@ -36,7 +38,7 @@ function MultipleChoiceScreen({ route, navigation }) {
 
   return (
     <QuizScreen
-      lessonId={route.params.lessonId}
+      exerciseId={route.params.exerciseId}
       navigation={navigation}
       renderItem={renderChoiceBox}
       answerIsCorrect={answerIsCorrect}

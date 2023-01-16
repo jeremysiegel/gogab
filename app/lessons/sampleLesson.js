@@ -2,62 +2,18 @@ const sampleLesson = {
   1: {
     screenType: "newWord",
     word: "bathroom",
-    helpText: "banyo",
-    learnWord: "baño",
-    nextLesson: 2,
+    nextExercise: 2,
   },
+
   2: {
     screenType: "pickImage",
     word: "bathroom",
-    helpText: "banyo",
-    learnWord: "baño",
-    nextLesson: 3,
-    selections: [
-      {
-        name: "bus",
-        title: "bus",
-        correct: false,
-      },
-      {
-        name: "umbrella",
-        title: "umbrella",
-        correct: false,
-      },
-      {
-        name: "toilet",
-        title: "bathroom",
-        correct: true,
-      },
-    ],
+    nextExercise: 3,
   },
   3: {
     screenType: "multipleChoice",
     word: "bathroom",
-    learnWord: "baño",
-    helpText: "banyo",
-    nextLesson: 7,
-    selections: [
-      {
-        name: "bus",
-        title: "bus",
-        correct: false,
-      },
-      {
-        name: "umbrella",
-        title: "umbrella",
-        correct: false,
-      },
-      {
-        name: "toilet",
-        title: "bathroom",
-        correct: true,
-      },
-      {
-        name: "tree",
-        title: "tree",
-        correct: false,
-      },
-    ],
+    nextExercise: 7,
   },
   /*
   4: {
@@ -65,14 +21,14 @@ const sampleLesson = {
     word: "where",
     helpText: "d-own-day",
     learnWord: "dónde",
-    nextLesson: 5,
+    nextExercise: 5,
   },
   5: {
     screenType: "pickImage",
     word: "where",
     helpText: "d-own-day",
     learnWord: "dónde",
-    nextLesson: 6,
+    nextExercise: 6,
     selections: [
       {
         name: "bus",
@@ -96,7 +52,7 @@ const sampleLesson = {
     learnWord: "dónde",
     word: "where",
     helpText: "d-own-day",
-    nextLesson: 7,
+    nextExercise: 7,
     selections: [
       {
         name: "bus",
@@ -141,7 +97,7 @@ const sampleLesson = {
         match: "dos",
       },
     ],
-    nextLesson: 8,
+    nextExercise: 8,
   },
 
   8: {
@@ -150,7 +106,7 @@ const sampleLesson = {
     extra: "decoy1 decoy2 my",
     learnWord: "lease xcuse y ear unt ally",
     helpText: "Please excuse my dear aunt Sally",
-    nextLesson: 1,
+    nextExercise: 1,
   },
 };
 

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import LessonScreen from "../../components/lessonScreen/LessonScreen";
+import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import MatchingGame from "../../components/MatchingGame";
-import getLessonData from "../../api/getLessonData";
+import getExerciseData from "../../api/getExerciseData";
 import instructionText from "../../config/instructionText";
-import LessonFooter from "../../components/lessonScreen/LessonFooter";
-import CheckAnswerModal from "../../components/lessonScreen/CheckAnswerModal";
+import ExerciseFooter from "../../components/exerciseScreen/ExerciseFooter";
+import CheckAnswerModal from "../../components/exerciseScreen/CheckAnswerModal";
 
 function MatchingScreen({ route, navigation }) {
-  const data = getLessonData.getLessonData(route.params.lessonId);
+  const data = getExerciseData.getExerciseData(route.params.exerciseId);
   const instruction = instructionText[data.screenType];
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <LessonScreen
-      lessonData={data}
+    <ExerciseScreen
+      exerciseData={data}
       instruction={instruction}
       navigation={navigation}
       footer={false}
@@ -22,13 +22,13 @@ function MatchingScreen({ route, navigation }) {
       <MatchingGame data={data.selections} setComplete={setModalVisible} />
       <CheckAnswerModal
         navigation={navigation}
-        nextLesson={data.nextLesson}
-        nextLessonType={data.nextLessonType}
+        nextExercise={data.nextExercise}
+        nextExerciseType={data.nextExerciseType}
         correctAnswer={true}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-    </LessonScreen>
+    </ExerciseScreen>
   );
 }
 
