@@ -7,6 +7,7 @@ import shuffle from "../utility/shuffle";
 
 function MatchingGame({ data, setComplete }) {
   const [shuffledMatches, setshuffledMatches] = useState();
+
   useEffect(() => {
     const shuffled = shuffle(data);
     setshuffledMatches(shuffled);
@@ -18,14 +19,14 @@ function MatchingGame({ data, setComplete }) {
   const [incorrectObjects, setIncorrectObjects] = useState([]);
 
   const wordArray = [];
-  const matchArray = [];
+  const translationArray = [];
 
   data.forEach((element) => {
     wordArray.push(element.word);
   });
 
   data.forEach((element) => {
-    matchArray.push(element.match);
+    translationArray.push(element.translation);
   });
 
   const renderChoiceBox = (itemKey) => {
@@ -57,7 +58,7 @@ function MatchingGame({ data, setComplete }) {
     }
 
     let keyType = "";
-    wordArray.includes(key) ? (keyType = "word") : (keyType = "match");
+    wordArray.includes(key) ? (keyType = "word") : (keyType = "translation");
 
     if (currentObjects.length === 2) {
       setIncorrectObjects([]);
@@ -67,7 +68,8 @@ function MatchingGame({ data, setComplete }) {
     if (currentObjects.length === 1) {
       if (
         (keyType === "word" && wordArray.includes(currentObjects[0])) ||
-        (keyType === "match" && matchArray.includes(currentObjects[0]))
+        (keyType === "translation" &&
+          translationArray.includes(currentObjects[0]))
       ) {
         currentObjects.shift();
         currentObjects.push(key);
@@ -77,8 +79,9 @@ function MatchingGame({ data, setComplete }) {
             currentObjects.push(key);
 
             if (
-              (keyType === "word" && element.match === currentObjects[0]) ||
-              (keyType === "match" && element.word === currentObjects[0])
+              (keyType === "word" &&
+                element.translation === currentObjects[0]) ||
+              (keyType === "translation" && element.word === currentObjects[0])
             ) {
               currentObjects.forEach((element) => {
                 correctObjects.push(element);
@@ -118,8 +121,8 @@ function MatchingGame({ data, setComplete }) {
             <FlatList
               scrollEnabled={false}
               data={shuffledMatches}
-              keyExtractor={(item) => item.match} //has to be unique
-              renderItem={({ item }) => renderChoiceBox(item.match)}
+              keyExtractor={(item) => item.translation} //has to be unique
+              renderItem={({ item }) => renderChoiceBox(item.translation)}
               numColumns={1}
               extraData={selected}
             />

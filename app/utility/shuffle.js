@@ -1,7 +1,11 @@
+import arrayEquals from "./arrayEquals";
+
 export default function shuffle(array) {
   let shuffledArray = [...array];
-  let currentIndex = array.length,
-    randomIndex;
+  let currentIndex = array.length;
+  let randomIndex;
+
+  if (array.length === 0) return;
 
   // While there remain elements to shuffle.
   while (currentIndex != 0) {

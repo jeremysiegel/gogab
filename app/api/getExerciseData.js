@@ -16,7 +16,7 @@ const getExerciseData = (id, multipleChoice) => {
     ? sampleLesson[data.nextExercise].screenType
     : null;
 
-  const wordArray = data.word.split(" ");
+  const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];
   const learnWordArray = [];
 
@@ -28,24 +28,34 @@ const getExerciseData = (id, multipleChoice) => {
   });
 
   const selections = [];
+  let shuffledSelections = [];
+
   if (multipleChoice) {
     let dictionaryKeys = Object.keys(dictionary);
-    selections[0] = dictionary[data.word];
-    selections[0].correct = true;
-    dictionaryKeys = dictionaryKeys.filter(
-      (element) => dictionary[element].word !== data.word
-    );
-    let currentIndex = 3;
-    while (currentIndex != 0 && dictionaryKeys.length > 0) {
+    let numItems = 4;
+    if (data.word) {
+      selections[0] = dictionary[data.word];
+      selections[0].correct = true;
+      dictionaryKeys = dictionaryKeys.filter(
+        (element) => dictionary[element].word !== data.word
+      );
+      numItems--;
+    }
+
+    while (numItems > 0 && dictionaryKeys.length > 0) {
       // Pick a remaining element.
       let randomIndex = Math.floor(Math.random() * dictionaryKeys.length);
-      selections.push(dictionary[dictionaryKeys[randomIndex]]);
+      if (
+        dictionary[dictionaryKeys[randomIndex]].word !=
+        dictionary[dictionaryKeys[randomIndex]].translation
+      ) {
+        selections.push(dictionary[dictionaryKeys[randomIndex]]);
+        numItems--;
+      }
       dictionaryKeys.splice(randomIndex, 1);
-      currentIndex--;
     }
+    shuffledSelections = shuffle(selections);
   }
-
-  const shuffledSelections = shuffle(selections);
 
   const returnData = {
     nextExerciseType: nextExerciseType,

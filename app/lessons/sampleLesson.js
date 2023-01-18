@@ -79,24 +79,6 @@ const sampleLesson = {
   */
   7: {
     screenType: "matching",
-    selections: [
-      {
-        word: "where",
-        match: "donde",
-      },
-      {
-        word: "bathroom",
-        match: "bano",
-      },
-      {
-        word: "is",
-        match: "esta",
-      },
-      {
-        word: "two",
-        match: "dos",
-      },
-    ],
     nextExercise: 8,
   },
 

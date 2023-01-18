@@ -1,35 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import MatchingGame from "../../components/MatchingGame";
 import getExerciseData from "../../api/getExerciseData";
 import instructionText from "../../config/instructionText";
-import ExerciseFooter from "../../components/exerciseScreen/ExerciseFooter";
 import CheckAnswerModal from "../../components/exerciseScreen/CheckAnswerModal";
 
 function MatchingScreen({ route, navigation }) {
-  const data = getExerciseData.getExerciseData(route.params.exerciseId);
-  const instruction = instructionText[data.screenType];
+  const [data, setData] = useState();
+  const [instruction, setInstruction] = useState();
+  useEffect(() => {
+    const setUpData = getExerciseData.getExerciseData(
+      route.params.exerciseId,
+      true
+    );
+    setData(setUpData);
+    setInstruction(instructionText[setUpData.screenType]);
+  }, []);
+
   const [modalVisible, setModalVisible] = useState(false);
 
-  return (
-    <ExerciseScreen
-      exerciseData={data}
-      instruction={instruction}
-      navigation={navigation}
-      footer={false}
-      footerModalVisible={modalVisible}
-    >
-      <MatchingGame data={data.selections} setComplete={setModalVisible} />
-      <CheckAnswerModal
+  if (data === undefined) {
+    return <></>;
+  } else {
+    return (
+      <ExerciseScreen
+        exerciseData={data}
+        instruction={instruction}
         navigation={navigation}
-        nextExercise={data.nextExercise}
-        nextExerciseType={data.nextExerciseType}
-        correctAnswer={true}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-      />
-    </ExerciseScreen>
-  );
+        footer={false}
+        footerModalVisible={modalVisible}
+      >
+        <MatchingGame data={data.selections} setComplete={setModalVisible} />
+        <CheckAnswerModal
+          navigation={navigation}
+          nextExercise={data.nextExercise}
+          nextExerciseType={data.nextExerciseType}
+          correctAnswer={true}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+      </ExerciseScreen>
+    );
+  }
 }
 
 export default MatchingScreen;
