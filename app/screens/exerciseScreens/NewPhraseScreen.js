@@ -13,6 +13,16 @@ function NewPhraseScreen({ route, navigation }) {
 
   const instruction = instructionText.say;
 
+  const RenderPhrase = () => {
+    return data.wordArray.map((item, index) => {
+      return (
+        <AppText style={defaultStyles.practiceWord} key={index}>
+          {item}{" "}
+        </AppText>
+      );
+    });
+  };
+
   return (
     <ExerciseScreen
       instruction={instruction}
@@ -21,7 +31,7 @@ function NewPhraseScreen({ route, navigation }) {
     >
       <View style={styles.container}>
         <View style={styles.phraseContainer}>
-          <AppText style={defaultStyles.practiceWord}>{data.word}</AppText>
+          <RenderPhrase />
         </View>
         <View style={styles.activityContainer}>
           <RenderLearnWord data={data} helpText={data.helpTextArray} />
@@ -45,7 +55,6 @@ const styles = StyleSheet.create({
   },
   phraseContainer: {
     marginTop: 22,
-
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",

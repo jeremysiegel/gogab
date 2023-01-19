@@ -11,12 +11,11 @@ import { moderateScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
 
 function SentenceBuilder({ data, setComplete }) {
-  const bankArray = data.wordArray.concat(data.extraArray);
   const [shuffledData, setShuffledData] = useState();
   const ref = useRef(DuoDragDropRef);
 
   useEffect(() => {
-    const shuffled = shuffle(bankArray);
+    const shuffled = shuffle(data.wordArray);
     setShuffledData(shuffled);
   }, []);
 

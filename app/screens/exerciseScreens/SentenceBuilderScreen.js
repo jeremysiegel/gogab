@@ -5,7 +5,6 @@ import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
-import shuffle from "../../utility/shuffle";
 
 function SentenceBuilderScreen({ route, navigation }) {
   const data = getExerciseData.getExerciseData(route.params.exerciseId);

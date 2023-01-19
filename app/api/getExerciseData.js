@@ -19,9 +19,17 @@ const getExerciseData = (id, multipleChoice) => {
   const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];
   const learnWordArray = [];
+  const strippedWordArray = [];
 
   wordArray.forEach((element) => {
+    let strippedElement = element.replace(/\W/g, "");
+    strippedElement = strippedElement.toLowerCase();
+    strippedWordArray.push(strippedElement);
+  });
+
+  strippedWordArray.forEach((element, index) => {
     if (dictionary[element]) {
+      wordArray[index] = dictionary[element].word;
       helpTextArray.push(dictionary[element].pronunciation);
       learnWordArray.push(dictionary[element].translation);
     }

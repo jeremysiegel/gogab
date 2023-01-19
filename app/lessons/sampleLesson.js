@@ -2,9 +2,8 @@ const sampleLesson = {
   1: {
     screenType: "newWord",
     word: "bathroom",
-    nextExercise: 2,
+    nextExercise: 8,
   },
-
   2: {
     screenType: "pickImage",
     word: "bathroom",
@@ -84,10 +83,8 @@ const sampleLesson = {
 
   8: {
     screenType: "sentenceBuilder",
-    word: "Please excuse my dear aunt Sally",
+    word: "Where is the bathroom?",
     extra: "decoy1 decoy2 my",
-    learnWord: "lease xcuse y ear unt ally",
-    helpText: "Please excuse my dear aunt Sally",
     nextExercise: 1,
   },
 };

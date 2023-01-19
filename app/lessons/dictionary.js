@@ -13,10 +13,10 @@ export default dictionary = {
     icon: "question",
     rank: 1,
   },
-  excuseMe: {
+  excuse_me: {
     word: "excuse me",
     translation: "disculpe",
-    pronunciation: "disc-oolpay",
+    pronunciation: "dis-cool-pay",
     icon: "people-arrows",
     rank: 1,
   },
@@ -27,7 +27,7 @@ export default dictionary = {
     icon: "hands",
     rank: 1,
   },
-  thankYou: {
+  thank_you: {
     word: "thank you",
     translation: "gracias",
     pronunciation: "grass-e-as",
@@ -61,5 +61,17 @@ export default dictionary = {
     pronunciation: "adee-oss",
     icon: "hand-peace",
     rank: 1,
+  },
+  is: {
+    word: "is",
+    translation: "esta",
+    pronunciation: "esta",
+    rank: 0,
+  },
+  the: {
+    word: "the",
+    translation: "el",
+    pronunciation: "el",
+    rank: 0,
   },
 };
