@@ -10,7 +10,7 @@ function RenderLearnWord({ data, helpText = data.wordArray }) {
         <LearnWord
           key={index}
           style={defaultStyles.learnWord}
-          helpText={helpText[index]}
+          helpText={helpText ? helpText[index] : null}
         >
           {item}
         </LearnWord>

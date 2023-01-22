@@ -18,6 +18,7 @@ function QuizScreen({
   const [instruction, setInstruction] = useState();
   const [phrase, setPhrase] = useState();
 
+  // Needed to keep selections from re-rendering.
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData(exerciseId, true);
     setData(setUpData);

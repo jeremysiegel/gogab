@@ -8,8 +8,7 @@ import QuizScreen from "./QuizScreen";
 function MultipleChoiceScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getExerciseData.getExerciseData(route.params.exerciseId);
-
+  const data = getExerciseData.getExerciseData(route.params.exerciseId, true);
   const numItems = data.selections.length;
 
   const { height } = useWindowDimensions();
@@ -19,13 +18,13 @@ function MultipleChoiceScreen({ route, navigation }) {
   const renderChoiceBox = (item) => {
     return (
       <ChoiceBox
-        title={item.word}
+        title={data.reverse ? item.translation : item.word}
         currentObjects={[selected]}
         onPress={() => {
           item.correct
             ? setAnswerIsCorrect(item.correct)
             : setAnswerIsCorrect(false);
-          setSelected(item.word);
+          setSelected(data.reverse ? item.translation : item.word);
         }}
         style={
           numColumns === 2

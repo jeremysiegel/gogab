@@ -5,17 +5,17 @@ import colors from "../config/colors";
 import Icon from "./Icon";
 import defaultStyles from "../config/styles";
 
-function ChoiceImage({ item, onPress, selectedItem }) {
+function ChoiceImage({ item, title, onPress, selectedItem }) {
   const [selected, setSelected] = useState(false);
   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
-    setSelected(selectedItem === item.word);
+    setSelected(selectedItem === title);
   });
 
   return (
     <Selectable
-      name={item.word}
+      name={title}
       selected={selected}
       onPress={onPress}
       style={[
@@ -28,7 +28,7 @@ function ChoiceImage({ item, onPress, selectedItem }) {
         <Icon
           name={item.icon}
           size={Math.min(0.25 * width, 100)}
-          label={item.word}
+          label={title}
           backgroundColor={colors.secondary}
         />
       </View>

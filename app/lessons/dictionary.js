@@ -13,13 +13,22 @@ export default dictionary = {
     icon: "question",
     rank: 1,
   },
+
   excuse_me: {
     word: "excuse me",
-    translation: "disculpe",
-    pronunciation: "dis-cool-pay",
+    translation: "perdón",
+    pronunciation: "pear-done",
     icon: "people-arrows",
     rank: 1,
   },
+  excuse_me2: {
+    word: "excuse me",
+    translation: "perdón",
+    pronunciation: "pear-done",
+    icon: "people-arrows",
+    rank: 1,
+  },
+
   please: {
     word: "please",
     translation: "por favor",
@@ -41,7 +50,7 @@ export default dictionary = {
     icon: "thumbs-up",
     rank: 1,
   },
-  yes: {
+  no: {
     word: "no",
     translation: "no",
     pronunciation: "no",
