@@ -6,6 +6,7 @@ const lessonData = [
     phrases: ["where is the bathroom?"],
     lessonId: 1,
     title: "Lesson 1",
+    style: 1,
   },
   {
     words: ["excuse_me", "thank_you"],
@@ -14,6 +15,7 @@ const lessonData = [
     phrases: ["excuse_me where is the bathroom? thank_you."],
     lessonId: 2,
     title: "Lesson 2",
+    style: 1,
   },
 ];
 

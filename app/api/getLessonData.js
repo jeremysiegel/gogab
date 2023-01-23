@@ -2,7 +2,6 @@ import lessonData from "../lessons/lessonData";
 
 function getLessonData(id) {
   let data = [];
-
   lessonData.forEach((element) => {
     if (element.lessonId === id) {
       data = element;

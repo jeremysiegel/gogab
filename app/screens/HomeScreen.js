@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
+import getLessonStyle from "../api/getLessonStyle";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
@@ -9,12 +10,13 @@ function HomeScreen({ navigation }) {
     return (
       <AppButton
         title={item.title}
-        onPress={() =>
+        onPress={() => {
+          const lessonStyle = getLessonStyle(item.lessonId);
           navigation.navigate("lessonNavigator", {
-            screen: "newWord",
+            screen: lessonStyle.firstScreen,
             params: { exerciseId: 1, lessonId: item.lessonId },
-          })
-        }
+          });
+        }}
         style={styles.button}
       />
     );
