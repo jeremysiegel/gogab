@@ -7,7 +7,7 @@ import getExerciseData from "../../api/getExerciseData";
 function PickImageScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getExerciseData.getExerciseData(route.params.exerciseId);
+  const data = getExerciseData.getExerciseData(route.params);
 
   const renderChoiceImage = (item) => {
     return (
@@ -27,7 +27,7 @@ function PickImageScreen({ route, navigation }) {
 
   return (
     <QuizScreen
-      exerciseId={route.params.exerciseId}
+      routeParams={route.params}
       navigation={navigation}
       renderItem={renderChoiceImage}
       answerIsCorrect={answerIsCorrect}

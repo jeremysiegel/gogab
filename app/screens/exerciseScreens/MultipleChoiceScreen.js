@@ -8,7 +8,10 @@ import QuizScreen from "./QuizScreen";
 function MultipleChoiceScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getExerciseData.getExerciseData(route.params.exerciseId, true);
+  const data = getExerciseData.getExerciseData({
+    ...route.params,
+    multipleChoice: true,
+  });
   const numItems = data.selections.length;
 
   const { height } = useWindowDimensions();
@@ -37,7 +40,7 @@ function MultipleChoiceScreen({ route, navigation }) {
 
   return (
     <QuizScreen
-      exerciseId={route.params.exerciseId}
+      routeParams={route.params}
       navigation={navigation}
       renderItem={renderChoiceBox}
       answerIsCorrect={answerIsCorrect}

@@ -23,6 +23,7 @@ function ExerciseFooter({
           if (answerIsCorrect === undefined) {
             navigation.push(data.nextExerciseType, {
               exerciseId: data.nextExercise,
+              lessonId: data.lessonId,
             });
           } else {
             setModalVisible(true);
@@ -33,6 +34,7 @@ function ExerciseFooter({
         data={data}
         navigation={navigation}
         nextExercise={data.nextExercise}
+        lessonId={data.lessonId}
         nextExerciseType={data.nextExerciseType}
         correctAnswer={answerIsCorrect}
         modalVisible={modalVisible}

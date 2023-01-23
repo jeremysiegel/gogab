@@ -7,7 +7,7 @@ import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 
 function QuizScreen({
-  exerciseId,
+  routeParams,
   navigation,
   renderItem,
   answerIsCorrect,
@@ -20,7 +20,10 @@ function QuizScreen({
 
   // Needed to keep selections from re-rendering.
   useEffect(() => {
-    const setUpData = getExerciseData.getExerciseData(exerciseId, true);
+    const setUpData = getExerciseData.getExerciseData({
+      ...routeParams,
+      multipleChoice: true,
+    });
     setData(setUpData);
     setInstruction(instructionText[setUpData.screenType]);
     setPhrase(<RenderLearnWord data={setUpData} />);

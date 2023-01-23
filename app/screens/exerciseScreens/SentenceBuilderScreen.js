@@ -7,7 +7,7 @@ import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
 
 function SentenceBuilderScreen({ route, navigation }) {
-  const data = getExerciseData.getExerciseData(route.params.exerciseId);
+  const data = getExerciseData.getExerciseData(route.params);
   const instruction = instructionText[data.screenType];
   const [complete, setComplete] = useState(false);
 

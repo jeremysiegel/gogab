@@ -13,6 +13,7 @@ function CheckAnswerModal({
   modalVisible,
   setModalVisible,
   navigation,
+  lessonId,
   nextExercise,
   nextExerciseType,
   data,
@@ -71,6 +72,7 @@ function CheckAnswerModal({
                   setModalVisible(!modalVisible);
                   navigation.push(nextExerciseType, {
                     exerciseId: nextExercise,
+                    lessonId: lessonId,
                   });
                 } else {
                   setModalVisible(!modalVisible);
@@ -85,6 +87,7 @@ function CheckAnswerModal({
                   setModalVisible(!modalVisible);
                   navigation.push(nextExerciseType, {
                     exerciseId: nextExercise,
+                    lessonId: lessonId,
                   });
                 }}
               />

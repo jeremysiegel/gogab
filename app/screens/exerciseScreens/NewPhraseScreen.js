@@ -9,7 +9,7 @@ import defaultStyles from "../../config/styles";
 import instructionText from "../../config/instructionText";
 
 function NewPhraseScreen({ route, navigation }) {
-  const data = getExerciseData.getExerciseData(route.params.exerciseId);
+  const data = getExerciseData.getExerciseData(route.params);
 
   const instruction = instructionText.say;
 

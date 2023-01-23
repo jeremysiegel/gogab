@@ -9,10 +9,10 @@ function MatchingScreen({ route, navigation }) {
   const [data, setData] = useState();
   const [instruction, setInstruction] = useState();
   useEffect(() => {
-    const setUpData = getExerciseData.getExerciseData(
-      route.params.exerciseId,
-      true
-    );
+    const setUpData = getExerciseData.getExerciseData({
+      ...route.params,
+      multipleChoice: true,
+    });
     setData(setUpData);
     setInstruction(instructionText[setUpData.screenType]);
   }, []);
@@ -33,6 +33,7 @@ function MatchingScreen({ route, navigation }) {
         <MatchingGame data={data.selections} setComplete={setModalVisible} />
         <CheckAnswerModal
           navigation={navigation}
+          lessonId={data.lessonId}
           nextExercise={data.nextExercise}
           nextExerciseType={data.nextExerciseType}
           correctAnswer={true}

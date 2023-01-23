@@ -2,19 +2,19 @@ import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
 import getLessonData from "./getLessonData";
 
-const getExerciseData = (id, multipleChoice) => {
-  // Get lesson length and excercise index for progress bar.
-  const lessonData = getLessonData(1);
+const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
+  // Get lesson length and exercise index for progress bar.
+  const lessonData = getLessonData(lessonId);
   const exerciseKeys = Object.keys(lessonData);
-  const index = exerciseKeys.indexOf(id.toString());
+  const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
 
-  // Get current excercise data.
-  const data = lessonData[id];
+  // Get current exercise data.
+  const data = lessonData[exerciseId];
   const reverse = data.reverse;
 
-  // Get next excercise type for navigation.
-  const nextExercise = lessonData[id + 1] ? id + 1 : 1;
+  // Get next exercise type for navigation.
+  const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1; //update this when homescreen works
   const nextExerciseType = lessonData[nextExercise].screenType
     ? lessonData[nextExercise].screenType
     : null;
@@ -39,7 +39,6 @@ const getExerciseData = (id, multipleChoice) => {
   });
 
   const selections = [];
-  const selectionWords = [];
 
   if (multipleChoice) {
     let dictionaryKeys = Object.keys(dictionary);
@@ -50,7 +49,6 @@ const getExerciseData = (id, multipleChoice) => {
     if (data.word) {
       selections[0] = dictionary[data.word];
       selections[0].correct = true;
-      selectionWords.push(dictionary[data.word].word);
 
       dictionaryKeys = dictionaryKeys.filter(
         (element) => dictionary[element].word !== dictionary[data.word].word
@@ -59,15 +57,19 @@ const getExerciseData = (id, multipleChoice) => {
     }
 
     while (numItems > 0 && dictionaryKeys.length > 0) {
-      // Pick a remaining element.
       let randomIndex = Math.floor(Math.random() * dictionaryKeys.length);
-      if (
-        dictionary[dictionaryKeys[randomIndex]].word !=
-          dictionary[dictionaryKeys[randomIndex]].translation &&
-        !selectionWords.includes(dictionary[dictionaryKeys[randomIndex]].word)
-      ) {
-        selectionWords.push(dictionary[dictionaryKeys[randomIndex]].word);
-        selections.push(dictionary[dictionaryKeys[randomIndex]]);
+      let pushWord = dictionary[dictionaryKeys[randomIndex]];
+      let push = true;
+      selections.forEach((element) => {
+        if (
+          pushWord.word === element.word ||
+          pushWord.translation === element.translation
+        ) {
+          push = false;
+        }
+      });
+      if (push) {
+        selections.push(pushWord);
         numItems--;
       }
 
@@ -86,6 +88,7 @@ const getExerciseData = (id, multipleChoice) => {
     selections: shuffledSelections,
     reverse: reverse,
     nextExercise: nextExercise,
+    lessonId: lessonId,
     ...data,
   };
 

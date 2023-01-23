@@ -1,23 +1,29 @@
-import sampleLesson from "../lessons/sampleLesson";
+import lessonData from "../lessons/lessonData";
 
-const getLessonData = (id) => {
-  const data = sampleLesson[id];
-  let lessonData = {};
+function getLessonData(id) {
+  let data = [];
+
+  lessonData.forEach((element) => {
+    if (element.lessonId === id) {
+      data = element;
+    }
+  });
+  let lesson = {};
   let excerciseNumber = 1;
 
   data.words.forEach((element) => {
-    lessonData[excerciseNumber] = { screenType: "newWord", word: element };
+    lesson[excerciseNumber] = { screenType: "newWord", word: element };
     excerciseNumber++;
-    lessonData[excerciseNumber] = { screenType: "pickImage", word: element };
+    lesson[excerciseNumber] = { screenType: "pickImage", word: element };
     excerciseNumber++;
-    lessonData[excerciseNumber] = {
+    lesson[excerciseNumber] = {
       screenType: "multipleChoice",
       word: element,
     };
     excerciseNumber++;
   });
   data.supportWords.forEach((element) => {
-    lessonData[excerciseNumber] = {
+    lesson[excerciseNumber] = {
       screenType: "multipleChoice",
       word: element,
     };
@@ -25,7 +31,7 @@ const getLessonData = (id) => {
   });
 
   for (var i = 0; i < data.reviewWords.length; i++) {
-    lessonData[excerciseNumber] = {
+    lesson[excerciseNumber] = {
       screenType: "multipleChoice",
       word: data.reviewWords[i],
       reverse: true,
@@ -33,18 +39,18 @@ const getLessonData = (id) => {
     excerciseNumber++;
   }
 
-  lessonData[excerciseNumber] = { screenType: "matching" };
+  lesson[excerciseNumber] = { screenType: "matching" };
   excerciseNumber++;
 
   for (var i = 0; i < data.phrases.length; i++) {
-    lessonData[excerciseNumber] = {
+    lesson[excerciseNumber] = {
       screenType: "sentenceBuilder",
       word: data.phrases[i],
       reverse: true,
     };
     excerciseNumber++;
   }
-  return lessonData;
-};
+  return lesson;
+}
 
 export default getLessonData;
