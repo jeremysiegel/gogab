@@ -1,10 +1,10 @@
 import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
-import getLessonData from "./getLessonData";
+import generateLessonData from "./generateLessonData";
 
 const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
   // Get lesson length and exercise index for progress bar.
-  const lessonData = getLessonData(lessonId);
+  const lessonData = generateLessonData(lessonId);
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
@@ -63,7 +63,8 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
       selections.forEach((element) => {
         if (
           pushWord.word === element.word ||
-          pushWord.translation === element.translation
+          pushWord.translation === element.translation ||
+          pushWord.word === pushWord.translation
         ) {
           push = false;
         }
