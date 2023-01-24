@@ -13,7 +13,7 @@ function HomeScreen({ navigation }) {
         onPress={() => {
           const lessonStyle = getLessonStyle(item.lessonId);
           navigation.navigate("lessonNavigator", {
-            screen: lessonStyle.firstScreen,
+            screen: lessonStyle.sequence[0].screens[0],
             params: { exerciseId: 1, lessonId: item.lessonId },
           });
         }}
