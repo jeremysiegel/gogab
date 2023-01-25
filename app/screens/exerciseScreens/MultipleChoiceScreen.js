@@ -5,6 +5,8 @@ import ChoiceBox from "../../components/ChoiceBox";
 
 import QuizScreen from "./QuizScreen";
 
+// Creates a multiple choice quiz screen of ChoiceBoxes.
+
 function MultipleChoiceScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);

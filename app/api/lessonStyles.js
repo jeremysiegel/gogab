@@ -1,7 +1,10 @@
+// Lesson style objects. Requires a styleId and sequence of exercises
+// Each exercise requires screen type(s). Certain screens require a wordType.
+
 const lessonStyles = [
   {
     styleId: 1,
-    firstScreen: "newWord",
+    // firstScreen: "newWord",
     sequence: [
       {
         screens: ["newWord", "pickImage", "multipleChoice"],
@@ -28,7 +31,7 @@ const lessonStyles = [
   },
   {
     styleId: 2,
-    firstScreen: "pickImage",
+    //  firstScreen: "pickImage",
     sequence: [
       {
         screens: ["pickImage"],

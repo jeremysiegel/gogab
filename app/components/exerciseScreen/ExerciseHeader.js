@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Animated, StyleSheet } from "react-native";
 import colors from "../../config/colors";
 
+// Creates header for exercise screen.
 function ExerciseHeader(props) {
+  // Generate lesson progress bar.
   let fromValue = (props.currentIndex - 1) / props.quizLength;
   if (fromValue < 0) {
     fromValue = 0;

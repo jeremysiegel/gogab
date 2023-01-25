@@ -3,6 +3,8 @@ import LearnWord from "./LearnWord";
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 
+// Creates a string of tappable words that display more info.
+
 function RenderLearnWord({ data, helpText = data.wordArray }) {
   return data.learnWordArray.map((item, index) => {
     return (

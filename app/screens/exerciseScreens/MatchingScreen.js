@@ -5,6 +5,9 @@ import getExerciseData from "../../api/getExerciseData";
 import instructionText from "../../config/instructionText";
 import CheckAnswerModal from "../../components/exerciseScreen/CheckAnswerModal";
 
+// Creates a matching game with a "CheckAnswerModal" that appears when all the matches
+// are made correctly.
+
 function MatchingScreen({ route, navigation }) {
   const [data, setData] = useState();
   const [instruction, setInstruction] = useState();
@@ -32,6 +35,7 @@ function MatchingScreen({ route, navigation }) {
       >
         <MatchingGame data={data.selections} setComplete={setModalVisible} />
         <CheckAnswerModal
+          data={data}
           navigation={navigation}
           lessonId={data.lessonId}
           nextExercise={data.nextExercise}

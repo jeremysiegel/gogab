@@ -10,6 +10,8 @@ import shuffle from "../utility/shuffle";
 import { moderateScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
 
+// Creates a UI sentence builder element.
+
 function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
   const ref = useRef(DuoDragDropRef);
@@ -19,6 +21,7 @@ function SentenceBuilder({ data, setComplete }) {
     setShuffledData(shuffled);
   }, []);
 
+  // Tests if the user inputed array of words equals the original wordArray.
   const checkComplete = () => {
     const answered = ref.current?.getAnsweredWords();
     setComplete(arrayEquals(answered, data.wordArray));

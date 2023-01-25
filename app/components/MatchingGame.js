@@ -5,6 +5,8 @@ import ChoiceBox from "./ChoiceBox";
 import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
 
+// Creates a matching game of words and translations. Takes in data array of dictionary word objects.
+
 function MatchingGame({ data, setComplete }) {
   const [shuffledMatches, setshuffledMatches] = useState();
 
@@ -23,9 +25,6 @@ function MatchingGame({ data, setComplete }) {
 
   data.forEach((element) => {
     wordArray.push(element.word);
-  });
-
-  data.forEach((element) => {
     translationArray.push(element.translation);
   });
 
@@ -52,20 +51,26 @@ function MatchingGame({ data, setComplete }) {
     }
   };
 
+  // Check if current selection is a match for previous selection.
   const checkMatch = (key) => {
+    // If object was already part of a correct match, ignore tap.
     if (correctObjects.includes(key)) {
       return;
     }
 
+    // Check if tapped box is a word or translation.
     let keyType = "";
     wordArray.includes(key) ? (keyType = "word") : (keyType = "translation");
 
+    // If this a 3rd tap after a previous attempted match, clear last two selections
     if (currentObjects.length === 2) {
       setIncorrectObjects([]);
       setCurrentObjects([key]);
     }
 
+    // If this is the 2nd tapped object in a sequence, check if it is a match for the last tap.
     if (currentObjects.length === 1) {
+      // If the last object is of the same type as current tap, deselect last object and select current object.
       if (
         (keyType === "word" && wordArray.includes(currentObjects[0])) ||
         (keyType === "translation" &&
@@ -74,10 +79,11 @@ function MatchingGame({ data, setComplete }) {
         currentObjects.shift();
         currentObjects.push(key);
       } else {
+        // If it is of a different type than last tap, add it to currentObjects array.
         data.forEach((element) => {
           if (element[keyType] === key) {
             currentObjects.push(key);
-
+            // See if the two words are matches. If so, push to correctObjects array to change style to show user.
             if (
               (keyType === "word" &&
                 element.translation === currentObjects[0]) ||
@@ -89,6 +95,7 @@ function MatchingGame({ data, setComplete }) {
               setCurrentObjects([]);
               checkIfComplete();
             } else {
+              // If they aren't a match, change style to show user.
               currentObjects.forEach((element) => {
                 incorrectObjects.push(element);
               });
@@ -96,6 +103,7 @@ function MatchingGame({ data, setComplete }) {
           }
         });
       }
+      // If there was no previous tap or it is a new guess, select box.
     } else if (currentObjects.length === 0) {
       currentObjects.push(key);
     }

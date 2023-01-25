@@ -7,6 +7,9 @@ import Screen from "../Screen";
 import ExerciseFooter from "./ExerciseFooter";
 import defaultStyles from "../../config/styles";
 
+// Generates container screen for exercises.
+// Displays in order of instruction, phrase, then exercise.
+
 function ExerciseScreen({
   exerciseData,
   instruction,
@@ -41,7 +44,7 @@ function ExerciseScreen({
             touched={touched}
             navigation={navigation}
             data={exerciseData}
-            answerIsCorrect={answerIsCorrect}
+            userAnswerable={answerIsCorrect}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
             skippable={skippable}

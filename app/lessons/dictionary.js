@@ -1,3 +1,5 @@
+// Master dictionary.
+
 export default dictionary = {
   bathroom: {
     word: "bathroom",
@@ -13,7 +15,6 @@ export default dictionary = {
     icon: "question",
     rank: 1,
   },
-
   excuse_me: {
     word: "excuse me",
     translation: "perdón",

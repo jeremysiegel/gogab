@@ -1,7 +1,9 @@
 import React from "react";
-import { Text, StatusBar, View, StyleSheet, Pressable } from "react-native";
+import { Text, StatusBar } from "react-native";
 import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
+
+// Creates popover that displays tooltip when pressed.
 
 function AppPopover({ style, displayText, popoverText }) {
   return (

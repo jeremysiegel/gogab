@@ -5,6 +5,8 @@ import colors from "../config/colors";
 import Icon from "./Icon";
 import defaultStyles from "../config/styles";
 
+// Creates a selectable icon with title.
+
 function ChoiceImage({ item, title, onPress, selectedItem }) {
   const [selected, setSelected] = useState(false);
   const { height, width } = useWindowDimensions();

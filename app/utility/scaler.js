@@ -1,3 +1,6 @@
+// Used to scale objects based on device size.
+// App mostly uses moderate scale, which is set here to default at 0.2.
+
 import {
   scale as scaleRN,
   verticalScale as verticalScaleRN,

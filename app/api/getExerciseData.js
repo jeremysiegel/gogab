@@ -9,7 +9,7 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
 
-  // Get current exercise data.
+  // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
 
@@ -22,6 +22,9 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
   const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];
   const learnWordArray = [];
+
+  // Create array of words in lessonData with special characters removed
+  // Keeps _ , changes all to lowercase.
   const strippedWordArray = [];
 
   wordArray.forEach((element) => {
@@ -30,6 +33,8 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
     strippedWordArray.push(strippedElement);
   });
 
+  // Use word from dictionary (allows identifying of words with multiple meanings)
+  // Push to pronunciation and translation arrays
   strippedWordArray.forEach((element, index) => {
     if (dictionary[element]) {
       wordArray[index] = dictionary[element].word;
@@ -38,14 +43,17 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
     }
   });
 
+  // If it is a multiple choice exercise, select other choices
   const selections = [];
-
   if (multipleChoice) {
     let dictionaryKeys = Object.keys(dictionary);
+    // Remove rank 0 words (conjunctions, etc)
     dictionaryKeys = dictionaryKeys.filter(
       (element) => dictionary[element].rank !== 0
     );
+    // Total number of choices
     let numItems = 4;
+    // If there is a correct answer, include the correct answer
     if (data.word) {
       selections[0] = dictionary[data.word];
       selections[0].correct = true;
@@ -56,14 +64,18 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
       numItems--;
     }
 
+    // Randomly select remaining choices
     while (numItems > 0 && dictionaryKeys.length > 0) {
+      // Pick random word from dictionary
       let randomIndex = Math.floor(Math.random() * dictionaryKeys.length);
       let pushWord = dictionary[dictionaryKeys[randomIndex]];
       let push = true;
-      selections.forEach((element) => {
+      // Don't use word if it or its translation is already in the selection
+      // Don't use word if it is the same in both languages
+      selections.forEach((selection) => {
         if (
-          pushWord.word === element.word ||
-          pushWord.translation === element.translation ||
+          pushWord.word === selection.word ||
+          pushWord.translation === selection.translation ||
           pushWord.word === pushWord.translation
         ) {
           push = false;
@@ -77,9 +89,10 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
       dictionaryKeys.splice(randomIndex, 1);
     }
   }
+
   const shuffledSelections = shuffle(selections);
 
-  const returnData = {
+  const exerciseData = {
     nextExerciseType: nextExerciseType,
     index: index,
     quizLength: quizLength,
@@ -87,13 +100,13 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
     helpTextArray: helpTextArray,
     learnWordArray: reverse ? wordArray : learnWordArray,
     selections: shuffledSelections,
-    reverse: reverse,
+    reverse: reverse, // may be dup
     nextExercise: nextExercise,
     lessonId: lessonId,
     ...data,
   };
 
-  return returnData;
+  return exerciseData;
 };
 
 export default {

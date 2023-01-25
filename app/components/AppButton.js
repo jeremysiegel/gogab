@@ -4,6 +4,8 @@ import { moderateScale } from "../utility/scaler";
 
 import colors from "../config/colors";
 
+// Creates a button that appears to have 3D reaction when pressed.
+
 function AppButton({
   title,
   color = colors.primary,

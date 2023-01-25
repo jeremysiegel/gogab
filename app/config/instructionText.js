@@ -1,3 +1,5 @@
+// Instruction text to display on exerciseScreen for different screen types.
+
 export default {
   pickImage: "Translate:",
   multipleChoice: "Select the correct phrase:",

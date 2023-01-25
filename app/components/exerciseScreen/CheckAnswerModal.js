@@ -8,6 +8,8 @@ import AppText from "../AppText";
 import AppButton from "../AppButton";
 import defaultStyles from "../../config/styles";
 
+// Creates a modal that appears when user checks
+// if their answer is correct
 function CheckAnswerModal({
   correctAnswer,
   modalVisible,
@@ -17,12 +19,13 @@ function CheckAnswerModal({
   nextExercise,
   nextExerciseType,
   data,
-  skippable,
+  skippable, // Lets user skip exercise if true.
 }) {
   return (
     <RNModal
       animationIn={"slideInUp"}
       onBackdropPress={() => {
+        // Allow user to dismiss modal only if the answer is wrong
         if (!correctAnswer) {
           setModalVisible(!modalVisible);
         }
@@ -61,7 +64,6 @@ function CheckAnswerModal({
                 </AppText>
               )}
             </View>
-            {false && <AppText>{data.word}</AppText>}
           </View>
           <View style={styles.buttonContainer}>
             <AppButton
@@ -79,6 +81,7 @@ function CheckAnswerModal({
                 }
               }}
             />
+
             {skippable && !correctAnswer && (
               <AppButton
                 style={{ width: "45%" }}

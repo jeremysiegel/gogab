@@ -9,6 +9,9 @@ import DuoDragDrop, {
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 
+// Not used in app.
+// TODO: remove.
+
 function SandboxScreen(props) {
   const ref = useRef(DuoDragDropRef);
 

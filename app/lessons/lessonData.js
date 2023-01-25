@@ -1,3 +1,5 @@
+// Data used to generate lessons.
+
 const lessonData = [
   {
     lessonId: 1,

@@ -5,6 +5,8 @@ import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 
+// Home screen of app.
+
 function HomeScreen({ navigation }) {
   const renderItems = ({ item }) => {
     return (

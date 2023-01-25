@@ -1,3 +1,5 @@
+// Tests if two arrays have the same elements in the same order.
+
 export default function arrayEquals(a, b) {
   return (
     Array.isArray(a) &&

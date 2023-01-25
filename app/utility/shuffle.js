@@ -1,3 +1,6 @@
+// Shuffles elements in an array and returns new shuffled array.
+// TODO: Need to alter to ensure shuffled array is not same order as original.
+
 import arrayEquals from "./arrayEquals";
 
 export default function shuffle(array) {

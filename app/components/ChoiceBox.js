@@ -8,6 +8,8 @@ import AppText from "./AppText";
 import defaultStyles from "../config/styles";
 import fonts from "../config/fonts";
 
+// Creates a selectable box.
+
 function ChoiceBox({ title, onPress, style, currentObjects }) {
   const [selected, setSelected] = useState(false);
   useEffect(() => {

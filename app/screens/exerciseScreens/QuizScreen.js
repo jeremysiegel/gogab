@@ -6,6 +6,8 @@ import getExerciseData from "../../api/getExerciseData";
 import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 
+// Creates a user quiz.
+
 function QuizScreen({
   routeParams,
   navigation,

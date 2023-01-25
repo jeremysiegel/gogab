@@ -8,6 +8,10 @@ import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import instructionText from "../../config/instructionText";
 
+// Creates screen to learn a new word or phrase.
+// Displays word and translation.
+// TODO: add audio.
+
 function NewPhraseScreen({ route, navigation }) {
   const data = getExerciseData.getExerciseData(route.params);
 

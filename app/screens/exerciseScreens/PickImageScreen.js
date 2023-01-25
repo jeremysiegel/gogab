@@ -4,6 +4,8 @@ import QuizScreen from "./QuizScreen";
 import ChoiceImage from "../../components/ChoiceImage";
 import getExerciseData from "../../api/getExerciseData";
 
+// Creates a multiple choice quiz screen of ChoiceImages.
+
 function PickImageScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);

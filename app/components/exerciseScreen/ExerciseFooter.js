@@ -4,10 +4,11 @@ import { View, StyleSheet } from "react-native";
 import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
 
+// Creates footer for the exercise screen.
 function ExerciseFooter({
   navigation,
   data,
-  answerIsCorrect,
+  answerIsCorrect: userAnswerable, // if there is a correct answer, it is userAnswerable
   modalVisible,
   setModalVisible,
   touched,
@@ -17,10 +18,10 @@ function ExerciseFooter({
     <View style={styles.container}>
       <AppButton
         opacity={touched === false ? 70 : undefined}
-        title={answerIsCorrect === undefined ? "Next" : "Check"}
+        title={userAnswerable === undefined ? "Next" : "Check"}
         disabled={touched === false ? true : false}
         onPress={() => {
-          if (answerIsCorrect === undefined) {
+          if (userAnswerable === undefined) {
             navigation.push(data.nextExerciseType, {
               exerciseId: data.nextExercise,
               lessonId: data.lessonId,
@@ -36,7 +37,7 @@ function ExerciseFooter({
         nextExercise={data.nextExercise}
         lessonId={data.lessonId}
         nextExerciseType={data.nextExerciseType}
-        correctAnswer={answerIsCorrect}
+        correctAnswer={userAnswerable}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         skippable={skippable}
