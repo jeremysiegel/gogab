@@ -6,6 +6,7 @@ import PickImageScreen from "../screens/exerciseScreens/PickImageScreen";
 import NewPhraseScreen from "../screens/exerciseScreens/NewPhraseScreen";
 import MatchingScreen from "../screens/exerciseScreens/MatchingScreen";
 import SentenceBuilderScreen from "../screens/exerciseScreens/SentenceBuilderScreen";
+import PromptScreen from "../screens/exerciseScreens/PromptScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function LessonNavigator() {
       <Stack.Screen name="multipleChoice" component={MultipleChoiceScreen} />
       <Stack.Screen name="matching" component={MatchingScreen} />
       <Stack.Screen name="sentenceBuilder" component={SentenceBuilderScreen} />
+      <Stack.Screen name="prompt" component={PromptScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import getLessonStyle from "../api/getLessonStyle";
+import getElementFromId from "../utility/getElementFromId";
+import lessonStyles from "../api/lessonStyles";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
@@ -13,9 +14,15 @@ function HomeScreen({ navigation }) {
       <AppButton
         title={item.title}
         onPress={() => {
-          const lessonStyle = getLessonStyle(item.lessonId);
+          const lessonStyle = getElementFromId(
+            lessonStyles,
+            "styleId",
+            item.style
+          );
           navigation.navigate("lessonNavigator", {
-            screen: lessonStyle.sequence[0].screens[0],
+            screen: lessonStyle.sequence[0]
+              ? lessonStyle.sequence[0].screens[0]
+              : lessonStyle.firstScreen,
             params: { exerciseId: 1, lessonId: item.lessonId },
           });
         }}

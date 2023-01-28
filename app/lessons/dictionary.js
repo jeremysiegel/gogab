@@ -24,8 +24,8 @@ export default dictionary = {
   },
   excuse_me2: {
     word: "excuse me",
-    translation: "perdón",
-    pronunciation: "pear-done",
+    translation: "disculpe",
+    pronunciation: "discoolpay",
     icon: "people-arrows",
     rank: 1,
   },
@@ -83,5 +83,26 @@ export default dictionary = {
     translation: "el",
     pronunciation: "el",
     rank: 0,
+  },
+  how_are_you: {
+    word: "how are you",
+    translation: "cómo estás",
+    pronunciation: "como esta",
+    icon: "hands-helping",
+    rank: 2,
+  },
+  open: {
+    word: "open",
+    translation: "abierto",
+    pronunciation: "ah-be-airtow",
+    icon: "door-open",
+    rank: 2,
+  },
+  closed: {
+    word: "closed",
+    translation: "cerrado",
+    pronunciation: "sairado",
+    icon: "door-closed",
+    rank: 2,
   },
 };

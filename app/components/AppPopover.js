@@ -5,7 +5,7 @@ import defaultStyles from "../config/styles";
 
 // Creates popover that displays tooltip when pressed.
 
-function AppPopover({ style, displayText, popoverText }) {
+function AppPopover({ style, displayText, popoverText, key }) {
   return (
     <Popover
       offset={StatusBar.currentHeight}

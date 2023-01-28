@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     textTransform: "lowercase",
     fontFamily: fonts.bold,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

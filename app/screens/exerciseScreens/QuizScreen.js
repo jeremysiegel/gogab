@@ -5,7 +5,7 @@ import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import getExerciseData from "../../api/getExerciseData";
 import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
-
+import AppText from "../../components/AppText";
 // Creates a user quiz.
 
 function QuizScreen({
@@ -15,24 +15,29 @@ function QuizScreen({
   answerIsCorrect,
   selected,
   numColumns,
+  passInstruction,
+  passPhrase,
+  multipleChoice = true,
+  prompt = false,
 }) {
   const [data, setData] = useState();
   const [instruction, setInstruction] = useState();
   const [phrase, setPhrase] = useState();
-
   // Needed to keep selections from re-rendering.
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...routeParams,
-      multipleChoice: true,
+      multipleChoice: multipleChoice,
+      prompt: prompt,
     });
     setData(setUpData);
-    setInstruction(instructionText[setUpData.screenType]);
-    setPhrase(<RenderLearnWord data={setUpData} />);
+    setInstruction(
+      passInstruction ? passInstruction : instructionText[setUpData.screenType]
+    );
+    setPhrase(passPhrase ? passPhrase : <RenderLearnWord data={setUpData} />);
   }, []);
 
   const renderItems = ({ item }) => renderItem(item);
-
   if (data === undefined) {
     return <></>;
   } else {

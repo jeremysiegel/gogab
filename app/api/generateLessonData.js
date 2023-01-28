@@ -1,5 +1,5 @@
 import lessonData from "../lessons/lessonData";
-import getLessonStyle from "./getLessonStyle";
+import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
 
 /*
@@ -12,7 +12,7 @@ function generateLessonData(lessonId) {
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
   // Gets data about the style and sequence of lesson
-  const style = getLessonStyle(data.style);
+  const style = getElementFromId(lessonStyles, "styleId", data.style);
   const sequence = style.sequence;
   let lesson = {};
   let exerciseNumber = 1;
@@ -46,6 +46,15 @@ function generateLessonData(lessonId) {
       });
     }
   });
+
+  if (data.subLesson) {
+    data.subLesson.forEach((subLesson) => {
+      lesson[exerciseNumber] = {
+        ...subLesson,
+      };
+      exerciseNumber++;
+    });
+  }
 
   return lesson;
 }

@@ -2,7 +2,7 @@ import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
 import generateLessonData from "./generateLessonData";
 
-const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
+const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
   // Get lesson length and exercise index for progress bar.
   const lessonData = generateLessonData(lessonId);
   const exerciseKeys = Object.keys(lessonData);
@@ -43,8 +43,9 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
     }
   });
 
-  // If it is a multiple choice exercise, select other choices
   const selections = [];
+
+  // If it is a multiple choice exercise, select other choices
   if (multipleChoice) {
     let dictionaryKeys = Object.keys(dictionary);
     // Remove rank 0 words (conjunctions, etc)
@@ -88,6 +89,12 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice }) => {
 
       dictionaryKeys.splice(randomIndex, 1);
     }
+  }
+
+  if (prompt) {
+    lessonData[exerciseId].choices.forEach((choice) => {
+      selections.push(choice);
+    });
   }
 
   const shuffledSelections = shuffle(selections);

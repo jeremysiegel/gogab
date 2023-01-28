@@ -41,4 +41,9 @@ export default {
     fontFamily: fonts.bold,
     fontWeight: "bold",
   },
+  big: {
+    fontSize: moderateScale(44),
+    fontFamily: fonts.bold,
+    fontWeight: "bold",
+  },
 };

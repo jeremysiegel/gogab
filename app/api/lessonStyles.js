@@ -4,7 +4,6 @@
 const lessonStyles = [
   {
     styleId: 1,
-    // firstScreen: "newWord",
     sequence: [
       {
         screens: ["newWord", "pickImage", "multipleChoice"],
@@ -31,7 +30,6 @@ const lessonStyles = [
   },
   {
     styleId: 2,
-    //  firstScreen: "pickImage",
     sequence: [
       {
         screens: ["pickImage"],
@@ -55,6 +53,33 @@ const lessonStyles = [
         reverse: true,
       },
     ],
+  },
+  {
+    styleId: 3,
+    sequence: [
+      {
+        screens: ["newWord", "multipleChoice"],
+        wordType: ["words"],
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["supportWords"],
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
+        reverse: true,
+      },
+      {
+        screens: ["sentenceBuilder"],
+        wordType: ["phrases"],
+      },
+    ],
+  },
+  {
+    styleId: 4,
+    sequence: [],
+    firstScreen: "prompt",
   },
 ];
 

@@ -23,7 +23,6 @@ function ExerciseScreen({
   skippable,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-
   return (
     <>
       <Screen>
@@ -44,7 +43,7 @@ function ExerciseScreen({
             touched={touched}
             navigation={navigation}
             data={exerciseData}
-            userAnswerable={answerIsCorrect}
+            answerIsCorrect={answerIsCorrect}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
             skippable={skippable}
