@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import QuizScreen from "./QuizScreen";
 import ChoiceImage from "../../components/ChoiceImage";
 import getExerciseData from "../../api/getExerciseData";
+import instructionText from "../../config/instructionText";
+import RenderLearnWord from "../../components/RenderLearnWord";
 
 // Creates a multiple choice quiz screen of ChoiceImages.
 
 function PickImageScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getExerciseData.getExerciseData(route.params);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const setUpData = getExerciseData.getExerciseData({
+      ...route.params,
+      multipleChoice: true,
+    });
+    setData(setUpData);
+  }, []);
+
+  const instruction = instructionText.pickImage;
+  const phrase = <RenderLearnWord data={data} />;
 
   const renderChoiceImage = (item) => {
     return (
@@ -26,17 +39,21 @@ function PickImageScreen({ route, navigation }) {
       />
     );
   };
-
-  return (
-    <QuizScreen
-      routeParams={route.params}
-      navigation={navigation}
-      renderItem={renderChoiceImage}
-      answerIsCorrect={answerIsCorrect}
-      selected={selected}
-      numColumns={2}
-    />
-  );
+  if (!data) {
+    return <></>;
+  } else {
+    return (
+      <QuizScreen
+        navigation={navigation}
+        renderItem={renderChoiceImage}
+        answerIsCorrect={answerIsCorrect}
+        selected={selected}
+        numColumns={2}
+        instruction={instruction}
+        phrase={phrase}
+        data={data}
+      />
+    );
+  }
 }
-
 export default PickImageScreen;

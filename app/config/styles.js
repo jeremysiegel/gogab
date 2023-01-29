@@ -1,5 +1,5 @@
 import colors from "./colors";
-import { moderateScale } from "../utility/scaler";
+import { moderateScale, verticalScale } from "../utility/scaler";
 import fonts from "./fonts";
 
 export default {

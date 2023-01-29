@@ -33,7 +33,7 @@ export default dictionary = {
   please: {
     word: "please",
     translation: "por favor",
-    pronunciation: "pour favour",
+    pronunciation: "pour fav-or",
     icon: "hands",
     rank: 1,
   },
@@ -104,5 +104,24 @@ export default dictionary = {
     pronunciation: "sairado",
     icon: "door-closed",
     rank: 2,
+  },
+  good: {
+    word: "good",
+    translation: "bien",
+    pronunciation: "bee-en",
+    icon: "thumbs-up",
+    rank: 2,
+  },
+  and: {
+    word: "and",
+    translation: "y",
+    pronunciation: "ee",
+    rank: 0,
+  },
+  you: {
+    word: "you",
+    translation: "tú",
+    pronunciation: "too",
+    rank: 0,
   },
 };

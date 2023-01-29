@@ -1,55 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import getExerciseData from "../../api/getExerciseData";
-import ChoiceBox from "../../components/ChoiceBox";
-
+import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
+import instructionText from "../../config/instructionText";
 import QuizScreen from "./QuizScreen";
+import RenderLearnWord from "../../components/RenderLearnWord";
 
 // Creates a multiple choice quiz screen of ChoiceBoxes.
 
 function MultipleChoiceScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
-  const data = getExerciseData.getExerciseData({
-    ...route.params,
-    multipleChoice: true,
-  });
-  const numItems = data.selections.length;
+  const [data, setData] = useState();
+  const [numItems, setNumItems] = useState();
 
+  useEffect(() => {
+    const setUpData = getExerciseData.getExerciseData({
+      ...route.params,
+      multipleChoice: true,
+    });
+    setData(setUpData);
+    setNumItems(setUpData.selections.length);
+  }, []);
   const { height } = useWindowDimensions();
-
   const numColumns = height - 300 < numItems * 80 || numItems > 6 ? 2 : 1;
+  const instruction = instructionText.multipleChoice;
+  const phrase = <RenderLearnWord data={data} />;
 
   const renderChoiceBox = (item) => {
     return (
-      <ChoiceBox
+      <RenderChoiceBoxes
+        data={item}
         title={data.reverse ? item.translation : item.word}
-        currentObjects={[selected]}
-        onPress={() => {
-          item.correct
-            ? setAnswerIsCorrect(item.correct)
-            : setAnswerIsCorrect(false);
-          setSelected(data.reverse ? item.translation : item.word);
-        }}
-        style={
-          numColumns === 2
-            ? { width: "45%", marginHorizontal: 7, maxWidth: 300 }
-            : null
-        }
+        selected={selected}
+        setSelected={setSelected}
+        setAnswerIsCorrect={setAnswerIsCorrect}
+        numColumns={numColumns}
       />
     );
   };
-
-  return (
-    <QuizScreen
-      routeParams={route.params}
-      navigation={navigation}
-      renderItem={renderChoiceBox}
-      answerIsCorrect={answerIsCorrect}
-      selected={selected}
-      numColumns={numColumns}
-    />
-  );
+  if (!data) {
+    return <></>;
+  } else {
+    return (
+      <QuizScreen
+        navigation={navigation}
+        renderItem={renderChoiceBox}
+        answerIsCorrect={answerIsCorrect}
+        selected={selected}
+        numColumns={numColumns}
+        data={data}
+        instruction={instruction}
+        phrase={phrase}
+      />
+    );
+  }
 }
-
 export default MultipleChoiceScreen;

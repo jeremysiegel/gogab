@@ -4,12 +4,14 @@ import { useWindowDimensions } from "react-native";
 
 import AppText from "../../components/AppText";
 import getExerciseData from "../../api/getExerciseData";
-import ChoiceBox from "../../components/ChoiceBox";
 import defaultStyles from "../../config/styles";
 
 import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
+import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 
+// Creates a multiple choice screen that can take in prompts.
+// TODO: test on iphone 13
 function PromptScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -18,11 +20,18 @@ function PromptScreen({ route, navigation }) {
   const [phrase, setPhrase] = useState();
   const [instruction, setInstruction] = useState();
 
+  const { height } = useWindowDimensions();
+
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
       prompt: true,
     });
+    const numColumns =
+      height - 500 < setUpData.selections.length * 80 ||
+      setUpData.selections.length > 3
+        ? 2
+        : 1;
     setData(setUpData);
     setNumItems(setUpData.selections.length);
     setInstruction(
@@ -32,32 +41,28 @@ function PromptScreen({ route, navigation }) {
     );
     setPhrase(
       <View style={styles.phraseContainer}>
-        <AppText style={[defaultStyles.big, styles.phrase]}>
+        <AppText
+          style={[
+            defaultStyles.big,
+            styles.phrase,
+            numColumns > 1 && height < 700 ? styles.smallPhrase : null,
+          ]}
+        >
           {setUpData.phrase}
         </AppText>
       </View>
     );
   }, []);
-
-  const { height } = useWindowDimensions();
-
-  const numColumns = height - 300 < numItems * 80 || numItems > 6 ? 2 : 1;
+  const numColumns = height - 500 < numItems * 80 || numItems > 3 ? 2 : 1;
   const renderChoiceBox = (item) => {
     return (
-      <ChoiceBox
+      <RenderChoiceBoxes
+        data={item}
         title={item.word}
-        currentObjects={[selected]}
-        onPress={() => {
-          item.correct
-            ? setAnswerIsCorrect(item.correct)
-            : setAnswerIsCorrect(false);
-          setSelected(item.word);
-        }}
-        style={
-          numColumns === 2
-            ? { width: "45%", marginHorizontal: 7, maxWidth: 300 }
-            : null
-        }
+        selected={selected}
+        setSelected={setSelected}
+        setAnswerIsCorrect={setAnswerIsCorrect}
+        numColumns={numColumns}
       />
     );
   };
@@ -66,16 +71,14 @@ function PromptScreen({ route, navigation }) {
   } else {
     return (
       <QuizScreen
-        routeParams={route.params}
         navigation={navigation}
         renderItem={renderChoiceBox}
         answerIsCorrect={answerIsCorrect}
         selected={selected}
         numColumns={numColumns}
-        passInstruction={instruction}
-        passPhrase={phrase}
-        multipleChoice={false}
-        prompt={true}
+        instruction={instruction}
+        phrase={phrase}
+        data={data}
       />
     );
   }
@@ -88,13 +91,19 @@ const styles = StyleSheet.create({
   },
 
   phrase: {
-    color: colors.orange,
+    color: colors.black,
     backgroundColor: colors.primary + "20",
-    marginTop: 50,
+    marginTop: 30,
     borderWidth: 3,
     borderRadius: 10,
-    padding: 20,
-    paddingVertical: 50,
+    paddingHorizontal: 40,
+    paddingVertical: 30,
+    textAlign: "center",
+  },
+  smallPhrase: {
+    fontSize: 30,
+    paddingVertical: 10,
+    marginTop: 20,
   },
 });
 

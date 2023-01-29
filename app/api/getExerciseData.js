@@ -14,10 +14,10 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
   const reverse = data.reverse;
 
   // Get next exercise type for navigation.
-  const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1; //update this when homescreen works
-  const nextExerciseType = lessonData[nextExercise].screenType
+  const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
+  const nextExerciseType = lessonData[exerciseId + 1]
     ? lessonData[nextExercise].screenType
-    : null;
+    : "home"; //update this when endScreen works
 
   const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];

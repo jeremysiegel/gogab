@@ -32,6 +32,26 @@ const lessonData = [
     lessonId: 4,
     title: "Lesson 4",
     style: 2,
+    words: ["good", "please", "goodbye"],
+    supportWords: ["and", "you"],
+    reviewWords: ["hello", "how_are_you"],
+    phrases: ["good and you"],
+    subLesson: [
+      {
+        screenType: "prompt",
+        instruction: "How would you respond?",
+        phrase: "hola, cómo estás",
+        choices: [
+          { word: "adiós, por favor" },
+          { word: "bien, y tú?", correct: "true" },
+        ],
+      },
+    ],
+  },
+  {
+    lessonId: 5,
+    title: "Lesson 5",
+    style: 4,
     words: ["open", "closed"],
     supportWords: ["yes", "no"],
     reviewWords: [],
@@ -40,16 +60,17 @@ const lessonData = [
       {
         screenType: "prompt",
         instruction: "What would the sign below mean?",
-        phrase: "Abierto 9-10",
+        phrase: "Abierto" + "\n" + "9-10",
         choices: [
           { word: "Closed from 9-10" },
+
           { word: "Open from 9-10", correct: "true" },
         ],
       },
       {
         screenType: "prompt",
         instruction: "What would the sign below mean?",
-        phrase: "Cerrado 10-11",
+        phrase: "Cerrado" + "\n" + "10-11",
         choices: [
           { word: "Closed from 10-11", correct: "true" },
           { word: "Open from 10-11" },
