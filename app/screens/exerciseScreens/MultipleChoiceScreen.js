@@ -23,25 +23,26 @@ function MultipleChoiceScreen({ route, navigation }) {
     setNumItems(setUpData.selections.length);
   }, []);
   const { height } = useWindowDimensions();
+
   const numColumns = height - 300 < numItems * 80 || numItems > 6 ? 2 : 1;
   const instruction = instructionText.multipleChoice;
   const phrase = <RenderLearnWord data={data} />;
 
-  const renderChoiceBox = (item) => {
-    return (
-      <RenderChoiceBoxes
-        data={item}
-        title={data.reverse ? item.translation : item.word}
-        selected={selected}
-        setSelected={setSelected}
-        setAnswerIsCorrect={setAnswerIsCorrect}
-        numColumns={numColumns}
-      />
-    );
-  };
   if (!data) {
     return <></>;
   } else {
+    const renderChoiceBox = (item) => {
+      return (
+        <RenderChoiceBoxes
+          data={item}
+          title={data.reverse ? item.translation : item.word}
+          selected={selected}
+          setSelected={setSelected}
+          setAnswerIsCorrect={setAnswerIsCorrect}
+          numColumns={numColumns}
+        />
+      );
+    };
     return (
       <QuizScreen
         navigation={navigation}

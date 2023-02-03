@@ -63,7 +63,6 @@ const lessonData = [
         phrase: "Abierto" + "\n" + "9-10",
         choices: [
           { word: "Closed from 9-10" },
-
           { word: "Open from 9-10", correct: "true" },
         ],
       },
@@ -77,6 +76,15 @@ const lessonData = [
         ],
       },
     ],
+  },
+  {
+    lessonId: 6,
+    title: "Lesson 6",
+    words: ["open", "closed"],
+    supportWords: ["yes", "no"],
+    reviewWords: [],
+    phrases: [],
+    style: 5,
   },
 ];
 

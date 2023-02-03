@@ -19,7 +19,7 @@ function HomeScreen({ navigation }) {
             "styleId",
             item.style
           );
-          navigation.navigate("lessonNavigator", {
+          navigation.push("lessonNavigator", {
             screen: lessonStyle.sequence[0]
               ? lessonStyle.sequence[0].screens[0]
               : lessonStyle.firstScreen,

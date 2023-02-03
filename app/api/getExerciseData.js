@@ -8,7 +8,6 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
-
   // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
@@ -58,7 +57,6 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
     if (data.word) {
       selections[0] = dictionary[data.word];
       selections[0].correct = true;
-
       dictionaryKeys = dictionaryKeys.filter(
         (element) => dictionary[element].word !== dictionary[data.word].word
       );
@@ -71,13 +69,17 @@ const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
       let randomIndex = Math.floor(Math.random() * dictionaryKeys.length);
       let pushWord = dictionary[dictionaryKeys[randomIndex]];
       let push = true;
-      // Don't use word if it or its translation is already in the selection
+      // Covers first word:
       // Don't use word if it is the same in both languages
+
+      if (pushWord.word === pushWord.translation) {
+        push = false;
+      }
+      // Don't use word if it or its translation is already in the selection
       selections.forEach((selection) => {
         if (
           pushWord.word === selection.word ||
-          pushWord.translation === selection.translation ||
-          pushWord.word === pushWord.translation
+          pushWord.translation === selection.translation
         ) {
           push = false;
         }

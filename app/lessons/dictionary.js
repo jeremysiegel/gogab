@@ -44,6 +44,7 @@ export default dictionary = {
     icon: "praying-hands",
     rank: 1,
   },
+
   yes: {
     word: "yes",
     translation: "sí",
@@ -78,6 +79,7 @@ export default dictionary = {
     pronunciation: "esta",
     rank: 0,
   },
+
   the: {
     word: "the",
     translation: "el",
