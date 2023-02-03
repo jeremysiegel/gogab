@@ -7,7 +7,14 @@ import defaultStyles from "../config/styles";
 
 // Creates a selectable icon with title.
 
-function ChoiceImage({ item, title, onPress, selectedItem }) {
+function ChoiceImage({
+  item,
+  title,
+  onPress,
+  selectedItem,
+  labelSize,
+  fontWeight,
+}) {
   const [selected, setSelected] = useState(false);
   const { height, width } = useWindowDimensions();
 
@@ -32,6 +39,8 @@ function ChoiceImage({ item, title, onPress, selectedItem }) {
           size={Math.min(0.25 * width, 100)}
           label={title}
           backgroundColor={colors.secondary}
+          labelSize={labelSize}
+          labelWeight={fontWeight}
         />
       </View>
     </Selectable>

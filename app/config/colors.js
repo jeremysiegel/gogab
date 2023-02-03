@@ -5,6 +5,7 @@ const colors = {
   secondary: "#5E60CE",
   selected: "#3AB0FF",
   success: "#39FF12",
+  background: "#f8fcfc",
   purple: "#5E60CE",
   orange: "#FF6347",
   yellow: "#ebae19",

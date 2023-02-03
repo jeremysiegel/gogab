@@ -81,15 +81,6 @@ const lessonStyles = [
     sequence: [],
     firstScreen: "prompt",
   },
-  {
-    styleId: 5,
-    sequence: [
-      {
-        screens: ["matching"],
-      },
-    ],
-    firstScreen: "matching",
-  },
 ];
 
 export default lessonStyles;

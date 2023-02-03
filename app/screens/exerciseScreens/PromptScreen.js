@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { useWindowDimensions } from "react-native";
 
 import AppText from "../../components/AppText";
 import getExerciseData from "../../api/getExerciseData";
 import defaultStyles from "../../config/styles";
+import { moderateScale } from "../../utility/scaler";
 
 import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
+import ChoiceImage from "../../components/ChoiceImage";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -20,11 +22,12 @@ function PromptScreen({ route, navigation }) {
   const [phrase, setPhrase] = useState();
   const [instruction, setInstruction] = useState();
 
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
+      screenType: "prompt",
       prompt: true,
     });
     const numColumns =
@@ -41,19 +44,45 @@ function PromptScreen({ route, navigation }) {
     );
     setPhrase(
       <View style={styles.phraseContainer}>
-        <AppText
-          style={[
-            defaultStyles.big,
-            styles.phrase,
-            numColumns > 1 && height < 700 ? styles.smallPhrase : null,
-          ]}
-        >
-          {setUpData.phrase}
-        </AppText>
+        {setUpData.screenSubType === "icon" && (
+          <ChoiceImage
+            item={setUpData}
+            title={setUpData.phrase}
+            labelSize={37}
+            fontWeight={"bold"}
+          />
+        )}
+        {setUpData.screenSubType === "chat" && (
+          <View style={styles.chatContainer}>
+            <AppText style={styles.chatPhrase}>{setUpData.phrase}</AppText>
+            <View style={styles.rightArrow}></View>
+            <View style={styles.rightArrowOverlap}></View>
+          </View>
+        )}
+        {setUpData.screenSubType === "sign" && (
+          <AppText
+            style={[
+              setUpData.screenSubType === "sign"
+                ? styles.signPhrase
+                : setUpData.screenSubType === "chat"
+                ? styles.chatPhrase
+                : null,
+              setUpData.screenSubType === "sign" &&
+              numColumns > 1 &&
+              height < 700
+                ? styles.smallPhrase
+                : null,
+            ]}
+          >
+            {setUpData.phrase}
+          </AppText>
+        )}
       </View>
     );
   }, []);
+
   const numColumns = height - 500 < numItems * 80 || numItems > 3 ? 2 : 1;
+
   const renderChoiceBox = (item) => {
     return (
       <RenderChoiceBoxes
@@ -89,8 +118,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
-
-  phrase: {
+  icon: {},
+  signPhrase: {
+    ...defaultStyles.big,
     color: colors.black,
     backgroundColor: colors.primary + "20",
     marginTop: 30,
@@ -100,10 +130,44 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     textAlign: "center",
   },
+  chatContainer: {
+    backgroundColor: colors.secondary,
+    padding: 10,
+    paddingBottom: 13,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 30,
+    marginRight: "5%",
+    alignSelf: "flex-end",
+    borderRadius: 20,
+  },
+
+  chatPhrase: {
+    color: colors.light,
+    fontSize: moderateScale(30),
+  },
   smallPhrase: {
     fontSize: 30,
     paddingVertical: 10,
     marginTop: 20,
+  },
+  rightArrow: {
+    position: "absolute",
+    backgroundColor: colors.secondary,
+    width: 20,
+    height: 25,
+    bottom: 0,
+    borderBottomLeftRadius: 25,
+    right: -10,
+  },
+  rightArrowOverlap: {
+    position: "absolute",
+    backgroundColor: colors.background,
+    width: 20,
+    height: 35,
+    bottom: -6,
+    borderBottomLeftRadius: 18,
+    right: -20,
   },
 });
 

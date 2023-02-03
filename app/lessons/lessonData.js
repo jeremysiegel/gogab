@@ -39,6 +39,7 @@ const lessonData = [
     subLesson: [
       {
         screenType: "prompt",
+        screenSubType: "sign",
         instruction: "How would you respond?",
         phrase: "hola, cómo estás",
         choices: [
@@ -59,6 +60,7 @@ const lessonData = [
     subLesson: [
       {
         screenType: "prompt",
+        screenSubType: "sign",
         instruction: "What would the sign below mean?",
         phrase: "Abierto" + "\n" + "9-10",
         choices: [
@@ -68,6 +70,7 @@ const lessonData = [
       },
       {
         screenType: "prompt",
+        screenSubType: "sign",
         instruction: "What would the sign below mean?",
         phrase: "Cerrado" + "\n" + "10-11",
         choices: [
@@ -80,11 +83,41 @@ const lessonData = [
   {
     lessonId: 6,
     title: "Lesson 6",
-    words: ["open", "closed"],
-    supportWords: ["yes", "no"],
+    words: [],
+    supportWords: [],
     reviewWords: [],
     phrases: [],
-    style: 5,
+    style: 4,
+    subLesson: [
+      {
+        screenType: "prompt",
+        screenSubType: "sign",
+        instruction: "What would the sign below mean?",
+        phrase: "Abierto" + "\n" + "9-10",
+        choices: [
+          { word: "Closed from 9-10" },
+          { word: "Open from 9-10", correct: "true" },
+        ],
+      },
+      {
+        screenType: "prompt",
+        screenSubType: "chat",
+        instruction: "Choose a response:",
+        phrase: "Hola como estas?",
+        choices: [
+          { word: "Bien y tu", correct: "true" },
+          { word: "por favor" },
+        ],
+      },
+      {
+        screenType: "prompt",
+        screenSubType: "icon",
+        instruction: "What would the sign below mean?",
+        phrase: "Entrada",
+        icon: "arrow-left",
+        choices: [{ word: "Looey", correct: "true" }, { word: "Rooey" }],
+      },
+    ],
   },
 ];
 
