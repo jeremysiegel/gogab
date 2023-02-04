@@ -7,6 +7,7 @@ import getExerciseData from "../../api/getExerciseData";
 import defaultStyles from "../../config/styles";
 import { moderateScale } from "../../utility/scaler";
 
+import Icon from "../../components/Icon";
 import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
@@ -18,7 +19,7 @@ function PromptScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);
   const [data, setData] = useState();
-  const [numItems, setNumItems] = useState();
+  const [numColumns, setNumColumns] = useState();
   const [phrase, setPhrase] = useState();
   const [instruction, setInstruction] = useState();
 
@@ -30,13 +31,15 @@ function PromptScreen({ route, navigation }) {
       screenType: "prompt",
       prompt: true,
     });
-    const numColumns =
-      height - 500 < setUpData.selections.length * 80 ||
+    const setUpNumColumns =
+      height - 550 < setUpData.selections.length * 80 ||
       setUpData.selections.length > 3
         ? 2
         : 1;
+
+    setNumColumns(setUpNumColumns);
+    const smallPhrase = setUpNumColumns > 1 && height < 700;
     setData(setUpData);
-    setNumItems(setUpData.selections.length);
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
@@ -45,12 +48,21 @@ function PromptScreen({ route, navigation }) {
     setPhrase(
       <View style={styles.phraseContainer}>
         {setUpData.screenSubType === "icon" && (
-          <ChoiceImage
-            item={setUpData}
-            title={setUpData.phrase}
-            labelSize={37}
-            fontWeight={"bold"}
-          />
+          <View
+            style={[
+              styles.iconContainer,
+              smallPhrase ? styles.smallPhrase : null,
+            ]}
+          >
+            <Icon
+              name={setUpData.icon}
+              size={Math.min(0.12 * height, 100)}
+              label={setUpData.phrase}
+              backgroundColor={colors.secondary}
+              labelSize={Math.min(0.045 * height, 37)}
+              labelWeight={"bold"}
+            />
+          </View>
         )}
         {setUpData.screenSubType === "chat" && (
           <View style={styles.chatContainer}>
@@ -62,16 +74,8 @@ function PromptScreen({ route, navigation }) {
         {setUpData.screenSubType === "sign" && (
           <AppText
             style={[
-              setUpData.screenSubType === "sign"
-                ? styles.signPhrase
-                : setUpData.screenSubType === "chat"
-                ? styles.chatPhrase
-                : null,
-              setUpData.screenSubType === "sign" &&
-              numColumns > 1 &&
-              height < 700
-                ? styles.smallPhrase
-                : null,
+              setUpData.screenSubType === "sign" ? styles.signPhrase : null,
+              smallPhrase ? styles.smallPhrase : null,
             ]}
           >
             {setUpData.phrase}
@@ -80,8 +84,6 @@ function PromptScreen({ route, navigation }) {
       </View>
     );
   }, []);
-
-  const numColumns = height - 500 < numItems * 80 || numItems > 3 ? 2 : 1;
 
   const renderChoiceBox = (item) => {
     return (
@@ -118,7 +120,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
-  icon: {},
+  iconContainer: {
+    borderColor: colors.dark,
+    backgroundColor: colors.blue + "20",
+    borderWidth: 6,
+    borderRadius: 5,
+    padding: 20,
+    marginTop: 30,
+    maxWidth: 300,
+  },
   signPhrase: {
     ...defaultStyles.big,
     color: colors.black,
@@ -141,7 +151,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     borderRadius: 20,
   },
-
   chatPhrase: {
     color: colors.light,
     fontSize: moderateScale(30),

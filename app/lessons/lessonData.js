@@ -39,7 +39,7 @@ const lessonData = [
     subLesson: [
       {
         screenType: "prompt",
-        screenSubType: "sign",
+        screenSubType: "chat",
         instruction: "How would you respond?",
         phrase: "hola, cómo estás",
         choices: [
@@ -109,6 +109,7 @@ const lessonData = [
           { word: "por favor" },
         ],
       },
+
       {
         screenType: "prompt",
         screenSubType: "icon",

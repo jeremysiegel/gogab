@@ -3,16 +3,17 @@ import { View } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AppText from "./AppText";
 import { moderateScale } from "../utility/scaler";
+import fonts from "../config/fonts";
 
 function Icon({
   name,
-  size = 40,
+  size = moderateScale(40),
   iconSize = size * 0.6,
   backgroundColor = "#000",
   iconColor = "#fff",
   label,
   labelSize = 26,
-  labelWeight = "normal",
+  labelWeight = "main",
 }) {
   return (
     <View style={{ alignItems: "center" }}>
@@ -32,8 +33,9 @@ function Icon({
         <AppText
           style={{
             fontSize: moderateScale(labelSize),
-            paddingTop: 7,
-            fontWeight: labelWeight,
+            paddingTop: 8,
+            fontFamily: fonts[labelWeight],
+            textAlign: "center",
           }}
         >
           {label}
