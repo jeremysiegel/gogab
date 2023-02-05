@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import getElementFromId from "../utility/getElementFromId";
 import lessonStyles from "../api/lessonStyles";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
+import generateLessonData from "../api/generateLessonData";
+import LessonContext from "../navigation/cycleContext";
 
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
+  const { setLessonData } = useContext(LessonContext);
   const renderItems = ({ item }) => {
     return (
       <AppButton
         title={item.title}
         onPress={() => {
+          const lessonData = generateLessonData(item.lessonId);
+          setLessonData(lessonData);
           const lessonStyle = getElementFromId(
             lessonStyles,
             "styleId",
@@ -23,7 +28,11 @@ function HomeScreen({ navigation }) {
             screen: lessonStyle.sequence[0]
               ? lessonStyle.sequence[0].screens[0]
               : lessonStyle.firstScreen,
-            params: { exerciseId: 1, lessonId: item.lessonId },
+            params: {
+              exerciseId: 1,
+              lessonId: item.lessonId,
+              lessonData: lessonData,
+            },
           });
         }}
         style={styles.button}

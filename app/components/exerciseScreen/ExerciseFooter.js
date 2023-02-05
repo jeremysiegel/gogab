@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
 
 import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
+import LessonContext from "../../navigation/cycleContext";
 
 // Creates footer for the exercise screen.
 function ExerciseFooter({
@@ -14,6 +15,8 @@ function ExerciseFooter({
   touched,
   skippable,
 }) {
+  const { lessonData } = useContext(LessonContext);
+
   return (
     <View style={styles.container}>
       <AppButton
@@ -25,6 +28,7 @@ function ExerciseFooter({
             navigation.push(data.nextExerciseType, {
               exerciseId: data.nextExercise,
               lessonId: data.lessonId,
+              lessonData: lessonData,
             });
           } else {
             setModalVisible(true);
@@ -32,7 +36,7 @@ function ExerciseFooter({
         }}
       />
       <CheckAnswerModal
-        data={data}
+        lessonData={lessonData}
         navigation={navigation}
         nextExercise={data.nextExercise}
         lessonId={data.lessonId}

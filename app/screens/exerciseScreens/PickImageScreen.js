@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import QuizScreen from "./QuizScreen";
 import ChoiceImage from "../../components/ChoiceImage";
@@ -16,6 +16,7 @@ function PickImageScreen({ route, navigation }) {
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
+
       multipleChoice: true,
     });
     setData(setUpData);

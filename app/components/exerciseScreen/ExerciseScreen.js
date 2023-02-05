@@ -30,12 +30,18 @@ function ExerciseScreen({
           currentIndex={exerciseData.index}
           quizLength={exerciseData.quizLength}
         />
-        <View style={styles.textContainer}>
-          <AppText style={[defaultStyles.instructionText, instructionStyle]}>
-            {instruction}
-          </AppText>
-          <View style={styles.phraseContainer}>{phrase}</View>
-        </View>
+        {(instruction || phrase) && (
+          <View style={styles.textContainer}>
+            {instruction && (
+              <AppText
+                style={[defaultStyles.instructionText, instructionStyle]}
+              >
+                {instruction}
+              </AppText>
+            )}
+            {phrase && <View style={styles.phraseContainer}>{phrase}</View>}
+          </View>
+        )}
         <View style={styles.children}>{children}</View>
 
         {footer && (

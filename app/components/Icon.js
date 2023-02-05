@@ -1,19 +1,20 @@
 import React from "react";
 import { View } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./AppText";
 import { moderateScale } from "../utility/scaler";
 import fonts from "../config/fonts";
 
 function Icon({
   name,
-  size = moderateScale(40),
+  size = 40,
   iconSize = size * 0.6,
   backgroundColor = "#000",
   iconColor = "#fff",
   label,
   labelSize = 26,
   labelWeight = "main",
+  iconType,
 }) {
   return (
     <View style={{ alignItems: "center" }}>
@@ -27,7 +28,20 @@ function Icon({
           alignItems: "center",
         }}
       >
-        <FontAwesome5 name={name} color={iconColor} size={iconSize} />
+        {iconType === "material" && (
+          <MaterialCommunityIcons
+            name={name}
+            color={iconColor}
+            size={moderateScale(iconSize)}
+          />
+        )}
+        {iconType === undefined && (
+          <FontAwesome5
+            name={name}
+            color={iconColor}
+            size={moderateScale(iconSize)}
+          />
+        )}
       </View>
       {label && (
         <AppText

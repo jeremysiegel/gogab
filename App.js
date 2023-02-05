@@ -10,8 +10,13 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import SandboxScreen from "./app/screens/SandboxScreen";
 import useFonts from "./hooks/useFonts";
 import MatchingScreen from "./app/screens/exerciseScreens/MatchingScreen";
+import { LogBox } from "react-native";
 
 export default function App() {
+  LogBox.ignoreLogs([
+    'Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.',
+  ]);
+
   const [isReady, setIsReady] = useState();
 
   const LoadFonts = async () => {

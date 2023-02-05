@@ -18,7 +18,7 @@ function CheckAnswerModal({
   lessonId,
   nextExercise,
   nextExerciseType,
-  data,
+  lessonData,
   skippable, // Lets user skip exercise if true.
 }) {
   return (
@@ -75,6 +75,7 @@ function CheckAnswerModal({
                   navigation.push(nextExerciseType, {
                     exerciseId: nextExercise,
                     lessonId: lessonId,
+                    lessonData: lessonData,
                   });
                 } else {
                   setModalVisible(!modalVisible);
@@ -91,6 +92,7 @@ function CheckAnswerModal({
                   navigation.push(nextExerciseType, {
                     exerciseId: nextExercise,
                     lessonId: lessonId,
+                    lessonData: lessonData,
                   });
                 }}
               />

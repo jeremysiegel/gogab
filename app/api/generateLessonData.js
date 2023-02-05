@@ -16,6 +16,10 @@ function generateLessonData(lessonId) {
   const sequence = style.sequence;
   let lesson = {};
   let exerciseNumber = 1;
+  // Track sublessons to be inserted into lessonStyles. Each sublesson should have a "displayAfter" property.
+  // displayAfter should start from 1, indicating how many times word should come up before subLesson is inserted.
+  let subLessonTracker = data.subLessons;
+  let subLessonData;
 
   // Iterates through each exerciseSet in the lesson sequence
   // to create data objects for individual exercise screens
@@ -34,23 +38,40 @@ function generateLessonData(lessonId) {
         data[wordType].forEach((word) => {
           // For each screen type desired
           exerciseSet.screens.forEach((screen) => {
+            subLessonTracker.forEach((subTrackerWord) => {
+              // Push sublesson if it is time for it;
+              if (subTrackerWord.word === word) {
+                subTrackerWord.displayAfter--;
+
+                if (subTrackerWord.displayAfter === 0) {
+                  subLessonData = subTrackerWord;
+                }
+              }
+            });
             // Push a new exercise for that word of the screen type
             lesson[exerciseNumber] = {
               screenType: screen,
-              word: word,
+              word: word.word ? word.word : word,
               reverse: exerciseSet.reverse,
             };
             exerciseNumber++;
+            if (subLessonData) {
+              lesson[exerciseNumber] = {
+                ...subLessonData,
+              };
+              exerciseNumber++;
+              subLessonData = null;
+            }
           });
         });
       });
     }
   });
 
-  if (data.subLesson) {
-    data.subLesson.forEach((subLesson) => {
+  if (data.endLesson) {
+    data.endLesson.forEach((endLesson) => {
       lesson[exerciseNumber] = {
-        ...subLesson,
+        ...endLesson,
       };
       exerciseNumber++;
     });

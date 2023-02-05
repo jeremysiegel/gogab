@@ -11,6 +11,7 @@ import CheckAnswerModal from "../../components/exerciseScreen/CheckAnswerModal";
 function MatchingScreen({ route, navigation }) {
   const [data, setData] = useState();
   const [instruction, setInstruction] = useState();
+
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,

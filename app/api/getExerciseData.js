@@ -1,10 +1,15 @@
 import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
-import generateLessonData from "./generateLessonData";
 
-const getExerciseData = ({ exerciseId, lessonId, multipleChoice, prompt }) => {
+const getExerciseData = ({
+  exerciseId,
+  lessonId,
+  lessonData,
+  multipleChoice,
+  prompt,
+  tip,
+}) => {
   // Get lesson length and exercise index for progress bar.
-  const lessonData = generateLessonData(lessonId);
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;

@@ -88,7 +88,7 @@ const lessonData = [
     reviewWords: [],
     phrases: [],
     style: 4,
-    subLesson: [
+    endLesson: [
       {
         screenType: "prompt",
         screenSubType: "sign",
@@ -117,6 +117,29 @@ const lessonData = [
         phrase: "Entrada",
         icon: "arrow-left",
         choices: [{ word: "Looey", correct: "true" }, { word: "Rooey" }],
+      },
+    ],
+  },
+  {
+    lessonId: 7,
+    title: "Lesson 7",
+    words: ["hello", "goodbye"],
+    supportWords: [],
+    reviewWords: [],
+    phrases: [],
+    style: 1,
+    subLessons: [
+      {
+        screenType: "tip",
+        tip: "Bananas are good for you. You should eat many bananas on your trip.",
+        displayAfter: 2,
+        word: "hello",
+      },
+      {
+        screenType: "tip",
+        tip: "Apples are good for you. You should eat many apples on your trip.",
+        displayAfter: 1,
+        word: "goodbye",
       },
     ],
   },

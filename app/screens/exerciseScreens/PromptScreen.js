@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   signPhrase: {
     ...defaultStyles.big,
     color: colors.black,
-    backgroundColor: colors.primary + "20",
+    backgroundColor: colors.blue + "20",
     marginTop: 30,
     borderWidth: 3,
     borderRadius: 10,

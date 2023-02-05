@@ -81,6 +81,11 @@ const lessonStyles = [
     sequence: [],
     firstScreen: "prompt",
   },
+  {
+    styleId: 5,
+    sequence: [],
+    firstScreen: "tip",
+  },
 ];
 
 export default lessonStyles;
