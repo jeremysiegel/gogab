@@ -7,36 +7,37 @@ const lessonData = [
     style: 1,
     words: ["bathroom", "where"],
     supportWords: ["is"],
-    reviewWords: ["where", "bathroom"],
     phrases: ["where is the bathroom?"],
   },
+
   {
     lessonId: 2,
     title: "Lesson 2",
-    style: 2,
-    words: ["excuse_me", "thank_you"],
+    style: 3,
+    words: ["hello", "good_morning", "how_are_you"],
     supportWords: [],
-    reviewWords: ["where", "bathroom"],
-    phrases: ["excuse_me where is the bathroom? thank_you."],
+    reviewWords: ["bathroom", "where"],
+    phrases: ["hello good_morning", "hello how_are_you"],
+    subLessons: [
+      {
+        screenType: "tip",
+        title: "Greetings in Spanish",
+        tip: "In Spanish there are different greetings for different times of day. We'll get to other time specific greetings later.",
+        word: "good_morning",
+        displayAfter: 1,
+      },
+    ],
   },
+
   {
     lessonId: 3,
     title: "Lesson 3",
     style: 3,
-    words: ["hello", "how_are_you"],
-    supportWords: [],
-    reviewWords: ["thank_you", "bathroom"],
-    phrases: ["hello how_are_you", "excuse_me hello how_are_you"],
-  },
-  {
-    lessonId: 4,
-    title: "Lesson 4",
-    style: 2,
     words: ["good", "please", "goodbye"],
     supportWords: ["and", "you"],
     reviewWords: ["hello", "how_are_you"],
     phrases: ["good and you"],
-    subLesson: [
+    endLesson: [
       {
         screenType: "prompt",
         screenSubType: "chat",
@@ -44,20 +45,52 @@ const lessonData = [
         phrase: "hola, cómo estás",
         choices: [
           { word: "adiós, por favor" },
-          { word: "bien, y tú?", correct: "true" },
+          { word: "bien, y tú?", correct: true },
         ],
       },
     ],
   },
   {
+    lessonId: 4,
+    title: "Lesson 4",
+    style: 2,
+    words: ["excuse_me", "thank_you"],
+    supportWords: [],
+    reviewWords: ["good", "please", "goodbye", "hello"],
+    phrases: ["excuse_me where is the bathroom? thank_you."],
+    endLesson: [
+      {
+        screenType: "prompt",
+        screenSubType: "chat",
+        instruction: "What should you say?",
+        phrase: "I'm leaving now.",
+        choices: [
+          { word: "adiós", correct: true },
+          { word: "hola" },
+          { word: "perdón" },
+        ],
+      },
+    ],
+  },
+  /*
+  {
     lessonId: 5,
     title: "Lesson 5",
-    style: 4,
+    style: 3,
+    words: [],
+    supportWords: [],
+    reviewWords: ["hello", "thank_you", "please", "goodbye"],
+    phrases: ["hello how_are_you", "good, and you?"],
+  },
+  {
+    lessonId: 6,
+    title: "Lesson 6",
+    style: 2,
     words: ["open", "closed"],
     supportWords: ["yes", "no"],
     reviewWords: [],
     phrases: [],
-    subLesson: [
+    endLesson: [
       {
         screenType: "prompt",
         screenSubType: "sign",
@@ -81,13 +114,13 @@ const lessonData = [
     ],
   },
   {
-    lessonId: 6,
-    title: "Lesson 6",
+    lessonId: 7,
+    title: "Lesson 7",
     words: [],
     supportWords: [],
     reviewWords: [],
     phrases: [],
-    style: 4,
+    style: 5,
     endLesson: [
       {
         screenType: "prompt",
@@ -120,29 +153,7 @@ const lessonData = [
       },
     ],
   },
-  {
-    lessonId: 7,
-    title: "Lesson 7",
-    words: ["hello", "goodbye"],
-    supportWords: [],
-    reviewWords: [],
-    phrases: [],
-    style: 1,
-    subLessons: [
-      {
-        screenType: "tip",
-        tip: "Bananas are good for you. You should eat many bananas on your trip.",
-        displayAfter: 2,
-        word: "hello",
-      },
-      {
-        screenType: "tip",
-        tip: "Apples are good for you. You should eat many apples on your trip.",
-        displayAfter: 1,
-        word: "goodbye",
-      },
-    ],
-  },
+  */
 ];
 
 export default lessonData;

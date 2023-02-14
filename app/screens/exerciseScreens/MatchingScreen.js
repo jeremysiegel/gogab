@@ -15,7 +15,7 @@ function MatchingScreen({ route, navigation }) {
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
-      multipleChoice: true,
+      matching: true,
     });
     setData(setUpData);
     setInstruction(instructionText[setUpData.screenType]);
@@ -44,6 +44,7 @@ function MatchingScreen({ route, navigation }) {
           correctAnswer={true}
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
+          lessonData={route.params.lessonData}
         />
       </ExerciseScreen>
     );

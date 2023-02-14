@@ -1,5 +1,7 @@
 import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
+import lessonObject from "../lessons/lessonData";
+import getElementFromId from "../utility/getElementFromId";
 
 const getExerciseData = ({
   exerciseId,
@@ -7,7 +9,7 @@ const getExerciseData = ({
   lessonData,
   multipleChoice,
   prompt,
-  tip,
+  matching,
 }) => {
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
@@ -50,7 +52,7 @@ const getExerciseData = ({
   const selections = [];
 
   // If it is a multiple choice exercise, select other choices
-  if (multipleChoice) {
+  if (multipleChoice || matching) {
     let dictionaryKeys = Object.keys(dictionary);
     // Remove rank 0 words (conjunctions, etc)
     dictionaryKeys = dictionaryKeys.filter(
@@ -58,6 +60,17 @@ const getExerciseData = ({
     );
     // Total number of choices
     let numItems = 4;
+    // For matching game, select only lesson words
+    if (matching) {
+      const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
+      dictionaryKeys = lesson.words;
+      if (dictionaryKeys.length < numItems) {
+        dictionaryKeys = dictionaryKeys.concat(lesson.reviewWords);
+      }
+      if (dictionaryKeys.length < numItems) {
+        dictionaryKeys = dictionaryKeys.concat(lesson.supportWords);
+      }
+    }
     // If there is a correct answer, include the correct answer
     if (data.word) {
       selections[0] = dictionary[data.word];

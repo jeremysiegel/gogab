@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     marginTop: 20,
   },
   titleTextContainer: {

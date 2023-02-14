@@ -114,6 +114,13 @@ export default dictionary = {
     icon: "thumbs-up",
     rank: 2,
   },
+  good_morning: {
+    word: "good morning",
+    translation: "buenos días",
+    pronunciation: "bwenos deeas",
+    icon: "hand-sparkles",
+    rank: 2,
+  },
   and: {
     word: "and",
     translation: "y",

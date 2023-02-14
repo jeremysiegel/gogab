@@ -18,7 +18,7 @@ function generateLessonData(lessonId) {
   let exerciseNumber = 1;
   // Track sublessons to be inserted into lessonStyles. Each sublesson should have a "displayAfter" property.
   // displayAfter should start from 1, indicating how many times word should come up before subLesson is inserted.
-  let subLessonTracker = data.subLessons;
+  let subLessonTracker = data.subLessons ? data.subLessons : [];
   let subLessonData;
 
   // Iterates through each exerciseSet in the lesson sequence

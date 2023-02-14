@@ -9,7 +9,7 @@ import SentenceBuilder from "../../components/SentenceBuilder";
 // Creates a user-interactive sentence builder screen.
 
 function SentenceBuilderScreen({ route, navigation }) {
-  const data = getExerciseData.getExerciseData(route.params);
+  const data = getExerciseData.getExerciseData({ ...route.params });
   const instruction = instructionText[data.screenType];
   const [complete, setComplete] = useState(false);
 
