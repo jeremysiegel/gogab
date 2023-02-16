@@ -57,13 +57,13 @@ const lessonStyles = [
     styleId: 3,
     sequence: [
       {
-        screens: ["newWord", "multipleChoice"],
-        wordType: ["words"],
-      },
-      {
         screens: ["pickImage"],
         wordType: ["reviewWords"],
         reverse: true,
+      },
+      {
+        screens: ["newWord", "pickImage"],
+        wordType: ["words"],
       },
       {
         screens: ["multipleChoice"],
@@ -87,8 +87,9 @@ const lessonStyles = [
     styleId: 4,
     sequence: [
       {
-        screens: ["pickImage"],
-        wordType: ["reviewWords"],
+        screens: ["pickImage", "multipleChoice"],
+        wordType: ["words"],
+        reverse: true,
       },
       {
         screens: ["multipleChoice"],
@@ -96,10 +97,21 @@ const lessonStyles = [
         reverse: true,
       },
       {
-        screens: ["matching"],
+        screens: ["multipleChoice"],
+        wordType: ["supportWords"],
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["words"],
+      },
+
+      {
+        screens: ["sentenceBuilder"],
+        wordType: ["phrases"],
       },
     ],
   },
+
   {
     styleId: 5,
     sequence: [],

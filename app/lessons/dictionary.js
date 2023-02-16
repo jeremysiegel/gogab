@@ -111,7 +111,7 @@ export default dictionary = {
     word: "good",
     translation: "bien",
     pronunciation: "bee-en",
-    icon: "thumbs-up",
+    icon: "smile-beam",
     rank: 2,
   },
   good_morning: {

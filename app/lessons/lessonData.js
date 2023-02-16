@@ -14,7 +14,7 @@ const lessonData = [
   {
     lessonId: 2,
     title: "Lesson 2",
-    style: 3,
+    style: 2,
     words: ["hello", "good_morning", "how_are_you"],
     supportWords: [],
     reviewWords: ["bathroom", "where"],
@@ -54,7 +54,7 @@ const lessonData = [
   {
     lessonId: 4,
     title: "Lesson 4",
-    style: 2,
+    style: 3,
     words: ["excuse_me", "thank_you"],
     supportWords: [],
     reviewWords: ["good", "please", "goodbye", "hello"],

@@ -15,6 +15,7 @@ const getExerciseData = ({
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
+  console.log(quizLength);
   // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
@@ -65,7 +66,6 @@ const getExerciseData = ({
       const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
       dictionaryKeys = lesson.words;
       if (dictionaryKeys.length < numItems && lesson.reviewWords) {
-        console.log("ran2");
         dictionaryKeys = dictionaryKeys.concat(lesson.reviewWords);
       }
       if (dictionaryKeys.length < numItems && lesson.supportWords) {
