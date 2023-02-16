@@ -64,10 +64,11 @@ const getExerciseData = ({
     if (matching) {
       const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
       dictionaryKeys = lesson.words;
-      if (dictionaryKeys.length < numItems) {
+      if (dictionaryKeys.length < numItems && lesson.reviewWords) {
+        console.log("ran2");
         dictionaryKeys = dictionaryKeys.concat(lesson.reviewWords);
       }
-      if (dictionaryKeys.length < numItems) {
+      if (dictionaryKeys.length < numItems && lesson.supportWords) {
         dictionaryKeys = dictionaryKeys.concat(lesson.supportWords);
       }
     }

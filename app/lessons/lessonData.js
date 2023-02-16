@@ -6,6 +6,7 @@ const lessonData = [
     title: "Lesson 1",
     style: 1,
     words: ["bathroom", "where"],
+    // reviewWords: [],
     supportWords: ["is"],
     phrases: ["where is the bathroom?"],
   },
