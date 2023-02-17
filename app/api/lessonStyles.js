@@ -1,6 +1,22 @@
 // Lesson style objects. Requires a styleId and sequence of exercises
 // Each exercise requires screen type(s). Certain screens require a wordType.
-// If there are no screens in the sequence, must set "firstScreen"
+
+/*
+
+Lesson styles:
+
+1. Short intro: newWord pickImage
+2. newWord first
+3. reviewWord pickImage first
+4. No newWord for words
+5. reviewWord MC first
+6. newWord pickImage, reviewword pickimage
+7. reviewWord pickImage, newWord pickImage
+8. all MC
+9. firstScreen prompt, no words
+
+*/
+
 const lessonStyles = [
   {
     styleId: 1,
@@ -59,7 +75,6 @@ const lessonStyles = [
       {
         screens: ["pickImage"],
         wordType: ["reviewWords"],
-        reverse: true,
       },
       {
         screens: ["newWord", "pickImage"],
@@ -117,7 +132,6 @@ const lessonStyles = [
       {
         screens: ["multipleChoice"],
         wordType: ["reviewWords"],
-        reverse: true,
       },
       {
         screens: ["pickImage", "multipleChoice"],
@@ -229,7 +243,11 @@ const lessonStyles = [
   {
     styleId: 9,
     sequence: [],
-    firstScreen: "prompt",
+  },
+  {
+    styleId: 10,
+    sequence: [],
+    firstScreen: "review",
   },
 ];
 

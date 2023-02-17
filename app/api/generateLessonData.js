@@ -4,8 +4,8 @@ import getElementFromId from "../utility/getElementFromId";
 
 /*
 Takes in lessonData and creates a lesson
-from the lessonStyle. Used by getExercisedata to
-generate an exercise screen.
+from the lessonStyle. Used by HomeScreen to
+generate data object for getExerciseData.
 */
 
 function generateLessonData(lessonId) {

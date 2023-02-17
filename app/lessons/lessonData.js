@@ -73,6 +73,15 @@ const lessonData = [
       },
     ],
   },
+  {
+    lessonId: 5,
+    title: "Review 1",
+    style: 1,
+    words: [],
+    reviewWords: [],
+    supportWords: [],
+    phrases: [],
+  },
   /*
   {
     lessonId: 5,
@@ -114,6 +123,7 @@ const lessonData = [
       },
     ],
   },
+  */
   {
     lessonId: 7,
     title: "Lesson 7",
@@ -121,7 +131,7 @@ const lessonData = [
     supportWords: [],
     reviewWords: [],
     phrases: [],
-    style: 5,
+    style: 9,
     endLesson: [
       {
         screenType: "prompt",
@@ -154,7 +164,7 @@ const lessonData = [
       },
     ],
   },
-  */
+  
 ];
 
 export default lessonData;

@@ -10,6 +10,8 @@ import LessonContext from "../navigation/cycleContext";
 
 // Home screen of app.
 
+const exerciseId = 1;
+
 function HomeScreen({ navigation }) {
   const { setLessonData } = useContext(LessonContext);
   const renderItems = ({ item }) => {
@@ -19,17 +21,11 @@ function HomeScreen({ navigation }) {
         onPress={() => {
           const lessonData = generateLessonData(item.lessonId);
           setLessonData(lessonData);
-          const lessonStyle = getElementFromId(
-            lessonStyles,
-            "styleId",
-            item.style
-          );
+
           navigation.push("lessonNavigator", {
-            screen: lessonStyle.sequence[0]
-              ? lessonStyle.sequence[0].screens[0]
-              : lessonStyle.firstScreen,
+            screen: lessonData[exerciseId].screenType,
             params: {
-              exerciseId: 1,
+              exerciseId: exerciseId,
               lessonId: item.lessonId,
               lessonData: lessonData,
             },
