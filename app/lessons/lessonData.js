@@ -18,15 +18,6 @@ const lessonData = [
     supportWords: [],
     reviewWords: ["bathroom", "where"],
     phrases: ["hello good_morning", "hello how_are_you"],
-    subLessons: [
-      {
-        screenType: "tip",
-        title: "Greetings in Spanish",
-        tip: "In Spanish there are different greetings for different times of day. We'll get to other time specific greetings later.",
-        word: "good_morning",
-        displayAfter: 1,
-      },
-    ],
   },
   {
     lessonId: 3,

@@ -2,6 +2,7 @@ import lessonData from "../lessons/lessonData";
 import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
 import allPrompts from "../lessons/prompts";
+import subLessons from "../lessons/subLessons";
 
 /*
 Takes in lessonData and creates a lesson
@@ -10,6 +11,7 @@ generate data object for getExerciseData.
 */
 
 function generateLessonData(lessonId) {
+  console.log(lessonId);
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
   // Gets data about the style and sequence of lesson
@@ -19,7 +21,9 @@ function generateLessonData(lessonId) {
   let exerciseNumber = 1;
   // Track sublessons to be inserted into lessonStyles. Each sublesson should have a "displayAfter" property.
   // displayAfter should start from 1, indicating how many times word should come up before subLesson is inserted.
-  let subLessonTracker = data.subLessons ? data.subLessons : [];
+  let subLessonTracker = subLessons[lessonId]
+    ? JSON.parse(JSON.stringify(subLessons[lessonId]))
+    : [];
   let subLessonData;
 
   if (sequence[0].screens[0] === "review") {
