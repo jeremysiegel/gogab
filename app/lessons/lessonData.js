@@ -76,7 +76,7 @@ const lessonData = [
   {
     lessonId: 5,
     title: "Review 1",
-    style: 1,
+    style: 10,
     words: [],
     reviewWords: [],
     supportWords: [],
@@ -164,7 +164,6 @@ const lessonData = [
       },
     ],
   },
-  
 ];
 
 export default lessonData;

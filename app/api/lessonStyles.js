@@ -246,8 +246,7 @@ const lessonStyles = [
   },
   {
     styleId: 10,
-    sequence: [],
-    firstScreen: "review",
+    sequence: [{ screens: ["review"] }],
   },
 ];
 
