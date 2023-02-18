@@ -4,18 +4,15 @@ export default prompts = [
     screenType: "prompt",
     screenSubType: "chat",
     instruction: "How would you respond?",
-    phrase: "hola, cómo estás?",
-    choices: [
-      { word: "hola, por favor?" },
-      { word: "bien, y tú?", correct: true },
-    ],
+    phrase: 1,
+    choices: [{ phrase: 6 }, { phrase: 2, correct: true }],
   },
   {
     promptId: 2,
     screenType: "prompt",
     screenSubType: "chat",
     instruction: "How would you respond?",
-    phrase: "adios",
-    choices: [{ word: "hola" }, { word: "hasta luego", correct: true }],
+    phrase: 3,
+    choices: [{ phrase: 4 }, { phrase: 5, correct: true }],
   },
 ];

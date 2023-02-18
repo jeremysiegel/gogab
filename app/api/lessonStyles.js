@@ -242,7 +242,7 @@ const lessonStyles = [
   },
   {
     styleId: 9,
-    sequence: [],
+    sequence: [{ screens: ["prompt"] }],
   },
   {
     styleId: 10,

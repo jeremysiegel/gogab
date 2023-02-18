@@ -12,6 +12,8 @@ import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 import ChoiceImage from "../../components/ChoiceImage";
+import getElementFromId from "../../utility/getElementFromId";
+import phraseDictionary from "../../lessons/phraseDictionary";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -40,6 +42,12 @@ function PromptScreen({ route, navigation }) {
     setNumColumns(setUpNumColumns);
     const smallPhrase = setUpNumColumns > 1 && height < 700;
     setData(setUpData);
+    const phrase = getElementFromId(
+      phraseDictionary,
+      "phraseId",
+      setUpData.phrase
+    );
+    const phraseText = phrase.es;
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
@@ -57,7 +65,7 @@ function PromptScreen({ route, navigation }) {
             <Icon
               name={setUpData.icon}
               size={Math.min(0.12 * height, 100)}
-              label={setUpData.phrase}
+              label={phraseText}
               backgroundColor={colors.secondary}
               labelSize={Math.min(0.045 * height, 37)}
               labelWeight={"bold"}
@@ -66,7 +74,7 @@ function PromptScreen({ route, navigation }) {
         )}
         {setUpData.screenSubType === "chat" && (
           <View style={styles.chatContainer}>
-            <AppText style={styles.chatPhrase}>{setUpData.phrase}</AppText>
+            <AppText style={styles.chatPhrase}>{phraseText}</AppText>
             <View style={styles.rightArrow}></View>
             <View style={styles.rightArrowOverlap}></View>
           </View>
@@ -78,7 +86,7 @@ function PromptScreen({ route, navigation }) {
               smallPhrase ? styles.smallPhrase : null,
             ]}
           >
-            {setUpData.phrase}
+            {phraseText}
           </AppText>
         )}
       </View>
@@ -86,10 +94,13 @@ function PromptScreen({ route, navigation }) {
   }, []);
 
   const renderChoiceBox = (item) => {
+    const phrase = getElementFromId(phraseDictionary, "phraseId", item.phrase);
+    const boxText = phrase.es;
+
     return (
       <RenderChoiceBoxes
         data={item}
-        title={item.word}
+        title={boxText}
         selected={selected}
         setSelected={setSelected}
         setAnswerIsCorrect={setAnswerIsCorrect}

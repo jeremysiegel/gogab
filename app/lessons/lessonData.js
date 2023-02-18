@@ -19,6 +19,7 @@ const lessonData = [
     reviewWords: ["bathroom", "where"],
     phrases: ["hello good_morning", "hello how_are_you"],
   },
+
   {
     lessonId: 3,
     title: "Lesson 3",
@@ -29,6 +30,7 @@ const lessonData = [
     phrases: ["good and you"],
     prompts: [1],
   },
+
   {
     lessonId: 4,
     title: "Lesson 4",
@@ -48,21 +50,6 @@ const lessonData = [
     supportWords: [],
     reviewWords: ["good", "please", "goodbye", "hello"],
     phrases: ["excuse_me, where is the bathroom? thank_you."],
-    /*
-    endLesson: [
-      {
-        screenType: "prompt",
-        screenSubType: "chat",
-        instruction: "What should you say?",
-        phrase: "I'm leaving now.",
-        choices: [
-          { word: "adiós", correct: true },
-          { word: "hola" },
-          { word: "perdón" },
-        ],
-      },
-    ],
-    */
   },
   {
     lessonId: 6,
@@ -74,15 +61,6 @@ const lessonData = [
     phrases: [],
   },
   /*
-  {
-    lessonId: 5,
-    title: "Lesson 5",
-    style: 3,
-    words: [],
-    supportWords: [],
-    reviewWords: ["hello", "thank_you", "please", "goodbye"],
-    phrases: ["hello how_are_you", "good, and you?"],
-  },
   {
     lessonId: 6,
     title: "Lesson 6",
