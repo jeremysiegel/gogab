@@ -10,7 +10,6 @@ const lessonData = [
     supportWords: ["is"],
     phrases: ["where is the bathroom?"],
   },
-
   {
     lessonId: 2,
     title: "Lesson 2",
@@ -29,36 +28,36 @@ const lessonData = [
       },
     ],
   },
-
   {
     lessonId: 3,
     title: "Lesson 3",
     style: 3,
-    words: ["good", "please", "goodbye"],
+    words: ["please", "good"],
     supportWords: ["and", "you"],
     reviewWords: ["hello", "how_are_you"],
     phrases: ["good and you"],
-    endLesson: [
-      {
-        screenType: "prompt",
-        screenSubType: "chat",
-        instruction: "How would you respond?",
-        phrase: "hola, cómo estás",
-        choices: [
-          { word: "adiós, por favor" },
-          { word: "bien, y tú?", correct: true },
-        ],
-      },
-    ],
+    prompts: [1],
   },
   {
     lessonId: 4,
     title: "Lesson 4",
+    style: 2,
+    words: ["goodbye", "see_you_later"],
+    reviewWords: ["good", "please", "where"],
+    phrases: [],
+    supportWords: [],
+    prompts: [2],
+  },
+
+  {
+    lessonId: 5,
+    title: "Lesson 5",
     style: 3,
     words: ["excuse_me", "thank_you"],
     supportWords: [],
     reviewWords: ["good", "please", "goodbye", "hello"],
-    phrases: ["excuse_me where is the bathroom? thank_you."],
+    phrases: ["excuse_me, where is the bathroom? thank_you."],
+    /*
     endLesson: [
       {
         screenType: "prompt",
@@ -72,9 +71,10 @@ const lessonData = [
         ],
       },
     ],
+    */
   },
   {
-    lessonId: 5,
+    lessonId: 6,
     title: "Review 1",
     style: 10,
     words: [],
@@ -123,7 +123,7 @@ const lessonData = [
       },
     ],
   },
-  */
+  
   {
     lessonId: 7,
     title: "Lesson 7",
@@ -164,6 +164,7 @@ const lessonData = [
       },
     ],
   },
+  */
 ];
 
 export default lessonData;

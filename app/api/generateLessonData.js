@@ -1,6 +1,7 @@
 import lessonData from "../lessons/lessonData";
 import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
+import allPrompts from "../lessons/prompts";
 
 /*
 Takes in lessonData and creates a lesson
@@ -23,16 +24,21 @@ function generateLessonData(lessonId) {
 
   if (sequence[0].screens[0] === "review") {
     function getWords(lessonData) {
-      var words = [];
-      var phrases = [];
+      let words = [];
+      let phrases = [];
+      let prompts = [];
       lessonData.forEach((lesson) => {
         lesson.words ? (words = words.concat(lesson.words)) : (words = words);
         lesson.phrases
           ? (phrases = phrases.concat(lesson.phrases))
           : (phrases = phrases);
+        lesson.prompts
+          ? (prompts = prompts.concat(lesson.prompts))
+          : (prompts = prompts);
       });
-      return { words: words, phrases: phrases };
+      return { words: words, phrases: phrases, prompts: prompts };
     }
+
     const numberOfExercises = 12;
     let exerciseCount = numberOfExercises;
     const screenTypes = ["multipleChoice", "pickImage"];
@@ -40,35 +46,52 @@ function generateLessonData(lessonId) {
     const items = getWords(lessonData);
     let words = items.words;
     let phrases = items.phrases;
+    let prompts = items.prompts;
     let usedWords = [];
 
     while (exerciseCount > 0) {
       let screenType =
         screenTypes[Math.floor(Math.random() * screenTypes.length)];
-      const reverseType =
+      let reverseType =
         reverseTypes[Math.floor(Math.random() * reverseTypes.length)];
       const wordNumber = Math.floor(Math.random() * words.length);
       let word = words[wordNumber];
+      let otherData = null;
       if (
         phrases.length > 0 &&
-        (exerciseCount === numberOfExercises ||
-          exerciseCount === numberOfExercises - 2 ||
-          exerciseCount === numberOfExercises - 4)
+        (exerciseCount === numberOfExercises - 1 ||
+          exerciseCount === numberOfExercises - 3)
       ) {
         const phraseNumber = Math.floor(Math.random() * phrases.length);
         let phrase = phrases[phraseNumber];
         phrases.splice(phraseNumber, 1);
         screenType = "sentenceBuilder";
         word = phrase;
+      } else if (
+        prompts.length > 0 &&
+        (exerciseCount === numberOfExercises ||
+          exerciseCount === numberOfExercises - 2 ||
+          exerciseCount === numberOfExercises - 4)
+      ) {
+        const promptNumber = Math.floor(Math.random() * prompts.length);
+        let promptId = prompts[promptNumber];
+        prompts.splice(promptNumber, 1);
+        screenType = "prompt";
+        console.log(allPrompts);
+        const promptData = getElementFromId(allPrompts, "promptId", promptId);
+        otherData = { ...promptData };
+        word = null;
+        reverseType = null;
       } else {
         const currentWord = words.splice(wordNumber, 1);
-        usedWords.push(currentWord);
+        usedWords.push(currentWord[0]);
         if (words.length === 0) {
           words = usedWords;
           usedWords = [];
         }
       }
       lesson[exerciseCount] = {
+        ...otherData,
         screenType: screenType,
         word: word,
         reverse: reverseType,
@@ -123,6 +146,17 @@ function generateLessonData(lessonId) {
       });
     }
   });
+
+  if (data.prompts) {
+    console.log(prompts);
+    data.prompts.forEach((prompt) => {
+      const promptData = getElementFromId(allPrompts, "promptId", prompt);
+      lesson[exerciseNumber] = {
+        ...promptData,
+      };
+      exerciseNumber++;
+    });
+  }
 
   if (data.endLesson) {
     data.endLesson.forEach((endLesson) => {

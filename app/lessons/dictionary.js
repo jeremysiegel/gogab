@@ -133,4 +133,11 @@ export default dictionary = {
     pronunciation: "too",
     rank: 0,
   },
+  see_you_later: {
+    word: "see you later",
+    translation: "hasta luego",
+    pronunciation: "asta loo-ey-go",
+    rank: 2,
+    icon: "hand-peace",
+  },
 };
