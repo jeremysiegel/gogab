@@ -1,28 +1,39 @@
 import React, { useContext } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import getElementFromId from "../utility/getElementFromId";
-import lessonStyles from "../api/lessonStyles";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
-import sections from "../lessons/sections";
+import lessonData from "../lessons/lessonData";
+import generateLessonData from "../api/generateLessonData";
 import LessonContext from "../navigation/cycleContext";
 
-// Home screen of app.
+// Section screen.
 
-function HomeScreen({ navigation }) {
-  const { setSection } = useContext(LessonContext);
+const exerciseId = 1;
+
+function SectionScreen({ navigation, route }) {
+  const allLessons = JSON.parse(JSON.stringify(lessonData));
+  const sectionLessons = [];
+  allLessons.forEach((lesson) => {
+    if (route.params.lessons.includes(lesson.lessonId)) {
+      sectionLessons.push(lesson);
+    }
+  });
+
+  const { setLessonData } = useContext(LessonContext);
   const renderItems = ({ item }) => {
     return (
       <AppButton
         title={item.title}
         onPress={() => {
-          setSection(item.sectionId);
+          const lesson = generateLessonData(item.lessonId);
+          setLessonData(lesson);
+
           navigation.push("lessonNavigator", {
-            screen: "section",
+            screen: lesson[exerciseId].screenType,
             params: {
-              sectionId: item.sectionId,
-              lessons: item.lessons,
-              title: item.title,
+              exerciseId: exerciseId,
+              lessonId: item.lessonId,
+              lessonData: lesson,
             },
           });
         }}
@@ -37,8 +48,8 @@ function HomeScreen({ navigation }) {
         <View>
           <FlatList
             scrollEnabled={false}
-            data={sections}
-            keyExtractor={(item) => item.sectionId}
+            data={sectionLessons}
+            keyExtractor={(item) => item.lessonId}
             renderItem={renderItems}
             numColumns={2}
             columnWrapperStyle={styles.listContainer}
@@ -64,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default SectionScreen;
