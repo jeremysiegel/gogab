@@ -1,3 +1,5 @@
+// TODO: allow multiple special characters in a word (see strippedArray)
+
 import dictionary from "../lessons/dictionary";
 import shuffle from "../utility/shuffle";
 import lessonObject from "../lessons/lessonData";
@@ -44,9 +46,29 @@ const getExerciseData = ({
   // Push to pronunciation and translation arrays
   strippedWordArray.forEach((element, index) => {
     if (dictionary[element]) {
-      wordArray[index] = dictionary[element].word;
+      if (/\W/.exec(wordArray[index])) {
+        let match = /\W/.exec(wordArray[index]);
+        if (reverse) {
+          wordArray[index] = dictionary[element].word;
+          wordArray[index] =
+            wordArray[index].slice(0, match.index) +
+            match[0] +
+            wordArray[index].slice(match.index);
+          learnWordArray.push(dictionary[element].translation);
+        } else {
+          wordArray[index] = dictionary[element].word;
+
+          learnWordArray[index] = dictionary[element].translation;
+          learnWordArray[index] =
+            learnWordArray[index].slice(0, match.index) +
+            match[0] +
+            learnWordArray[index].slice(match.index);
+        }
+      } else {
+        wordArray[index] = dictionary[element].word;
+        learnWordArray.push(dictionary[element].translation);
+      }
       helpTextArray.push(dictionary[element].pronunciation);
-      learnWordArray.push(dictionary[element].translation);
     }
   });
 

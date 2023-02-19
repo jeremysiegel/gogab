@@ -11,7 +11,6 @@ import Icon from "../../components/Icon";
 import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
-import ChoiceImage from "../../components/ChoiceImage";
 import getElementFromId from "../../utility/getElementFromId";
 import phraseDictionary from "../../lessons/phraseDictionary";
 
