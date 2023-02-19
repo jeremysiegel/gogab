@@ -27,6 +27,7 @@ function ExerciseScreen({
     <>
       <Screen>
         <ExerciseHeader
+          navigation={navigation}
           currentIndex={exerciseData.index}
           quizLength={exerciseData.quizLength}
         />

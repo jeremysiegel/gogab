@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { View, Animated, StyleSheet } from "react-native";
+import { View, Animated, StyleSheet, Pressable, Alert } from "react-native";
 import colors from "../../config/colors";
+import AppText from "../AppText";
 
 // Creates header for exercise screen.
 function ExerciseHeader(props) {
+  const closeAlert = () => {
+    Alert.alert(
+      "You will lose all lesson progress.",
+      "Click on 'cancel' to cancel.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Quit",
+          onPress: () => props.navigation.push("home"),
+        },
+      ],
+      { cancelable: true }
+    );
+  };
   // Generate lesson progress bar.
   let fromValue = (props.currentIndex - 1) / props.quizLength;
   if (fromValue < 0) {
@@ -30,11 +49,15 @@ function ExerciseHeader(props) {
 
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.closeButtonContainer}></View>
       <View style={styles.progressBar}>
         <Animated.View
           style={[styles.progressBarFill, { flex: animatedValue }]}
         />
+      </View>
+      <View style={styles.closeButtonContainer}>
+        <Pressable hitSlop={17} onPress={() => closeAlert()}>
+          <AppText style={styles.closeButton}>X</AppText>
+        </Pressable>
       </View>
     </View>
   );
@@ -46,7 +69,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 25,
   },
-
+  closeButtonContainer: {
+    marginLeft: 10,
+    marginBottom: 2,
+  },
+  closeButton: {
+    fontWeight: "bold",
+    color: colors.medium,
+    fontSize: 25,
+  },
   progressBar: {
     flex: 1,
     flexDirection: "row",
