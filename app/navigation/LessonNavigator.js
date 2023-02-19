@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import MultipleChoiceScreen from "../screens/exerciseScreens/MultipleChoiceScreen";
@@ -11,32 +11,43 @@ import TipScreen from "../screens/exerciseScreens/TipScreen";
 import SectionScreen from "../screens/SectionScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LessonEndScreen from "../screens/LessonEndScreen";
+import AppNavigator from "./AppNavigator";
+import LessonContext from "./cycleContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function LessonNavigator() {
+  const [lessonData, setLessonData] = useState();
+  const [section, setSection] = useState();
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        animation: "fade",
-      }}
+    <LessonContext.Provider
+      value={{ lessonData, setLessonData, section, setSection }}
     >
-      <Stack.Screen
-        name="section"
-        component={SectionScreen}
-        options={{ headerShown: true, headerTitle: "Home" }}
-      />
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          animation: "fade",
+        }}
+      >
+        <Stack.Screen name="homeTab" component={AppNavigator} />
+        <Stack.Screen
+          name="section"
+          component={SectionScreen}
+          options={{ headerShown: true, headerTitle: "Home" }}
+        />
 
-      <Stack.Screen name="home" component={HomeScreen} />
-      <Stack.Screen name="end" component={LessonEndScreen} />
-      <Stack.Screen name="newWord" component={NewPhraseScreen} />
-      <Stack.Screen name="pickImage" component={PickImageScreen} />
-      <Stack.Screen name="multipleChoice" component={MultipleChoiceScreen} />
-      <Stack.Screen name="matching" component={MatchingScreen} />
-      <Stack.Screen name="sentenceBuilder" component={SentenceBuilderScreen} />
-      <Stack.Screen name="prompt" component={PromptScreen} />
-      <Stack.Screen name="tip" component={TipScreen} />
-    </Stack.Navigator>
+        <Stack.Screen name="end" component={LessonEndScreen} />
+        <Stack.Screen name="newWord" component={NewPhraseScreen} />
+        <Stack.Screen name="pickImage" component={PickImageScreen} />
+        <Stack.Screen name="multipleChoice" component={MultipleChoiceScreen} />
+        <Stack.Screen name="matching" component={MatchingScreen} />
+        <Stack.Screen
+          name="sentenceBuilder"
+          component={SentenceBuilderScreen}
+        />
+        <Stack.Screen name="prompt" component={PromptScreen} />
+        <Stack.Screen name="tip" component={TipScreen} />
+      </Stack.Navigator>
+    </LessonContext.Provider>
   );
 }

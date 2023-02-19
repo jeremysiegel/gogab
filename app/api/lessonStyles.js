@@ -26,7 +26,7 @@ const lessonStyles = [
         screens: ["newWord", "pickImage"],
         wordType: ["words"],
       },
-      /*
+
       {
         screens: ["multipleChoice"],
         wordType: ["supportWords"],
@@ -34,7 +34,7 @@ const lessonStyles = [
       {
         screens: ["matching"],
       },
-      */
+
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],

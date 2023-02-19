@@ -15,9 +15,7 @@ function HomeScreen({ navigation }) {
         title={item.title}
         onPress={() => {
           setSection(item.sectionId);
-          navigation.push("lessonNavigator", {
-            screen: "section",
-          });
+          navigation.push("section");
         }}
         style={styles.button}
       />

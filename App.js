@@ -7,6 +7,7 @@ import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import AppNavigator from "./app/navigation/AppNavigator";
+import LessonNavigator from "./app/navigation/LessonNavigator";
 import useFonts from "./hooks/useFonts";
 import { LogBox } from "react-native";
 
@@ -52,7 +53,7 @@ export default function App() {
       <NavigationContainer>
         <NativeBaseProvider>
           <View style={styles.container}>
-            <AppNavigator />
+            <LessonNavigator />
           </View>
         </NativeBaseProvider>
       </NavigationContainer>

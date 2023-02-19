@@ -13,7 +13,7 @@ function LessonEndScreen({ navigation }) {
           navigation.dispatch(
             CommonActions.reset({
               index: 1,
-              routes: [{ name: "home" }, { name: "section" }],
+              routes: [{ name: "homeTab" }, { name: "section" }],
             })
           );
         }}

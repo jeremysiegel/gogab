@@ -1,30 +1,53 @@
 import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import LessonNavigator from "./LessonNavigator";
 import HomeScreen from "../screens/HomeScreen";
 import SectionScreen from "../screens/SectionScreen";
 import LessonContext from "./cycleContext";
+import colors from "../config/colors";
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
-  const [lessonData, setLessonData] = useState();
-  const [section, setSection] = useState();
-
   return (
-    <LessonContext.Provider
-      value={{ lessonData, setLessonData, section, setSection }}
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          //height: Platform.OS === "ios" ? 85 : 55,
+          // height: Dimensions.get("window").height * 0.075,
+          marginTop: 4,
+          borderTopWidth: 0,
+          elevation: 0,
+        },
+
+        tabBarLabelStyle: {
+          fontSize: Platform.OS === "ios" ? 14 : 13,
+          marginVertical: 2,
+        },
+        tabBarIconStyle: {
+          //  marginBottom: 2,
+        },
+      }}
     >
-      <Stack.Navigator
-        screenOptions={{
+      <Tab.Screen
+        name="home"
+        component={HomeScreen}
+        options={{
           headerShown: false,
-          animation: "slide_from_right",
+          tabBarLabel: "Learn",
+
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="book"
+              color={colors.primary}
+              size={30}
+            />
+          ),
         }}
-      >
-        <Stack.Screen name="home" component={HomeScreen} />
-        <Stack.Screen name="lessonNavigator" component={LessonNavigator} />
-      </Stack.Navigator>
-    </LessonContext.Provider>
+      />
+    </Tab.Navigator>
   );
 }

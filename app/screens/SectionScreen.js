@@ -33,13 +33,11 @@ function SectionScreen({ navigation }) {
           const lesson = generateLessonData(item.lessonId);
           setLessonData(lesson);
 
-          navigation.push("lessonNavigator", {
+          navigation.push(lesson[exerciseId].screenType, {
             screen: lesson[exerciseId].screenType,
-            params: {
-              exerciseId: exerciseId,
-              lessonId: item.lessonId,
-              lessonData: lesson,
-            },
+            exerciseId: exerciseId,
+            lessonId: item.lessonId,
+            lessonData: lesson,
           });
         }}
         style={styles.button}
