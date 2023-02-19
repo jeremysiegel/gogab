@@ -16,6 +16,7 @@ function SectionScreen({ navigation }) {
   const { section, setLessonData } = useContext(LessonContext);
 
   const sectionData = getElementFromId(sections, "sectionId", section);
+  // Makes a deep copy.
   const allLessons = JSON.parse(JSON.stringify(lessonData));
   const sectionLessons = [];
   allLessons.forEach((lesson) => {

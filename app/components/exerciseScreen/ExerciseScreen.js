@@ -6,6 +6,7 @@ import ExerciseHeader from "./ExerciseHeader";
 import Screen from "../Screen";
 import ExerciseFooter from "./ExerciseFooter";
 import defaultStyles from "../../config/styles";
+import BackButtonExitHandler from "../../utility/backHandler";
 
 // Generates container screen for exercises.
 // Displays in order of instruction, phrase, then exercise.
@@ -22,6 +23,8 @@ function ExerciseScreen({
   footer = true,
   skippable,
 }) {
+  BackButtonExitHandler();
+
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>

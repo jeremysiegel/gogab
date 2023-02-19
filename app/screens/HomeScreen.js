@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import getElementFromId from "../utility/getElementFromId";
-import lessonStyles from "../api/lessonStyles";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import sections from "../lessons/sections";

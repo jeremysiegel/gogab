@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import DuoDragDrop, {
   Word,
   Lines,
-  DuoDragDropRef,
+  DuoDragDropRef, // Don't erase this.
 } from "@jamsch/react-native-duo-drag-drop";
 import colors from "../config/colors";
 import shuffle from "../utility/shuffle";

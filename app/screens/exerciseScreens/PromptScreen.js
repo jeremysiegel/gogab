@@ -16,6 +16,7 @@ import phraseDictionary from "../../lessons/phraseDictionary";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
+
 function PromptScreen({ route, navigation }) {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
   const [selected, setSelected] = useState(false);

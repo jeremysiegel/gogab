@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import ChoiceBox from "./ChoiceBox";
 function RenderChoiceBoxes({
@@ -28,9 +28,5 @@ function RenderChoiceBoxes({
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default RenderChoiceBoxes;

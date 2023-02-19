@@ -7,9 +7,7 @@ import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import AppNavigator from "./app/navigation/AppNavigator";
-import SandboxScreen from "./app/screens/SandboxScreen";
 import useFonts from "./hooks/useFonts";
-import MatchingScreen from "./app/screens/exerciseScreens/MatchingScreen";
 import { LogBox } from "react-native";
 
 export default function App() {

@@ -1,3 +1,5 @@
+// Section organizer
+
 export default sections = [
   {
     sectionId: 1,

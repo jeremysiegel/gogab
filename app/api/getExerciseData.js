@@ -26,7 +26,7 @@ const getExerciseData = ({
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
   const nextExerciseType = lessonData[exerciseId + 1]
     ? lessonData[nextExercise].screenType
-    : "section"; //update this when endScreen works
+    : "end";
 
   const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];

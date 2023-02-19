@@ -5,6 +5,9 @@ import AppText from "./AppText";
 import { moderateScale } from "../utility/scaler";
 import fonts from "../config/fonts";
 
+// App Icon. Defaults to FontAwesome5
+// Accepts type "material" for MaterialCommunityIcons
+
 function Icon({
   name,
   size = 40,
