@@ -1,25 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
 import LessonContext from "../navigation/cycleContext";
+import sections from "../lessons/sections";
+import getElementFromId from "../utility/getElementFromId";
 
 // Section screen.
 
 const exerciseId = 1;
 
-function SectionScreen({ navigation, route }) {
+function SectionScreen({ navigation }) {
+  const { section, setLessonData } = useContext(LessonContext);
+
+  const sectionData = getElementFromId(sections, "sectionId", section);
   const allLessons = JSON.parse(JSON.stringify(lessonData));
   const sectionLessons = [];
   allLessons.forEach((lesson) => {
-    if (route.params.lessons.includes(lesson.lessonId)) {
+    if (sectionData.lessons.includes(lesson.lessonId)) {
       sectionLessons.push(lesson);
     }
   });
 
-  const { setLessonData } = useContext(LessonContext);
   const renderItems = ({ item }) => {
     return (
       <AppButton

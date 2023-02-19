@@ -14,6 +14,7 @@ Lesson styles:
 7. reviewWord pickImage, newWord pickImage
 8. all MC
 9. firstScreen prompt, no words
+10. Review
 
 */
 

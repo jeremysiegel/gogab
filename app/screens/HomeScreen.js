@@ -19,11 +19,6 @@ function HomeScreen({ navigation }) {
           setSection(item.sectionId);
           navigation.push("lessonNavigator", {
             screen: "section",
-            params: {
-              sectionId: item.sectionId,
-              lessons: item.lessons,
-              title: item.title,
-            },
           });
         }}
         style={styles.button}

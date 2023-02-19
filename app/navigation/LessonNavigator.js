@@ -10,6 +10,7 @@ import PromptScreen from "../screens/exerciseScreens/PromptScreen";
 import TipScreen from "../screens/exerciseScreens/TipScreen";
 import ReviewScreen from "../screens/exerciseScreens/ReviewScreen";
 import SectionScreen from "../screens/SectionScreen";
+import HomeScreen from "../screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function LessonNavigator() {
         options={{ headerShown: true, headerTitle: "Home" }}
       />
 
+      <Stack.Screen name="home" component={HomeScreen} />
       <Stack.Screen name="newWord" component={NewPhraseScreen} />
       <Stack.Screen name="review" component={ReviewScreen} />
       <Stack.Screen name="pickImage" component={PickImageScreen} />

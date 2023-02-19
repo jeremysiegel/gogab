@@ -26,7 +26,7 @@ const getExerciseData = ({
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
   const nextExerciseType = lessonData[exerciseId + 1]
     ? lessonData[nextExercise].screenType
-    : "home"; //update this when endScreen works
+    : "section"; //update this when endScreen works
 
   const wordArray = data.word ? data.word.split(" ") : [];
   const helpTextArray = [];
@@ -46,8 +46,10 @@ const getExerciseData = ({
   // Push to pronunciation and translation arrays
   strippedWordArray.forEach((element, index) => {
     if (dictionary[element]) {
+      // If there are special characters in the phrase, preserve them.
       if (/\W/.exec(wordArray[index])) {
         let match = /\W/.exec(wordArray[index]);
+        // Ass special characters to translation for reverse
         if (reverse) {
           wordArray[index] = dictionary[element].word;
           wordArray[index] =
@@ -134,12 +136,14 @@ const getExerciseData = ({
     }
   }
 
+  // Add in selections for prompts.
   if (prompt) {
     lessonData[exerciseId].choices.forEach((choice) => {
       selections.push(choice);
     });
   }
 
+  // Shuffle selections.
   const shuffledSelections = shuffle(selections);
 
   const exerciseData = {

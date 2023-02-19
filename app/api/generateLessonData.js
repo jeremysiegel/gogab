@@ -6,12 +6,11 @@ import subLessons from "../lessons/subLessons";
 
 /*
 Takes in lessonData and creates a lesson
-from the lessonStyle. Used by HomeScreen to
+from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
 */
 
 function generateLessonData(lessonId) {
-  console.log(lessonId);
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
   // Gets data about the style and sequence of lesson
@@ -26,7 +25,9 @@ function generateLessonData(lessonId) {
     : [];
   let subLessonData;
 
+  // If it is a review screen, generate lesson randomly.
   if (sequence[0].screens[0] === "review") {
+    // Pulls words, phrases, and prompts from all lessons in section
     function getWords(lessonData) {
       let words = [];
       let phrases = [];
@@ -42,17 +43,20 @@ function generateLessonData(lessonId) {
       });
       return { words: words, phrases: phrases, prompts: prompts };
     }
-
+    // Determines how many review exercises there will be.
     const numberOfExercises = 12;
     let exerciseCount = numberOfExercises;
+    // What type of screens to include in review and whether they can be reversible
     const screenTypes = ["multipleChoice", "pickImage"];
     const reverseTypes = [true, false];
+
     const items = getWords(lessonData);
     let words = items.words;
     let phrases = items.phrases;
     let prompts = items.prompts;
     let usedWords = [];
 
+    // Generate exercises randomly
     while (exerciseCount > 0) {
       let screenType =
         screenTypes[Math.floor(Math.random() * screenTypes.length)];
@@ -61,6 +65,8 @@ function generateLessonData(lessonId) {
       const wordNumber = Math.floor(Math.random() * words.length);
       let word = words[wordNumber];
       let otherData = null;
+
+      // Incorporate sentenceBuilder - 2nd to last and 3rd to last exercise
       if (
         phrases.length > 0 &&
         (exerciseCount === numberOfExercises - 1 ||
@@ -71,6 +77,7 @@ function generateLessonData(lessonId) {
         phrases.splice(phraseNumber, 1);
         screenType = "sentenceBuilder";
         word = phrase;
+        // Incorporate prompts - last, 3rd to last, 5th to last exercise
       } else if (
         prompts.length > 0 &&
         (exerciseCount === numberOfExercises ||
@@ -81,7 +88,6 @@ function generateLessonData(lessonId) {
         let promptId = prompts[promptNumber];
         prompts.splice(promptNumber, 1);
         screenType = "prompt";
-        console.log(allPrompts);
         const promptData = getElementFromId(allPrompts, "promptId", promptId);
         otherData = { ...promptData };
         word = null;
@@ -89,11 +95,13 @@ function generateLessonData(lessonId) {
       } else {
         const currentWord = words.splice(wordNumber, 1);
         usedWords.push(currentWord[0]);
+        // If you run out of words in section, reuse words from earlier in review.
         if (words.length === 0) {
           words = usedWords;
           usedWords = [];
         }
       }
+      // Push exercise.
       lesson[exerciseCount] = {
         ...otherData,
         screenType: screenType,
@@ -102,8 +110,10 @@ function generateLessonData(lessonId) {
       };
       exerciseCount--;
     }
+    // Return review
     return lesson;
   }
+  // For normal lesson:
   // Iterates through each exerciseSet in the lesson sequence
   // to create data objects for individual exercise screens
   sequence.forEach((exerciseSet) => {
@@ -138,6 +148,7 @@ function generateLessonData(lessonId) {
               reverse: exerciseSet.reverse,
             };
             exerciseNumber++;
+            // If that particular exercise has a sublesson, push it.
             if (subLessonData) {
               lesson[exerciseNumber] = {
                 ...subLessonData,
@@ -151,8 +162,8 @@ function generateLessonData(lessonId) {
     }
   });
 
+  // Add in prompts at the end.
   if (data.prompts) {
-    console.log(prompts);
     data.prompts.forEach((prompt) => {
       const promptData = getElementFromId(allPrompts, "promptId", prompt);
       lesson[exerciseNumber] = {
@@ -161,7 +172,7 @@ function generateLessonData(lessonId) {
       exerciseNumber++;
     });
   }
-
+  // Add in any extra end lessons.
   if (data.endLesson) {
     data.endLesson.forEach((endLesson) => {
       lesson[exerciseNumber] = {

@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, Animated, StyleSheet, Pressable, Alert } from "react-native";
 import colors from "../../config/colors";
 import AppText from "../AppText";
+import LessonContext from "../../navigation/cycleContext";
+import { CommonActions } from "@react-navigation/native";
 
 // Creates header for exercise screen.
 function ExerciseHeader(props) {
+  const { section } = useContext(LessonContext);
+  // Alert if user tries to exit lesson.
   const closeAlert = () => {
     Alert.alert(
       "You will lose all lesson progress.",
@@ -17,7 +21,14 @@ function ExerciseHeader(props) {
         },
         {
           text: "Quit",
-          onPress: () => props.navigation.push("home"),
+          onPress: () => {
+            props.navigation.dispatch(
+              CommonActions.reset({
+                index: 1,
+                routes: [{ name: "home" }, { name: "section" }],
+              })
+            );
+          },
         },
       ],
       { cancelable: true }
