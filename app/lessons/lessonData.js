@@ -60,10 +60,10 @@ const lessonData = [
     supportWords: [],
     phrases: [],
   },
-  /*
+
   {
-    lessonId: 6,
-    title: "Lesson 6",
+    lessonId: 7,
+    title: "Lesson 1",
     style: 2,
     words: ["open", "closed"],
     supportWords: ["yes", "no"],
@@ -92,7 +92,7 @@ const lessonData = [
       },
     ],
   },
-  
+  /*
   {
     lessonId: 7,
     title: "Lesson 7",

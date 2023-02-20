@@ -8,6 +8,7 @@ import HomeScreen from "../screens/HomeScreen";
 import SectionScreen from "../screens/SectionScreen";
 import LessonContext from "./cycleContext";
 import colors from "../config/colors";
+import SettingsScreen from "../screens/SettingsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,10 +16,13 @@ export default function AppNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.primary + 80,
         tabBarStyle: {
           //height: Platform.OS === "ios" ? 85 : 55,
           // height: Dimensions.get("window").height * 0.075,
-          marginTop: 4,
+
           borderTopWidth: 0,
           elevation: 0,
         },
@@ -37,12 +41,20 @@ export default function AppNavigator() {
         component={HomeScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "Learn",
-
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="book" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="settings"
+        component={SettingsScreen}
+        options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="book"
-              color={colors.primary}
+              name="cog-outline"
+              color={color}
               size={30}
             />
           ),
