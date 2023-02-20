@@ -17,7 +17,6 @@ export default function AppNavigator() {
         tabBarInactiveTintColor: colors.primary + 70,
         tabBarStyle: {
           height: 55,
-          // height: Dimensions.get("window").height * 0.075,
           position: "absolute",
           borderRadius: 30,
           margin: 10,

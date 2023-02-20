@@ -13,6 +13,7 @@ import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 import getElementFromId from "../../utility/getElementFromId";
 import phraseDictionary from "../../lessons/phraseDictionary";
+import constants from "../../config/constants";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -40,7 +41,7 @@ function PromptScreen({ route, navigation }) {
         : 1;
 
     setNumColumns(setUpNumColumns);
-    const smallPhrase = setUpNumColumns > 1 && height < 700;
+    const smallPhrase = setUpNumColumns > 1 && height < constants.shortHeight;
     setData(setUpData);
     const phrase = getElementFromId(
       phraseDictionary,

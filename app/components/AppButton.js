@@ -8,8 +8,10 @@ import colors from "../config/colors";
 
 function AppButton({
   title,
+  textColor = colors.white,
   color = colors.primary,
   buttonBorderColor = colors.primaryTint,
+  borderTopWidth = 0,
   onPress,
   disabled,
   style,
@@ -23,7 +25,11 @@ function AppButton({
     <Pressable
       disabled={disabled}
       style={[
-        { backgroundColor: backgroundColor, borderColor: borderColor },
+        {
+          backgroundColor: backgroundColor,
+          borderTopWidth: borderTopWidth,
+          borderColor: borderColor,
+        },
         styles.button,
         style,
         !pressed && styles.buttonBorder,
@@ -33,7 +39,7 @@ function AppButton({
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <Text style={styles.buttonText}>{title}</Text>
+      <Text style={[styles.buttonText, { color: textColor }]}>{title}</Text>
     </Pressable>
   );
 }
@@ -51,15 +57,14 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   buttonBorder: {
-    borderTopWidth: 0,
     borderBottomWidth: 4,
     borderWidth: 2,
   },
   buttonPressed: {
     marginTop: 8,
+    borderTopWidth: 0,
   },
   buttonText: {
-    color: colors.white,
     fontSize: moderateScale(18),
     textTransform: "uppercase",
     fontWeight: "bold",

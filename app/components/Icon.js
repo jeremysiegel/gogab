@@ -35,21 +35,17 @@ function Icon({
           <MaterialCommunityIcons
             name={name}
             color={iconColor}
-            size={moderateScale(iconSize)}
+            size={iconSize}
           />
         )}
         {iconType === undefined && (
-          <FontAwesome5
-            name={name}
-            color={iconColor}
-            size={moderateScale(iconSize)}
-          />
+          <FontAwesome5 name={name} color={iconColor} size={iconSize} />
         )}
       </View>
       {label && (
         <AppText
           style={{
-            fontSize: moderateScale(labelSize),
+            fontSize: labelSize,
             paddingTop: 8,
             fontFamily: fonts[labelWeight],
             textAlign: "center",
