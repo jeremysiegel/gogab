@@ -17,7 +17,7 @@ const getExerciseData = ({
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
-  console.log(quizLength);
+  // console.log(quizLength);
   // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;

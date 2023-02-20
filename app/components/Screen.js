@@ -8,9 +8,9 @@ import colors from "../config/colors";
 
 function Screen({ children, style }) {
   return (
-    <View style={styles.container}>
-      <SafeAreaView style={[styles.screen, style]}>
-        <View style={[styles.view, style]}>{children}</View>
+    <View style={[styles.container, style]}>
+      <SafeAreaView style={[styles.screen]}>
+        <View style={[styles.view]}>{children}</View>
       </SafeAreaView>
     </View>
   );

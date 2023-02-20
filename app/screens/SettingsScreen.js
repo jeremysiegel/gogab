@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Screen from "../components/Screen";
+import BackgroundScreen from "../components/BackgroundScreen";
 
 function SettingsScreen(props) {
-  return <Screen></Screen>;
+  return <BackgroundScreen></BackgroundScreen>;
 }
 
 const styles = StyleSheet.create({

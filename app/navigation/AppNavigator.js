@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import LessonNavigator from "./LessonNavigator";
+
 import HomeScreen from "../screens/HomeScreen";
-import SectionScreen from "../screens/SectionScreen";
-import LessonContext from "./cycleContext";
-import colors from "../config/colors";
 import SettingsScreen from "../screens/SettingsScreen";
+import colors from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,13 +14,15 @@ export default function AppNavigator() {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.primary + 80,
+        tabBarInactiveTintColor: colors.primary + 70,
         tabBarStyle: {
-          //height: Platform.OS === "ios" ? 85 : 55,
+          height: 55,
           // height: Dimensions.get("window").height * 0.075,
-
+          position: "absolute",
+          borderRadius: 30,
+          margin: 10,
           borderTopWidth: 0,
-          elevation: 0,
+          elevation: 2,
         },
 
         tabBarLabelStyle: {
@@ -42,7 +40,11 @@ export default function AppNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="book" color={color} size={30} />
+            <MaterialCommunityIcons
+              name="book-outline"
+              color={color}
+              size={35}
+            />
           ),
         }}
       />
@@ -55,7 +57,7 @@ export default function AppNavigator() {
             <MaterialCommunityIcons
               name="cog-outline"
               color={color}
-              size={30}
+              size={35}
             />
           ),
         }}

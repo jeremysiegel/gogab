@@ -4,6 +4,8 @@ import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import sections from "../lessons/sections";
 import LessonContext from "../navigation/cycleContext";
+import colors from "../config/colors";
+import BackgroundScreen from "../components/BackgroundScreen";
 
 // Home screen of app.
 
@@ -23,7 +25,7 @@ function HomeScreen({ navigation }) {
   };
 
   return (
-    <Screen>
+    <BackgroundScreen style={{ backgroundColor: colors.backgroundBlue }}>
       <View style={styles.container}>
         <View>
           <FlatList
@@ -36,7 +38,7 @@ function HomeScreen({ navigation }) {
           />
         </View>
       </View>
-    </Screen>
+    </BackgroundScreen>
   );
 }
 

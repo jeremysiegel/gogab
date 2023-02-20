@@ -48,16 +48,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     maxWidth: 600,
     width: "100%",
+    borderRadius: 30,
   },
   buttonBorder: {
     borderTopWidth: 0,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderBottomWidth: 5,
+    borderBottomWidth: 4,
     borderWidth: 2,
   },
   buttonPressed: {
-    marginTop: 9,
+    marginTop: 8,
   },
   buttonText: {
     color: colors.white,

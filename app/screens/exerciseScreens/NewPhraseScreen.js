@@ -13,7 +13,6 @@ import instructionText from "../../config/instructionText";
 // TODO: add audio.
 
 function NewPhraseScreen({ route, navigation }) {
-  console.log(route.params);
   const data = getExerciseData.getExerciseData(route.params);
 
   const instruction = instructionText.say;
