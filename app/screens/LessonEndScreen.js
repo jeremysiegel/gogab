@@ -20,7 +20,7 @@ function LessonEndScreen({ navigation, route }) {
       <View style={styles.container}>
         <View style={styles.animationContainer}>
           <AppLottie
-            source={require("../assets/endLesson7.json")}
+            source={require("../assets/endLesson6.json")}
             loop={true}
           />
         </View>

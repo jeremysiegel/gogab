@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: moderateScale(18),
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     fontWeight: "bold",
   },
 });
