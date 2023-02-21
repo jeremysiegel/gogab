@@ -30,7 +30,7 @@ function SectionScreen({ navigation }) {
       <AppButton
         title={item.title}
         onPress={() => {
-          const lesson = generateLessonData(item.lessonId);
+          const lesson = generateLessonData(item.lessonId, sectionLessons);
           setLessonData(lesson);
           setLesson(item.lessonId);
           navigation.push(lesson[exerciseId].screenType, {

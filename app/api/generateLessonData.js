@@ -3,6 +3,9 @@ import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
 import allPrompts from "../lessons/prompts";
 import subLessons from "../lessons/subLessons";
+import sections from "../lessons/sections";
+import LessonContext from "../navigation/lessonContext";
+import { useContext } from "react";
 
 /*
 Takes in lessonData and creates a lesson
@@ -10,7 +13,7 @@ from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
 */
 
-function generateLessonData(lessonId) {
+function generateLessonData(lessonId, sectionLessons) {
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
   // Gets data about the style and sequence of lesson
@@ -30,6 +33,7 @@ function generateLessonData(lessonId) {
     // Pulls words, phrases, and prompts from all lessons in section
     function getWords(lessonData) {
       let words = [];
+      
       let phrases = [];
       let prompts = [];
       lessonData.forEach((lesson) => {
@@ -49,8 +53,7 @@ function generateLessonData(lessonId) {
     // What type of screens to include in review and whether they can be reversible
     const screenTypes = ["multipleChoice", "pickImage"];
     const reverseTypes = [true, false];
-
-    const items = getWords(lessonData);
+    const items = getWords(sectionLessons);
     let words = items.words;
     let phrases = items.phrases;
     let prompts = items.prompts;
