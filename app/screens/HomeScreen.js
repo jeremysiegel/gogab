@@ -3,7 +3,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import sections from "../lessons/sections";
-import LessonContext from "../navigation/cycleContext";
+import LessonContext from "../navigation/lessonContext";
 import colors from "../config/colors";
 import BackgroundScreen from "../components/BackgroundScreen";
 

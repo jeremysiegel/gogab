@@ -2,11 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { View, Animated, StyleSheet, Pressable, Alert } from "react-native";
 import colors from "../../config/colors";
 import AppText from "../AppText";
-import LessonContext from "../../navigation/cycleContext";
+import LessonContext from "../../navigation/lessonContext";
 import { CommonActions } from "@react-navigation/native";
 
 // Creates header for exercise screen.
-function ExerciseHeader(props) {
+function ExerciseHeader({
+  navigation,
+  currentIndex,
+  quizLength,
+  exitable = true,
+}) {
   const { section } = useContext(LessonContext);
   // Alert if user tries to exit lesson.
   const closeAlert = () => {
@@ -22,7 +27,7 @@ function ExerciseHeader(props) {
         {
           text: "Quit",
           onPress: () => {
-            props.navigation.dispatch(
+            navigation.dispatch(
               CommonActions.reset({
                 index: 1,
                 routes: [{ name: "homeTab" }, { name: "section" }],
@@ -35,7 +40,7 @@ function ExerciseHeader(props) {
     );
   };
   // Generate lesson progress bar.
-  let fromValue = (props.currentIndex - 1) / props.quizLength;
+  let fromValue = (currentIndex - 1) / quizLength;
   if (fromValue < 0) {
     fromValue = 0;
   }
@@ -47,7 +52,7 @@ function ExerciseHeader(props) {
   });
 
   const startAnimation = () => {
-    let toValue = props.currentIndex / props.quizLength;
+    let toValue = currentIndex / quizLength;
     if (toValue === 0) {
       toValue = 0.05;
     }
@@ -66,7 +71,16 @@ function ExerciseHeader(props) {
         />
       </View>
       <View style={styles.closeButtonContainer}>
-        <Pressable hitSlop={17} onPress={() => closeAlert()}>
+        <Pressable
+          hitSlop={17}
+          onPress={() => {
+            if (!exitable) {
+              return true;
+            } else {
+              closeAlert();
+            }
+          }}
+        >
           <AppText style={styles.closeButton}>X</AppText>
         </Pressable>
       </View>
@@ -85,7 +99,6 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   closeButton: {
-    fontWeight: "bold",
     color: colors.medium,
     fontSize: 25,
   },

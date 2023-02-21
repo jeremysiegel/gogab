@@ -15,6 +15,7 @@ const getExerciseData = ({
 }) => {
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
+  console.log(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
   // console.log(quizLength);

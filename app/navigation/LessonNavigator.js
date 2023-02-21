@@ -12,16 +12,24 @@ import SectionScreen from "../screens/SectionScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LessonEndScreen from "../screens/LessonEndScreen";
 import AppNavigator from "./AppNavigator";
-import LessonContext from "./cycleContext";
+import LessonContext from "./lessonContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function LessonNavigator() {
   const [lessonData, setLessonData] = useState();
+  const [lesson, setLesson] = useState();
   const [section, setSection] = useState();
   return (
     <LessonContext.Provider
-      value={{ lessonData, setLessonData, section, setSection }}
+      value={{
+        lessonData,
+        setLessonData,
+        section,
+        setSection,
+        lesson,
+        setLesson,
+      }}
     >
       <Stack.Navigator
         screenOptions={{

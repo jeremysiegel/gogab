@@ -4,7 +4,7 @@ import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
-import LessonContext from "../navigation/cycleContext";
+import LessonContext from "../navigation/lessonContext";
 import sections from "../lessons/sections";
 import getElementFromId from "../utility/getElementFromId";
 
@@ -13,7 +13,7 @@ import getElementFromId from "../utility/getElementFromId";
 const exerciseId = 1;
 
 function SectionScreen({ navigation }) {
-  const { section, setLessonData } = useContext(LessonContext);
+  const { section, setLessonData, setLesson } = useContext(LessonContext);
 
   const sectionData = getElementFromId(sections, "sectionId", section);
   // Makes a deep copy.
@@ -32,7 +32,7 @@ function SectionScreen({ navigation }) {
         onPress={() => {
           const lesson = generateLessonData(item.lessonId);
           setLessonData(lesson);
-
+          setLesson(item.lessonId);
           navigation.push(lesson[exerciseId].screenType, {
             screen: lesson[exerciseId].screenType,
             exerciseId: exerciseId,

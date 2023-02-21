@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 
 import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
-import LessonContext from "../../navigation/cycleContext";
+import LessonContext from "../../navigation/lessonContext";
 
 // Creates footer for the exercise screen.
 function ExerciseFooter({

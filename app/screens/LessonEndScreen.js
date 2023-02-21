@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import AppButton from "../components/AppButton";
-import Screen from "../components/Screen";
 import { CommonActions } from "@react-navigation/native";
 import BackgroundScreen from "../components/BackgroundScreen";
 import AppLottie from "../components/AppLottie";
 import colors from "../config/colors";
+import ExerciseHeader from "../components/exerciseScreen/ExerciseHeader";
 
-function LessonEndScreen({ navigation }) {
+function LessonEndScreen({ navigation, route }) {
+  const quizLength = Object.keys(route.params.lessonData).length;
+
   return (
     <BackgroundScreen>
+      <ExerciseHeader
+        currentIndex={quizLength}
+        quizLength={quizLength}
+        exitable={false}
+      />
       <View style={styles.container}>
         <View style={styles.animationContainer}>
           <AppLottie
-            source={require("../assets/37178-travel.json")}
+            source={require("../assets/endLesson7.json")}
             loop={true}
           />
         </View>
@@ -55,7 +62,7 @@ const styles = StyleSheet.create({
   },
   animationContainer: {
     flex: 2,
-    height: "50%",
+    justifyContent: "center",
   },
   buttonContainer: {
     flex: 1,
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
     width: 250,
   },
   home: {
-    backgroundColor: colors.primary + 20,
+    backgroundColor: colors.primary + 10,
   },
 });
 
