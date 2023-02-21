@@ -7,9 +7,21 @@ import AppLottie from "../components/AppLottie";
 import colors from "../config/colors";
 import ExerciseHeader from "../components/exerciseScreen/ExerciseHeader";
 
+const endLotties = [
+  require("../assets/endLesson1.json"),
+  require("../assets/endLesson2.json"),
+  require("../assets/endLesson3.json"),
+  require("../assets/endLesson4.json"),
+  require("../assets/endLesson5.json"),
+  require("../assets/endLesson6.json"),
+  
+];
+
 function LessonEndScreen({ navigation, route }) {
   const quizLength = Object.keys(route.params.lessonData).length;
-
+  const lottieNumber = Math.floor(Math.random() * endLotties.length);
+  const lottie = endLotties[lottieNumber]
+  
   return (
     <BackgroundScreen>
       <ExerciseHeader
@@ -20,7 +32,7 @@ function LessonEndScreen({ navigation, route }) {
       <View style={styles.container}>
         <View style={styles.animationContainer}>
           <AppLottie
-            source={require("../assets/endLesson6.json")}
+            source={lottie}
             loop={true}
           />
         </View>
