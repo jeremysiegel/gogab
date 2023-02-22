@@ -5,6 +5,8 @@ import colors from "../config/colors";
 import Icon from "./Icon";
 import defaultStyles from "../config/styles";
 import constants from "../config/constants";
+import AppText from "./AppText";
+import { moderateScale } from "../utility/scaler";
 
 // Creates a selectable icon with title.
 
@@ -23,18 +25,28 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
       style={[
         defaultStyles.border,
         styles.selectableItem,
-        { height: 0.27 * height, width: 0.39 * width },
+        { height: 0.24 * height, width: 0.39 * width },
       ]}
     >
-      <View style = {styles.iconContainer}>
+      <View style={styles.iconContainer}>
         <Icon
           name={item.icon}
-        size={Math.min(0.29 * width, 120)}
+          size={
+            height < constants.shortHeight ? 80 : Math.min(0.28 * width, 120)
+          }
           label={title}
           backgroundColor={colors.secondary}
           labelSize={height < constants.shortHeight ? 22 : undefined}
           labelWeight={fontWeight}
         />
+        <AppText
+          style={{
+            fontSize: moderateScale(26),
+            textAlign: "center",
+          }}
+        >
+          {title}
+        </AppText>
       </View>
     </Selectable>
   );
@@ -44,18 +56,14 @@ const styles = StyleSheet.create({
   selectableItem: {
     margin: 15,
     maxWidth: 190,
-    maxHeight: 240,
-    justifyContent: "center",
+    maxHeight: 220,
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   iconContainer: {
-  
-    
+    flex: 1,
+    justifyContent: "space-evenly",
   },
-  textContainer: {
-  
-  }
 });
 
 export default ChoiceImage;

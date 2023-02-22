@@ -1,9 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Animated, StyleSheet, Pressable, Alert } from "react-native";
+import {
+  View,
+  Animated,
+  StyleSheet,
+  Pressable,
+  Alert,
+  useWindowDimensions,
+} from "react-native";
 import colors from "../../config/colors";
 import AppText from "../AppText";
 import LessonContext from "../../navigation/lessonContext";
 import { CommonActions } from "@react-navigation/native";
+import { moderateScale } from "../../utility/scaler";
+import constants from "../../config/constants";
 
 // Creates header for exercise screen.
 function ExerciseHeader({
@@ -12,7 +21,7 @@ function ExerciseHeader({
   quizLength,
   exitable = true,
 }) {
-  const { section } = useContext(LessonContext);
+  const { height } = useWindowDimensions();
   // Alert if user tries to exit lesson.
   const closeAlert = () => {
     Alert.alert(
@@ -62,9 +71,13 @@ function ExerciseHeader({
       useNativeDriver: false,
     }).start();
   };
-
   return (
-    <View style={styles.mainContainer}>
+    <View
+      style={[
+        { marginBottom: height < constants.shortHeight ? 7 : 25 },
+        styles.mainContainer,
+      ]}
+    >
       <View style={styles.progressBar}>
         <Animated.View
           style={[styles.progressBarFill, { flex: animatedValue }]}

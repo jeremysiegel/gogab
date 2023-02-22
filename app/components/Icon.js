@@ -20,12 +20,12 @@ function Icon({
   iconType,
 }) {
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: "center", justifyContent: "center" }}>
       <View
         style={{
           width: size,
           height: size,
-          borderRadius:  size / 2,
+          borderRadius: size / 2,
           backgroundColor,
           justifyContent: "center",
           alignItems: "center",
@@ -42,18 +42,6 @@ function Icon({
           <FontAwesome5 name={name} color={iconColor} size={iconSize} />
         )}
       </View>
-      {label && (
-        <AppText
-          style={{
-            fontSize: labelSize,
-            paddingTop: 8,
-            fontFamily: fonts[labelWeight],
-            textAlign: "center",
-          }}
-        >
-          {label}
-        </AppText>
-      )}
     </View>
   );
 }
