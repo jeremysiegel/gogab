@@ -25,7 +25,7 @@ function Icon({
         style={{
           width: size,
           height: size,
-          borderRadius: size / 2,
+          borderRadius:  size / 2,
           backgroundColor,
           justifyContent: "center",
           alignItems: "center",

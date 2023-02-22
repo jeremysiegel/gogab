@@ -23,15 +23,13 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
       style={[
         defaultStyles.border,
         styles.selectableItem,
-        { height: 0.24 * height, width: 0.39 * width },
+        { height: 0.27 * height, width: 0.39 * width },
       ]}
     >
-      <View>
+      <View style = {styles.iconContainer}>
         <Icon
           name={item.icon}
-          size={
-            height < constants.shortHeight ? 80 : Math.min(0.25 * width, 100)
-          }
+        size={Math.min(0.29 * width, 120)}
           label={title}
           backgroundColor={colors.secondary}
           labelSize={height < constants.shortHeight ? 22 : undefined}
@@ -45,10 +43,19 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
 const styles = StyleSheet.create({
   selectableItem: {
     margin: 15,
-    maxWidth: 160,
-    maxHeight: 200,
+    maxWidth: 190,
+    maxHeight: 240,
     justifyContent: "center",
+    flex: 1,
+    alignItems: "center"
   },
+  iconContainer: {
+  
+    
+  },
+  textContainer: {
+  
+  }
 });
 
 export default ChoiceImage;

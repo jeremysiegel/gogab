@@ -25,6 +25,10 @@ function ExerciseScreen({
 }) {
   BackButtonExitHandler();
 
+  const {height, width} = useWindowDimensions();
+
+  const isTablet = height/width < 1.6
+
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -35,7 +39,7 @@ function ExerciseScreen({
           quizLength={exerciseData.quizLength}
         />
         {(instruction || phrase) && (
-          <View style={styles.textContainer}>
+          <View style={[{marginLeft: isTablet ?  0.1*width : 20}, styles.textContainer]}>
             {instruction && (
               <AppText
                 style={[defaultStyles.instructionText, instructionStyle]}
@@ -43,7 +47,7 @@ function ExerciseScreen({
                 {instruction}
               </AppText>
             )}
-            {phrase && <View style={styles.phraseContainer}>{phrase}</View>}
+            {phrase && <View style={[{marginLeft: isTablet ?  30 : 10, marginTop: isTablet ? 15 : 10}, styles.phraseContainer]}>{phrase}</View>}
           </View>
         )}
         <View style={styles.children}>{children}</View>
@@ -77,8 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   phraseContainer: {
-    marginTop: 10,
-    marginLeft: 10,
+  //  marginTop: 10,
     flexDirection: "row",
     flexWrap: "wrap",
   },
