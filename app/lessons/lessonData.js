@@ -34,7 +34,7 @@ const lessonData = [
   {
     lessonId: 4,
     title: "Lesson 4",
-    style: 2,
+    style: 3,
     words: ["goodbye", "see_you_later"],
     reviewWords: ["good", "hello", "where"],
     phrases: [],
