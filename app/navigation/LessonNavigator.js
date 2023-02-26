@@ -41,7 +41,7 @@ export default function LessonNavigator() {
         <Stack.Screen
           name="section"
           component={SectionScreen}
-          options={{ headerShown: true, headerTitle: "Home" }}
+          options={{ headerShown: true, headerTitle: "" }}
         />
 
         <Stack.Screen name="end" component={LessonEndScreen} />
