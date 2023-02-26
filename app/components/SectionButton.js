@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { moderateScale } from "../utility/scaler";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
+import AppText from "./AppText";
 import colors from "../config/colors";
 
 // Creates a button that appears to have 3D reaction when pressed.
 
-function AppButton({
+function SectionButton({
   title,
   textColor = colors.white,
   color = colors.primary,
@@ -23,6 +25,7 @@ function AppButton({
 
   const [pressed, setPressed] = useState(false);
   return (
+      <View style = {styles.container}>
     <Pressable
       disabled={disabled}
       style={[
@@ -40,18 +43,31 @@ function AppButton({
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color: textColor }]}>{title}</Text>
-      {children}
+         <MaterialCommunityIcons
+            name={"star"}
+            color={colors.gold}
+            size={40}
+          />
     </Pressable>
+          <AppText>{title}</AppText>
+          </View>
+
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+   // flex:1,
+  //  margin: 20,
+  },
+    button: {
     padding: 12,
     borderRadius: 7,
-    justifyContent: "center",
-    alignItems: "center",
+   // justifyContent: "center",
+  //  alignItems: "center",
     marginTop: 4,
     marginBottom: 5,
     maxWidth: 600,
@@ -73,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppButton;
+export default SectionButton;

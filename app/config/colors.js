@@ -10,6 +10,7 @@ const colors = {
   purple: "#5E60CE",
   orange: "#FA7E61", //"#FF6347",
   yellow: "#ebae19",
+  gold: "#d4af37",
   red: "#FF6978",
   green: "#36AE7C",
   blue: "#3AB0FF",

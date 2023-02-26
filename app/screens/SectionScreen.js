@@ -1,12 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
 import LessonContext from "../navigation/lessonContext";
 import sections from "../lessons/sections";
 import getElementFromId from "../utility/getElementFromId";
+import AppText from "../components/AppText";
+import SectionButton from "../components/SectionButton";
+import BackgroundScreen from "../components/BackgroundScreen";
+import { scale, moderateScale } from "../utility/scaler";
 
 // Section screen.
 
@@ -27,8 +30,9 @@ function SectionScreen({ navigation }) {
 
   const renderItems = ({ item }) => {
     return (
-      <AppButton
-        title={item.title}
+      <View style={styles.buttonContainer}>
+      <SectionButton
+      title={item.title}
         onPress={() => {
           const lesson = generateLessonData(item.lessonId, sectionLessons);
           setLessonData(lesson);
@@ -40,14 +44,17 @@ function SectionScreen({ navigation }) {
             lessonData: lesson,
           });
         }}
-        style={styles.button}
       />
+      </View>
     );
   };
 
   return (
-    <Screen>
+    <BackgroundScreen>
       <View style={styles.container}>
+        <View style={styles.textBox}>
+      <AppText style={styles.header}>{sectionData.title}</AppText>
+      </View>
         <View>
           <FlatList
             scrollEnabled={false}
@@ -59,22 +66,29 @@ function SectionScreen({ navigation }) {
           />
         </View>
       </View>
-    </Screen>
+    </BackgroundScreen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
   },
   listContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-evenly",
   },
-  button: {
-    width: "40%",
-    margin: 20,
+  buttonContainer: {
+flexDirection: "column",
+alignItems: "space-around",
+margin: 20
+//justifyContent: "space-between",
+//flex:1,
+  },
+  header: {
+marginLeft: scale(40),
+fontSize: moderateScale(40)
   },
 });
 
