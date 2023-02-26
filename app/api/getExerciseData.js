@@ -1,6 +1,7 @@
 // TODO: allow multiple special characters in a word (see strippedArray)
+// TODO: allow multiple language dictionaries
 
-import dictionary from "../lessons/dictionary";
+import getDictionary from "./getDictionary";
 import shuffle from "../utility/shuffle";
 import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
@@ -13,6 +14,7 @@ const getExerciseData = ({
   prompt,
   matching,
 }) => {
+  const dictionary = getDictionary();
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
