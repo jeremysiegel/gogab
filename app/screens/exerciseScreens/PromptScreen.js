@@ -12,8 +12,8 @@ import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 import getElementFromId from "../../utility/getElementFromId";
-import phraseDictionary from "../../lessons/phraseDictionary";
 import constants from "../../config/constants";
+import getPhraseDictionary from "../../api/getPhraseDictionary";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -25,10 +25,13 @@ function PromptScreen({ route, navigation }) {
   const [numColumns, setNumColumns] = useState();
   const [phrase, setPhrase] = useState();
   const [instruction, setInstruction] = useState();
+  const [phraseDictionary, setPhraseDictionary] = useState();
 
   const { height, width } = useWindowDimensions();
-
+  
   useEffect(() => {
+    const setUpPhraseDictionary= getPhraseDictionary();
+    setPhraseDictionary(setUpPhraseDictionary);
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
       screenType: "prompt",
@@ -44,11 +47,12 @@ function PromptScreen({ route, navigation }) {
     const smallPhrase = setUpNumColumns > 1 && height < constants.shortHeight;
     setData(setUpData);
     const phrase = getElementFromId(
-      phraseDictionary,
+      setUpPhraseDictionary,
       "phraseId",
       setUpData.phrase
     );
-    const phraseText = phrase.es;
+    // for ? chats : signs
+    const phraseText = phrase ? phrase.phrase: setUpData.phrase;
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
@@ -96,7 +100,8 @@ function PromptScreen({ route, navigation }) {
 
   const renderChoiceBox = (item) => {
     const phrase = getElementFromId(phraseDictionary, "phraseId", item.phrase);
-    const boxText = phrase.es;
+    // for ? chats : signs
+    const boxText = phrase ? phrase.phrase : item.word;
 
     return (
       <RenderChoiceBoxes
