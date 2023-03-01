@@ -11,6 +11,8 @@ import { useContext } from "react";
 Takes in lessonData and creates a lesson
 from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
+
+TODO: add in endscreens.
 */
 
 function generateLessonData(lessonId, sectionLessons) {
@@ -33,7 +35,7 @@ function generateLessonData(lessonId, sectionLessons) {
     // Pulls words, phrases, and prompts from all lessons in section
     function getWords(lessonData) {
       let words = [];
-      
+
       let phrases = [];
       let prompts = [];
       lessonData.forEach((lesson) => {

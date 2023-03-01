@@ -8,7 +8,7 @@ const lessonData = [
     words: ["bathroom", "where"],
     reviewWords: [],
     supportWords: ["is"],
-    phrases:  ["where is the bathroom?"],
+    phrases: ["where is the bathroom?"],
   },
   {
     lessonId: 2,
@@ -17,7 +17,7 @@ const lessonData = [
     words: ["hello", "good_morning", "how_are_you"],
     supportWords: [],
     reviewWords: ["bathroom", "where"],
-    phrases: ["hello good_morning", "hello how_are_you"],
+    phrases: ["hello, good_morning", "hello, how_are_you"],
   },
 
   {
@@ -27,7 +27,7 @@ const lessonData = [
     words: ["good"],
     supportWords: ["and", "you"],
     reviewWords: ["hello", "how_are_you"],
-    phrases: ["good and you"],
+    phrases: ["good, and you?"],
     prompts: [1],
   },
 
@@ -53,7 +53,7 @@ const lessonData = [
   },
   {
     lessonId: 6,
-    title: "Review 1",
+    title: "Review",
     style: 10,
     words: [],
     reviewWords: [],
