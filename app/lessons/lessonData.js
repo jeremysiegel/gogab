@@ -5,10 +5,10 @@ const lessonData = [
     lessonId: 1,
     title: "Lesson 1",
     style: 1,
-    words: ["bathroom", "where"],
+    words: ["bathroom"], //, "where"],
     reviewWords: [],
-    supportWords: ["is"],
-    phrases: ["where is the bathroom?"],
+    supportWords:[], //["is"],
+    phrases: [1] //["where is the bathroom?"],
   },
   {
     lessonId: 2,

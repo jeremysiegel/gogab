@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 
 import AppText from "../../components/AppText";
@@ -13,6 +13,7 @@ import instructionText from "../../config/instructionText";
 // TODO: add audio.
 
 function NewPhraseScreen({ route, navigation }) {
+
   const data = getExerciseData.getExerciseData(route.params);
 
   const instruction = instructionText.say;

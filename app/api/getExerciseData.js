@@ -5,6 +5,7 @@ import getDictionary from "./getDictionary";
 import shuffle from "../utility/shuffle";
 import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
+import getPhraseDictionary from "./getPhraseDictionary";
 
 const getExerciseData = ({
   exerciseId,
@@ -23,7 +24,12 @@ const getExerciseData = ({
   // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
-
+let phraseData = "";
+if(data.screenType === "sentenceBuilder") {
+  phraseData = getPhraseDictionary(data.word);
+  console.log(phraseData)
+  data.word = phraseData.phraseTranslation.order
+}
   // Get next exercise type for navigation.
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
   const nextExerciseType = lessonData[exerciseId + 1]
@@ -43,7 +49,6 @@ const getExerciseData = ({
     strippedElement = strippedElement.toLowerCase();
     strippedWordArray.push(strippedElement);
   });
-
   // Use word from dictionary (allows identifying of words with multiple meanings)
   // Push to pronunciation and translation arrays
   strippedWordArray.forEach((element, index) => {
@@ -150,6 +155,7 @@ const getExerciseData = ({
 
   const exerciseData = {
     nextExerciseType: nextExerciseType,
+    phraseData: phraseData,
     index: index,
     quizLength: quizLength,
     wordArray: reverse ? learnWordArray : wordArray,

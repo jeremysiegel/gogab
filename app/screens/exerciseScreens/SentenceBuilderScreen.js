@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import getExerciseData from "../../api/getExerciseData";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import instructionText from "../../config/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
+import AppText from "../../components/AppText";
 
 // Creates a user-interactive sentence builder screen.
 
 function SentenceBuilderScreen({ route, navigation }) {
-  const data = getExerciseData.getExerciseData({ ...route.params });
-  const instruction = instructionText[data.screenType];
-  const [complete, setComplete] = useState(false);
+const [data, setData]= useState();
+//const [instruction, setInstruction] = useState();
+//const [phrase, setPhrase] = useState();
+const [complete, setComplete] = useState(false);
+useEffect(()=> {
+  console.log("I ran")
+  const setUpData = getExerciseData.getExerciseData({...route.params});
+  setData(setUpData)
+},[])
+const instruction = instructionText["sentenceBuilder"];
+//const data = getExerciseData.getExerciseData(route.params);
 
-  const phrase = <RenderLearnWord data={data} />;
+//setData(setUpData);
+//setInstruction(setUpInstruction);
+const phrase = <AppText>test</AppText>// <RenderLearnWord data={data} />;
+//setPhrase(setUpPhrase);
+
+
+
 
   return (
     <ExerciseScreen

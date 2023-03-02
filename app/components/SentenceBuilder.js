@@ -15,7 +15,6 @@ import arrayEquals from "../utility/arrayEquals";
 function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
   const ref = useRef(DuoDragDropRef);
-
   useEffect(() => {
     const shuffled = shuffle(data.wordArray);
     setShuffledData(shuffled);
@@ -25,6 +24,7 @@ function SentenceBuilder({ data, setComplete }) {
   const checkComplete = () => {
     const answered = ref.current?.getAnsweredWords();
     setComplete(arrayEquals(answered, data.wordArray));
+   //console.log(answered, data.wordArray)
   };
 
   if (shuffledData === undefined) {
