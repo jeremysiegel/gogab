@@ -12,22 +12,19 @@ import AppText from "../../components/AppText";
 function SentenceBuilderScreen({ route, navigation }) {
 const [data, setData]= useState();
 //const [instruction, setInstruction] = useState();
-//const [phrase, setPhrase] = useState();
+const [phrase, setPhrase] = useState();
 const [complete, setComplete] = useState(false);
 useEffect(()=> {
-  console.log("I ran")
   const setUpData = getExerciseData.getExerciseData({...route.params});
-  setData(setUpData)
+  setData(setUpData);
+  const setUpPhrase = <RenderLearnWord data={setUpData} />;
+  setPhrase(setUpPhrase);
 },[])
 const instruction = instructionText["sentenceBuilder"];
-//const data = getExerciseData.getExerciseData(route.params);
 
-//setData(setUpData);
-//setInstruction(setUpInstruction);
-const phrase = <AppText>test</AppText>// <RenderLearnWord data={data} />;
-//setPhrase(setUpPhrase);
-
-
+if(!data) {
+  return <></>
+} else {
 
 
   return (
@@ -45,6 +42,7 @@ const phrase = <AppText>test</AppText>// <RenderLearnWord data={data} />;
       </View>
     </ExerciseScreen>
   );
+}
 }
 
 const styles = StyleSheet.create({
