@@ -3,9 +3,6 @@ import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
 import allPrompts from "../lessons/prompts";
 import subLessons from "../lessons/subLessons";
-import sections from "../lessons/sections";
-import LessonContext from "../navigation/lessonContext";
-import { useContext } from "react";
 
 /*
 Takes in lessonData and creates a lesson

@@ -1,26 +1,24 @@
+// Spanish phrase dictionary.
+
 export default phraseDictionary = [
   {
     phraseId: 1,
-    phrase: "hola, cómo estás?",
+    order: "where is the bathroom?",
   },
   {
     phraseId: 2,
-    phrase: "bien, y tú?",
+    order: "hello, good_morning",
   },
   {
     phraseId: 3,
-    phrase: "adiós",
+    order: "hello, how_are_you",
   },
   {
     phraseId: 4,
-    phrase: "hola",
+    order: "good, and you?",
   },
   {
     phraseId: 5,
-    phrase: "hasta luego",
-  },
-  {
-    phraseId: 6,
-    phrase: "por favor",
+    order: "excuse_me, where is the bathroom? thank_you.",
   },
 ];

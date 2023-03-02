@@ -1,26 +1,26 @@
+// Used to generate phrases for sentence builder.
+// Needed because some languages put words in different orders.
+// Each word in a phrase should have a corresponding entry in the word dictionary.
+
 export default phraseDictionary = [
   {
     phraseId: 1,
-    phrase: "hello, how are you?",
+    order: "where is the bathroom?",
   },
   {
     phraseId: 2,
-    phrase: "good, and you?",
+    order: "hello, good_morning",
   },
   {
     phraseId: 3,
-    phrase: "goodbye",
+    order: "hello, how_are_you",
   },
   {
     phraseId: 4,
-    phrase: "hello",
+    order: "good, and you?",
   },
   {
     phraseId: 5,
-    phrase: "see you later",
-  },
-  {
-    phraseId: 6,
-    phrase: "please",
+    order: "excuse_me, where is the bathroom? thank_you.",
   },
 ];

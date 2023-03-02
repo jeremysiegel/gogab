@@ -13,7 +13,7 @@ import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 import getElementFromId from "../../utility/getElementFromId";
 import constants from "../../config/constants";
-import getPhraseDictionary from "../../api/getPhraseDictionary";
+import getPromptDictionary from "../../api/getPromptDictionary";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -23,15 +23,15 @@ function PromptScreen({ route, navigation }) {
   const [selected, setSelected] = useState(false);
   const [data, setData] = useState();
   const [numColumns, setNumColumns] = useState();
-  const [phrase, setPhrase] = useState();
+  const [prompt, setprompt] = useState();
   const [instruction, setInstruction] = useState();
-  const [phraseDictionary, setPhraseDictionary] = useState();
+  const [promptDictionary, setPromptDictionary] = useState();
 
   const { height, width } = useWindowDimensions();
-  
+
   useEffect(() => {
-    const setUpPhraseDictionary= getPhraseDictionary();
-    setPhraseDictionary(setUpPhraseDictionary);
+    const setUpPromptDictionary = getPromptDictionary();
+    setPromptDictionary(setUpPromptDictionary);
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
       screenType: "prompt",
@@ -44,33 +44,33 @@ function PromptScreen({ route, navigation }) {
         : 1;
 
     setNumColumns(setUpNumColumns);
-    const smallPhrase = setUpNumColumns > 1 && height < constants.shortHeight;
+    const smallPrompt = setUpNumColumns > 1 && height < constants.shortHeight;
     setData(setUpData);
-    const phrase = getElementFromId(
-      setUpPhraseDictionary,
-      "phraseId",
-      setUpData.phrase
+    const prompt = getElementFromId(
+      setUpPromptDictionary,
+      "promptId",
+      setUpData.prompt
     );
     // for ? chats : signs
-    const phraseText = phrase ? phrase.phrase: setUpData.phrase;
+    const promptText = prompt ? prompt.prompt : setUpData.prompt;
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
       </AppText>
     );
-    setPhrase(
-      <View style={styles.phraseContainer}>
+    setprompt(
+      <View style={styles.promptContainer}>
         {setUpData.screenSubType === "icon" && (
           <View
             style={[
               styles.iconContainer,
-              smallPhrase ? styles.smallPhrase : null,
+              smallPrompt ? styles.smallprompt : null,
             ]}
           >
             <Icon
               name={setUpData.icon}
               size={Math.min(0.12 * height, 100)}
-              label={phraseText}
+              label={promptText}
               backgroundColor={colors.secondary}
               labelSize={Math.min(0.045 * height, 37)}
               labelWeight={"bold"}
@@ -79,7 +79,7 @@ function PromptScreen({ route, navigation }) {
         )}
         {setUpData.screenSubType === "chat" && (
           <View style={styles.chatContainer}>
-            <AppText style={styles.chatPhrase}>{phraseText}</AppText>
+            <AppText style={styles.chatprompt}>{promptText}</AppText>
             <View style={styles.rightArrow}></View>
             <View style={styles.rightArrowOverlap}></View>
           </View>
@@ -87,11 +87,11 @@ function PromptScreen({ route, navigation }) {
         {setUpData.screenSubType === "sign" && (
           <AppText
             style={[
-              setUpData.screenSubType === "sign" ? styles.signPhrase : null,
-              smallPhrase ? styles.smallPhrase : null,
+              setUpData.screenSubType === "sign" ? styles.signprompt : null,
+              smallPrompt ? styles.smallprompt : null,
             ]}
           >
-            {phraseText}
+            {promptText}
           </AppText>
         )}
       </View>
@@ -99,9 +99,9 @@ function PromptScreen({ route, navigation }) {
   }, []);
 
   const renderChoiceBox = (item) => {
-    const phrase = getElementFromId(phraseDictionary, "phraseId", item.phrase);
+    const prompt = getElementFromId(promptDictionary, "promptId", item.prompt);
     // for ? chats : signs
-    const boxText = phrase ? phrase.phrase : item.word;
+    const boxText = prompt ? prompt.prompt : item.word;
 
     return (
       <RenderChoiceBoxes
@@ -125,7 +125,7 @@ function PromptScreen({ route, navigation }) {
         selected={selected}
         numColumns={numColumns}
         instruction={instruction}
-        phrase={phrase}
+        prompt={prompt}
         data={data}
       />
     );
@@ -133,7 +133,7 @@ function PromptScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  phraseContainer: {
+  promptContainer: {
     alignItems: "center",
     flex: 1,
   },
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     maxWidth: 300,
   },
-  signPhrase: {
+  signprompt: {
     ...defaultStyles.big,
     color: colors.black,
     backgroundColor: colors.blue + "20",
@@ -168,11 +168,11 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     borderRadius: 20,
   },
-  chatPhrase: {
+  chatprompt: {
     color: colors.light,
     fontSize: moderateScale(30),
   },
-  smallPhrase: {
+  smallprompt: {
     fontSize: 30,
     paddingVertical: 10,
     marginTop: 20,
