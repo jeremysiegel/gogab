@@ -24,62 +24,91 @@ const getExerciseData = ({
   // Get data for current exercise.
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
-let phraseData = "";
-if(data.screenType === "sentenceBuilder") {
-  phraseData = getPhraseDictionary(data.word);
-  console.log(phraseData)
-  data.word = phraseData.phraseTranslation.order
-}
+  let phraseData = "";
+  if (data.screenType === "sentenceBuilder") {
+    phraseData = getPhraseDictionary(data.word);
+    data.word = phraseData.phraseTranslation.order;
+  }
   // Get next exercise type for navigation.
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
   const nextExerciseType = lessonData[exerciseId + 1]
     ? lessonData[nextExercise].screenType
     : "end";
 
-  const wordArray = data.word ? data.word.split(" ") : [];
-  const helpTextArray = [];
-  const learnWordArray = [];
+  let wordArray = data.word ? data.word.split(" ") : [];
+  let helpTextArray = [];
+  let learnWordArray = [];
 
   // Create array of words in lessonData with special characters removed
   // Keeps _ , changes all to lowercase.
-  const strippedWordArray = [];
 
-  wordArray.forEach((element) => {
-    let strippedElement = element.replace(/\W/g, "");
-    strippedElement = strippedElement.toLowerCase();
-    strippedWordArray.push(strippedElement);
-  });
+  function stripArray(array) {
+    let strippedWordArray = [];
+    array.forEach((element) => {
+      let strippedElement = element.replace(/\W/g, "");
+      strippedElement = strippedElement.toLowerCase();
+      strippedWordArray.push(strippedElement);
+    });
+    return strippedWordArray;
+  }
+
+  let strippedWordArray = stripArray(wordArray);
   // Use word from dictionary (allows identifying of words with multiple meanings)
   // Push to pronunciation and translation arrays
-  strippedWordArray.forEach((element, index) => {
-    if (dictionary[element]) {
-      // If there are special characters in the phrase, preserve them.
-      if (/\W/.exec(wordArray[index])) {
-        let match = /\W/.exec(wordArray[index]);
-        // Ass special characters to translation for reverse
-        if (reverse) {
-          wordArray[index] = dictionary[element].word;
-          wordArray[index] =
-            wordArray[index].slice(0, match.index) +
-            match[0] +
-            wordArray[index].slice(match.index);
-          learnWordArray.push(dictionary[element].translation);
-        } else {
-          wordArray[index] = dictionary[element].word;
 
-          learnWordArray[index] = dictionary[element].translation;
-          learnWordArray[index] =
-            learnWordArray[index].slice(0, match.index) +
-            match[0] +
-            learnWordArray[index].slice(match.index);
+  function punctuate(notPunctuatedArray, punctuateArray, learnWordArray) {
+    notPunctuatedArray.forEach((element, index) => {
+      if (dictionary[element]) {
+        // If there are special characters in the phrase, preserve them.
+        if (/\W/.exec(punctuateArray[index])) {
+          let match = /\W/.exec(punctuateArray[index]);
+          // Add special characters to translation for reverse
+          if (reverse) {
+            punctuateArray[index] = dictionary[element].word;
+            punctuateArray[index] =
+              punctuateArray[index].slice(0, match.index) +
+              match[0] +
+              punctuateArray[index].slice(match.index);
+
+            learnWordArray.push(dictionary[element].translation);
+          } else {
+            punctuateArray[index] = dictionary[element].word;
+
+            learnWordArray[index] = dictionary[element].translation;
+            learnWordArray[index] =
+              learnWordArray[index].slice(0, match.index) +
+              match[0] +
+              learnWordArray[index].slice(match.index);
+          }
+        } else {
+          punctuateArray[index] = dictionary[element].word;
+
+          learnWordArray.push(dictionary[element].translation);
         }
-      } else {
-        wordArray[index] = dictionary[element].word;
-        learnWordArray.push(dictionary[element].translation);
+        helpTextArray.push(dictionary[element].pronunciation);
       }
-      helpTextArray.push(dictionary[element].pronunciation);
-    }
-  });
+    });
+  }
+
+  punctuate(strippedWordArray, wordArray, learnWordArray);
+
+  // Necessary for languages with different order of words in phrases.
+  if (data.screenType === "sentenceBuilder") {
+    const mainWordArray = phraseData.phraseMain.order.split(" ");
+    const translationArray = phraseData.phraseTranslation.order.split(" ");
+    strippedWordArray = stripArray(mainWordArray);
+    wordArray = mainWordArray;
+
+    const newLearnWordArray = [];
+    const newLearnWordArray2 = [];
+
+    punctuate(strippedWordArray, wordArray, newLearnWordArray);
+    // For !reverse
+    strippedWordArray = stripArray(translationArray);
+    punctuate(strippedWordArray, translationArray, newLearnWordArray2);
+
+    phraseData = reverse ? newLearnWordArray : translationArray;
+  }
 
   const selections = [];
 

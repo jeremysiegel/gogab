@@ -3,7 +3,7 @@
 export default phraseDictionary = [
   {
     phraseId: 1,
-    order: "bathroom is the where?",
+    order: "where is the bathroom?",
   },
   {
     phraseId: 2,

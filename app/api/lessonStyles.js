@@ -31,6 +31,7 @@ const lessonStyles = [
         screens: ["multipleChoice"],
         wordType: ["supportWords"],
       },
+
       {
         screens: ["matching"],
       },

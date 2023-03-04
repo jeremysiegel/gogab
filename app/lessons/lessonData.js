@@ -7,8 +7,8 @@ const lessonData = [
     style: 1,
     words: ["bathroom"], //, "where"],
     reviewWords: [],
-    supportWords:[], //["is"],
-    phrases: [1] //["where is the bathroom?"],
+    supportWords: [], //["is"],
+    phrases: [2], //["where is the bathroom?"],
   },
   {
     lessonId: 2,

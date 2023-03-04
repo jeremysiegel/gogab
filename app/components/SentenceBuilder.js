@@ -24,7 +24,6 @@ function SentenceBuilder({ data, setComplete }) {
   const checkComplete = () => {
     const answered = ref.current?.getAnsweredWords();
     setComplete(arrayEquals(answered, data.wordArray));
-   //console.log(answered, data.wordArray)
   };
 
   if (shuffledData === undefined) {
