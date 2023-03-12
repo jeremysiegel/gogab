@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import QuizScreen from "./QuizScreen";
 import ChoiceImage from "../../components/ChoiceImage";
 import getExerciseData from "../../api/getExerciseData";
-import instructionText from "../../config/instructionText";
+import instructionText from "../../lessons/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 
 // Creates a multiple choice quiz screen of ChoiceImages.

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import getExerciseData from "../../api/getExerciseData";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
-import instructionText from "../../config/instructionText";
+import instructionText from "../../lessons/instructionText";
 import QuizScreen from "./QuizScreen";
 import RenderLearnWord from "../../components/RenderLearnWord";
 

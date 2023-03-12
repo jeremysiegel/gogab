@@ -8,8 +8,6 @@ import subLessons from "../lessons/subLessons";
 Takes in lessonData and creates a lesson
 from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
-
-TODO: add in endscreens.
 */
 
 function generateLessonData(lessonId, sectionLessons) {

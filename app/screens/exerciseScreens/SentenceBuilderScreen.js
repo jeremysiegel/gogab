@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import getExerciseData from "../../api/getExerciseData";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
-import instructionText from "../../config/instructionText";
+import instructionText from "../../lessons/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
 import AppText from "../../components/AppText";
@@ -16,7 +16,6 @@ function SentenceBuilderScreen({ route, navigation }) {
   const [complete, setComplete] = useState(false);
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({ ...route.params });
-    console.log(setUpData);
     setData(setUpData);
     const setUpPhrase = (
       <RenderLearnWord data={setUpData} helpText={setUpData.phraseData} />

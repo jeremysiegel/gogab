@@ -1,6 +1,15 @@
 import React from "react";
 import { View } from "react-native";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome,
+  FontAwesome5,
+  Foundation,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import AppText from "./AppText";
 import { moderateScale } from "../utility/scaler";
 import fonts from "../config/fonts";
@@ -31,15 +40,36 @@ function Icon({
           alignItems: "center",
         }}
       >
-        {iconType === "material" && (
+        {iconType === "MaterialCommunityIcons" && (
           <MaterialCommunityIcons
             name={name}
             color={iconColor}
             size={iconSize}
           />
         )}
-        {iconType === undefined && (
+        {iconType === "Ionicons" && (
+          <Ionicons name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "Feather" && (
+          <Feather name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "MaterialIcons" && (
+          <MaterialIcons name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "Foundation" && (
+          <Foundation name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "AntDesign" && (
+          <AntDesign name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "FontAwesome5" && (
           <FontAwesome5 name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === "FontAwesome" && (
+          <FontAwesome name={name} color={iconColor} size={iconSize} />
+        )}
+        {iconType === null && (
+          <FontAwesome name={"thumbs-up"} color={iconColor} size={iconSize} />
         )}
       </View>
     </View>

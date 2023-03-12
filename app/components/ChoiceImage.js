@@ -31,6 +31,7 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
       <View style={styles.iconContainer}>
         <Icon
           name={item.icon}
+          iconType={item.iconFamily}
           size={
             height < constants.shortHeight ? 80 : Math.min(0.28 * width, 120)
           }

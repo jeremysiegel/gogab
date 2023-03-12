@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import MatchingGame from "../../components/MatchingGame";
 import getExerciseData from "../../api/getExerciseData";
-import instructionText from "../../config/instructionText";
+import instructionText from "../../lessons/instructionText";
 import CheckAnswerModal from "../../components/exerciseScreen/CheckAnswerModal";
 
 // Creates a matching game with a "CheckAnswerModal" that appears when all the matches

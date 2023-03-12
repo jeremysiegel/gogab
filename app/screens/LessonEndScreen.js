@@ -14,14 +14,13 @@ const endLotties = [
   require("../assets/endLesson4.json"),
   require("../assets/endLesson5.json"),
   require("../assets/endLesson6.json"),
-  
 ];
 
 function LessonEndScreen({ navigation, route }) {
   const quizLength = Object.keys(route.params.lessonData).length;
   const lottieNumber = Math.floor(Math.random() * endLotties.length);
-  const lottie = endLotties[lottieNumber]
-  
+  const lottie = endLotties[lottieNumber];
+
   return (
     <BackgroundScreen>
       <ExerciseHeader
@@ -31,10 +30,7 @@ function LessonEndScreen({ navigation, route }) {
       />
       <View style={styles.container}>
         <View style={styles.animationContainer}>
-          <AppLottie
-            source={lottie}
-            loop={true}
-          />
+          <AppLottie source={lottie} loop={true} />
         </View>
         <View style={styles.buttonContainer}>
           <AppButton

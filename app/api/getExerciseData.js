@@ -1,5 +1,4 @@
 // TODO: allow multiple special characters in a word (see strippedArray)
-// TODO: allow multiple language dictionaries
 
 import getDictionary from "./getDictionary";
 import shuffle from "../utility/shuffle";
