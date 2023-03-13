@@ -51,6 +51,7 @@ function CheckAnswerModal({
                   name={correctAnswer ? "check" : "times"}
                   size={23}
                   backgroundColor={correctAnswer ? colors.green : colors.red}
+                  iconType={"FontAwesome5"}
                 />
               </View>
               {correctAnswer && (

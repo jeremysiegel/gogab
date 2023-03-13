@@ -23,7 +23,7 @@ function TipScreen({ route, navigation }) {
             backgroundColor={null}
             iconColor={colors.primary}
             size={80}
-            iconType={"material"}
+            iconType={"MaterialCommunityIcons"}
           />
           <View style={styles.titleTextContainer}>
             <AppText style={styles.title}>{title}</AppText>

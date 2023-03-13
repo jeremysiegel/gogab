@@ -14,9 +14,6 @@ import AppText from "./AppText";
 import { moderateScale } from "../utility/scaler";
 import fonts from "../config/fonts";
 
-// App Icon. Defaults to FontAwesome5
-// Accepts type "material" for MaterialCommunityIcons
-
 function Icon({
   name,
   size = 40,
@@ -69,9 +66,42 @@ function Icon({
           <FontAwesome name={name} color={iconColor} size={iconSize} />
         )}
         {iconType === null && (
-          <FontAwesome name={"thumbs-up"} color={iconColor} size={iconSize} />
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: iconSize * 1.4,
+            }}
+          >
+            <AppText
+              style={{
+                color: iconColor,
+                fontSize: iconSize,
+                fontWeight: "bold",
+                fontFamily: fonts.bold,
+                textAlign: "center",
+                textAlignVertical: "center",
+                lineHeight: iconSize * 1.2,
+              }}
+            >
+              {name}
+            </AppText>
+          </View>
         )}
       </View>
+      {label && (
+        <AppText
+          style={{
+            fontSize: labelSize,
+            paddingTop: 8,
+            fontFamily: fonts[labelWeight],
+            textAlign: "center",
+            alignSelf: center,
+          }}
+        >
+          {label}
+        </AppText>
+      )}
     </View>
   );
 }

@@ -35,10 +35,7 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
           size={
             height < constants.shortHeight ? 80 : Math.min(0.28 * width, 120)
           }
-          label={title}
           backgroundColor={colors.secondary}
-          labelSize={height < constants.shortHeight ? 22 : undefined}
-          labelWeight={fontWeight}
         />
         <AppText
           style={{
