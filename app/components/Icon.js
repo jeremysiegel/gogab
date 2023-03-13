@@ -11,7 +11,6 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import AppText from "./AppText";
-import { moderateScale } from "../utility/scaler";
 import fonts from "../config/fonts";
 
 function Icon({
