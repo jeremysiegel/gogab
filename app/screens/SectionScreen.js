@@ -10,14 +10,15 @@ import AppText from "../components/AppText";
 import SectionButton from "../components/SectionButton";
 import BackgroundScreen from "../components/BackgroundScreen";
 import { scale, moderateScale } from "../utility/scaler";
+import AuthContext from "../navigation/authContext";
 
 // Section screen.
 
 const exerciseId = 1;
 
-function SectionScreen({ navigation }) {
+function SectionScreen({ navigation, route }) {
   const { section, setLessonData, setLesson } = useContext(LessonContext);
-
+const {country} = useContext(AuthContext)
   const sectionData = getElementFromId(sections, "sectionId", section);
   // Makes a deep copy.
   const allLessons = JSON.parse(JSON.stringify(lessonData));
@@ -42,6 +43,7 @@ function SectionScreen({ navigation }) {
             exerciseId: exerciseId,
             lessonId: item.lessonId,
             lessonData: lesson,
+            country: country
           });
         }}
       />

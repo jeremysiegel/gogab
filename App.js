@@ -6,10 +6,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
+import AuthContext from "./app/navigation/authContext";
 import AppNavigator from "./app/navigation/AppNavigator";
 import LessonNavigator from "./app/navigation/LessonNavigator";
 import useFonts from "./hooks/useFonts";
 import { LogBox } from "react-native";
+import cache from "./app/utility/cache";
 
 export default function App() {
   LogBox.ignoreLogs([
@@ -17,9 +19,16 @@ export default function App() {
   ]);
 
   const [isReady, setIsReady] = useState();
+  const [country, setCountry] = useState();
+
 
   const LoadFonts = async () => {
     await useFonts();
+  };
+
+  const getCountry = async () => {
+    let cachedCountry = await cache.get("country");
+    setCountry(cachedCountry);
   };
 
   useEffect(() => {
@@ -42,6 +51,7 @@ export default function App() {
 
   const restoreUser = async () => {
     await LoadFonts();
+    await getCountry();
   };
 
   if (!isReady) {
@@ -50,6 +60,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <AuthContext.Provider value={{country, setCountry}}>
       <NavigationContainer>
         <NativeBaseProvider>
           <View style={styles.container}>
@@ -57,6 +68,7 @@ export default function App() {
           </View>
         </NativeBaseProvider>
       </NavigationContainer>
+      </AuthContext.Provider>
     </GestureHandlerRootView>
   );
 }

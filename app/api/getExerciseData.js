@@ -6,15 +6,16 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 
-const getExerciseData = async ({
+const getExerciseData =  ({
   exerciseId,
   lessonId,
   lessonData,
   multipleChoice,
   prompt,
   matching,
+  country
 }) => {
-  const dictionary = await getDictionary();
+  const dictionary =  getDictionary(country);
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());

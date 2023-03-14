@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import RNModal from "react-native-modal";
 
@@ -7,6 +7,7 @@ import Icon from "../Icon";
 import AppText from "../AppText";
 import AppButton from "../AppButton";
 import defaultStyles from "../../config/styles";
+import AuthContext from "../../navigation/authContext";
 
 // Creates a modal that appears when user checks
 // if their answer is correct
@@ -21,6 +22,7 @@ function CheckAnswerModal({
   lessonData,
   skippable, // Lets user skip exercise if true.
 }) {
+  const {country} = useContext(AuthContext)
   return (
     <RNModal
       animationIn={"slideInUp"}
@@ -77,6 +79,7 @@ function CheckAnswerModal({
                     exerciseId: nextExercise,
                     lessonId: lessonId,
                     lessonData: lessonData,
+                    country: country
                   });
                 } else {
                   setModalVisible(!modalVisible);
@@ -94,6 +97,7 @@ function CheckAnswerModal({
                     exerciseId: nextExercise,
                     lessonId: lessonId,
                     lessonData: lessonData,
+                    country: country
                   });
                 }}
               />

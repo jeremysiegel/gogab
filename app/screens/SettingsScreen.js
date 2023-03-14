@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import BackgroundScreen from "../components/BackgroundScreen";
 import { Select } from "native-base";
 import cache from "../utility/cache";
+import AuthContext from "../navigation/authContext";
 
 function SettingsScreen(props) {
-  const [country, setCountry] = useState();
-  useEffect(() => {
-    const getCountry = async () => {
-      let cachedCountry = await cache.get("country");
-      setCountry(cachedCountry);
-    };
-
-    getCountry();
-  }, []);
+  const {country, setCountry} = useContext(AuthContext);
 
   return (
     <BackgroundScreen>

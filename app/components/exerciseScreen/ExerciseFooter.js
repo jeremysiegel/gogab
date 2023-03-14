@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import AppButton from "../AppButton";
 import CheckAnswerModal from "./CheckAnswerModal";
 import LessonContext from "../../navigation/lessonContext";
-
+import AuthContext from "../../navigation/authContext";
 // Creates footer for the exercise screen.
 function ExerciseFooter({
   navigation,
@@ -16,6 +16,7 @@ function ExerciseFooter({
   skippable,
 }) {
   const { lessonData } = useContext(LessonContext);
+  const {country} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -29,6 +30,7 @@ function ExerciseFooter({
               exerciseId: data.nextExercise,
               lessonId: data.lessonId,
               lessonData: lessonData,
+              country: country
             });
           } else {
             setModalVisible(true);

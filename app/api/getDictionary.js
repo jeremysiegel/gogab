@@ -1,16 +1,10 @@
 import dictionaryEs from "../lessons/dictionary-es";
 import dictionaryIt from "../lessons/dictionary-it";
 import dictionaryCommon from "../lessons/dictionary-common";
-import cache from "../utility/cache";
 
-async function getDictionary(props) {
-  const getCountry = async () => {
-    let cachedCountry = await cache.get("country");
-    return cachedCountry;
-  };
 
-  const country = await getCountry();
-
+function getDictionary(country) {
+console.log(country)
   const dictionaries = {
     it: {
       dictionary: dictionaryIt,

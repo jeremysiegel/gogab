@@ -12,9 +12,8 @@ import instructionText from "../../lessons/instructionText";
 // Displays word and translation.
 // TODO: add audio.
 
-async function NewPhraseScreen({ route, navigation }) {
-  const data = await getExerciseData.getExerciseData(route.params);
-  console.log(data, "data");
+ function NewPhraseScreen({ route, navigation }) {
+  const data = getExerciseData.getExerciseData(route.params);
   const instruction = instructionText.say;
 
   const RenderPhrase = () => {

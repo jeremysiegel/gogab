@@ -24,7 +24,6 @@ function ExerciseScreen({
   skippable,
 }) {
   BackButtonExitHandler();
-
   const { height, width } = useWindowDimensions();
 
   const isTablet = height / width < 1.6;
