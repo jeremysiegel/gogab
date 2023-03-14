@@ -14,12 +14,15 @@ function PickImageScreen({ route, navigation }) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const setUpData = getExerciseData.getExerciseData({
-      ...route.params,
+    const getData = async () => {
+      const setUpData = await getExerciseData.getExerciseData({
+        ...route.params,
 
-      multipleChoice: true,
-    });
-    setData(setUpData);
+        multipleChoice: true,
+      });
+      setData(setUpData);
+    };
+    getData();
   }, []);
 
   const instruction = instructionText.pickImage;

@@ -72,6 +72,8 @@ function ExerciseHeader({
     }).start();
   };
   return (
+    <></>
+    /*
     <View
       style={[
         { marginBottom: height < constants.shortHeight ? 7 : 25 },
@@ -98,6 +100,7 @@ function ExerciseHeader({
         </Pressable>
       </View>
     </View>
+    */
   );
 }
 

@@ -6,7 +6,7 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 
-const getExerciseData = ({
+const getExerciseData = async ({
   exerciseId,
   lessonId,
   lessonData,
@@ -14,7 +14,7 @@ const getExerciseData = ({
   prompt,
   matching,
 }) => {
-  const dictionary = getDictionary();
+  const dictionary = await getDictionary();
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
@@ -113,9 +113,9 @@ const getExerciseData = ({
 
   // If it is a multiple choice exercise, select other choices
   if (multipleChoice || matching) {
-    let dictionaryKeys = Object.keys(dictionary);
+    let choiceWords = Object.keys(dictionary);
     // Remove rank 0 words (conjunctions, etc)
-    dictionaryKeys = dictionaryKeys.filter(
+    choiceWords = choiceWords.filter(
       (element) => dictionary[element].rank !== 0
     );
     // Total number of choices
@@ -123,29 +123,29 @@ const getExerciseData = ({
     // For matching game, select only lesson words
     if (matching) {
       const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
-      dictionaryKeys = lesson.words;
-      if (dictionaryKeys.length < numItems && lesson.reviewWords) {
-        dictionaryKeys = dictionaryKeys.concat(lesson.reviewWords);
+      choiceWords = lesson.words;
+      if (choiceWords.length < numItems && lesson.reviewWords) {
+        choiceWords = choiceWords.concat(lesson.reviewWords);
       }
-      if (dictionaryKeys.length < numItems && lesson.supportWords) {
-        dictionaryKeys = dictionaryKeys.concat(lesson.supportWords);
+      if (choiceWords.length < numItems && lesson.supportWords) {
+        choiceWords = choiceWords.concat(lesson.supportWords);
       }
     }
     // If there is a correct answer, include the correct answer
     if (data.word) {
       selections[0] = dictionary[data.word];
       selections[0].correct = true;
-      dictionaryKeys = dictionaryKeys.filter(
+      choiceWords = choiceWords.filter(
         (element) => dictionary[element].word !== dictionary[data.word].word
       );
       numItems--;
     }
 
     // Randomly select remaining choices
-    while (numItems > 0 && dictionaryKeys.length > 0) {
+    while (numItems > 0 && choiceWords.length > 0) {
       // Pick random word from dictionary
-      let randomIndex = Math.floor(Math.random() * dictionaryKeys.length);
-      let pushWord = dictionary[dictionaryKeys[randomIndex]];
+      let randomIndex = Math.floor(Math.random() * choiceWords.length);
+      let pushWord = dictionary[choiceWords[randomIndex]];
       let push = true;
       // Covers first word:
       // Don't use word if it is the same in both languages
@@ -167,7 +167,7 @@ const getExerciseData = ({
         numItems--;
       }
 
-      dictionaryKeys.splice(randomIndex, 1);
+      choiceWords.splice(randomIndex, 1);
     }
   }
 
