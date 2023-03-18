@@ -6,16 +6,16 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 
-const getExerciseData =  ({
+const getExerciseData = ({
   exerciseId,
   lessonId,
   lessonData,
   multipleChoice,
   prompt,
   matching,
-  country
+  country,
 }) => {
-  const dictionary =  getDictionary(country);
+  const dictionary = getDictionary(country);
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
@@ -103,8 +103,10 @@ const getExerciseData =  ({
     const newLearnWordArray2 = [];
 
     punctuate(strippedWordArray, wordArray, newLearnWordArray);
+    // TODO: FIX
     // For !reverse
     strippedWordArray = stripArray(translationArray);
+
     punctuate(strippedWordArray, translationArray, newLearnWordArray2);
 
     phraseData = reverse ? newLearnWordArray : translationArray;

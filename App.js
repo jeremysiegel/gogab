@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 
 import AuthContext from "./app/navigation/authContext";
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -21,13 +22,15 @@ export default function App() {
   const [isReady, setIsReady] = useState();
   const [country, setCountry] = useState();
 
-
   const LoadFonts = async () => {
     await useFonts();
   };
 
   const getCountry = async () => {
     let cachedCountry = await cache.get("country");
+    if (!cachedCountry) {
+      cachedCountry = "it";
+    }
     setCountry(cachedCountry);
   };
 
@@ -60,14 +63,15 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <AuthContext.Provider value={{country, setCountry}}>
-      <NavigationContainer>
-        <NativeBaseProvider>
-          <View style={styles.container}>
-            <LessonNavigator />
-          </View>
-        </NativeBaseProvider>
-      </NavigationContainer>
+      <AuthContext.Provider value={{ country, setCountry }}>
+        <StatusBar translucent={true} />
+        <NavigationContainer>
+          <NativeBaseProvider>
+            <View style={styles.container}>
+              <LessonNavigator />
+            </View>
+          </NativeBaseProvider>
+        </NavigationContainer>
       </AuthContext.Provider>
     </GestureHandlerRootView>
   );

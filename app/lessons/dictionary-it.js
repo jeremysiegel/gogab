@@ -3,475 +3,475 @@
 export default dictionary = {
   a_little: {
     translation: "un po'",
-    pronunciation: "oon poko",
+    pronunciation: "oon poh",
   },
   airport: {
     translation: "aeroporto",
-    pronunciation: "air-o-pwer-tow",
+    pronunciation: "eye-eh-roh-PORT-oh",
   },
   all: {
     translation: "Tutto",
-    pronunciation: "tow-doe",
+    pronunciation: "TOO-toh",
   },
   and: {
     translation: "E",
-    pronunciation: "ee",
+    pronunciation: "eh",
   },
   are_you: {
     translation: "Sei",
-    pronunciation: "airez",
+    pronunciation: "say",
   },
   bakery: {
     translation: "forno",
-    pronunciation: "pahn-a-dare-ee-ah",
+    pronunciation: "FOR-no",
   },
   bathroom: {
     translation: "bagno",
-    pronunciation: "banyo",
+    pronunciation: "BAHN-yoh",
   },
   beans: {
     translation: "fagioli",
-    pronunciation: "free-hole-ez",
+    pronunciation: "fah-JOH-lee",
   },
   beef: {
     translation: "manzo",
-    pronunciation: "karn-ay deh rez",
+    pronunciation: "MAHN-tsoh",
   },
   beer: {
     translation: "birra",
-    pronunciation: "servayzah",
+    pronunciation: "BEER-rah",
   },
   bon_appetit: {
     translation: "buon appetito",
-    pronunciation: "bwen pro--vay-cho",
+    pronunciation: "bwon ah-peh-TEE-toh",
   },
   bread: {
     translation: "pane",
-    pronunciation: "pahn",
+    pronunciation: "PAH-neh",
   },
   bus: {
     translation: "autobus",
-    pronunciation: "awtoe-boos",
+    pronunciation: "ow-toh-BOOS",
   },
   change: {
     translation: "modifica",
-    pronunciation: "kahm-bee-ar",
+    pronunciation: "moh-DEE-fee-kah",
   },
   check: {
-    translation: "controllo",
-    pronunciation: "la kwentah",
+    translation: "conto",
+    pronunciation: "KON-toh",
   },
   cheers: {
     translation: "saluti",
-    pronunciation: "salood",
+    pronunciation: "sah-LOO-tee",
   },
   cheese: {
     translation: "formaggio",
-    pronunciation: "kayso",
+    pronunciation: "for-MAH-djo",
   },
   chicken: {
     translation: "pollo",
-    pronunciation: "poy-yo",
+    pronunciation: "POL-lo",
   },
   closed: {
     translation: "Chiuso",
-    pronunciation: "sehradoe",
+    pronunciation: "KYOO-soh",
   },
   coffee: {
     translation: "caffè",
-    pronunciation: "kafay",
+    pronunciation: "kaf-FEH",
   },
   cold: {
     translation: "Freddo",
-    pronunciation: "free-oh",
+    pronunciation: "FRED-doh",
   },
   cost: {
     translation: "costo",
-    pronunciation: "kwantoe",
+    pronunciation: "KOH-stoh",
   },
   day: {
     translation: "giorno",
-    pronunciation: "dee-ah",
+    pronunciation: "JOR-noh",
   },
   downtown: {
     translation: "centro",
-    pronunciation: "sentroh",
+    pronunciation: "CHEN-troh",
   },
   drinks: {
     translation: "bevande",
-    pronunciation: "b-b-dahs",
+    pronunciation: "beh-VAHN-deh",
   },
   eggs: {
     translation: "uova",
-    pronunciation: "wayvos",
+    pronunciation: "OO-oh-vah",
   },
   eight: {
     translation: "otto",
-    pronunciation: "ohcho",
+    pronunciation: "OH-toh",
   },
   eleven: {
     translation: "undici",
-    pronunciation: "ownsay",
+    pronunciation: "oon-DEE-chee",
   },
   English: {
     translation: "Inglese",
-    pronunciation: "eenglehs",
+    pronunciation: "een-GLEH-zeh",
   },
   entrance: {
     translation: "Entrata",
-    pronunciation: "entrah-da",
+    pronunciation: "en-TRAH-tah",
   },
   excuse_me: {
     translation: "Scusami",
-    pronunciation: "pear-done",
+    pronunciation: "SKOO-sah-mee",
   },
   excuse_me2: {
     translation: "Mi scusi",
-    pronunciation: "dis-cool-pay",
+    pronunciation: "MEE SKOO-zee",
   },
   exit: {
     translation: "Uscita",
-    pronunciation: "sal-ee-dah",
+    pronunciation: "ooh-SHEE-tah",
   },
   fifty: {
     translation: "cinquanta",
-    pronunciation: "seen-kwen-tah",
+    pronunciation: "cheen-KWAN-tah",
   },
   fifteen: {
     translation: "quindici",
-    pronunciation: "keensay",
+    pronunciation: "kween-DEE-chee",
   },
   first: {
     translation: "Primo",
-    pronunciation: "pree-mare-oh",
+    pronunciation: "PREE-moh",
   },
   fish: {
     translation: "pescare",
-    pronunciation: "pehs-kah-doe",
+    pronunciation: "peh-SKAH-reh",
   },
   five: {
     translation: "cinque",
-    pronunciation: "seen-koh",
+    pronunciation: "CHEEN-kweh",
   },
   for: {
     translation: "per",
-    pronunciation: "pahrah",
+    pronunciation: "pehr",
   },
   forty_five: {
     translation: "quarantacinque",
-    pronunciation: "kwahrehntah ee seen-koh",
+    pronunciation: "kwar-ahn-TAH-cheen-kweh",
   },
   four: {
     translation: "quattro",
-    pronunciation: "kwah-troe",
+    pronunciation: "KWAT-troh",
   },
   free: {
     translation: "gratuito",
-    pronunciation: "grahteess",
+    pronunciation: "grah-TOO-ee-toh",
   },
   good: {
     translation: "Bene",
-    pronunciation: "bee-en",
+    pronunciation: "BEH-neh",
   },
   good_afternoon: {
     translation: "Buon pomeriggio",
-    pronunciation: "bwenass tahrdays",
+    pronunciation: "bwon poh-meh-REE-joh",
   },
   good_morning: {
     translation: "Buongiorno",
-    pronunciation: "bwenose dee-as",
+    pronunciation: "bwon JOR-noh",
   },
   good_night: {
     translation: "Buona notte",
-    pronunciation: "bweanass no-chez",
+    pronunciation: "bwon-ah NOH-teh",
   },
   goodbye: {
     translation: "arrivederci",
-    pronunciation: "ah-dee-ose",
+    pronunciation: "ah-ree-veh-DEHR-chee",
   },
   half: {
     translation: "metà",
-    pronunciation: "mee-dee-oh",
+    pronunciation: "meh-TAH",
   },
   hello: {
     translation: "Ciao",
-    pronunciation: "owe-la",
+    pronunciation: "CHOW",
   },
   here: {
     translation: "Qui",
-    pronunciation: "ah-key",
+    pronunciation: "KOO-ee",
   },
   hot: {
     translation: "caldo",
-    pronunciation: "cahlee-ehntay",
+    pronunciation: "KAL-doh",
   },
   hotel: {
     translation: "Hotel",
-    pronunciation: "owetell",
+    pronunciation: "oh-TEHL",
   },
   hour: {
     translation: "ora",
-    pronunciation: "or-ah",
+    pronunciation: "OH-rah",
   },
   how_are_you: {
     translation: "Come stai",
-    pronunciation: "komo ess-tah",
+    pronunciation: "KOH-meh STY",
   },
   how_much: {
     translation: "Quanto",
-    pronunciation: "kwantoe",
+    pronunciation: "KWAN-toh",
   },
   "I need": {
     translation: "Ho bisogno",
-    pronunciation: "ness-ee-seetoe",
+    pronunciation: "oh bee-ZOHN-yoh",
   },
   I_understand: {
     translation: "Capisco",
-    pronunciation: "ehn-tea-en-doe",
+    pronunciation: "kah-PEES-koh",
   },
   is: {
     translation: "È",
-    pronunciation: "esstah",
+    pronunciation: "eh",
   },
   is_it: {
     translation: "è",
-    pronunciation: "low ess",
+    pronunciation: "eh",
   },
   is_there: {
     translation: "è lì",
-    pronunciation: "hey",
+    pronunciation: "eh lee",
   },
   large: {
     translation: "grande",
-    pronunciation: "grahn-day",
+    pronunciation: "GRAHN-deh",
   },
   left: {
     translation: "Sinistra",
-    pronunciation: "iz-key-air-da",
+    pronunciation: "see-NEES-trah",
   },
   lets_go: {
     translation: "andiamo",
-    pronunciation: "vahmos",
+    pronunciation: "ahn-dee-AH-moh",
   },
   market: {
     translation: "mercato",
-    pronunciation: "mehr-kahdoe",
+    pronunciation: "mehr-KAH-toh",
   },
   meat: {
     translation: "carne",
-    pronunciation: "karn-ay",
+    pronunciation: "KAHR-neh",
   },
   menu: {
     translation: "menù",
-    pronunciation: "men-oo",
+    pronunciation: "meh-NOO",
   },
   milk: {
     translation: "latte",
-    pronunciation: "le-chay",
+    pronunciation: "LAHT-teh",
   },
   minute: {
     translation: "minuto",
-    pronunciation: "mee-noo-toe",
+    pronunciation: "mee-NOO-toh",
   },
   mushrooms: {
     translation: "funghi",
-    pronunciation: "hongos",
+    pronunciation: "FOON-ghee",
   },
   my: {
     translation: "Mio",
-    pronunciation: "mee",
+    pronunciation: "MEE-oh",
   },
   name: {
     translation: "nome",
-    pronunciation: "nome-bray",
+    pronunciation: "NOH-meh",
   },
   next: {
     translation: "Prossimo",
-    pronunciation: "prox-ee-mo",
+    pronunciation: "PROS-see-moh",
   },
   night: {
     translation: "notte",
-    pronunciation: "no-chay",
+    pronunciation: "NOH-teh",
   },
   nine: {
     translation: "nove",
-    pronunciation: "noo-eh-vay",
+    pronunciation: "NOH-veh",
   },
   no: {
     translation: "NO",
-    pronunciation: "no",
+    pronunciation: "NOH",
   },
   one: {
     translation: "uno",
-    pronunciation: "oono",
+    pronunciation: "OO-noh",
   },
   open: {
     translation: "aprire",
-    pronunciation: "ah-bee-airtoe",
+    pronunciation: "ah-PREE-reh",
   },
   pharmacy: {
     translation: "farmacia",
-    pronunciation: "farma-see-ah",
+    pronunciation: "fahr-MAH-chyah",
   },
   please: {
     translation: "Per favore",
-    pronunciation: "pour fav-or",
+    pronunciation: "pehr fah-VOH-reh",
   },
   pork: {
     translation: "maiale",
-    pronunciation: "sehrdoe",
+    pronunciation: "mah-YAH-leh",
   },
   receipt: {
     translation: "ricevuta",
-    pronunciation: "re-see-bow",
+    pronunciation: "ree-cheh-VOO-tah",
   },
   recommend: {
     translation: "consiglio",
-    pronunciation: "rek-oh-mendar",
+    pronunciation: "kon-SIL-yoh",
   },
   reservation: {
     translation: "prenotazione",
-    pronunciation: "reeservah",
+    pronunciation: "pre-no-ta-TSYOH-neh",
   },
   return: {
     translation: "ritorno",
-    pronunciation: "re-gresso",
+    pronunciation: "ri-TOR-no",
   },
   right: {
     translation: "Giusto",
-    pronunciation: "dehrecho",
+    pronunciation: "JU-stoh",
   },
   salt: {
     translation: "sale",
-    pronunciation: "sal",
+    pronunciation: "SAH-leh",
   },
   second: {
     translation: "secondo",
-    pronunciation: "seh-goon-doe",
+    pronunciation: "se-KON-doh",
   },
   seven: {
     translation: "Sette",
-    pronunciation: "see-eh-tay",
+    pronunciation: "SET-teh sei",
   },
   six: {
     translation: "sei",
-    pronunciation: "say-ss",
+    pronunciation: "Seh-ee",
   },
   small: {
     translation: "piccolo",
-    pronunciation: "p-cane-yo",
+    pronunciation: "PEEK-koh-loh",
   },
   sorry: {
     translation: "Scusa",
-    pronunciation: "low see-en-toe",
+    pronunciation: "SKOO-zah",
   },
   speak: {
     translation: "parlare",
-    pronunciation: "ha-blarr",
+    pronunciation: "par-LAH-reh",
   },
   spicy: {
     translation: "speziato",
-    pronunciation: "p-cahn-tay",
+    pronunciation: "speh-TSYAH-toh",
   },
   station: {
     translation: "stazione",
-    pronunciation: "es-tay-shion",
+    pronunciation: "sta-TSYOH-neh",
   },
   street: {
     translation: "strada",
-    pronunciation: "kai-ay",
+    pronunciation: "STRAH-dah",
   },
   sugar: {
     translation: "zucchero",
-    pronunciation: "ah-zoo-car",
+    pronunciation: "ZOO-keh-roh",
   },
   taxi: {
     translation: "Taxi",
-    pronunciation: "taxi",
+    pronunciation: "TAHK-see",
   },
   ten: {
     translation: "dieci",
-    pronunciation: "dee-ez",
+    pronunciation: "DEE-eh-chee",
   },
   thank_you: {
     translation: "Grazie",
-    pronunciation: "grah-see-ahs",
+    pronunciation: "GRAH-tsee-eh",
   },
   the: {
     translation: "IL",
-    pronunciation: "el",
+    pronunciation: "eel",
   },
   thirty: {
     translation: "trenta",
-    pronunciation: "trehn-tah",
+    pronunciation: "TREN-tah",
   },
   this: {
     translation: "Questo",
-    pronunciation: "esstay",
+    pronunciation: "KWES-toh",
   },
   three: {
     translation: "tre",
-    pronunciation: "trace",
+    pronunciation: "treh",
   },
   ticket: {
     translation: "biglietto",
-    pronunciation: "bowleto",
+    pronunciation: "beel-LYET-toh",
   },
   time: {
     translation: "tempo",
-    pronunciation: "tea-em-po",
+    pronunciation: "TEM-poh",
   },
   toilet_paper: {
     translation: "carta igienica",
-    pronunciation: "pah-pel hee-jen-eeko",
+    pronunciation: "KAR-tah ee-jeh-NEE-kah",
   },
   train: {
     translation: "treno",
-    pronunciation: "tren",
+    pronunciation: "TREH-noh",
   },
   twelve: {
     translation: "dodici",
-    pronunciation: "doe-say",
+    pronunciation: "DOH-dee-chee",
   },
   twenty: {
     translation: "venti",
-    pronunciation: "bee-en-tah",
+    pronunciation: "VEN-tee",
   },
   two: {
     translation: "due",
-    pronunciation: "dose",
+    pronunciation: "DOO-eh",
   },
   very: {
     translation: "molto",
-    pronunciation: "muye",
+    pronunciation: "MOHL-toh",
   },
   water: {
     translation: "acqua",
-    pronunciation: "ahgwah",
+    pronunciation: "AHK-kwah",
   },
   what: {
     translation: "Che cosa",
-    pronunciation: "kay",
+    pronunciation: "keh KOH-sah",
   },
   where: {
     translation: "Dove",
-    pronunciation: "d-own-day",
+    pronunciation: "DOH-veh",
   },
   where_to: {
     translation: "dove",
-    pronunciation: "a d-own-day",
+    pronunciation: "DOH-veh",
   },
   wine: {
     translation: "vino",
-    pronunciation: "vee-no",
+    pronunciation: "VEE-noh",
   },
   with: {
     translation: "con",
-    pronunciation: "con",
+    pronunciation: "kohn",
   },
   without: {
     translation: "senza",
-    pronunciation: "seen",
+    pronunciation: "SEN-tsa",
   },
   yes: {
     translation: "SÌ",
@@ -479,10 +479,10 @@ export default dictionary = {
   },
   you: {
     translation: "Voi",
-    pronunciation: "too",
+    pronunciation: "VOH-ee",
   },
   youre_welcome: {
     translation: "Prego",
-    pronunciation: "de nahdah",
+    pronunciation: "PREH-goh",
   },
 };

@@ -21,12 +21,12 @@ export default {
   },
   practiceWord: {
     fontSize: moderateScale(28),
-    color: colors.secondary,
+    color: colors.primary,
     textAlign: "center",
   },
   learnWord: {
     fontSize: moderateScale(30),
-    color: colors.primary,
+    color: colors.secondary,
     //textDecorationLine: "underline",
   },
   popoverText: {

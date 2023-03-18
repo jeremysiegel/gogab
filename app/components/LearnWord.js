@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 
 import AppPopover from "./AppPopover";
 
@@ -6,8 +7,18 @@ import AppPopover from "./AppPopover";
 
 function LearnWord({ style, children, helpText }) {
   return (
-    <AppPopover style={style} displayText={children} popoverText={helpText} />
+    <AppPopover
+      style={[styles.text, style]}
+      displayText={children}
+      popoverText={helpText}
+    />
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    textTransform: "lowercase",
+  },
+});
 
 export default LearnWord;
