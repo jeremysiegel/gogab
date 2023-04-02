@@ -5,6 +5,7 @@ import shuffle from "../utility/shuffle";
 import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
+import stripArray from "../utility/stripArray";
 
 const getExerciseData = ({
   exerciseId,
@@ -25,7 +26,7 @@ const getExerciseData = ({
   const data = lessonData[exerciseId];
   const reverse = data.reverse;
   let phraseData = "";
-  if (data.screenType === "sentenceBuilder") {
+  if (data.screenType === "sentenceBuilder" || data.screenType === "newWord") {
     phraseData = getPhraseDictionary(data.word);
     data.word = phraseData.phraseTranslation.order;
   }
@@ -38,19 +39,8 @@ const getExerciseData = ({
   let wordArray = data.word ? data.word.split(" ") : [];
   let helpTextArray = [];
   let learnWordArray = [];
-
   // Create array of words in lessonData with special characters removed
   // Keeps _ , changes all to lowercase.
-
-  function stripArray(array) {
-    let strippedWordArray = [];
-    array.forEach((element) => {
-      let strippedElement = element.replace(/\W/g, "");
-      strippedElement = strippedElement.toLowerCase();
-      strippedWordArray.push(strippedElement);
-    });
-    return strippedWordArray;
-  }
 
   let strippedWordArray = stripArray(wordArray);
   // Use word from dictionary (allows identifying of words with multiple meanings)
@@ -127,6 +117,7 @@ const getExerciseData = ({
     if (matching) {
       const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
       choiceWords = lesson.words;
+      console.log(choiceWords, strippedWordArray);
       if (choiceWords.length < numItems && lesson.reviewWords) {
         choiceWords = choiceWords.concat(lesson.reviewWords);
       }
@@ -152,7 +143,6 @@ const getExerciseData = ({
       let push = true;
       // Covers first word:
       // Don't use word if it is the same in both languages
-
       if (pushWord.word === pushWord.translation) {
         push = false;
       }

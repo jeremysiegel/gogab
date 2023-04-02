@@ -3,6 +3,8 @@ import lessonStyles from "./lessonStyles";
 import getElementFromId from "../utility/getElementFromId";
 import allPrompts from "../lessons/prompts";
 import subLessons from "../lessons/subLessons";
+import stripArray from "../utility/stripArray";
+import getPhraseDictionary from "./getPhraseDictionary";
 
 /*
 Takes in lessonData and creates a lesson
@@ -13,6 +15,10 @@ generate data object for getExerciseData.
 function generateLessonData(lessonId, sectionLessons) {
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
+  const phraseData = getPhraseDictionary(data.phrases[0]);
+  const phrase = phraseData["phraseMain"]["order"];
+  let wordArray = phrase ? phrase.split(" ") : [];
+  data.words = stripArray(wordArray);
   // Gets data about the style and sequence of lesson
   const style = getElementFromId(lessonStyles, "styleId", data.style);
   let sequence = style.sequence;
@@ -30,7 +36,6 @@ function generateLessonData(lessonId, sectionLessons) {
     // Pulls words, phrases, and prompts from all lessons in section
     function getWords(lessonData) {
       let words = [];
-
       let phrases = [];
       let prompts = [];
       lessonData.forEach((lesson) => {
@@ -113,6 +118,7 @@ function generateLessonData(lessonId, sectionLessons) {
     // Return review
     return lesson;
   }
+
   // For normal lesson:
   // Iterates through each exerciseSet in the lesson sequence
   // to create data objects for individual exercise screens

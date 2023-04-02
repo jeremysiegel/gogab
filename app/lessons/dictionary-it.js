@@ -221,7 +221,7 @@ export default dictionary = {
     translation: "Quanto",
     pronunciation: "KWAN-toh",
   },
-  "I need": {
+  I_need: {
     translation: "Ho bisogno",
     pronunciation: "oh bee-ZOHN-yoh",
   },

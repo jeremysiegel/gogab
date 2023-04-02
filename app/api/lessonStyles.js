@@ -23,19 +23,20 @@ const lessonStyles = [
     styleId: 1,
     sequence: [
       {
-        screens: ["newWord", "pickImage"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+      {
+        screens: ["pickImage"],
         wordType: ["words"],
       },
-
       {
         screens: ["multipleChoice"],
-        wordType: ["supportWords"],
+        wordType: ["words"],
       },
-
       {
         screens: ["matching"],
       },
-
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
@@ -47,18 +48,10 @@ const lessonStyles = [
     styleId: 2,
     sequence: [
       {
-        screens: ["newWord", "multipleChoice"],
-        wordType: ["words"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
       },
-      {
-        screens: ["pickImage"],
-        wordType: ["reviewWords"],
-        reverse: true,
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["supportWords"],
-      },
+
       {
         screens: ["multipleChoice"],
         wordType: ["words"],
@@ -164,7 +157,6 @@ const lessonStyles = [
       {
         screens: ["newWord", "pickImage"],
         wordType: ["words"],
-        reverse: true,
       },
       {
         screens: ["pickImage"],
@@ -198,7 +190,6 @@ const lessonStyles = [
       {
         screens: ["newWord", "pickImage"],
         wordType: ["words"],
-        reverse: true,
       },
       {
         screens: ["multipleChoice"],

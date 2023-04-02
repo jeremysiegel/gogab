@@ -12,7 +12,7 @@ import instructionText from "../../lessons/instructionText";
 // Displays word and translation.
 // TODO: add audio.
 
- function NewPhraseScreen({ route, navigation }) {
+function NewPhraseScreen({ route, navigation }) {
   const data = getExerciseData.getExerciseData(route.params);
   const instruction = instructionText.say;
 
