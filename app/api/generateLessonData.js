@@ -12,13 +12,24 @@ from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
 */
 
+function getPhraseData(phrases) {
+  let wordArray = [];
+  phrases.forEach((phraseId) => {
+    const phraseData = getPhraseDictionary(phraseId);
+    const phrase = phraseData["phraseMain"]["order"];
+    const phraseArray = phrase ? phrase.split(" ") : [];
+    const strippedWordArray = stripArray(phraseArray);
+    strippedWordArray.forEach((word) => {
+      wordArray.push(word);
+    });
+  });
+  return wordArray;
+}
+
 function generateLessonData(lessonId, sectionLessons) {
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
-  const phraseData = getPhraseDictionary(data.phrases[0]);
-  const phrase = phraseData["phraseMain"]["order"];
-  let wordArray = phrase ? phrase.split(" ") : [];
-  data.words = stripArray(wordArray);
+  data.words = getPhraseData(data.phrases);
   // Gets data about the style and sequence of lesson
   const style = getElementFromId(lessonStyles, "styleId", data.style);
   let sequence = style.sequence;

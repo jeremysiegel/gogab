@@ -117,7 +117,6 @@ const getExerciseData = ({
     if (matching) {
       const lesson = getElementFromId(lessonObject, "lessonId", lessonId);
       choiceWords = lesson.words;
-      console.log(choiceWords, strippedWordArray);
       if (choiceWords.length < numItems && lesson.reviewWords) {
         choiceWords = choiceWords.concat(lesson.reviewWords);
       }

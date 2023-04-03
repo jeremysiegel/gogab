@@ -64,6 +64,10 @@ const lessonStyles = [
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
       },
+      {
+        screens: ["pickImage"],
+        wordType: ["reviewWords"],
+      },
     ],
   },
   {

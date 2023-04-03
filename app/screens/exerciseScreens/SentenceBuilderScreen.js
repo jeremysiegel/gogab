@@ -17,9 +17,7 @@ function SentenceBuilderScreen({ route, navigation }) {
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({ ...route.params });
     setData(setUpData);
-    const setUpPhrase = (
-      <RenderLearnWord data={setUpData} helpText={setUpData.phraseData} />
-    );
+    const setUpPhrase = <RenderLearnWord data={setUpData} />;
     setPhrase(setUpPhrase);
   }, []);
   const instruction = instructionText["sentenceBuilder"];

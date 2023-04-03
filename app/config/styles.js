@@ -35,6 +35,7 @@ export default {
     fontWeight: "bold",
     lineHeight: "sm",
     color: colors.darkText,
+    textAlign: "center",
   },
   checkAnswer: {
     fontSize: moderateScale(28),

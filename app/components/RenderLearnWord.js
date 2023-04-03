@@ -12,7 +12,8 @@ function RenderLearnWord({ data, helpText = data.wordArray }) {
         <LearnWord
           key={index}
           style={defaultStyles.learnWord}
-          helpText={helpText ? helpText[index] : null}
+          helpText={helpText[index]}
+          pronunciation={data.helpTextArray[index]}
         >
           {item}
         </LearnWord>

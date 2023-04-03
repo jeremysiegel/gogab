@@ -5,12 +5,13 @@ import AppPopover from "./AppPopover";
 
 // Creates a word that user can tap for more information (such as translation or pronunciation).
 
-function LearnWord({ style, children, helpText }) {
+function LearnWord({ style, children, helpText, pronunciation }) {
   return (
     <AppPopover
       style={[styles.text, style]}
       displayText={children}
-      popoverText={helpText}
+      popoverText={pronunciation}
+      secondPopoverText={helpText}
     />
   );
 }

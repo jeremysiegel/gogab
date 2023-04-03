@@ -37,7 +37,7 @@ function NewPhraseScreen({ route, navigation }) {
           <RenderPhrase />
         </View>
         <View style={styles.activityContainer}>
-          <RenderLearnWord data={data} helpText={data.helpTextArray} />
+          <RenderLearnWord data={data} />
         </View>
       </View>
     </ExerciseScreen>
