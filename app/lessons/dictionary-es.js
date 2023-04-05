@@ -1,6 +1,10 @@
 // Spanish dictionary.
 
 export default dictionary = {
+  a: {
+    translation: "un",
+    pronunciation: "oon",
+  },
   a_little: {
     translation: "un poco",
     pronunciation: "oon poko",
@@ -133,13 +137,13 @@ export default dictionary = {
     translation: "salida",
     pronunciation: "sal-ee-dah",
   },
-  fifteen: {
-    translation: "quince",
-    pronunciation: "keensay",
-  },
   fifty: {
     translation: "cincuenta",
     pronunciation: "seen-kwen-tah",
+  },
+  fifteen: {
+    translation: "quince",
+    pronunciation: "keensay",
   },
   first: {
     translation: "primero",
@@ -221,7 +225,7 @@ export default dictionary = {
     translation: "cuánto",
     pronunciation: "kwantoe",
   },
-  I_need: {
+  i_need: {
     translation: "necesito",
     pronunciation: "ness-ee-seetoe",
   },
@@ -484,5 +488,25 @@ export default dictionary = {
   youre_welcome: {
     translation: "de nada",
     pronunciation: "de nahdah",
+  },
+  twenty_five: {
+    translation: "veinticinco",
+    pronunciation: "benty-seenko",
+  },
+  does_this: {
+    translation: "este",
+    pronunciation: "estay",
+  },
+  tomatos: {
+    translation: "tomate",
+    pronunciation: "tow-matay",
+  },
+  at_the: {
+    translation: "en el",
+    pronunciation: "en el",
+  },
+  supermarket: {
+    translation: "supermercado",
+    pronunciation: "supermehrcado",
   },
 };

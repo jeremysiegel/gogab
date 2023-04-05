@@ -5,14 +5,14 @@
 
 Lesson styles:
 
-1. Short intro: newWord pickImage
-2. newWord first
-3. reviewWord pickImage first
-4. No newWord for words
-5. reviewWord MC first
-6. newWord pickImage, reviewword pickimage
-7. reviewWord pickImage, newWord pickImage
-8. all MC
+1. pickImage, multipleChoice
+2. multipleChoice, pickImage
+3. pickImage reverse, multipleChoice reverse
+4. multipleChoice reverse, pickImage reverse
+5. pickImage reverse, multipleChoise
+6. multipleChoice, pickImage reverse
+7. pickImage, multipleChoice reverse
+8. multipleChoice reverse, pickImage
 9. firstScreen prompt, no words
 10. Review
 
@@ -42,6 +42,10 @@ const lessonStyles = [
         wordType: ["phrases"],
         reverse: true,
       },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
+      },
     ],
   },
   {
@@ -51,11 +55,13 @@ const lessonStyles = [
         screens: ["newWord"],
         wordType: ["phrases"],
       },
-
       {
         screens: ["multipleChoice"],
         wordType: ["words"],
-        reverse: true,
+      },
+      {
+        screens: ["pickImage"],
+        wordType: ["words"],
       },
       {
         screens: ["matching"],
@@ -63,9 +69,10 @@ const lessonStyles = [
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
+        reverse: true,
       },
       {
-        screens: ["pickImage"],
+        screens: ["multipleChoice"],
         wordType: ["reviewWords"],
       },
     ],
@@ -74,16 +81,13 @@ const lessonStyles = [
     styleId: 3,
     sequence: [
       {
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+      {
         screens: ["pickImage"],
-        wordType: ["reviewWords"],
-      },
-      {
-        screens: ["newWord", "pickImage"],
         wordType: ["words"],
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["supportWords"],
+        reverse: true,
       },
       {
         screens: ["multipleChoice"],
@@ -97,6 +101,10 @@ const lessonStyles = [
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
         reverse: true,
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
       },
     ],
   },
@@ -104,27 +112,30 @@ const lessonStyles = [
     styleId: 4,
     sequence: [
       {
-        screens: ["pickImage", "multipleChoice"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+      {
+        screens: ["multipleChoice"],
         wordType: ["words"],
+        reverse: true,
+      },
+      {
+        screens: ["pickImage"],
+        wordType: ["words"],
+        reverse: true,
+      },
+      {
+        screens: ["matching"],
+      },
+      {
+        screens: ["sentenceBuilder"],
+        wordType: ["phrases"],
         reverse: true,
       },
       {
         screens: ["multipleChoice"],
         wordType: ["reviewWords"],
-        reverse: true,
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["supportWords"],
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["words"],
-      },
-
-      {
-        screens: ["sentenceBuilder"],
-        wordType: ["phrases"],
       },
     ],
   },
@@ -132,26 +143,29 @@ const lessonStyles = [
     styleId: 5,
     sequence: [
       {
-        screens: ["multipleChoice"],
-        wordType: ["reviewWords"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
       },
       {
-        screens: ["pickImage", "multipleChoice"],
+        screens: ["pickImage"],
         wordType: ["words"],
         reverse: true,
       },
       {
         screens: ["multipleChoice"],
-        wordType: ["supportWords"],
-      },
-      {
-        screens: ["multipleChoice"],
         wordType: ["words"],
       },
-
+      {
+        screens: ["matching"],
+      },
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
+        reverse: true,
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
       },
     ],
   },
@@ -159,20 +173,17 @@ const lessonStyles = [
     styleId: 6,
     sequence: [
       {
-        screens: ["newWord", "pickImage"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+      {
+        screens: ["multipleChoice"],
         wordType: ["words"],
       },
       {
         screens: ["pickImage"],
-        wordType: ["reviewWords"],
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["supportWords"],
-      },
-      {
-        screens: ["multipleChoice"],
         wordType: ["words"],
+        reverse: true,
       },
       {
         screens: ["matching"],
@@ -181,6 +192,10 @@ const lessonStyles = [
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
         reverse: true,
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
       },
     ],
   },
@@ -188,20 +203,17 @@ const lessonStyles = [
     styleId: 7,
     sequence: [
       {
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+      {
         screens: ["pickImage"],
-        wordType: ["reviewWords"],
-      },
-      {
-        screens: ["newWord", "pickImage"],
         wordType: ["words"],
       },
       {
         screens: ["multipleChoice"],
-        wordType: ["supportWords"],
-      },
-      {
-        screens: ["multipleChoice"],
         wordType: ["words"],
+        reverse: true,
       },
       {
         screens: ["matching"],
@@ -209,6 +221,11 @@ const lessonStyles = [
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
+        reverse: true,
+      },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
       },
     ],
   },
@@ -216,21 +233,17 @@ const lessonStyles = [
     styleId: 8,
     sequence: [
       {
-        screens: ["multipleChoice"],
-        wordType: ["reviewWords"],
-      },
-      {
-        screens: ["newWord", "multipleChoice"],
-        wordType: ["words"],
-      },
-      {
-        screens: ["multipleChoice"],
-        wordType: ["supportWords"],
+        screens: ["newWord"],
+        wordType: ["phrases"],
       },
       {
         screens: ["multipleChoice"],
         wordType: ["words"],
         reverse: true,
+      },
+      {
+        screens: ["pickImage"],
+        wordType: ["words"],
       },
       {
         screens: ["matching"],
@@ -240,8 +253,13 @@ const lessonStyles = [
         wordType: ["phrases"],
         reverse: true,
       },
+      {
+        screens: ["multipleChoice"],
+        wordType: ["reviewWords"],
+      },
     ],
   },
+
   {
     styleId: 9,
     sequence: [{ screens: ["prompt"] }],

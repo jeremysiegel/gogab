@@ -1,6 +1,12 @@
 // Master dictionary.
 
 export default dictionary = {
+  a: {
+    word: "a",
+    icon: "A",
+    iconFamily: null,
+    rank: 0,
+  },
   a_little: {
     word: "a little",
     icon: "hand-lizard",
@@ -337,7 +343,7 @@ export default dictionary = {
     iconFamily: "Ionicons",
     rank: 1,
   },
-  I_need: {
+  i_need: {
     word: "I need",
     icon: "hand-extended-outline",
     iconFamily: "MaterialCommunityIcons",
@@ -732,5 +738,35 @@ export default dictionary = {
     icon: "hands-helping",
     iconFamily: "FontAwesome5",
     rank: 2,
+  },
+  twenty_five: {
+    word: "twenty five",
+    icon: 25,
+    iconFamily: null,
+    rank: 2,
+  },
+  does_this: {
+    word: "does this",
+    icon: "angle-down",
+    iconFamily: "FontAwesome5",
+    rank: 0,
+  },
+  tomatos: {
+    word: "tomatos",
+    icon: "T",
+    iconFamily: null,
+    rank: 3,
+  },
+  at_the: {
+    word: "at the",
+    icon: "at",
+    iconFamily: "FontAwesome5",
+    rank: 0,
+  },
+  supermarket: {
+    word: "supermarket",
+    icon: "cart-outline",
+    iconFamily: "Ionicons",
+    rank: 3,
   },
 };

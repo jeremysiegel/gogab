@@ -37,7 +37,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 9,
-    order: "excuse_me, I_need a menu please",
+    order: "excuse_me, i_need a menu please",
   },
   {
     phraseId: 10,
@@ -61,15 +61,15 @@ export default phraseDictionary = [
   },
   {
     phraseId: 15,
-    order: "yes, open",
+    order: "yes, please",
   },
   {
     phraseId: 16,
-    order: "no, closed",
+    order: "no, thank you",
   },
   {
     phraseId: 17,
-    order: "What time are you open?",
+    order: "What time are_you open?",
   },
   {
     phraseId: 18,
@@ -133,7 +133,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 33,
-    order: "yes, thank you",
+    order: "yes, youre_welcome",
   },
   {
     phraseId: 34,
@@ -145,11 +145,11 @@ export default phraseDictionary = [
   },
   {
     phraseId: 36,
-    order: "hello, good_afternoon.",
+    order: "hello, good_evening",
   },
   {
     phraseId: 37,
-    order: "Good_morning, how are you?",
+    order: "Good_morning, how_are_you?",
   },
   {
     phraseId: 38,
@@ -165,7 +165,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 41,
-    order: "how_much this cost?",
+    order: "how_much does_this cost?",
   },
   {
     phraseId: 42,
@@ -177,7 +177,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 44,
-    order: "What time open? What time closed?",
+    order: "What time are_you open?",
   },
   {
     phraseId: 45,
@@ -189,11 +189,11 @@ export default phraseDictionary = [
   },
   {
     phraseId: 47,
-    order: "train station entrance",
+    order: "What time are_you closed?",
   },
   {
     phraseId: 48,
-    order: "what time is the next train?",
+    order: "what time is the next bus?",
   },
   {
     phraseId: 49,
@@ -201,7 +201,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 50,
-    order: "lets_go the train is here",
+    order: "lets_go the bus is here",
   },
   {
     phraseId: 51,
@@ -241,7 +241,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 60,
-    order: "I understand a little spanish",
+    order: "with tomatoes",
   },
   {
     phraseId: 61,
@@ -281,11 +281,11 @@ export default phraseDictionary = [
   },
   {
     phraseId: 70,
-    order: "left exit",
+    order: "exit left",
   },
   {
     phraseId: 71,
-    order: "right entrance",
+    order: "entrance right",
   },
   {
     phraseId: 72,
@@ -309,11 +309,11 @@ export default phraseDictionary = [
   },
   {
     phraseId: 77,
-    order: "trains all day",
+    order: "is_there trains all day",
   },
   {
     phraseId: 78,
-    order: "where is the market",
+    order: "cheese at the market",
   },
   {
     phraseId: 79,
@@ -325,6 +325,50 @@ export default phraseDictionary = [
   },
   {
     phraseId: 81,
-    order: "where to the airport?",
+    order: "where is the airport?",
+  },
+  {
+    phraseId: 82,
+    order: "goodbye, see_you_later",
+  },
+  {
+    phraseId: 83,
+    order: "one, two, three",
+  },
+  {
+    phraseId: 84,
+    order: "five, ten, fifty",
+  },
+  {
+    phraseId: 85,
+    order: "twenty, twenty_five",
+  },
+  {
+    phraseId: 86,
+    order: "What time are_you closed?",
+  },
+  {
+    phraseId: 87,
+    order: "four, five, six",
+  },
+  {
+    phraseId: 88,
+    order: "one wine",
+  },
+  {
+    phraseId: 89,
+    order: "seven, eight, nine",
+  },
+  {
+    phraseId: 90,
+    order: "eleven, twelve",
+  },
+  {
+    phraseId: 91,
+    order: "half, thirty",
+  },
+  {
+    phraseId: 92,
+    order: "fifteen, forty_five",
   },
 ];

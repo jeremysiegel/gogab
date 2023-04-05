@@ -1,6 +1,10 @@
-// Spanish dictionary.
+// Italian dictionary.
 
 export default dictionary = {
+  a: {
+    translation: "un",
+    pronunciation: "oon",
+  },
   a_little: {
     translation: "un po'",
     pronunciation: "oon poh",
@@ -221,11 +225,11 @@ export default dictionary = {
     translation: "Quanto",
     pronunciation: "KWAN-toh",
   },
-  I_need: {
+  i_need: {
     translation: "Ho bisogno",
     pronunciation: "oh bee-ZOHN-yoh",
   },
-  I_understand: {
+  i_understand: {
     translation: "Capisco",
     pronunciation: "kah-PEES-koh",
   },
@@ -484,5 +488,25 @@ export default dictionary = {
   youre_welcome: {
     translation: "Prego",
     pronunciation: "PREH-goh",
+  },
+  twenty_five: {
+    translation: "venticinque",
+    pronunciation: "venty-cheenkway",
+  },
+  does_this: {
+    translation: "questo",
+    pronunciation: "questo",
+  },
+  tomatos: {
+    translation: "pomodori",
+    pronunciation: "pomodoree",
+  },
+  at_the: {
+    translation: "al",
+    pronunciation: "ahl",
+  },
+  supermarket: {
+    translation: "supermercato",
+    pronunciation: "supermercato",
   },
 };
