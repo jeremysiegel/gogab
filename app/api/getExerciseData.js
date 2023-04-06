@@ -6,6 +6,7 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 import stripArray from "../utility/stripArray";
+import punctuate from "../utility/punctuate";
 
 const getExerciseData = ({
   exerciseId,
@@ -41,12 +42,18 @@ const getExerciseData = ({
   let learnWordArray = [];
   // Create array of words in lessonData with special characters removed
   // Keeps _ , changes all to lowercase.
+  // Used to pull words from dictionary
 
   let strippedWordArray = stripArray(wordArray);
-  // Use word from dictionary (allows identifying of words with multiple meanings)
-  // Push to pronunciation and translation arrays
 
-  function punctuate(notPunctuatedArray, punctuateArray, learnWordArray) {
+  // Function to repunctuate translated words. Can only put punctuation at end of word.
+  function punctuate(
+    notPunctuatedArray,
+    wordArray,
+    learnWordArray,
+    reverse = false
+  ) {
+    let punctuateArray = [...wordArray];
     notPunctuatedArray.forEach((element, index) => {
       if (dictionary[element]) {
         // If there are special characters in the phrase, preserve them.
@@ -55,20 +62,14 @@ const getExerciseData = ({
           // Add special characters to translation for reverse
           if (reverse) {
             punctuateArray[index] = dictionary[element].word;
-            punctuateArray[index] =
-              punctuateArray[index].slice(0, match.index) +
-              match[0] +
-              punctuateArray[index].slice(match.index);
+            punctuateArray[index] = punctuateArray[index] + match[0];
 
             learnWordArray.push(dictionary[element].translation);
           } else {
             punctuateArray[index] = dictionary[element].word;
 
             learnWordArray[index] = dictionary[element].translation;
-            learnWordArray[index] =
-              learnWordArray[index].slice(0, match.index) +
-              match[0] +
-              learnWordArray[index].slice(match.index);
+            learnWordArray[index] = learnWordArray[index] + match[0];
           }
         } else {
           punctuateArray[index] = dictionary[element].word;
@@ -79,10 +80,10 @@ const getExerciseData = ({
       }
     });
   }
-
-  punctuate(strippedWordArray, wordArray, learnWordArray);
+  punctuate(strippedWordArray, wordArray, learnWordArray, reverse);
 
   // Necessary for languages with different order of words in phrases.
+  // TODO: implement
   if (data.screenType === "sentenceBuilder") {
     const mainWordArray = phraseData.phraseMain.order.split(" ");
     const translationArray = phraseData.phraseTranslation.order.split(" ");
@@ -92,12 +93,12 @@ const getExerciseData = ({
     const newLearnWordArray = [];
     const newLearnWordArray2 = [];
 
-    punctuate(strippedWordArray, wordArray, newLearnWordArray);
+    punctuate(strippedWordArray, wordArray, newLearnWordArray, reverse);
     // TODO: FIX
-    // For !reverse
+    // For !reverse - not actually currently used in app, so ok.
     strippedWordArray = stripArray(translationArray);
 
-    punctuate(strippedWordArray, translationArray, newLearnWordArray2);
+    punctuate(strippedWordArray, translationArray, newLearnWordArray2, reverse);
 
     phraseData = reverse ? newLearnWordArray : translationArray;
   }
@@ -185,6 +186,7 @@ const getExerciseData = ({
     reverse: reverse, // may be dup
     nextExercise: nextExercise,
     lessonId: lessonId,
+    strippedWordArray: reverse ? stripArray(learnWordArray) : strippedWordArray,
     ...data,
   };
 

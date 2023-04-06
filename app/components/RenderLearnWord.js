@@ -5,7 +5,7 @@ import AppText from "./AppText";
 
 // Creates a string of tappable words that display more info.
 
-function RenderLearnWord({ data, helpText = data.wordArray }) {
+function RenderLearnWord({ data, helpText = data.strippedWordArray }) {
   return data.learnWordArray.map((item, index) => {
     return (
       <>

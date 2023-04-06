@@ -770,9 +770,9 @@ export default dictionary = {
     rank: 3,
   },
   do_you: {
-    word: "do_you",
-    icon: "D",
-    iconFamily: null,
+    word: "do you",
+    icon: "hand-point-up",
+    iconFamily: "FontAwesome5",
     rank: 0,
   },
 };
