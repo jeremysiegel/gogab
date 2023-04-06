@@ -175,7 +175,7 @@ export default dictionary = {
     iconFamily: null,
     rank: 2,
   },
-  English: {
+  english: {
     word: "English",
     icon: "E",
     iconFamily: null,
@@ -349,7 +349,7 @@ export default dictionary = {
     iconFamily: "MaterialCommunityIcons",
     rank: 1,
   },
-  I_understand: {
+  i_understand: {
     word: "I understand",
     icon: "head-check",
     iconFamily: "MaterialCommunityIcons",
@@ -415,8 +415,8 @@ export default dictionary = {
     iconFamily: "MaterialCommunityIcons",
     rank: 3,
   },
-  minute: {
-    word: "minute",
+  minutes: {
+    word: "minutes",
     icon: "timer-outline",
     iconFamily: "Ionicons",
     rank: 2,
@@ -768,5 +768,11 @@ export default dictionary = {
     icon: "cart-outline",
     iconFamily: "Ionicons",
     rank: 3,
+  },
+  do_you: {
+    word: "do_you",
+    icon: "D",
+    iconFamily: null,
+    rank: 0,
   },
 };

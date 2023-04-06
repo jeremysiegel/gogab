@@ -34,7 +34,7 @@ export default sections = [
   {
     sectionId: 7,
     title: "Greetings 2",
-    lessons: [35, 36, 37, 38, 39, 40, 41],
+    lessons: [35, 36, 39, 40, 41],
   },
   {
     sectionId: 8,
@@ -69,7 +69,7 @@ export default sections = [
   {
     sectionId: 14,
     title: "Getting around 3",
-    lessons: [75, 76, 77, 78, 79, 80, 81],
+    lessons: [75, 76, 78, 79, 80, 81],
   },
   {
     sectionId: 15,

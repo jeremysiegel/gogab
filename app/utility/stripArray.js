@@ -1,6 +1,6 @@
-export default function stripArray(array) {
+export default function stripArray(arrayToStrip) {
   let strippedWordArray = [];
-  array.forEach((element) => {
+  arrayToStrip.forEach((element) => {
     let strippedElement = element.replace(/\W/g, "");
     strippedElement = strippedElement.toLowerCase();
     strippedWordArray.push(strippedElement);

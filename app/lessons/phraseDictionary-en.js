@@ -33,7 +33,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 8,
-    order: "I_need water, please",
+    order: "i_need water, please",
   },
   {
     phraseId: 9,
@@ -41,7 +41,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 10,
-    order: "what do you recommend?",
+    order: "what do_you recommend?",
   },
   {
     phraseId: 11,
@@ -65,7 +65,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 16,
-    order: "no, thank you",
+    order: "no, thank_you",
   },
   {
     phraseId: 17,
@@ -85,7 +85,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 21,
-    order: "I need a taxi",
+    order: "i_need a taxi",
   },
   {
     phraseId: 22,
@@ -113,7 +113,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 28,
-    order: "two beers, please",
+    order: "one beer, please",
   },
   {
     phraseId: 29,
@@ -129,23 +129,15 @@ export default phraseDictionary = [
   },
   {
     phraseId: 32,
-    order: "Do you speak english?",
+    order: "Do_you speak english?",
   },
   {
     phraseId: 33,
     order: "yes, youre_welcome",
   },
   {
-    phraseId: 34,
-    order: "I speak spanish",
-  },
-  {
-    phraseId: 35,
-    order: "I understand english",
-  },
-  {
     phraseId: 36,
-    order: "hello, good_evening",
+    order: "hello, good_morning",
   },
   {
     phraseId: 37,
@@ -173,7 +165,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 43,
-    order: "What time is it?",
+    order: "What time is_it?",
   },
   {
     phraseId: 44,
@@ -185,7 +177,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 46,
-    order: "two train tickets, please",
+    order: "one train ticket, please",
   },
   {
     phraseId: 47,
@@ -213,7 +205,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 53,
-    order: "a little spicy",
+    order: "a_little spicy",
   },
   {
     phraseId: 54,
@@ -241,7 +233,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 60,
-    order: "with tomatoes",
+    order: "with tomatos",
   },
   {
     phraseId: 61,
@@ -253,11 +245,11 @@ export default phraseDictionary = [
   },
   {
     phraseId: 63,
-    order: "is there toilet_paper?",
+    order: "is_there toilet_paper?",
   },
   {
     phraseId: 64,
-    order: "Yes, I need the bathroom",
+    order: "Yes, i_need the bathroom",
   },
   {
     phraseId: 65,
@@ -308,16 +300,12 @@ export default phraseDictionary = [
     order: "What time is the return bus?",
   },
   {
-    phraseId: 77,
-    order: "is_there trains all day",
-  },
-  {
     phraseId: 78,
-    order: "cheese at the market",
+    order: "cheese at_the market",
   },
   {
     phraseId: 79,
-    order: "I need a pharmacy",
+    order: "i_need a pharmacy",
   },
   {
     phraseId: 80,
@@ -329,7 +317,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 82,
-    order: "goodbye, see_you_later",
+    order: "thank_you, goodbye",
   },
   {
     phraseId: 83,

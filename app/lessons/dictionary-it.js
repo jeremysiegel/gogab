@@ -117,7 +117,7 @@ export default dictionary = {
     translation: "undici",
     pronunciation: "oon-DEE-chee",
   },
-  English: {
+  english: {
     translation: "Inglese",
     pronunciation: "een-GLEH-zeh",
   },
@@ -273,9 +273,9 @@ export default dictionary = {
     translation: "latte",
     pronunciation: "LAHT-teh",
   },
-  minute: {
+  minutes: {
     translation: "minuto",
-    pronunciation: "mee-NOO-toh",
+    pronunciation: "mee-NOO-tohs",
   },
   mushrooms: {
     translation: "funghi",
@@ -508,5 +508,9 @@ export default dictionary = {
   supermarket: {
     translation: "supermercato",
     pronunciation: "supermercato",
+  },
+  do_you: {
+    translation: "Voi",
+    pronunciation: "VOH-ee",
   },
 };

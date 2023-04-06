@@ -117,7 +117,7 @@ export default dictionary = {
     translation: "once",
     pronunciation: "ownsay",
   },
-  English: {
+  english: {
     translation: "Inglés",
     pronunciation: "eenglehs",
   },
@@ -229,7 +229,7 @@ export default dictionary = {
     translation: "necesito",
     pronunciation: "ness-ee-seetoe",
   },
-  I_understand: {
+  i_understand: {
     translation: "entiendo",
     pronunciation: "ehn-tea-en-doe",
   },
@@ -273,9 +273,9 @@ export default dictionary = {
     translation: "leche",
     pronunciation: "le-chay",
   },
-  minute: {
-    translation: "minuto",
-    pronunciation: "mee-noo-toe",
+  minutes: {
+    translation: "minutos",
+    pronunciation: "mee-noo-toes",
   },
   mushrooms: {
     translation: "hongos",
@@ -508,5 +508,9 @@ export default dictionary = {
   supermarket: {
     translation: "supermercado",
     pronunciation: "supermehrcado",
+  },
+  do_you: {
+    translation: "tú",
+    pronunciation: "too",
   },
 };
