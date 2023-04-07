@@ -6,7 +6,6 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 import stripArray from "../utility/stripArray";
-import punctuate from "../utility/punctuate";
 
 const getExerciseData = ({
   exerciseId,
@@ -186,7 +185,9 @@ const getExerciseData = ({
     reverse: reverse, // may be dup
     nextExercise: nextExercise,
     lessonId: lessonId,
-    strippedWordArray: reverse ? stripArray(learnWordArray) : strippedWordArray,
+    strippedWordArray: reverse
+      ? stripArray(learnWordArray, true)
+      : stripArray(strippedWordArray, true),
     ...data,
   };
 

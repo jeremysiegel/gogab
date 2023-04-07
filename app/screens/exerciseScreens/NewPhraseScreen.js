@@ -17,7 +17,7 @@ function NewPhraseScreen({ route, navigation }) {
   const instruction = instructionText.say;
 
   const RenderPhrase = () => {
-    return data.wordArray.map((item, index) => {
+    return data.strippedWordArray.map((item, index) => {
       return (
         <AppText style={defaultStyles.practiceWord} key={index}>
           {item}{" "}

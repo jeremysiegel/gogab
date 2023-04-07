@@ -21,7 +21,7 @@ export default lessonData = [
     lessonId: 3,
     title: "Lesson 3",
     style: 3,
-    reviewWords: ["hello", "how_are_you"],
+    reviewWords: [],
     phrases: [4],
     prompts: [1],
   },
@@ -105,6 +105,7 @@ export default lessonData = [
     phrases: [12, 83],
     prompts: [],
   },
+
   {
     lessonId: 14,
     title: "Lesson 14",

@@ -23,7 +23,7 @@ function PromptScreen({ route, navigation }) {
   const [selected, setSelected] = useState(false);
   const [data, setData] = useState();
   const [numColumns, setNumColumns] = useState();
-  const [prompt, setprompt] = useState();
+  const [prompt, setPrompt] = useState();
   const [instruction, setInstruction] = useState();
   const [promptDictionary, setPromptDictionary] = useState();
 
@@ -46,19 +46,19 @@ function PromptScreen({ route, navigation }) {
     setNumColumns(setUpNumColumns);
     const smallPrompt = setUpNumColumns > 1 && height < constants.shortHeight;
     setData(setUpData);
-    const prompt = getElementFromId(
+    const promptData = getElementFromId(
       setUpPromptDictionary,
       "promptId",
-      setUpData.prompt
+      setUpData.promptId
     );
     // for ? chats : signs
-    const promptText = prompt ? prompt.prompt : setUpData.prompt;
+    const promptText = promptData ? promptData.prompt : setUpData.prompt;
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
       </AppText>
     );
-    setprompt(
+    setPrompt(
       <View style={styles.promptContainer}>
         {setUpData.screenSubType === "icon" && (
           <View
@@ -99,9 +99,13 @@ function PromptScreen({ route, navigation }) {
   }, []);
 
   const renderChoiceBox = (item) => {
-    const prompt = getElementFromId(promptDictionary, "promptId", item.prompt);
+    const promptData = getElementFromId(
+      promptDictionary,
+      "promptId",
+      item.phrase
+    );
     // for ? chats : signs
-    const boxText = prompt ? prompt.prompt : item.word;
+    const boxText = promptData ? promptData.prompt : item.word;
 
     return (
       <RenderChoiceBoxes
@@ -125,7 +129,7 @@ function PromptScreen({ route, navigation }) {
         selected={selected}
         numColumns={numColumns}
         instruction={instruction}
-        prompt={prompt}
+        phrase={prompt}
         data={data}
       />
     );
