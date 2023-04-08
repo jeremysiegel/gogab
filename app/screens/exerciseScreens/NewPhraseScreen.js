@@ -7,6 +7,7 @@ import getExerciseData from "../../api/getExerciseData";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import instructionText from "../../lessons/instructionText";
+import stripArray from "../../utility/stripArray";
 
 // Creates screen to learn a new word or phrase.
 // Displays word and translation.
@@ -17,13 +18,15 @@ function NewPhraseScreen({ route, navigation }) {
   const instruction = instructionText.say;
 
   const RenderPhrase = () => {
-    return data.strippedWordArray.map((item, index) => {
-      return (
-        <AppText style={defaultStyles.practiceWord} key={index}>
-          {item}{" "}
-        </AppText>
-      );
+    console.log(data);
+    const phraseArray = stripArray({
+      arrayToStrip: [data.word],
+      removeSpecialCharacters: false,
+      removeUnderscore: true,
     });
+    return (
+      <AppText style={defaultStyles.practiceWord}>{phraseArray[0]}</AppText>
+    );
   };
 
   return (

@@ -18,7 +18,7 @@ function getPhraseData(phrases) {
     const phraseData = getPhraseDictionary(phraseId);
     const phrase = phraseData["phraseMain"]["order"];
     const phraseArray = phrase ? phrase.split(" ") : [];
-    const strippedWordArray = stripArray(phraseArray);
+    const strippedWordArray = stripArray({ arrayToStrip: phraseArray });
     strippedWordArray.forEach((word) => {
       wordArray.push(word);
     });

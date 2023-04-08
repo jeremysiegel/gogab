@@ -43,7 +43,7 @@ const getExerciseData = ({
   // Keeps _ , changes all to lowercase.
   // Used to pull words from dictionary
 
-  let strippedWordArray = stripArray(wordArray);
+  let strippedWordArray = stripArray({ arrayToStrip: wordArray });
 
   // Function to repunctuate translated words. Can only put punctuation at end of word.
   function punctuate(
@@ -86,7 +86,7 @@ const getExerciseData = ({
   if (data.screenType === "sentenceBuilder") {
     const mainWordArray = phraseData.phraseMain.order.split(" ");
     const translationArray = phraseData.phraseTranslation.order.split(" ");
-    strippedWordArray = stripArray(mainWordArray);
+    strippedWordArray = stripArray({ arrayToStrip: mainWordArray });
     wordArray = mainWordArray;
 
     const newLearnWordArray = [];
@@ -95,7 +95,7 @@ const getExerciseData = ({
     punctuate(strippedWordArray, wordArray, newLearnWordArray, reverse);
     // TODO: FIX
     // For !reverse - not actually currently used in app, so ok.
-    strippedWordArray = stripArray(translationArray);
+    strippedWordArray = stripArray({ arrayToStrip: translationArray });
 
     punctuate(strippedWordArray, translationArray, newLearnWordArray2, reverse);
 
@@ -186,8 +186,8 @@ const getExerciseData = ({
     nextExercise: nextExercise,
     lessonId: lessonId,
     strippedWordArray: reverse
-      ? stripArray(learnWordArray, true)
-      : stripArray(strippedWordArray, true),
+      ? stripArray({ arrayToStrip: learnWordArray, removeUnderscore: true })
+      : stripArray({ arrayToStrip: strippedWordArray, removeUnderscore: true }),
     ...data,
   };
 

@@ -1,9 +1,16 @@
-export default function stripArray(arrayToStrip, removeUnderscore) {
+export default function stripArray({
+  arrayToStrip,
+  removeSpecialCharacters = true,
+  removeUnderscore = false,
+}) {
   let strippedWordArray = [];
   arrayToStrip.forEach((element) => {
-    let strippedElement = element.replace(/\W/g, "");
+    let strippedElement = element;
+    if (removeSpecialCharacters) {
+      strippedElement = strippedElement.replace(/\W/g, "");
+    }
     if (removeUnderscore) {
-      strippedElement = strippedElement.replace(/_/, " ");
+      strippedElement = strippedElement.replace(/_/g, " ");
     }
     strippedElement = strippedElement.toLowerCase();
     strippedWordArray.push(strippedElement);
