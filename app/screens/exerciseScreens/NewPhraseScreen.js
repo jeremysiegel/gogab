@@ -20,7 +20,7 @@ function NewPhraseScreen({ route, navigation }) {
   const RenderPhrase = () => {
     console.log(data);
     const phraseArray = stripArray({
-      arrayToStrip: [data.word],
+      arrayToStrip: data.wordArray,
       removeSpecialCharacters: false,
       removeUnderscore: true,
     });
