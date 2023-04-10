@@ -18,15 +18,14 @@ function NewPhraseScreen({ route, navigation }) {
   const instruction = instructionText.say;
 
   const RenderPhrase = () => {
-    console.log(data);
     const phraseArray = stripArray({
       arrayToStrip: data.wordArray,
       removeSpecialCharacters: false,
       removeUnderscore: true,
     });
-    return (
-      <AppText style={defaultStyles.practiceWord}>{phraseArray[0]}</AppText>
-    );
+    return phraseArray.map((item) => {
+      return <AppText style={defaultStyles.practiceWord}>{item} </AppText>;
+    });
   };
 
   return (

@@ -14,8 +14,8 @@ function PickImageScreen({ route, navigation }) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const getData =  () => {
-      const setUpData =  getExerciseData.getExerciseData({
+    const getData = () => {
+      const setUpData = getExerciseData.getExerciseData({
         ...route.params,
         multipleChoice: true,
       });

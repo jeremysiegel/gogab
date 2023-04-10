@@ -14,6 +14,10 @@ import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
 import getElementFromId from "../../utility/getElementFromId";
 import constants from "../../config/constants";
 import getPromptDictionary from "../../api/getPromptDictionary";
+import stripArray from "../../utility/stripArray";
+import translate from "../../utility/translate";
+import punctuate from "../../utility/punctuate";
+import dictionaryEs from "../../lessons/dictionary-es";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -25,13 +29,10 @@ function PromptScreen({ route, navigation }) {
   const [numColumns, setNumColumns] = useState();
   const [prompt, setPrompt] = useState();
   const [instruction, setInstruction] = useState();
-  const [promptDictionary, setPromptDictionary] = useState();
 
   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
-    const setUpPromptDictionary = getPromptDictionary();
-    setPromptDictionary(setUpPromptDictionary);
     const setUpData = getExerciseData.getExerciseData({
       ...route.params,
       screenType: "prompt",
@@ -46,13 +47,12 @@ function PromptScreen({ route, navigation }) {
     setNumColumns(setUpNumColumns);
     const smallPrompt = setUpNumColumns > 1 && height < constants.shortHeight;
     setData(setUpData);
-    const promptData = getElementFromId(
-      setUpPromptDictionary,
-      "promptId",
-      setUpData.promptId
-    );
+    let promptText = "";
+    setUpData.learnWordArray.forEach((word) => {
+      promptText = promptText + word + " ";
+    });
     // for ? chats : signs
-    const promptText = promptData ? promptData.prompt : setUpData.prompt;
+    //     promptText = promptData ? promptData.prompt : setUpData.prompt;
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
@@ -99,14 +99,12 @@ function PromptScreen({ route, navigation }) {
   }, []);
 
   const renderChoiceBox = (item) => {
-    const promptData = getElementFromId(
-      promptDictionary,
-      "promptId",
-      item.phrase
-    );
     // for ? chats : signs
-    const boxText = promptData ? promptData.prompt : item.word;
-
+    //const boxText = promptData ? promptData.prompt : item.word;
+    let boxText = "";
+    item.title.forEach((word) => {
+      boxText = boxText + word + " ";
+    });
     return (
       <RenderChoiceBoxes
         data={item}

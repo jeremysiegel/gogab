@@ -17,7 +17,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 4,
-    order: "good, and you",
+    order: "good, and you?",
   },
   {
     phraseId: 5,

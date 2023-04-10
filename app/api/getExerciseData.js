@@ -1,4 +1,4 @@
-// TODO: allow multiple special characters in a word (see strippedArray)
+// TODO: Allow different order of words in other languages
 
 import getDictionary from "./getDictionary";
 import shuffle from "../utility/shuffle";
@@ -6,6 +6,8 @@ import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
 import getPhraseDictionary from "./getPhraseDictionary";
 import stripArray from "../utility/stripArray";
+import punctuate from "../utility/punctuate";
+import translate from "../utility/translate";
 
 const getExerciseData = ({
   exerciseId,
@@ -16,95 +18,48 @@ const getExerciseData = ({
   matching,
   country,
 }) => {
-  const dictionary = getDictionary(country);
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
-  // console.log(quizLength);
-  // Get data for current exercise.
-  const data = lessonData[exerciseId];
-  const reverse = data.reverse;
-  let phraseData = "";
-  if (data.screenType === "sentenceBuilder" || data.screenType === "newWord") {
-    phraseData = getPhraseDictionary(data.word);
-    data.word = phraseData.phraseTranslation.order;
-  }
+
   // Get next exercise type for navigation.
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
   const nextExerciseType = lessonData[exerciseId + 1]
     ? lessonData[nextExercise].screenType
     : "end";
 
-  let wordArray = data.word ? data.word.split(" ") : [];
-  let helpTextArray = [];
-  let learnWordArray = [];
-  // Create array of words in lessonData with special characters removed
-  // Keeps _ , changes all to lowercase.
-  // Used to pull words from dictionary
-
-  let strippedWordArray = stripArray({ arrayToStrip: wordArray });
-
-  // Function to repunctuate translated words. Can only put punctuation at end of word.
-  function punctuate(
-    notPunctuatedArray,
-    wordArray,
-    learnWordArray,
-    reverse = false
+  // Get data for current exercise.
+  const data = lessonData[exerciseId];
+  const reverse = data.reverse;
+  // If this is a phrase screen, get the phrase.
+  let phraseData = "";
+  if (
+    data.screenType === "sentenceBuilder" ||
+    data.screenType === "newWord" ||
+    data.screenType === "prompt"
   ) {
-    let punctuateArray = [...wordArray];
-    notPunctuatedArray.forEach((element, index) => {
-      if (dictionary[element]) {
-        // If there are special characters in the phrase, preserve them.
-        if (/\W/.exec(punctuateArray[index])) {
-          let match = /\W/.exec(punctuateArray[index]);
-          // Add special characters to translation for reverse
-          if (reverse) {
-            punctuateArray[index] = dictionary[element].word;
-            punctuateArray[index] = punctuateArray[index] + match[0];
-
-            learnWordArray.push(dictionary[element].translation);
-          } else {
-            punctuateArray[index] = dictionary[element].word;
-
-            learnWordArray[index] = dictionary[element].translation;
-            learnWordArray[index] = learnWordArray[index] + match[0];
-          }
-        } else {
-          punctuateArray[index] = dictionary[element].word;
-
-          learnWordArray.push(dictionary[element].translation);
-        }
-        helpTextArray.push(dictionary[element].pronunciation);
-      }
-    });
-  }
-  punctuate(strippedWordArray, wordArray, learnWordArray, reverse);
-
-  // Necessary for languages with different order of words in phrases.
-  // TODO: implement
-  if (data.screenType === "sentenceBuilder") {
-    const mainWordArray = phraseData.phraseMain.order.split(" ");
-    const translationArray = phraseData.phraseTranslation.order.split(" ");
-    strippedWordArray = stripArray({ arrayToStrip: mainWordArray });
-    wordArray = mainWordArray;
-
-    const newLearnWordArray = [];
-    const newLearnWordArray2 = [];
-
-    punctuate(strippedWordArray, wordArray, newLearnWordArray, reverse);
-    // TODO: FIX
-    // For !reverse - not actually currently used in app, so ok.
-    strippedWordArray = stripArray({ arrayToStrip: translationArray });
-
-    punctuate(strippedWordArray, translationArray, newLearnWordArray2, reverse);
-
-    phraseData = reverse ? newLearnWordArray : translationArray;
+    phraseData =
+      data.screenType === "prompt"
+        ? getPhraseDictionary(data.phrase)
+        : getPhraseDictionary(data.word);
+    data.word = phraseData.phraseTranslation.order;
   }
 
+  // Create array of words in lessonData with special characters removed
+  // Used to translate words from dictionary
+  let wordArray = data.word ? data.word.split(" ") : [];
+  let strippedWordArray = stripArray({ arrayToStrip: wordArray });
+  const dictionary = getDictionary(country);
+
+  let learnWordArray = translate(strippedWordArray, dictionary);
+  if (data.screenType != "sentenceBuilder")
+    learnWordArray = punctuate(learnWordArray, wordArray);
+  let helpTextArray = translate(strippedWordArray, dictionary, true);
+
+  // Set selections for quizzes
   const selections = [];
-
-  // If it is a multiple choice exercise, select other choices
+  // If it is a multiple choice exercise, pull random words for other choices
   if (multipleChoice || matching) {
     let choiceWords = Object.keys(dictionary);
     // Remove rank 0 words (conjunctions, etc)
@@ -163,24 +118,55 @@ const getExerciseData = ({
     }
   }
 
-  // Add in selections for prompts.
+  // For prompt screens, add in pre-selected choices
   if (prompt) {
     lessonData[exerciseId].choices.forEach((choice) => {
-      selections.push(choice);
+      const phrase = getPhraseDictionary(choice);
+      const phraseArray = phrase.phraseTranslation.order.split(" ");
+      let translateArray = stripArray({ arrayToStrip: phraseArray });
+      translateArray = translate(translateArray, dictionary);
+      translateArray = punctuate(translateArray, phraseArray);
+      const selection = {
+        title: translateArray,
+        correct: lessonData[exerciseId].correctChoice.includes(choice)
+          ? true
+          : false,
+      };
+      selections.push(selection);
     });
   }
 
   // Shuffle selections.
   const shuffledSelections = shuffle(selections);
-
+  // Return object.
   const exerciseData = {
     nextExerciseType: nextExerciseType,
     phraseData: phraseData,
     index: index,
     quizLength: quizLength,
-    wordArray: reverse ? learnWordArray : wordArray,
+    wordArray: reverse
+      ? stripArray({
+          arrayToStrip: learnWordArray,
+          removeSpecialCharacters: false,
+          removeUnderscore: true,
+        })
+      : stripArray({
+          arrayToStrip: wordArray,
+          removeSpecialCharacters: false,
+          removeUnderscore: true,
+        }),
     helpTextArray: helpTextArray,
-    learnWordArray: reverse ? wordArray : learnWordArray,
+    learnWordArray: reverse
+      ? stripArray({
+          arrayToStrip: wordArray,
+          removeSpecialCharacters: false,
+          removeUnderscore: true,
+        })
+      : stripArray({
+          arrayToStrip: learnWordArray,
+          removeSpecialCharacters: false,
+          removeUnderscore: true,
+        }),
     selections: shuffledSelections,
     reverse: reverse, // may be dup
     nextExercise: nextExercise,
