@@ -86,10 +86,7 @@ function PromptScreen({ route, navigation }) {
         )}
         {setUpData.screenSubType === "sign" && (
           <AppText
-            style={[
-              setUpData.screenSubType === "sign" ? styles.signprompt : null,
-              smallPrompt ? styles.smallprompt : null,
-            ]}
+            style={[styles.signprompt, smallPrompt ? styles.smallprompt : null]}
           >
             {promptText}
           </AppText>
