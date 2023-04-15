@@ -1,9 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import WorldMapScreen from "../screens/WorldMapScreen";
 import colors from "../config/colors";
 
 const Tab = createBottomTabNavigator();
@@ -39,11 +40,17 @@ export default function AppNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="book-outline"
-              color={color}
-              size={35}
-            />
+            <Entypo name="open-book" color={color} size={35} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="worldMap"
+        component={WorldMapScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="earth" color={color} size={35} />
           ),
         }}
       />
