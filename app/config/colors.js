@@ -2,6 +2,7 @@ const colors = {
   primary: "#15a8a8",
   primaryTint: "#139797",
   primaryTint30: "#d0eded",
+  worldMapPrimary: "#5E60CE",
   secondary: "#5E60CE",
   selected: "#3AB0FF",
   success: "#39FF12",

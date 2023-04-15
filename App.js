@@ -21,6 +21,7 @@ export default function App() {
 
   const [isReady, setIsReady] = useState();
   const [country, setCountry] = useState();
+  const [selectedCountries, setSelectedCountries] = useState([]);
 
   const LoadFonts = async () => {
     await useFonts();
@@ -55,6 +56,10 @@ export default function App() {
   const restoreUser = async () => {
     await LoadFonts();
     await getCountry();
+    let userWorldCountries = await cache.get("worldMapCountries");
+    userWorldCountries
+      ? setSelectedCountries(userWorldCountries)
+      : setSelectedCountries([]);
   };
 
   if (!isReady) {
@@ -63,7 +68,9 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <AuthContext.Provider value={{ country, setCountry }}>
+      <AuthContext.Provider
+        value={{ country, setCountry, selectedCountries, setSelectedCountries }}
+      >
         <StatusBar translucent={true} />
         <NavigationContainer>
           <NativeBaseProvider>

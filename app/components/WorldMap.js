@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import {
   View,
   StyleSheet,
-  ScrollView,
+  Pressable,
   TouchableOpacity,
   Text,
   FlatList,
@@ -11,243 +11,254 @@ import {
 import Svg, { Path, Circle } from "react-native-svg";
 import world from "../assets/world";
 import colors from "../config/colors";
+import cache from "../utility/cache";
+import AuthContext from "../navigation/authContext";
 
 const countriesData = [
   { name: "Afghanistan" },
-  { name: "Angola" },
   { name: "Albania" },
-  { name: "United Arab Emirates" },
+  { name: "Algeria" },
+  { name: "American Samoa" },
+  { name: "Angola" },
+  { name: "Anguilla" },
+  { name: "Antigua and Barbuda" },
   { name: "Argentina" },
   { name: "Armenia" },
+  { name: "Aruba" },
   { name: "Australia" },
   { name: "Austria" },
   { name: "Azerbaijan" },
-  { name: "Burundi" },
-  { name: "Belgium" },
-  { name: "Benin" },
-  { name: "Burkina Faso" },
+  { name: "Bahamas" },
+  { name: "Bahrain" },
   { name: "Bangladesh" },
-  { name: "Bulgaria" },
-  { name: "Bosnia and Herzegovina" },
+  { name: "Barbados" },
   { name: "Belarus" },
+  { name: "Belgium" },
   { name: "Belize" },
-  { name: "Bolivia" },
-  { name: "Brazil" },
-  { name: "Brunei Darussalam" },
+  { name: "Benin" },
+  { name: "Bermuda" },
   { name: "Bhutan" },
+  { name: "Bolivia" },
+  { name: "Bosnia and Herzegovina" },
   { name: "Botswana" },
-  { name: "Central African Republic" },
-  { name: "Canada" },
-  { name: "Switzerland" },
-  { name: "China" },
-  { name: "Côte d'Ivoire" },
+  { name: "Brazil" },
+  { name: "British Virgin Islands" },
+  { name: "Brunei Darussalam" },
+  { name: "Bulgaria" },
+  { name: "Burkina Faso" },
+  { name: "Burundi" },
+  { name: "Cambodia" },
   { name: "Cameroon" },
-  { name: "Democratic Republic of the Congo" },
-  { name: "Republic of Congo" },
+  { name: "Canada" },
+  { name: "Canary Islands (Spain)" },
+  { name: "Cape Verde" },
+  { name: "Cayman Islands" },
+  { name: "Central African Republic" },
+  { name: "Chad" },
+  { name: "Chile" },
+  { name: "China" },
   { name: "Colombia" },
+  { name: "Comoros" },
   { name: "Costa Rica" },
+  { name: "Croatia" },
   { name: "Cuba" },
+  { name: "Curaçao" },
+  { name: "Cyprus" },
   { name: "Czech Republic" },
-  { name: "Germany" },
-  { name: "Djibouti" },
+  { name: "Côte d'Ivoire" },
+  { name: "Dem. Rep. Korea" },
+  { name: "Democratic Republic of the Congo" },
   { name: "Denmark" },
+  { name: "Djibouti" },
+  { name: "Dominica" },
   { name: "Dominican Republic" },
-  { name: "Algeria" },
   { name: "Ecuador" },
   { name: "Egypt" },
+  { name: "El Salvador" },
+  { name: "Equatorial Guinea" },
   { name: "Eritrea" },
   { name: "Estonia" },
   { name: "Ethiopia" },
+  { name: "Faeroe Islands" },
+  { name: "Falkland Islands" },
+  { name: "Federated States of Micronesia" },
+  { name: "Fiji" },
   { name: "Finland" },
+  { name: "France" },
+  { name: "French Guiana" },
+  { name: "French Polynesia" },
   { name: "Gabon" },
-  { name: "United Kingdom" },
   { name: "Georgia" },
+  { name: "Germany" },
   { name: "Ghana" },
-  { name: "Guinea" },
-  { name: "The Gambia" },
-  { name: "Guinea-Bissau" },
-  { name: "Equatorial Guinea" },
   { name: "Greece" },
   { name: "Greenland" },
+  { name: "Grenada" },
+  { name: "Guadeloupe" },
+  { name: "Guam" },
   { name: "Guatemala" },
+  { name: "Guinea" },
+  { name: "Guinea-Bissau" },
   { name: "Guyana" },
-  { name: "Honduras" },
-  { name: "Croatia" },
   { name: "Haiti" },
+  { name: "Honduras" },
   { name: "Hungary" },
-  { name: "Indonesia" },
+  { name: "Iceland" },
   { name: "India" },
-  { name: "Ireland" },
+  { name: "Indonesia" },
   { name: "Iran" },
   { name: "Iraq" },
-  { name: "Iceland" },
+  { name: "Ireland" },
   { name: "Israel" },
   { name: "Italy" },
   { name: "Jamaica" },
-  { name: "Jordan" },
   { name: "Japan" },
+  { name: "Jordan" },
   { name: "Kazakhstan" },
   { name: "Kenya" },
-  { name: "Kyrgyzstan" },
-  { name: "Cambodia" },
-  { name: "Republic of Korea" },
+  { name: "Kosovo" },
   { name: "Kuwait" },
+  { name: "Kyrgyzstan" },
   { name: "Lao PDR" },
+  { name: "Latvia" },
   { name: "Lebanon" },
+  { name: "Lesotho" },
   { name: "Liberia" },
   { name: "Libya" },
-  { name: "Sri Lanka" },
-  { name: "Lesotho" },
   { name: "Lithuania" },
   { name: "Luxembourg" },
-  { name: "Latvia" },
-  { name: "Morocco" },
-  { name: "Moldova" },
-  { name: "Madagascar" },
-  { name: "Mexico" },
   { name: "Macedonia" },
-  { name: "Mali" },
-  { name: "Myanmar" },
-  { name: "Montenegro" },
-  { name: "Mongolia" },
-  { name: "Mozambique" },
-  { name: "Mauritania" },
+  { name: "Madagascar" },
   { name: "Malawi" },
   { name: "Malaysia" },
+  { name: "Maldives" },
+  { name: "Mali" },
+  { name: "Malta" },
+  { name: "Marshall Islands" },
+  { name: "Martinique" },
+  { name: "Mauritania" },
+  { name: "Mauritius" },
+  { name: "Mayotte" },
+  { name: "Mexico" },
+  { name: "Moldova" },
+  { name: "Mongolia" },
+  { name: "Montenegro" },
+  { name: "Montserrat" },
+  { name: "Morocco" },
+  { name: "Mozambique" },
+  { name: "Myanmar" },
   { name: "Namibia" },
+  { name: "Nauru" },
+  { name: "Nepal" },
+  { name: "Netherlands" },
+  { name: "New Caledonia" },
+  { name: "New Zealand" },
+  { name: "Nicaragua" },
   { name: "Niger" },
   { name: "Nigeria" },
-  { name: "Nicaragua" },
+  { name: "Northern Mariana Islands" },
   { name: "Norway" },
-  { name: "Nepal" },
   { name: "Oman" },
   { name: "Pakistan" },
+  { name: "Palau" },
+  { name: "Palestine" },
   { name: "Panama" },
+  { name: "Papua New Guinea" },
+  { name: "Paraguay" },
   { name: "Peru" },
   { name: "Philippines" },
-  { name: "Papua New Guinea" },
   { name: "Poland" },
-  { name: "Dem. Rep. Korea" },
-  { name: "Paraguay" },
-  { name: "Palestine" },
+  { name: "Portugal" },
+  { name: "Puerto Rico" },
   { name: "Qatar" },
+  { name: "Republic of Congo" },
+  { name: "Republic of Korea" },
+  { name: "Reunion" },
   { name: "Romania" },
+  { name: "Russian Federation" },
   { name: "Rwanda" },
-  { name: "Western Sahara" },
+  { name: "Saba (Netherlands)" },
+  { name: "Saint Kitts and Nevis" },
+  { name: "Saint Lucia" },
+  { name: "Saint Vincent and the Grenadines" },
+  { name: "Saint-Barthélemy" },
+  { name: "Saint-Martin" },
+  { name: "Samoa" },
   { name: "Saudi Arabia" },
-  { name: "Sudan" },
-  { name: "South Sudan" },
   { name: "Senegal" },
-  { name: "Sierra Leone" },
-  { name: "El Salvador" },
   { name: "Serbia" },
-  { name: "Suriname" },
+  { name: "Seychelles" },
+  { name: "Sierra Leone" },
+  { name: "Sint Maarten" },
   { name: "Slovakia" },
   { name: "Slovenia" },
-  { name: "Sweden" },
+  { name: "Solomon Islands" },
+  { name: "Somalia" },
+  { name: "South Africa" },
+  { name: "South Sudan" },
+  { name: "Spain" },
+  { name: "Sri Lanka" },
+  { name: "St. Eustatius (Netherlands)" },
+  { name: "Sudan" },
+  { name: "Suriname" },
   { name: "Swaziland" },
+  { name: "Sweden" },
+  { name: "Switzerland" },
   { name: "Syria" },
-  { name: "Chad" },
-  { name: "Togo" },
-  { name: "Thailand" },
+  { name: "São Tomé and Principe" },
+  { name: "Taiwan" },
   { name: "Tajikistan" },
-  { name: "Turkmenistan" },
+  { name: "Tanzania" },
+  { name: "Thailand" },
+  { name: "The Gambia" },
   { name: "Timor-Leste" },
+  { name: "Togo" },
+  { name: "Tonga" },
+  { name: "Trinidad and Tobago" },
   { name: "Tunisia" },
   { name: "Turkey" },
-  { name: "Taiwan" },
-  { name: "Tanzania" },
+  { name: "Turkmenistan" },
+  { name: "Turks and Caicos Islands" },
+  { name: "Tuvalu" },
   { name: "Uganda" },
   { name: "Ukraine" },
+  { name: "United Arab Emirates" },
+  { name: "United Kingdom" },
+  { name: "United States" },
+  { name: "United States Virgin Islands" },
   { name: "Uruguay" },
   { name: "Uzbekistan" },
+  { name: "Vanuatu" },
   { name: "Venezuela" },
   { name: "Vietnam" },
+  { name: "Western Sahara" },
   { name: "Yemen" },
   { name: "Zambia" },
   { name: "Zimbabwe" },
-  { name: "Somalia" },
-  { name: "Kosovo" },
-  { name: "South Africa" },
-  { name: "New Zealand" },
-  { name: "Chile" },
-  { name: "Netherlands" },
-  { name: "Portugal" },
-  { name: "Russian Federation" },
-  { name: "Spain" },
-  { name: "France" },
-  { name: "United States" },
-  { name: "French Guiana" },
-  { name: "Aruba" },
-  { name: "Anguilla" },
-  { name: "American Samoa" },
-  { name: "Antigua and Barbuda" },
-  { name: "Bahrain" },
-  { name: "Bahamas" },
-  { name: "Saint-Barthélemy" },
-  { name: "Bermuda" },
-  { name: "Barbados" },
-  { name: "Comoros" },
-  { name: "Cape Verde" },
-  { name: "Curaçao" },
-  { name: "Cayman Islands" },
-  { name: "Cyprus" },
-  { name: "Dominica" },
-  { name: "Falkland Islands" },
-  { name: "Faeroe Islands" },
-  { name: "Federated States of Micronesia" },
-  { name: "Grenada" },
-  { name: "Guam" },
-  { name: "Saint Kitts and Nevis" },
-  { name: "Saint Lucia" },
-  { name: "Saint-Martin" },
-  { name: "Maldives" },
-  { name: "Marshall Islands" },
-  { name: "Malta" },
-  { name: "Northern Mariana Islands" },
-  { name: "Montserrat" },
-  { name: "Mauritius" },
-  { name: "New Caledonia" },
-  { name: "Nauru" },
-  { name: "Palau" },
-  { name: "Puerto Rico" },
-  { name: "French Polynesia" },
-  { name: "Solomon Islands" },
-  { name: "São Tomé and Principe" },
-  { name: "Sint Maarten" },
-  { name: "Seychelles" },
-  { name: "Turks and Caicos Islands" },
-  { name: "Tonga" },
-  { name: "Trinidad and Tobago" },
-  { name: "Tuvalu" },
-  { name: "Saint Vincent and the Grenadines" },
-  { name: "British Virgin Islands" },
-  { name: "United States Virgin Islands" },
-  { name: "Vanuatu" },
-  { name: "Samoa" },
-  { name: "St. Eustatius (Netherlands)" },
-  { name: "Saba (Netherlands)" },
-  { name: "Martinique" },
-  { name: "Canary Islands (Spain)" },
-  { name: "Mayotte" },
-  { name: "Reunion" },
-  { name: "Guadeloupe" },
-  { name: "Fiji" },
 ];
 
 const WorldMap = (props) => {
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const { selectedCountries, setSelectedCountries } = useContext(AuthContext);
+
   const getCountryFillColor = (code) => {
-    return selectedCountries.includes(code) ? "purple" : "grey";
+    return selectedCountries.includes(code) ? colors.worldMapPrimary : "grey";
   };
-  const toggleCountrySelection = (code) => {
-    const index = selectedCountries.indexOf(code);
-    if (index === -1) {
-      setSelectedCountries([...selectedCountries, code]);
-    } else {
-      setSelectedCountries(selectedCountries.filter((c) => c !== code));
-    }
-  };
+
+  const toggleCountrySelection = useCallback(
+    (code) => {
+      const index = selectedCountries.indexOf(code);
+      if (index === -1) {
+        setSelectedCountries([...selectedCountries, code]);
+      } else {
+        setSelectedCountries(selectedCountries.filter((c) => c !== code));
+      }
+      setSelectedCountries((updatedSelectedCountries) => {
+        cache.store("worldMapCountries", updatedSelectedCountries);
+        return updatedSelectedCountries;
+      });
+    },
+    [selectedCountries]
+  );
 
   return (
     <View style={styles.container}>
@@ -275,28 +286,28 @@ const WorldMap = (props) => {
           ))}
         </Svg>
       </View>
-      <ScrollView>
-        <FlatList
-          data={countriesData}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              key={item.name}
-              style={[
-                styles.countryButton,
-                {
-                  backgroundColor: selectedCountries.includes(item.name)
-                    ? "purple"
-                    : "white",
-                },
-              ]}
-              onPress={() => toggleCountrySelection(item.name)}
-            >
-              <Text style={{ color: "black" }}>{item.name}</Text>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.name}
-        />
-      </ScrollView>
+      <FlatList
+        data={countriesData}
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        numColumns={4}
+        renderItem={({ item }) => (
+          <Pressable
+            key={item.name}
+            style={[
+              styles.countryButton,
+              {
+                backgroundColor: selectedCountries.includes(item.name)
+                  ? colors.worldMapPrimary + "80"
+                  : colors.light,
+              },
+            ]}
+            onPress={() => toggleCountrySelection(item.name)}
+          >
+            <Text style={{ color: colors.darkText }}>{item.name}</Text>
+          </Pressable>
+        )}
+        keyExtractor={(item) => item.name}
+      />
     </View>
   );
 };
@@ -304,22 +315,24 @@ const WorldMap = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    //alignItems: "center",
+    //justifyContent: "center",
   },
   countryButton: {
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
     marginHorizontal: 10,
-    marginVertical: 20,
+    marginVertical: 2,
     borderWidth: 1,
     borderColor: "grey",
+    width: 200,
   },
   worldContainer: {
     flex: 1,
     height: 428.5,
     width: 1000,
+    marginBottom: 40,
   },
 });
 
