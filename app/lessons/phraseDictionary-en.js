@@ -359,4 +359,60 @@ export default phraseDictionary = [
     phraseId: 92,
     order: "fifteen, forty_five",
   },
+  {
+    phraseId: 93,
+    order: "thank_you",
+  },
+  {
+    phraseId: 94,
+    order: "hello",
+  },
+  {
+    phraseId: 95,
+    order: "menu?",
+  },
+  {
+    phraseId: 96,
+    order: "bon_appetit!",
+  },
+  {
+    phraseId: 97,
+    order: "two",
+  },
+  {
+    phraseId: 98,
+    order: "three",
+  },
+  {
+    phraseId: 99,
+    order: "ten",
+  },
+  {
+    phraseId: 100,
+    order: "fifty",
+  },
+  {
+    phraseId: 101,
+    order: "twenty",
+  },
+  {
+    phraseId: 102,
+    order: "twenty_five",
+  },
+  {
+    phraseId: 103,
+    order: "water?",
+  },
+  {
+    phraseId: 104,
+    order: "open",
+  },
+  {
+    phraseId: 105,
+    order: "one - two",
+  },
+  {
+    phraseId: 106,
+    order: "two - three",
+  },
 ];

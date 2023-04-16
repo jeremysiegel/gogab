@@ -8,6 +8,7 @@ import RenderLearnWord from "../../components/RenderLearnWord";
 import defaultStyles from "../../config/styles";
 import instructionText from "../../lessons/instructionText";
 import stripArray from "../../utility/stripArray";
+import HourglassView from "../../components/HourglassView";
 
 // Creates screen to learn a new word or phrase.
 // Displays word and translation.
@@ -54,6 +55,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
     alignSelf: "center",
     marginTop: 42,
     marginHorizontal: 30,

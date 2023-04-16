@@ -18,6 +18,7 @@ function ChoiceBox({ title, onPress, style, currentObjects }) {
 
   return (
     <Selectable
+      key={title}
       name={title}
       selected={selected}
       onPress={onPress}

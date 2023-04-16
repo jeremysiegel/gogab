@@ -7,7 +7,7 @@ export default function stripArray({
   arrayToStrip.forEach((element) => {
     let strippedElement = element;
     if (removeSpecialCharacters) {
-      strippedElement = strippedElement.replace(/\W/g, "");
+      strippedElement = strippedElement.replace(/[^\w-]/g, "");
     }
     if (removeUnderscore) {
       strippedElement = strippedElement.replace(/_/g, " ");

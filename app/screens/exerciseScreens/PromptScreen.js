@@ -51,8 +51,15 @@ function PromptScreen({ route, navigation }) {
     setUpData.learnWordArray.forEach((word) => {
       promptText = promptText + word + " ";
     });
+    let secondPromptText = "";
+    if (setUpData.secondPhrase) {
+      setUpData.secondPhrase.forEach((word) => {
+        secondPromptText = secondPromptText + word + " ";
+      });
+    }
     // for ? chats : signs
-    //     promptText = promptData ? promptData.prompt : setUpData.prompt;
+    //promptText = promptData ? promptData.prompt : setUpData.prompt;
+
     setInstruction(
       <AppText style={[defaultStyles.instructionText, styles.instruction]}>
         {setUpData.instruction}
@@ -78,17 +85,32 @@ function PromptScreen({ route, navigation }) {
           </View>
         )}
         {setUpData.screenSubType === "chat" && (
-          <View style={styles.chatContainer}>
-            <AppText style={styles.chatprompt}>{promptText}</AppText>
-            <View style={styles.rightArrow}></View>
-            <View style={styles.rightArrowOverlap}></View>
-          </View>
+          <>
+            <View style={[styles.rightChatContainer, styles.chatContainer]}>
+              <AppText style={styles.chatprompt}>{promptText}</AppText>
+              <View style={[styles.rightArrow, styles.arrow]}></View>
+              <View
+                style={[styles.rightArrowOverlap, styles.arrowOverlap]}
+              ></View>
+            </View>
+            {setUpData.secondPhrase && (
+              <View style={[styles.leftChatContainer, styles.chatContainer]}>
+                <AppText style={styles.chatprompt}>{secondPromptText}</AppText>
+                <View style={[styles.leftArrow, styles.arrow]}></View>
+                <View
+                  style={[styles.leftArrowOverlap, styles.arrowOverlap]}
+                ></View>
+              </View>
+            )}
+          </>
         )}
         {setUpData.screenSubType === "sign" && (
           <AppText
             style={[styles.signprompt, smallPrompt ? styles.smallprompt : null]}
           >
             {promptText}
+            {setUpData.phrase2 && "\n"}
+            {setUpData.phrase2}
           </AppText>
         )}
       </View>
@@ -99,9 +121,13 @@ function PromptScreen({ route, navigation }) {
     // for ? chats : signs
     //const boxText = promptData ? promptData.prompt : item.word;
     let boxText = "";
-    item.title.forEach((word) => {
-      boxText = boxText + word + " ";
-    });
+    if (item.title) {
+      item.title.forEach((word) => {
+        boxText = boxText + word + " ";
+      });
+    } else {
+      boxText = item;
+    }
     return (
       <RenderChoiceBoxes
         data={item}
@@ -157,15 +183,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   chatContainer: {
-    backgroundColor: colors.secondary,
     padding: 10,
     paddingBottom: 13,
     paddingHorizontal: 20,
     borderRadius: 5,
     marginTop: 30,
+    borderRadius: 20,
+  },
+  rightChatContainer: {
+    backgroundColor: colors.secondary,
     marginRight: "5%",
     alignSelf: "flex-end",
-    borderRadius: 20,
+  },
+  leftChatContainer: {
+    backgroundColor: colors.primary,
+    marginLeft: "1%",
+    alignSelf: "flex-start",
   },
   chatprompt: {
     color: colors.light,
@@ -176,23 +209,36 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginTop: 20,
   },
-  rightArrow: {
+  arrow: {
     position: "absolute",
-    backgroundColor: colors.secondary,
     width: 20,
     height: 25,
     bottom: 0,
-    borderBottomLeftRadius: 25,
-    right: -10,
   },
-  rightArrowOverlap: {
+  arrowOverlap: {
     position: "absolute",
     backgroundColor: colors.background,
     width: 20,
     height: 35,
     bottom: -6,
+  },
+  rightArrow: {
+    backgroundColor: colors.secondary,
+    borderBottomLeftRadius: 25,
+    right: -10,
+  },
+  rightArrowOverlap: {
     borderBottomLeftRadius: 18,
     right: -20,
+  },
+  leftArrow: {
+    backgroundColor: colors.primary,
+    borderBottomRightRadius: 25,
+    left: -10,
+  },
+  leftArrowOverlap: {
+    borderBottomRightRadius: 18,
+    left: -20,
   },
 });
 

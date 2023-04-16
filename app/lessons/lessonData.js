@@ -103,7 +103,7 @@ export default lessonData = [
     style: 2,
     reviewWords: [],
     phrases: [12, 83],
-    prompts: [],
+    prompts: [6],
   },
 
   {
@@ -141,10 +141,10 @@ export default lessonData = [
   {
     lessonId: 18,
     title: "Lesson 18",
-    style: 2,
+    style: 9,
     reviewWords: ["bathroom", "where"],
-    phrases: [17],
-    prompts: [],
+    phrases: [97], // [17],
+    prompts: [7],
   },
   {
     lessonId: 19,

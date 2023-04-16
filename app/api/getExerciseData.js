@@ -51,14 +51,13 @@ const getExerciseData = ({
   let wordArray = data.word ? data.word.split(" ") : [];
   let strippedWordArray = stripArray({ arrayToStrip: wordArray });
   const dictionary = getDictionary(country);
-
   let learnWordArray = translate(strippedWordArray, dictionary);
   if (data.screenType != "sentenceBuilder")
     learnWordArray = punctuate(learnWordArray, wordArray);
   let helpTextArray = translate(strippedWordArray, dictionary, true);
 
   // Set selections for quizzes
-  const selections = [];
+  let selections = [];
   // If it is a multiple choice exercise, pull random words for other choices
   if (multipleChoice || matching) {
     let choiceWords = Object.keys(dictionary);
@@ -119,21 +118,43 @@ const getExerciseData = ({
   }
 
   // For prompt screens, add in pre-selected choices
+  let phrase2 = "";
   if (prompt) {
-    lessonData[exerciseId].choices.forEach((choice) => {
-      const phrase = getPhraseDictionary(choice);
-      const phraseArray = phrase.phraseTranslation.order.split(" ");
-      let translateArray = stripArray({ arrayToStrip: phraseArray });
+    // If there is a second phrase, get it.
+    let phrase2Data = {};
+    if (lessonData[exerciseId].phrase2 && data.screenSubType != "sign") {
+      phrase2Data = getPhraseDictionary(lessonData[exerciseId].phrase2);
+      const phraseData2 = phrase2Data.phraseTranslation.order.split(" ");
+      let translateArray = stripArray({ arrayToStrip: phraseData2 });
+
       translateArray = translate(translateArray, dictionary);
-      translateArray = punctuate(translateArray, phraseArray);
-      const selection = {
-        title: translateArray,
-        correct: lessonData[exerciseId].correctChoice.includes(choice)
-          ? true
-          : false,
-      };
-      selections.push(selection);
-    });
+      phrase2 = punctuate(translateArray, phraseData2);
+    }
+    const choices = lessonData[exerciseId].choices;
+    // If choices are hard coded
+    if (typeof choices[0] === "string") {
+      selections = [...choices];
+    } else {
+      choices.forEach((choice) => {
+        const phrase = getPhraseDictionary(choice);
+        const phraseArray = phrase.phraseTranslation.order.split(" ");
+        let translateArray = stripArray({
+          arrayToStrip: phraseArray,
+          removeUnderscore: phrase2 ? true : false,
+        });
+        if (!phrase2 || data.screenSubType !== "chat") {
+          translateArray = translate(translateArray, dictionary);
+        }
+        translateArray = punctuate(translateArray, phraseArray);
+        const selection = {
+          title: translateArray,
+          correct: lessonData[exerciseId].correctChoice.includes(choice)
+            ? true
+            : false,
+        };
+        selections.push(selection);
+      });
+    }
   }
 
   // Shuffle selections.
@@ -171,6 +192,7 @@ const getExerciseData = ({
     reverse: reverse, // may be dup
     nextExercise: nextExercise,
     lessonId: lessonId,
+    secondPhrase: phrase2,
     strippedWordArray: reverse
       ? stripArray({ arrayToStrip: learnWordArray, removeUnderscore: true })
       : stripArray({ arrayToStrip: strippedWordArray, removeUnderscore: true }),

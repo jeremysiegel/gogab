@@ -262,7 +262,12 @@ const lessonStyles = [
 
   {
     styleId: 9,
-    sequence: [{ screens: ["prompt"] }],
+    sequence: [
+      {
+        screens: ["newWord"],
+        wordType: ["phrases"],
+      },
+    ],
   },
   {
     styleId: 10,
