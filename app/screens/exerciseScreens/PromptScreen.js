@@ -11,13 +11,7 @@ import Icon from "../../components/Icon";
 import QuizScreen from "./QuizScreen";
 import colors from "../../config/colors";
 import RenderChoiceBoxes from "../../components/RenderChoiceBoxes";
-import getElementFromId from "../../utility/getElementFromId";
 import constants from "../../config/constants";
-import getPromptDictionary from "../../api/getPromptDictionary";
-import stripArray from "../../utility/stripArray";
-import translate from "../../utility/translate";
-import punctuate from "../../utility/punctuate";
-import dictionaryEs from "../../lessons/dictionary-es";
 
 // Creates a multiple choice screen that can take in prompts.
 // TODO: test on iphone 13
@@ -75,7 +69,8 @@ function PromptScreen({ route, navigation }) {
             ]}
           >
             <Icon
-              name={setUpData.icon}
+              name={setUpData.icon[0]}
+              iconType={setUpData.icon[1]}
               size={Math.min(0.12 * height, 100)}
               label={promptText}
               backgroundColor={colors.secondary}
@@ -181,6 +176,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 30,
     textAlign: "center",
+    textTransform: "capitalize",
   },
   chatContainer: {
     padding: 10,

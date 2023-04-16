@@ -95,7 +95,7 @@ function Icon({
             paddingTop: 8,
             fontFamily: fonts[labelWeight],
             textAlign: "center",
-            alignSelf: center,
+            alignSelf: "center",
           }}
         >
           {label}

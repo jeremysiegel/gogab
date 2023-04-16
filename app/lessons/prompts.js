@@ -39,4 +39,14 @@ export default prompts = [
     choices: [105, 106],
     correctChoice: [105],
   },
+  {
+    promptId: 8,
+    screenType: "prompt",
+    screenSubType: "icon",
+    instruction: "What is this a sign for?",
+    phrase: 111,
+    icon: ["target", "Feather"],
+    choices: [111, 112],
+    correctChoice: [111],
+  },
 ];

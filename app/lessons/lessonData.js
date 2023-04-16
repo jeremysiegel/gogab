@@ -141,9 +141,9 @@ export default lessonData = [
   {
     lessonId: 18,
     title: "Lesson 18",
-    style: 9,
+    style: 3,
     reviewWords: ["bathroom", "where"],
-    phrases: [97], // [17],
+    phrases: [17],
     prompts: [7],
   },
   {
@@ -181,10 +181,10 @@ export default lessonData = [
   {
     lessonId: 23,
     title: "Lesson 23",
-    style: 6,
+    style: 9, //6,
     reviewWords: ["where", "is"],
-    phrases: [22],
-    prompts: [],
+    phrases: [95], //[22],
+    prompts: [8],
   },
   {
     lessonId: 24,

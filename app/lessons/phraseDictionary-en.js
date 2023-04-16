@@ -415,4 +415,32 @@ export default phraseDictionary = [
     phraseId: 106,
     order: "two - three",
   },
+  {
+    phraseId: 107,
+    order: "two - five",
+  },
+  {
+    phraseId: 108,
+    order: "four - six",
+  },
+  {
+    phraseId: 109,
+    order: "closed",
+  },
+  {
+    phraseId: 110,
+    order: "one - three",
+  },
+  {
+    phraseId: 111,
+    order: "downtown",
+  },
+  {
+    phraseId: 112,
+    order: "bus",
+  },
+  {
+    phraseId: 113,
+    order: "taxi",
+  },
 ];

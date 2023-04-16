@@ -142,7 +142,10 @@ const getExerciseData = ({
           arrayToStrip: phraseArray,
           removeUnderscore: phrase2 ? true : false,
         });
-        if (!phrase2 || data.screenSubType !== "chat") {
+        if (
+          !phrase2 ||
+          (data.screenSubType === "sign" && data.screenSubType !== "icon")
+        ) {
           translateArray = translate(translateArray, dictionary);
         }
         translateArray = punctuate(translateArray, phraseArray);
