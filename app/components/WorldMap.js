@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Text,
   FlatList,
+  Image,
+  ImageBackground,
 } from "react-native";
 
 import Svg, { Path, Circle } from "react-native-svg";
@@ -13,6 +15,8 @@ import world from "../assets/world";
 import colors from "../config/colors";
 import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
+import AppText from "./AppText";
+import { moderateScale } from "../utility/scaler";
 
 const countriesData = [
   { name: "Afghanistan" },
@@ -262,6 +266,17 @@ const WorldMap = (props) => {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../assets/mapBackground.png")}
+        style={{
+          position: "absolute",
+          resizeMode: "stretch",
+          width: "100%",
+          height: 468.5,
+          left: 15,
+        }}
+      ></Image>
+
       <View style={styles.worldContainer}>
         <Svg
           xmlns="http://www.w3.org/2000/svg"
@@ -274,6 +289,7 @@ const WorldMap = (props) => {
           strokeLinejoin="round"
           strokeWidth={0.4}
           {...props}
+          style={styles.svg}
         >
           {world.map((path, index) => (
             <Path
@@ -288,7 +304,7 @@ const WorldMap = (props) => {
       </View>
       <FlatList
         data={countriesData}
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        contentContainerStyle={styles.buttonList}
         numColumns={4}
         renderItem={({ item }) => (
           <Pressable
@@ -297,13 +313,13 @@ const WorldMap = (props) => {
               styles.countryButton,
               {
                 backgroundColor: selectedCountries.includes(item.name)
-                  ? colors.worldMapPrimary + "80"
+                  ? colors.worldMapPrimary + "90"
                   : colors.light,
               },
             ]}
             onPress={() => toggleCountrySelection(item.name)}
           >
-            <Text style={{ color: colors.darkText }}>{item.name}</Text>
+            <AppText style={styles.countryText}>{item.name}</AppText>
           </Pressable>
         )}
         keyExtractor={(item) => item.name}
@@ -315,8 +331,21 @@ const WorldMap = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //alignItems: "center",
-    //justifyContent: "center",
+  },
+  svg: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    // height: 428.5,
+    //  width: 1000,
+  },
+  buttonList: {
+    flexGrow: 1,
+    justifyContent: "center",
+    marginTop: 40,
+    alignItems: "center",
   },
   countryButton: {
     paddingVertical: 10,
@@ -329,10 +358,24 @@ const styles = StyleSheet.create({
     width: 200,
   },
   worldContainer: {
-    flex: 1,
+    //flex: 1,
     height: 428.5,
     width: 1000,
-    marginBottom: 40,
+    marginVertical: 25,
+    // backgroundColor: colors.red,
+    // borderRadius: 50,
+    padding: 20,
+    marginLeft: 15,
+  },
+  worldBackground: {
+    //flex: 1,
+    // resizeMode: "cover",
+    height: 428.5,
+    width: 1000,
+  },
+  countryText: {
+    color: colors.darkText,
+    fontSize: moderateScale(18),
   },
 });
 
