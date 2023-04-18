@@ -117,7 +117,7 @@ export default dictionary = {
     translation: "once",
     pronunciation: "ownsay",
   },
-  english: {
+  English: {
     translation: "Inglés",
     pronunciation: "eenglehs",
   },
@@ -130,8 +130,8 @@ export default dictionary = {
     pronunciation: "pear-done",
   },
   excuse_me2: {
-    translation: "disculpe",
-    pronunciation: "dis-cool-pay",
+    translation: "con permiso",
+    pronunciation: "con pearmisso",
   },
   exit: {
     translation: "salida",
@@ -512,5 +512,9 @@ export default dictionary = {
   do_you: {
     translation: "tú",
     pronunciation: "too",
+  },
+  need: {
+    translation: "necesito",
+    pronunciation: "ness-ee-seetoe",
   },
 };

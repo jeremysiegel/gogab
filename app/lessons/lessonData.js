@@ -21,7 +21,7 @@ export default lessonData = [
     lessonId: 3,
     title: "Lesson 3",
     style: 3,
-    reviewWords: [],
+    reviewWords: ["hello", "how_are_you"],
     phrases: [4],
     prompts: [1],
   },
@@ -39,7 +39,7 @@ export default lessonData = [
     style: 3,
     reviewWords: ["good", "goodbye", "hello"],
     phrases: [5],
-    prompts: [],
+    prompts: [3],
   },
   {
     lessonId: 6,
@@ -53,9 +53,9 @@ export default lessonData = [
     lessonId: 7,
     title: "Lesson 7",
     style: 2,
-    reviewWords: ["please"],
+    reviewWords: ["thank_you"],
     phrases: [6, 7],
-    prompts: [],
+    prompts: [4],
   },
   {
     lessonId: 8,
@@ -87,7 +87,7 @@ export default lessonData = [
     style: 6,
     reviewWords: ["menu", "check"],
     phrases: [11],
-    prompts: [],
+    prompts: [5],
   },
   {
     lessonId: 12,
@@ -105,14 +105,13 @@ export default lessonData = [
     phrases: [12, 83],
     prompts: [6],
   },
-
   {
     lessonId: 14,
     title: "Lesson 14",
     style: 8,
     reviewWords: ["how_much"],
     phrases: [13, 84],
-    prompts: [],
+    prompts: [7],
   },
   {
     lessonId: 15,
@@ -120,7 +119,7 @@ export default lessonData = [
     style: 2,
     reviewWords: ["how_much", "ten", "fifty"],
     phrases: [14, 85],
-    prompts: [],
+    prompts: [8],
   },
   {
     lessonId: 16,
@@ -128,7 +127,7 @@ export default lessonData = [
     style: 7,
     reviewWords: ["how_much", "this", "cost", "excuse_me", "please"],
     phrases: [15, 16],
-    prompts: [],
+    prompts: [9, 10],
   },
   {
     lessonId: 17,
@@ -141,10 +140,10 @@ export default lessonData = [
   {
     lessonId: 18,
     title: "Lesson 18",
-    style: 3,
+    style: 2,
     reviewWords: ["bathroom", "where"],
     phrases: [17],
-    prompts: [7],
+    prompts: [11],
   },
   {
     lessonId: 19,
@@ -160,7 +159,7 @@ export default lessonData = [
     style: 8,
     reviewWords: ["yes", "no"],
     phrases: [83],
-    prompts: [],
+    prompts: [12],
   },
   {
     lessonId: 21,
@@ -168,7 +167,7 @@ export default lessonData = [
     style: 2,
     reviewWords: ["what"],
     phrases: [87],
-    prompts: [],
+    prompts: [13, 14],
   },
   {
     lessonId: 22,
@@ -181,10 +180,10 @@ export default lessonData = [
   {
     lessonId: 23,
     title: "Lesson 23",
-    style: 9, //6,
+    style: 6,
     reviewWords: ["where", "is"],
-    phrases: [95], //[22],
-    prompts: [8],
+    phrases: [22],
+    prompts: [],
   },
   {
     lessonId: 24,
@@ -239,7 +238,7 @@ export default lessonData = [
     title: "Lesson 30",
     style: 6,
     reviewWords: ["large", "water", "three"],
-    phrases: [27],
+    phrases: [27, 116],
     prompts: [],
   },
   {
@@ -256,7 +255,7 @@ export default lessonData = [
     style: 6,
     reviewWords: [],
     phrases: [29, 31],
-    prompts: [],
+    prompts: [20, 21],
   },
   {
     lessonId: 33,
@@ -291,20 +290,12 @@ export default lessonData = [
     prompts: [],
   },
   {
-    lessonId: 38,
-    title: "Lesson 38",
-    style: 2,
-    reviewWords: ["speak", "hello"],
-    phrases: [34, 35],
-    prompts: [],
-  },
-  {
     lessonId: 39,
     title: "Lesson 39",
     style: 8,
     reviewWords: ["how_are_you"],
     phrases: [37, 36],
-    prompts: [],
+    prompts: [22],
   },
   {
     lessonId: 40,
@@ -336,7 +327,7 @@ export default lessonData = [
     style: 4,
     reviewWords: ["cost", "one", "two", "three"],
     phrases: [41],
-    prompts: [],
+    prompts: [23],
   },
   {
     lessonId: 44,
@@ -344,7 +335,7 @@ export default lessonData = [
     style: 5,
     reviewWords: ["fifty", "ten", "five"],
     phrases: [42],
-    prompts: [],
+    prompts: [24],
   },
   {
     lessonId: 45,
@@ -352,7 +343,7 @@ export default lessonData = [
     style: 5,
     reviewWords: ["four", "five", "six"],
     phrases: [89],
-    prompts: [],
+    prompts: [25],
   },
   {
     lessonId: 46,
@@ -368,7 +359,7 @@ export default lessonData = [
     style: 2,
     reviewWords: ["what", "one", "two", "three"],
     phrases: [43],
-    prompts: [],
+    prompts: [26],
   },
   {
     lessonId: 48,
@@ -376,7 +367,7 @@ export default lessonData = [
     style: 8,
     reviewWords: ["time", "what", "four", "five", "six"],
     phrases: [90, 91],
-    prompts: [],
+    prompts: [27],
   },
   {
     lessonId: 49,
@@ -384,15 +375,15 @@ export default lessonData = [
     style: 6,
     reviewWords: ["open", "closed"],
     phrases: [44, 47],
-    prompts: [],
+    prompts: [28, 29],
   },
   {
     lessonId: 50,
     title: "Lesson 50",
     style: 4,
     reviewWords: ["seven", "eight", "nine", "ten"],
-    phrases: [93],
-    prompts: [],
+    phrases: [92],
+    prompts: [30],
   },
   {
     lessonId: 51,
@@ -405,10 +396,10 @@ export default lessonData = [
   {
     lessonId: 52,
     title: "Lesson 52",
-    style: 2,
-    reviewWords: ["how_much"],
-    phrases: [45],
-    prompts: [],
+    style: 7,
+    reviewWords: ["what", "time", "exit"],
+    phrases: [48],
+    prompts: [31],
   },
   {
     lessonId: 53,
@@ -421,9 +412,9 @@ export default lessonData = [
   {
     lessonId: 54,
     title: "Lesson 54",
-    style: 7,
-    reviewWords: ["what", "time", "exit"],
-    phrases: [48],
+    style: 2,
+    reviewWords: ["how_much"],
+    phrases: [45],
     prompts: [],
   },
   {
@@ -432,7 +423,7 @@ export default lessonData = [
     style: 8,
     reviewWords: ["twenty"],
     phrases: [49],
-    prompts: [],
+    prompts: [32],
   },
   {
     lessonId: 56,
@@ -464,7 +455,7 @@ export default lessonData = [
     style: 2,
     reviewWords: [],
     phrases: [53],
-    prompts: [],
+    prompts: [33],
   },
   {
     lessonId: 60,
@@ -488,7 +479,7 @@ export default lessonData = [
     style: 6,
     reviewWords: ["pork", "and"],
     phrases: [57],
-    prompts: [],
+    prompts: [34],
   },
   {
     lessonId: 63,
@@ -512,7 +503,7 @@ export default lessonData = [
     style: 8,
     reviewWords: ["hello", "goodbye"],
     phrases: [59],
-    prompts: [],
+    prompts: [35, 36],
   },
   {
     lessonId: 66,
@@ -520,7 +511,7 @@ export default lessonData = [
     style: 5,
     reviewWords: [],
     phrases: [61],
-    prompts: [],
+    prompts: [37],
   },
   {
     lessonId: 67,
@@ -528,7 +519,7 @@ export default lessonData = [
     style: 2,
     reviewWords: ["is"],
     phrases: [62],
-    prompts: [],
+    prompts: [38],
   },
   {
     lessonId: 68,
@@ -552,7 +543,7 @@ export default lessonData = [
     style: 2,
     reviewWords: ["for", "one", "two", "three"],
     phrases: [65, 66],
-    prompts: [],
+    prompts: [39],
   },
   {
     lessonId: 71,
@@ -576,7 +567,7 @@ export default lessonData = [
     style: 5,
     reviewWords: ["coffee", "water"],
     phrases: [69],
-    prompts: [],
+    prompts: [40],
   },
   {
     lessonId: 74,
@@ -600,7 +591,7 @@ export default lessonData = [
     style: 8,
     reviewWords: ["left", "right"],
     phrases: [72, 73],
-    prompts: [],
+    prompts: [41, 42],
   },
   {
     lessonId: 77,
@@ -619,18 +610,10 @@ export default lessonData = [
     prompts: [],
   },
   {
-    lessonId: 79,
-    title: "Lesson 79",
-    style: 5,
-    reviewWords: ["all", "trains"],
-    phrases: [77],
-    prompts: [],
-  },
-  {
     lessonId: 80,
     title: "Lesson 80",
     style: 10,
-    reviewWords: ["entrance", "exit"],
+    reviewWords: [],
     phrases: [],
     prompts: [],
   },
@@ -653,7 +636,7 @@ export default lessonData = [
   {
     lessonId: 83,
     title: "Lesson 83",
-    style: 7,
+    style: 2,
     reviewWords: ["bread", "with", "cheese"],
     phrases: [80],
     prompts: [],
@@ -663,7 +646,7 @@ export default lessonData = [
     title: "Lesson 84",
     style: 2,
     reviewWords: ["street", "left", "right"],
-    phrases: [81],
+    phrases: [81, 146],
     prompts: [],
   },
   {

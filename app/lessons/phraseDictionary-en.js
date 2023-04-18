@@ -229,7 +229,7 @@ export default phraseDictionary = [
   },
   {
     phraseId: 59,
-    order: "hello, excuse_me2",
+    order: "excuse_me2",
   },
   {
     phraseId: 60,
@@ -442,5 +442,137 @@ export default phraseDictionary = [
   {
     phraseId: 113,
     order: "taxi",
+  },
+  {
+    phraseId: 114,
+    order: "entrance",
+  },
+  {
+    phraseId: 115,
+    order: "exit",
+  },
+  {
+    phraseId: 116,
+    order: "how_many drinks?",
+  },
+  {
+    phraseId: 117,
+    order: "how_many?",
+  },
+  {
+    phraseId: 118,
+    order: "two with cheese, three without cheese",
+  },
+  {
+    phraseId: 119,
+    order: "youre_welcome",
+  },
+  {
+    phraseId: 120,
+    order: "do_you need change?",
+  },
+  {
+    phraseId: 121,
+    order: "how_much?",
+  },
+  {
+    phraseId: 122,
+    order: "twenty nine",
+  },
+  {
+    phraseId: 123,
+    order: "five",
+  },
+  {
+    phraseId: 124,
+    order: "twelve thirty",
+  },
+  {
+    phraseId: 125,
+    order: "five twenty_five",
+  },
+  {
+    phraseId: 126,
+    order: "six thirty",
+  },
+  {
+    phraseId: 127,
+    order: "two thirty",
+  },
+  {
+    phraseId: 128,
+    order: "four fourty_five",
+  },
+  {
+    phraseId: 129,
+    order: "three fifteen",
+  },
+  {
+    phraseId: 130,
+    order: "one thirty",
+  },
+  {
+    phraseId: 131,
+    order: "two hour thirty minutes",
+  },
+  {
+    phraseId: 132,
+    order: "one hour ten minutes",
+  },
+  {
+    phraseId: 133,
+    order: "spicy chicken",
+  },
+  {
+    phraseId: 134,
+    order: "chicken and cheese",
+  },
+  {
+    phraseId: 135,
+    order: "large drinks",
+  },
+  {
+    phraseId: 136,
+    order: "small drinks",
+  },
+  {
+    phraseId: 137,
+    order: "?",
+  },
+  {
+    phraseId: 138,
+    order: "excuse_me",
+  },
+  {
+    phraseId: 139,
+    order: "sorry",
+  },
+  {
+    phraseId: 140,
+    order: "what time?",
+  },
+  {
+    phraseId: 141,
+    order: "drinks?",
+  },
+  {
+    phraseId: 142,
+    order: "water",
+  },
+  {
+    phraseId: 143,
+    order: "mushroom",
+  },
+  {
+    phraseId: 144,
+    order: "bus left",
+  },
+  {
+    phraseId: 145,
+    order: "bus right",
+  },
+  {
+    phraseId: 146,
+    order: "where is the hotel?",
   },
 ];

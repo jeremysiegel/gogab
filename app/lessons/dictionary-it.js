@@ -117,7 +117,7 @@ export default dictionary = {
     translation: "undici",
     pronunciation: "oon-DEE-chee",
   },
-  english: {
+  English: {
     translation: "Inglese",
     pronunciation: "een-GLEH-zeh",
   },
@@ -512,5 +512,9 @@ export default dictionary = {
   do_you: {
     translation: "Voi",
     pronunciation: "VOH-ee",
+  },
+  need: {
+    translation: "Bisogno",
+    pronunciation: "bee-ZOHN-yoh",
   },
 };

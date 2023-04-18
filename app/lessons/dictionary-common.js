@@ -347,7 +347,7 @@ export default dictionary = {
     word: "I need",
     icon: "hand-extended-outline",
     iconFamily: "MaterialCommunityIcons",
-    rank: 1,
+    rank: 0,
   },
   i_understand: {
     word: "I understand",
@@ -774,5 +774,17 @@ export default dictionary = {
     icon: "hand-point-up",
     iconFamily: "FontAwesome5",
     rank: 0,
+  },
+  how_many: {
+    word: "how many",
+    icon: "format-list-numbered",
+    iconFamily: "MaterialCommunityIcons",
+    rank: 2,
+  },
+  need: {
+    word: "need",
+    icon: "hand-extended-outline",
+    iconFamily: "MaterialCommunityIcons",
+    rank: 1,
   },
 };
