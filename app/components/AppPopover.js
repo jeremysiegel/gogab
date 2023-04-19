@@ -11,9 +11,11 @@ function AppPopover({
   popoverText,
   secondPopoverText,
   key,
+  onOpen,
 }) {
   return (
     <Popover
+      onOpen={onOpen}
       offset={StatusBar.currentHeight}
       trigger={(triggerProps) => {
         return (
