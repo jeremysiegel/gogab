@@ -306,6 +306,7 @@ export default dictionary = {
     icon: "hand-sparkles",
     iconFamily: "FontAwesome5",
     rank: 1,
+    wordId: "W54"
   },
   here: {
     word: "here",

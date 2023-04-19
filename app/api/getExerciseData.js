@@ -22,6 +22,7 @@ const getExerciseData = ({
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
   const quizLength = exerciseKeys.length;
+  const dictionary = getDictionary(country);
 
   // Get next exercise type for navigation.
   const nextExercise = lessonData[exerciseId + 1] ? exerciseId + 1 : 1;
@@ -34,6 +35,14 @@ const getExerciseData = ({
   const reverse = data.reverse;
   // If this is a phrase screen, get the phrase.
   let phraseData = "";
+  let wordData = {}
+
+  try {
+    wordData = dictionary[data.word]
+  } catch (error) {
+    console.log(error)
+  }
+
   if (
     data.screenType === "sentenceBuilder" ||
     data.screenType === "newWord" ||
@@ -50,7 +59,6 @@ const getExerciseData = ({
   // Used to translate words from dictionary
   let wordArray = data.word ? data.word.split(" ") : [];
   let strippedWordArray = stripArray({ arrayToStrip: wordArray });
-  const dictionary = getDictionary(country);
   let learnWordArray = translate(strippedWordArray, dictionary);
   if (data.screenType != "sentenceBuilder")
     learnWordArray = punctuate(learnWordArray, wordArray);
@@ -168,6 +176,7 @@ const getExerciseData = ({
     phraseData: phraseData,
     index: index,
     quizLength: quizLength,
+    wordData: wordData,
     wordArray: reverse
       ? stripArray({
           arrayToStrip: learnWordArray,
