@@ -6,15 +6,6 @@ import AppText from "./AppText";
 // Creates a string of tappable words that display more info.
 
 function RenderLearnWord({ data, helpText = data.strippedWordArray }) {
-  let wordId=undefined;
-  try {
-    
-    if(data.wordData.wordId) {
-  wordId = data.wordData.wordId
-    }
-  } catch (error) {
-    console.log(error)
-  }
   return data.learnWordArray.map((item, index) => {
     return (
       <>
@@ -23,7 +14,7 @@ function RenderLearnWord({ data, helpText = data.strippedWordArray }) {
           style={defaultStyles.learnWord}
           helpText={helpText[index]}
           pronunciation={data.helpTextArray[index]}
-          wordId={wordId}
+          wordData={data.wordData}
         >
           {item}
         </LearnWord>

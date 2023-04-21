@@ -6,21 +6,21 @@ import AppPopover from "./AppPopover";
 
 // Creates a word that user can tap for more information (such as translation or pronunciation).
 
-function LearnWord({ style, children, helpText, pronunciation, wordId }) {
+function LearnWord({ style, children, helpText, pronunciation, wordData }) {
   const [sound, setSound] = React.useState();
-  
-  const files = {
-    W54: require("../assets/audio/it/W54.mp3")
+  let audio = "";
+  try {
+    audio = wordData.audio;
+    console.log(wordData);
+  } catch (error) {
+    console.log(error);
   }
 
   async function playSound() {
-    if (wordId) {
-
-      const { sound } = await Audio.Sound.createAsync(
-files[wordId]
-        );
+    if (audio) {
+      const { sound } = await Audio.Sound.createAsync(wordData.audio);
       setSound(sound);
-  
+
       await sound.playAsync();
     }
   }

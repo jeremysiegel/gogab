@@ -2,519 +2,783 @@
 
 export default dictionary = {
   a: {
+    wordIdNum: "W1",
     translation: "un",
     pronunciation: "oon",
+    audio: require("../assets/audio/it/W1.mp3"),
   },
   a_little: {
+    wordIdNum: "W2",
     translation: "un po'",
     pronunciation: "oon poh",
+    audio: require("../assets/audio/it/W2.mp3"),
   },
   airport: {
+    wordIdNum: "W3",
     translation: "aeroporto",
     pronunciation: "eye-eh-roh-PORT-oh",
+    audio: require("../assets/audio/it/W3.mp3"),
   },
   all: {
+    wordIdNum: "W4",
     translation: "Tutto",
     pronunciation: "TOO-toh",
+    audio: require("../assets/audio/it/W4.mp3"),
   },
   and: {
+    wordIdNum: "W5",
     translation: "E",
     pronunciation: "eh",
+    audio: require("../assets/audio/it/W5.mp3"),
   },
   are_you: {
+    wordIdNum: "W6",
     translation: "Sei",
     pronunciation: "say",
-  },
-  bakery: {
-    translation: "forno",
-    pronunciation: "FOR-no",
-  },
-  bathroom: {
-    translation: "bagno",
-    pronunciation: "BAHN-yoh",
-  },
-  beans: {
-    translation: "fagioli",
-    pronunciation: "fah-JOH-lee",
-  },
-  beef: {
-    translation: "manzo",
-    pronunciation: "MAHN-tsoh",
-  },
-  beer: {
-    translation: "birra",
-    pronunciation: "BEER-rah",
-  },
-  bon_appetit: {
-    translation: "buon appetito",
-    pronunciation: "bwon ah-peh-TEE-toh",
-  },
-  bread: {
-    translation: "pane",
-    pronunciation: "PAH-neh",
-  },
-  bus: {
-    translation: "autobus",
-    pronunciation: "ow-toh-BOOS",
-  },
-  change: {
-    translation: "modifica",
-    pronunciation: "moh-DEE-fee-kah",
-  },
-  check: {
-    translation: "conto",
-    pronunciation: "KON-toh",
-  },
-  cheers: {
-    translation: "saluti",
-    pronunciation: "sah-LOO-tee",
-  },
-  cheese: {
-    translation: "formaggio",
-    pronunciation: "for-MAH-djo",
-  },
-  chicken: {
-    translation: "pollo",
-    pronunciation: "POL-lo",
-  },
-  closed: {
-    translation: "Chiuso",
-    pronunciation: "KYOO-soh",
-  },
-  coffee: {
-    translation: "caffè",
-    pronunciation: "kaf-FEH",
-  },
-  cold: {
-    translation: "Freddo",
-    pronunciation: "FRED-doh",
-  },
-  cost: {
-    translation: "costo",
-    pronunciation: "KOH-stoh",
-  },
-  day: {
-    translation: "giorno",
-    pronunciation: "JOR-noh",
-  },
-  downtown: {
-    translation: "centro",
-    pronunciation: "CHEN-troh",
-  },
-  drinks: {
-    translation: "bevande",
-    pronunciation: "beh-VAHN-deh",
-  },
-  eggs: {
-    translation: "uova",
-    pronunciation: "OO-oh-vah",
-  },
-  eight: {
-    translation: "otto",
-    pronunciation: "OH-toh",
-  },
-  eleven: {
-    translation: "undici",
-    pronunciation: "oon-DEE-chee",
-  },
-  English: {
-    translation: "Inglese",
-    pronunciation: "een-GLEH-zeh",
-  },
-  entrance: {
-    translation: "Entrata",
-    pronunciation: "en-TRAH-tah",
-  },
-  excuse_me: {
-    translation: "Scusami",
-    pronunciation: "SKOO-sah-mee",
-  },
-  excuse_me2: {
-    translation: "Mi scusi",
-    pronunciation: "MEE SKOO-zee",
-  },
-  exit: {
-    translation: "Uscita",
-    pronunciation: "ooh-SHEE-tah",
-  },
-  fifty: {
-    translation: "cinquanta",
-    pronunciation: "cheen-KWAN-tah",
-  },
-  fifteen: {
-    translation: "quindici",
-    pronunciation: "kween-DEE-chee",
-  },
-  first: {
-    translation: "Primo",
-    pronunciation: "PREE-moh",
-  },
-  fish: {
-    translation: "pescare",
-    pronunciation: "peh-SKAH-reh",
-  },
-  five: {
-    translation: "cinque",
-    pronunciation: "CHEEN-kweh",
-  },
-  for: {
-    translation: "per",
-    pronunciation: "pehr",
-  },
-  forty_five: {
-    translation: "quarantacinque",
-    pronunciation: "kwar-ahn-TAH-cheen-kweh",
-  },
-  four: {
-    translation: "quattro",
-    pronunciation: "KWAT-troh",
-  },
-  free: {
-    translation: "gratuito",
-    pronunciation: "grah-TOO-ee-toh",
-  },
-  good: {
-    translation: "Bene",
-    pronunciation: "BEH-neh",
-  },
-  good_afternoon: {
-    translation: "Buon pomeriggio",
-    pronunciation: "bwon poh-meh-REE-joh",
-  },
-  good_morning: {
-    translation: "Buongiorno",
-    pronunciation: "bwon JOR-noh",
-  },
-  good_night: {
-    translation: "Buona notte",
-    pronunciation: "bwon-ah NOH-teh",
-  },
-  goodbye: {
-    translation: "arrivederci",
-    pronunciation: "ah-ree-veh-DEHR-chee",
-  },
-  half: {
-    translation: "metà",
-    pronunciation: "meh-TAH",
-  },
-  hello: {
-    translation: "Ciao",
-    pronunciation: "CHOW",
-  },
-  here: {
-    translation: "Qui",
-    pronunciation: "KOO-ee",
-  },
-  hot: {
-    translation: "caldo",
-    pronunciation: "KAL-doh",
-  },
-  hotel: {
-    translation: "Hotel",
-    pronunciation: "oh-TEHL",
-  },
-  hour: {
-    translation: "ora",
-    pronunciation: "OH-rah",
-  },
-  how_are_you: {
-    translation: "Come stai",
-    pronunciation: "KOH-meh STY",
-  },
-  how_much: {
-    translation: "Quanto",
-    pronunciation: "KWAN-toh",
-  },
-  i_need: {
-    translation: "Ho bisogno",
-    pronunciation: "oh bee-ZOHN-yoh",
-  },
-  i_understand: {
-    translation: "Capisco",
-    pronunciation: "kah-PEES-koh",
-  },
-  is: {
-    translation: "È",
-    pronunciation: "eh",
-  },
-  is_it: {
-    translation: "è",
-    pronunciation: "eh",
-  },
-  is_there: {
-    translation: "è lì",
-    pronunciation: "eh lee",
-  },
-  large: {
-    translation: "grande",
-    pronunciation: "GRAHN-deh",
-  },
-  left: {
-    translation: "Sinistra",
-    pronunciation: "see-NEES-trah",
-  },
-  lets_go: {
-    translation: "andiamo",
-    pronunciation: "ahn-dee-AH-moh",
-  },
-  market: {
-    translation: "mercato",
-    pronunciation: "mehr-KAH-toh",
-  },
-  meat: {
-    translation: "carne",
-    pronunciation: "KAHR-neh",
-  },
-  menu: {
-    translation: "menù",
-    pronunciation: "meh-NOO",
-  },
-  milk: {
-    translation: "latte",
-    pronunciation: "LAHT-teh",
-  },
-  minutes: {
-    translation: "minuto",
-    pronunciation: "mee-NOO-tohs",
-  },
-  mushrooms: {
-    translation: "funghi",
-    pronunciation: "FOON-ghee",
-  },
-  my: {
-    translation: "Mio",
-    pronunciation: "MEE-oh",
-  },
-  name: {
-    translation: "nome",
-    pronunciation: "NOH-meh",
-  },
-  next: {
-    translation: "Prossimo",
-    pronunciation: "PROS-see-moh",
-  },
-  night: {
-    translation: "notte",
-    pronunciation: "NOH-teh",
-  },
-  nine: {
-    translation: "nove",
-    pronunciation: "NOH-veh",
-  },
-  no: {
-    translation: "NO",
-    pronunciation: "NOH",
-  },
-  one: {
-    translation: "uno",
-    pronunciation: "OO-noh",
-  },
-  open: {
-    translation: "aprire",
-    pronunciation: "ah-PREE-reh",
-  },
-  pharmacy: {
-    translation: "farmacia",
-    pronunciation: "fahr-MAH-chyah",
-  },
-  please: {
-    translation: "Per favore",
-    pronunciation: "pehr fah-VOH-reh",
-  },
-  pork: {
-    translation: "maiale",
-    pronunciation: "mah-YAH-leh",
-  },
-  receipt: {
-    translation: "ricevuta",
-    pronunciation: "ree-cheh-VOO-tah",
-  },
-  recommend: {
-    translation: "consiglio",
-    pronunciation: "kon-SIL-yoh",
-  },
-  reservation: {
-    translation: "prenotazione",
-    pronunciation: "pre-no-ta-TSYOH-neh",
-  },
-  return: {
-    translation: "ritorno",
-    pronunciation: "ri-TOR-no",
-  },
-  right: {
-    translation: "Giusto",
-    pronunciation: "JU-stoh",
-  },
-  salt: {
-    translation: "sale",
-    pronunciation: "SAH-leh",
-  },
-  second: {
-    translation: "secondo",
-    pronunciation: "se-KON-doh",
-  },
-  seven: {
-    translation: "Sette",
-    pronunciation: "SET-teh sei",
-  },
-  six: {
-    translation: "sei",
-    pronunciation: "Seh-ee",
-  },
-  small: {
-    translation: "piccolo",
-    pronunciation: "PEEK-koh-loh",
-  },
-  sorry: {
-    translation: "Scusa",
-    pronunciation: "SKOO-zah",
-  },
-  speak: {
-    translation: "parlare",
-    pronunciation: "par-LAH-reh",
-  },
-  spicy: {
-    translation: "speziato",
-    pronunciation: "speh-TSYAH-toh",
-  },
-  station: {
-    translation: "stazione",
-    pronunciation: "sta-TSYOH-neh",
-  },
-  street: {
-    translation: "strada",
-    pronunciation: "STRAH-dah",
-  },
-  sugar: {
-    translation: "zucchero",
-    pronunciation: "ZOO-keh-roh",
-  },
-  taxi: {
-    translation: "Taxi",
-    pronunciation: "TAHK-see",
-  },
-  ten: {
-    translation: "dieci",
-    pronunciation: "DEE-eh-chee",
-  },
-  thank_you: {
-    translation: "Grazie",
-    pronunciation: "GRAH-tsee-eh",
-  },
-  the: {
-    translation: "IL",
-    pronunciation: "eel",
-  },
-  thirty: {
-    translation: "trenta",
-    pronunciation: "TREN-tah",
-  },
-  this: {
-    translation: "Questo",
-    pronunciation: "KWES-toh",
-  },
-  three: {
-    translation: "tre",
-    pronunciation: "treh",
-  },
-  ticket: {
-    translation: "biglietto",
-    pronunciation: "beel-LYET-toh",
-  },
-  time: {
-    translation: "tempo",
-    pronunciation: "TEM-poh",
-  },
-  toilet_paper: {
-    translation: "carta igienica",
-    pronunciation: "KAR-tah ee-jeh-NEE-kah",
-  },
-  train: {
-    translation: "treno",
-    pronunciation: "TREH-noh",
-  },
-  twelve: {
-    translation: "dodici",
-    pronunciation: "DOH-dee-chee",
-  },
-  twenty: {
-    translation: "venti",
-    pronunciation: "VEN-tee",
-  },
-  two: {
-    translation: "due",
-    pronunciation: "DOO-eh",
-  },
-  very: {
-    translation: "molto",
-    pronunciation: "MOHL-toh",
-  },
-  water: {
-    translation: "acqua",
-    pronunciation: "AHK-kwah",
-  },
-  what: {
-    translation: "Che cosa",
-    pronunciation: "keh KOH-sah",
-  },
-  where: {
-    translation: "Dove",
-    pronunciation: "DOH-veh",
-  },
-  where_to: {
-    translation: "dove",
-    pronunciation: "DOH-veh",
-  },
-  wine: {
-    translation: "vino",
-    pronunciation: "VEE-noh",
-  },
-  with: {
-    translation: "con",
-    pronunciation: "kohn",
-  },
-  without: {
-    translation: "senza",
-    pronunciation: "SEN-tsa",
-  },
-  yes: {
-    translation: "SÌ",
-    pronunciation: "see",
-  },
-  you: {
-    translation: "Voi",
-    pronunciation: "VOH-ee",
-  },
-  youre_welcome: {
-    translation: "Prego",
-    pronunciation: "PREH-goh",
-  },
-  twenty_five: {
-    translation: "venticinque",
-    pronunciation: "venty-cheenkway",
-  },
-  does_this: {
-    translation: "questo",
-    pronunciation: "questo",
-  },
-  tomatos: {
-    translation: "pomodori",
-    pronunciation: "pomodoree",
+    audio: require("../assets/audio/it/W6.mp3"),
   },
   at_the: {
+    wordIdNum: "W7",
     translation: "al",
     pronunciation: "ahl",
+    audio: require("../assets/audio/it/W7.mp3"),
   },
-  supermarket: {
-    translation: "supermercato",
-    pronunciation: "supermercato",
+  bakery: {
+    wordIdNum: "W8",
+    translation: "forno",
+    pronunciation: "FOR-no",
+    audio: require("../assets/audio/it/W8.mp3"),
+  },
+  bathroom: {
+    wordIdNum: "W9",
+    translation: "bagno",
+    pronunciation: "BAHN-yoh",
+    audio: require("../assets/audio/it/W9.mp3"),
+  },
+  beans: {
+    wordIdNum: "W10",
+    translation: "fagioli",
+    pronunciation: "fah-JOH-lee",
+    audio: require("../assets/audio/it/W10.mp3"),
+  },
+  beef: {
+    wordIdNum: "W11",
+    translation: "manzo",
+    pronunciation: "MAHN-tsoh",
+    audio: require("../assets/audio/it/W11.mp3"),
+  },
+  beer: {
+    wordIdNum: "W12",
+    translation: "birra",
+    pronunciation: "BEER-rah",
+    audio: require("../assets/audio/it/W12.mp3"),
+  },
+  bon_appetit: {
+    wordIdNum: "W13",
+    translation: "buon appetito",
+    pronunciation: "bwon ah-peh-TEE-toh",
+    audio: require("../assets/audio/it/W13.mp3"),
+  },
+  bread: {
+    wordIdNum: "W14",
+    translation: "pane",
+    pronunciation: "PAH-neh",
+    audio: require("../assets/audio/it/W14.mp3"),
+  },
+  bus: {
+    wordIdNum: "W15",
+    translation: "autobus",
+    pronunciation: "ow-toh-BOOS",
+    audio: require("../assets/audio/it/W15.mp3"),
+  },
+  change: {
+    wordIdNum: "W16",
+    translation: "modifica",
+    pronunciation: "moh-DEE-fee-kah",
+    audio: require("../assets/audio/it/W16.mp3"),
+  },
+  check: {
+    wordIdNum: "W17",
+    translation: "conto",
+    pronunciation: "KON-toh",
+    audio: require("../assets/audio/it/W17.mp3"),
+  },
+  cheers: {
+    wordIdNum: "W18",
+    translation: "saluti",
+    pronunciation: "sah-LOO-tee",
+    audio: require("../assets/audio/it/W18.mp3"),
+  },
+  cheese: {
+    wordIdNum: "W19",
+    translation: "formaggio",
+    pronunciation: "for-MAH-djo",
+    audio: require("../assets/audio/it/W19.mp3"),
+  },
+  chicken: {
+    wordIdNum: "W20",
+    translation: "pollo",
+    pronunciation: "POL-lo",
+    audio: require("../assets/audio/it/W20.mp3"),
+  },
+  closed: {
+    wordIdNum: "W21",
+    translation: "Chiuso",
+    pronunciation: "KYOO-soh",
+    audio: require("../assets/audio/it/W21.mp3"),
+  },
+  coffee: {
+    wordIdNum: "W22",
+    translation: "caffè",
+    pronunciation: "kaf-FEH",
+    audio: require("../assets/audio/it/W22.mp3"),
+  },
+  cold: {
+    wordIdNum: "W23",
+    translation: "Freddo",
+    pronunciation: "FRED-doh",
+    audio: require("../assets/audio/it/W23.mp3"),
+  },
+  cost: {
+    wordIdNum: "W24",
+    translation: "costo",
+    pronunciation: "KOH-stoh",
+    audio: require("../assets/audio/it/W24.mp3"),
+  },
+  day: {
+    wordIdNum: "W25",
+    translation: "giorno",
+    pronunciation: "JOR-noh",
+    audio: require("../assets/audio/it/W25.mp3"),
   },
   do_you: {
+    wordIdNum: "W26",
     translation: "Voi",
     pronunciation: "VOH-ee",
+    audio: require("../assets/audio/it/W26.mp3"),
+  },
+  does_this: {
+    wordIdNum: "W27",
+    translation: "questo",
+    pronunciation: "questo",
+    audio: require("../assets/audio/it/W27.mp3"),
+  },
+  downtown: {
+    wordIdNum: "W28",
+    translation: "centro",
+    pronunciation: "CHEN-troh",
+    audio: require("../assets/audio/it/W28.mp3"),
+  },
+  drinks: {
+    wordIdNum: "W29",
+    translation: "bevande",
+    pronunciation: "beh-VAHN-deh",
+    audio: require("../assets/audio/it/W29.mp3"),
+  },
+  eggs: {
+    wordIdNum: "W30",
+    translation: "uova",
+    pronunciation: "OO-oh-vah",
+    audio: require("../assets/audio/it/W30.mp3"),
+  },
+  eight: {
+    wordIdNum: "W31",
+    translation: "otto",
+    pronunciation: "OH-toh",
+    audio: require("../assets/audio/it/W31.mp3"),
+  },
+  eleven: {
+    wordIdNum: "W32",
+    translation: "undici",
+    pronunciation: "oon-DEE-chee",
+    audio: require("../assets/audio/it/W32.mp3"),
+  },
+  English: {
+    wordIdNum: "W33",
+    translation: "Inglese",
+    pronunciation: "een-GLEH-zeh",
+    audio: require("../assets/audio/it/W33.mp3"),
+  },
+  entrance: {
+    wordIdNum: "W34",
+    translation: "Entrata",
+    pronunciation: "en-TRAH-tah",
+    audio: require("../assets/audio/it/W34.mp3"),
+  },
+  excuse_me: {
+    wordIdNum: "W35",
+    translation: "Scusami",
+    pronunciation: "SKOO-sah-mee",
+    audio: require("../assets/audio/it/W35.mp3"),
+  },
+  excuse_me2: {
+    wordIdNum: "W36",
+    translation: "Mi scusi",
+    pronunciation: "MEE SKOO-zee",
+    audio: require("../assets/audio/it/W36.mp3"),
+  },
+  exit: {
+    wordIdNum: "W37",
+    translation: "Uscita",
+    pronunciation: "ooh-SHEE-tah",
+    audio: require("../assets/audio/it/W37.mp3"),
+  },
+  fifteen: {
+    wordIdNum: "W38",
+    translation: "quindici",
+    pronunciation: "kween-DEE-chee",
+    audio: require("../assets/audio/it/W38.mp3"),
+  },
+  fifty: {
+    wordIdNum: "W39",
+    translation: "cinquanta",
+    pronunciation: "cheen-KWAN-tah",
+    audio: require("../assets/audio/it/W39.mp3"),
+  },
+  first: {
+    wordIdNum: "W40",
+    translation: "Primo",
+    pronunciation: "PREE-moh",
+    audio: require("../assets/audio/it/W40.mp3"),
+  },
+  fish: {
+    wordIdNum: "W41",
+    translation: "pescare",
+    pronunciation: "peh-SKAH-reh",
+    audio: require("../assets/audio/it/W41.mp3"),
+  },
+  five: {
+    wordIdNum: "W42",
+    translation: "cinque",
+    pronunciation: "CHEEN-kweh",
+    audio: require("../assets/audio/it/W42.mp3"),
+  },
+  for: {
+    wordIdNum: "W43",
+    translation: "per",
+    pronunciation: "pehr",
+    audio: require("../assets/audio/it/W43.mp3"),
+  },
+  forty_five: {
+    wordIdNum: "W44",
+    translation: "quarantacinque",
+    pronunciation: "kwar-ahn-TAH-cheen-kweh",
+    audio: require("../assets/audio/it/W44.mp3"),
+  },
+  four: {
+    wordIdNum: "W45",
+    translation: "quattro",
+    pronunciation: "KWAT-troh",
+    audio: require("../assets/audio/it/W45.mp3"),
+  },
+  free: {
+    wordIdNum: "W46",
+    translation: "gratuito",
+    pronunciation: "grah-TOO-ee-toh",
+    audio: require("../assets/audio/it/W46.mp3"),
+  },
+  good: {
+    wordIdNum: "W47",
+    translation: "bene",
+    pronunciation: "benay",
+    audio: require("../assets/audio/it/W47.mp3"),
+  },
+  good_afternoon: {
+    wordIdNum: "W48",
+    translation: "Buon pomeriggio",
+    pronunciation: "bwon poh-meh-REE-joh",
+    audio: require("../assets/audio/it/W48.mp3"),
+  },
+  good_morning: {
+    wordIdNum: "W49",
+    translation: "Buongiorno",
+    pronunciation: "bwon JOR-noh",
+    audio: require("../assets/audio/it/W49.mp3"),
+  },
+  good_night: {
+    wordIdNum: "W50",
+    translation: "Buona notte",
+    pronunciation: "bwon-ah NOH-teh",
+    audio: require("../assets/audio/it/W50.mp3"),
+  },
+  goodbye: {
+    wordIdNum: "W51",
+    translation: "arrivederci",
+    pronunciation: "ah-ree-veh-DEHR-chee",
+    audio: require("../assets/audio/it/W51.mp3"),
+  },
+  half: {
+    wordIdNum: "W52",
+    translation: "metà",
+    pronunciation: "meh-TAH",
+    audio: require("../assets/audio/it/W52.mp3"),
+  },
+  hello: {
+    wordIdNum: "W53",
+    translation: "Ciao",
+    pronunciation: "CHOW",
+    audio: require("../assets/audio/it/W53.mp3"),
+  },
+  here: {
+    wordIdNum: "W54",
+    translation: "Qui",
+    pronunciation: "KOO-ee",
+    audio: require("../assets/audio/it/W54.mp3"),
+  },
+  hot: {
+    wordIdNum: "W55",
+    translation: "caldo",
+    pronunciation: "KAL-doh",
+    audio: require("../assets/audio/it/W55.mp3"),
+  },
+  hotel: {
+    wordIdNum: "W56",
+    translation: "Hotel",
+    pronunciation: "oh-TEHL",
+    audio: require("../assets/audio/it/W56.mp3"),
+  },
+  hour: {
+    wordIdNum: "W57",
+    translation: "ora",
+    pronunciation: "OH-rah",
+    audio: require("../assets/audio/it/W57.mp3"),
+  },
+  how_are_you: {
+    wordIdNum: "W58",
+    translation: "Come stai",
+    pronunciation: "KOH-meh STY",
+    audio: require("../assets/audio/it/W58.mp3"),
+  },
+  how_many: {
+    wordIdNum: "W59",
+    translation: "quanti",
+    pronunciation: "kwantee",
+    audio: require("../assets/audio/it/W59.mp3"),
+  },
+  how_much: {
+    wordIdNum: "W60",
+    translation: "Quanto",
+    pronunciation: "KWAN-toh",
+    audio: require("../assets/audio/it/W60.mp3"),
+  },
+  i_need: {
+    wordIdNum: "W61",
+    translation: "Ho bisogno",
+    pronunciation: "oh bee-ZOHN-yoh",
+    audio: require("../assets/audio/it/W61.mp3"),
+  },
+  i_understand: {
+    wordIdNum: "W62",
+    translation: "Capisco",
+    pronunciation: "kah-PEES-koh",
+    audio: require("../assets/audio/it/W62.mp3"),
+  },
+  is: {
+    wordIdNum: "W63",
+    translation: "È",
+    pronunciation: "eh",
+    audio: require("../assets/audio/it/W63.mp3"),
+  },
+  is_it: {
+    wordIdNum: "W64",
+    translation: "è",
+    pronunciation: "eh",
+    audio: require("../assets/audio/it/W64.mp3"),
+  },
+  is_there: {
+    wordIdNum: "W65",
+    translation: "è lì",
+    pronunciation: "eh lee",
+    audio: require("../assets/audio/it/W65.mp3"),
+  },
+  large: {
+    wordIdNum: "W66",
+    translation: "grande",
+    pronunciation: "GRAHN-deh",
+    audio: require("../assets/audio/it/W66.mp3"),
+  },
+  left: {
+    wordIdNum: "W67",
+    translation: "Sinistra",
+    pronunciation: "see-NEES-trah",
+    audio: require("../assets/audio/it/W67.mp3"),
+  },
+  lets_go: {
+    wordIdNum: "W68",
+    translation: "andiamo",
+    pronunciation: "ahn-dee-AH-moh",
+    audio: require("../assets/audio/it/W68.mp3"),
+  },
+  market: {
+    wordIdNum: "W69",
+    translation: "mercato",
+    pronunciation: "mehr-KAH-toh",
+    audio: require("../assets/audio/it/W69.mp3"),
+  },
+  meat: {
+    wordIdNum: "W70",
+    translation: "carne",
+    pronunciation: "KAHR-neh",
+    audio: require("../assets/audio/it/W70.mp3"),
+  },
+  menu: {
+    wordIdNum: "W71",
+    translation: "menù",
+    pronunciation: "meh-NOO",
+    audio: require("../assets/audio/it/W71.mp3"),
+  },
+  milk: {
+    wordIdNum: "W72",
+    translation: "latte",
+    pronunciation: "LAHT-teh",
+    audio: require("../assets/audio/it/W72.mp3"),
+  },
+  minutes: {
+    wordIdNum: "W73",
+    translation: "minuto",
+    pronunciation: "mee-NOO-tohs",
+    audio: require("../assets/audio/it/W73.mp3"),
+  },
+  mushrooms: {
+    wordIdNum: "W74",
+    translation: "funghi",
+    pronunciation: "FOON-ghee",
+    audio: require("../assets/audio/it/W74.mp3"),
+  },
+  my: {
+    wordIdNum: "W75",
+    translation: "Mio",
+    pronunciation: "MEE-oh",
+    audio: require("../assets/audio/it/W75.mp3"),
+  },
+  name: {
+    wordIdNum: "W76",
+    translation: "nome",
+    pronunciation: "NOH-meh",
+    audio: require("../assets/audio/it/W76.mp3"),
   },
   need: {
+    wordIdNum: "W77",
     translation: "Bisogno",
     pronunciation: "bee-ZOHN-yoh",
+    audio: require("../assets/audio/it/W77.mp3"),
+  },
+  next: {
+    wordIdNum: "W78",
+    translation: "Prossimo",
+    pronunciation: "PROS-see-moh",
+    audio: require("../assets/audio/it/W78.mp3"),
+  },
+  night: {
+    wordIdNum: "W79",
+    translation: "notte",
+    pronunciation: "NOH-teh",
+    audio: require("../assets/audio/it/W79.mp3"),
+  },
+  nine: {
+    wordIdNum: "W80",
+    translation: "nove",
+    pronunciation: "NOH-veh",
+    audio: require("../assets/audio/it/W80.mp3"),
+  },
+  no: {
+    wordIdNum: "W81",
+    translation: "NO",
+    pronunciation: "NOH",
+    audio: require("../assets/audio/it/W81.mp3"),
+  },
+  one: {
+    wordIdNum: "W82",
+    translation: "uno",
+    pronunciation: "OO-noh",
+    audio: require("../assets/audio/it/W82.mp3"),
+  },
+  open: {
+    wordIdNum: "W83",
+    translation: "aprire",
+    pronunciation: "ah-PREE-reh",
+    audio: require("../assets/audio/it/W83.mp3"),
+  },
+  pharmacy: {
+    wordIdNum: "W84",
+    translation: "farmacia",
+    pronunciation: "fahr-MAH-chyah",
+    audio: require("../assets/audio/it/W84.mp3"),
+  },
+  please: {
+    wordIdNum: "W85",
+    translation: "Per favore",
+    pronunciation: "pehr fah-VOH-reh",
+    audio: require("../assets/audio/it/W85.mp3"),
+  },
+  pork: {
+    wordIdNum: "W86",
+    translation: "maiale",
+    pronunciation: "mah-YAH-leh",
+    audio: require("../assets/audio/it/W86.mp3"),
+  },
+  receipt: {
+    wordIdNum: "W87",
+    translation: "ricevuta",
+    pronunciation: "ree-cheh-VOO-tah",
+    audio: require("../assets/audio/it/W87.mp3"),
+  },
+  recommend: {
+    wordIdNum: "W88",
+    translation: "consiglio",
+    pronunciation: "kon-SIL-yoh",
+    audio: require("../assets/audio/it/W88.mp3"),
+  },
+  reservation: {
+    wordIdNum: "W89",
+    translation: "prenotazione",
+    pronunciation: "pre-no-ta-TSYOH-neh",
+    audio: require("../assets/audio/it/W89.mp3"),
+  },
+  return: {
+    wordIdNum: "W90",
+    translation: "ritorno",
+    pronunciation: "ri-TOR-no",
+    audio: require("../assets/audio/it/W90.mp3"),
+  },
+  right: {
+    wordIdNum: "W91",
+    translation: "Giusto",
+    pronunciation: "JU-stoh",
+    audio: require("../assets/audio/it/W91.mp3"),
+  },
+  salt: {
+    wordIdNum: "W92",
+    translation: "sale",
+    pronunciation: "SAH-leh",
+    audio: require("../assets/audio/it/W92.mp3"),
+  },
+  second: {
+    wordIdNum: "W93",
+    translation: "secondo",
+    pronunciation: "se-KON-doh",
+    audio: require("../assets/audio/it/W93.mp3"),
+  },
+  seven: {
+    wordIdNum: "W94",
+    translation: "Sette",
+    pronunciation: "SET-teh sei",
+    audio: require("../assets/audio/it/W94.mp3"),
+  },
+  six: {
+    wordIdNum: "W95",
+    translation: "sei",
+    pronunciation: "Seh-ee",
+    audio: require("../assets/audio/it/W95.mp3"),
+  },
+  small: {
+    wordIdNum: "W96",
+    translation: "piccolo",
+    pronunciation: "PEEK-koh-loh",
+    audio: require("../assets/audio/it/W96.mp3"),
+  },
+  sorry: {
+    wordIdNum: "W97",
+    translation: "Scusa",
+    pronunciation: "SKOO-zah",
+    audio: require("../assets/audio/it/W97.mp3"),
+  },
+  speak: {
+    wordIdNum: "W98",
+    translation: "parlare",
+    pronunciation: "par-LAH-reh",
+    audio: require("../assets/audio/it/W98.mp3"),
+  },
+  spicy: {
+    wordIdNum: "W99",
+    translation: "speziato",
+    pronunciation: "speh-TSYAH-toh",
+    audio: require("../assets/audio/it/W99.mp3"),
+  },
+  station: {
+    wordIdNum: "W100",
+    translation: "stazione",
+    pronunciation: "sta-TSYOH-neh",
+    audio: require("../assets/audio/it/W100.mp3"),
+  },
+  street: {
+    wordIdNum: "W101",
+    translation: "strada",
+    pronunciation: "STRAH-dah",
+    audio: require("../assets/audio/it/W101.mp3"),
+  },
+  sugar: {
+    wordIdNum: "W102",
+    translation: "zucchero",
+    pronunciation: "ZOO-keh-roh",
+    audio: require("../assets/audio/it/W102.mp3"),
+  },
+  supermarket: {
+    wordIdNum: "W103",
+    translation: "supermercato",
+    pronunciation: "supermercato",
+    audio: require("../assets/audio/it/W103.mp3"),
+  },
+  taxi: {
+    wordIdNum: "W104",
+    translation: "Taxi",
+    pronunciation: "TAHK-see",
+    audio: require("../assets/audio/it/W104.mp3"),
+  },
+  ten: {
+    wordIdNum: "W105",
+    translation: "dieci",
+    pronunciation: "DEE-eh-chee",
+    audio: require("../assets/audio/it/W105.mp3"),
+  },
+  thank_you: {
+    wordIdNum: "W106",
+    translation: "Grazie",
+    pronunciation: "GRAH-tsee-eh",
+    audio: require("../assets/audio/it/W106.mp3"),
+  },
+  the: {
+    wordIdNum: "W107",
+    translation: "IL",
+    pronunciation: "eel",
+    audio: require("../assets/audio/it/W107.mp3"),
+  },
+  thirty: {
+    wordIdNum: "W108",
+    translation: "trenta",
+    pronunciation: "TREN-tah",
+    audio: require("../assets/audio/it/W108.mp3"),
+  },
+  this: {
+    wordIdNum: "W109",
+    translation: "Questo",
+    pronunciation: "KWES-toh",
+    audio: require("../assets/audio/it/W109.mp3"),
+  },
+  three: {
+    wordIdNum: "W110",
+    translation: "tre",
+    pronunciation: "treh",
+    audio: require("../assets/audio/it/W110.mp3"),
+  },
+  ticket: {
+    wordIdNum: "W111",
+    translation: "biglietto",
+    pronunciation: "beel-LYET-toh",
+    audio: require("../assets/audio/it/W111.mp3"),
+  },
+  time: {
+    wordIdNum: "W112",
+    translation: "tempo",
+    pronunciation: "TEM-poh",
+    audio: require("../assets/audio/it/W112.mp3"),
+  },
+  toilet_paper: {
+    wordIdNum: "W113",
+    translation: "carta igienica",
+    pronunciation: "KAR-tah ee-jeh-NEE-kah",
+    audio: require("../assets/audio/it/W113.mp3"),
+  },
+  tomatos: {
+    wordIdNum: "W114",
+    translation: "pomodori",
+    pronunciation: "pomodoree",
+    audio: require("../assets/audio/it/W114.mp3"),
+  },
+  train: {
+    wordIdNum: "W115",
+    translation: "treno",
+    pronunciation: "TREH-noh",
+    audio: require("../assets/audio/it/W115.mp3"),
+  },
+  twelve: {
+    wordIdNum: "W116",
+    translation: "dodici",
+    pronunciation: "DOH-dee-chee",
+    audio: require("../assets/audio/it/W116.mp3"),
+  },
+  twenty: {
+    wordIdNum: "W117",
+    translation: "venti",
+    pronunciation: "VEN-tee",
+    audio: require("../assets/audio/it/W117.mp3"),
+  },
+  twenty_five: {
+    wordIdNum: "W118",
+    translation: "venticinque",
+    pronunciation: "venty-cheenkway",
+    audio: require("../assets/audio/it/W118.mp3"),
+  },
+  two: {
+    wordIdNum: "W119",
+    translation: "due",
+    pronunciation: "DOO-eh",
+    audio: require("../assets/audio/it/W119.mp3"),
+  },
+  very: {
+    wordIdNum: "W120",
+    translation: "molto",
+    pronunciation: "MOHL-toh",
+    audio: require("../assets/audio/it/W120.mp3"),
+  },
+  water: {
+    wordIdNum: "W121",
+    translation: "acqua",
+    pronunciation: "AHK-kwah",
+    audio: require("../assets/audio/it/W121.mp3"),
+  },
+  what: {
+    wordIdNum: "W122",
+    translation: "Che cosa",
+    pronunciation: "keh KOH-sah",
+    audio: require("../assets/audio/it/W122.mp3"),
+  },
+  where: {
+    wordIdNum: "W123",
+    translation: "Dove",
+    pronunciation: "DOH-veh",
+    audio: require("../assets/audio/it/W123.mp3"),
+  },
+  where_to: {
+    wordIdNum: "W124",
+    translation: "dove",
+    pronunciation: "DOH-veh",
+    audio: require("../assets/audio/it/W124.mp3"),
+  },
+  wine: {
+    wordIdNum: "W125",
+    translation: "vino",
+    pronunciation: "VEE-noh",
+    audio: require("../assets/audio/it/W125.mp3"),
+  },
+  with: {
+    wordIdNum: "W126",
+    translation: "con",
+    pronunciation: "kohn",
+    audio: require("../assets/audio/it/W126.mp3"),
+  },
+  without: {
+    wordIdNum: "W127",
+    translation: "senza",
+    pronunciation: "SEN-tsa",
+    audio: require("../assets/audio/it/W127.mp3"),
+  },
+  yes: {
+    wordIdNum: "W128",
+    translation: "SÌ",
+    pronunciation: "see",
+    audio: require("../assets/audio/it/W128.mp3"),
+  },
+  you: {
+    wordIdNum: "W129",
+    translation: "Voi",
+    pronunciation: "VOH-ee",
+    audio: require("../assets/audio/it/W129.mp3"),
+  },
+  youre_welcome: {
+    wordIdNum: "W130",
+    translation: "Prego",
+    pronunciation: "PREH-goh",
+    audio: require("../assets/audio/it/W130.mp3"),
   },
 };
