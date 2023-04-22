@@ -7,6 +7,16 @@ import AppText from "./AppText";
 
 function RenderLearnWord({ data, helpText = data.strippedWordArray }) {
   return data.learnWordArray.map((item, index) => {
+    let wordData = {};
+    if (data.wordData) {
+      wordData = data.wordData;
+    } else {
+      data.selections.forEach((selection) => {
+        if (selection.word === helpText[index]) {
+          wordData = selection;
+        }
+      });
+    }
     return (
       <>
         <LearnWord
@@ -14,7 +24,7 @@ function RenderLearnWord({ data, helpText = data.strippedWordArray }) {
           style={defaultStyles.learnWord}
           helpText={helpText[index]}
           pronunciation={data.helpTextArray[index]}
-          wordData={data.wordData}
+          wordData={wordData}
         >
           {item}
         </LearnWord>

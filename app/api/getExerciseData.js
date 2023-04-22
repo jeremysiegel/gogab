@@ -216,7 +216,6 @@ const getExerciseData = ({
     ...data,
   };
 
-  console.log(exerciseData);
   return exerciseData;
 };
 export default {

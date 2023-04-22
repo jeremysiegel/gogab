@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StatusBar } from "react-native";
+import { Text, StatusBar, View } from "react-native";
 import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
 
@@ -7,6 +7,7 @@ import defaultStyles from "../config/styles";
 
 function AppPopover({
   style,
+  underlineStyle,
   displayText,
   popoverText,
   secondPopoverText,
@@ -19,9 +20,11 @@ function AppPopover({
       offset={StatusBar.currentHeight}
       trigger={(triggerProps) => {
         return (
-          <Text style={[defaultStyles.text, style]} {...triggerProps}>
-            {displayText}
-          </Text>
+          <View style={underlineStyle}>
+            <Text style={[defaultStyles.text, style]} {...triggerProps}>
+              {displayText}
+            </Text>
+          </View>
         );
       }}
     >

@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { Audio } from "expo-av";
 
 import AppPopover from "./AppPopover";
+import colors from "../config/colors";
 
 // Creates a word that user can tap for more information (such as translation or pronunciation).
 
@@ -36,6 +37,7 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
     <AppPopover
       onOpen={playSound}
       style={[styles.text, style]}
+      underlineStyle={styles.underline}
       displayText={children}
       popoverText={pronunciation}
       secondPopoverText={helpText}
@@ -46,6 +48,11 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
 const styles = StyleSheet.create({
   text: {
     textTransform: "lowercase",
+  },
+  underline: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.secondary + 80,
+    borderStyle: "dotted",
   },
 });
 

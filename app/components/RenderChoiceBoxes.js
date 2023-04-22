@@ -11,7 +11,6 @@ function RenderChoiceBoxes({
   numColumns,
   reverse,
 }) {
-  console.log(data);
   return (
     <ChoiceBox
       reverse={reverse}

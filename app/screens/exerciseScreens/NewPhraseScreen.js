@@ -28,7 +28,6 @@ function NewPhraseScreen({ route, navigation }) {
       return <AppText style={defaultStyles.practiceWord}>{item} </AppText>;
     });
   };
-
   return (
     <ExerciseScreen
       instruction={instruction}
