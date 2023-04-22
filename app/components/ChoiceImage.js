@@ -10,7 +10,7 @@ import { moderateScale } from "../utility/scaler";
 
 // Creates a selectable icon with title.
 
-function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
+function ChoiceImage({ item, title, onPress, selectedItem, data, reverse }) {
   const [selected, setSelected] = useState(false);
   const { height, width } = useWindowDimensions();
 
@@ -19,6 +19,8 @@ function ChoiceImage({ item, title, onPress, selectedItem, fontWeight }) {
   });
   return (
     <Selectable
+      playAudio={reverse}
+      data={data}
       name={title}
       selected={selected}
       onPress={onPress}

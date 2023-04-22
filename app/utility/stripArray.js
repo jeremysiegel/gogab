@@ -7,7 +7,8 @@ export default function stripArray({
   arrayToStrip.forEach((element) => {
     let strippedElement = element;
     if (removeSpecialCharacters) {
-      strippedElement = strippedElement.replace(/[^\w-]/g, "");
+      // Remove anything that is not a latin letter, underscore or hyphen.
+      strippedElement = strippedElement.replace(/[^A-Za-zŽžÀ-ÿ0-9_-]/g, "");
     }
     if (removeUnderscore) {
       strippedElement = strippedElement.replace(/_/g, " ");

@@ -1,5 +1,6 @@
 import { View, StyleSheet, useWindowDimensions } from "react-native";
 import React, { useState } from "react";
+import { Audio } from "expo-av";
 
 import AppText from "../AppText";
 import ExerciseHeader from "./ExerciseHeader";
@@ -25,6 +26,32 @@ function ExerciseScreen({
 }) {
   BackButtonExitHandler();
   const { height, width } = useWindowDimensions();
+
+  const [sound, setSound] = React.useState(null);
+
+  async function playSound() {
+    const audioFile = exerciseData.wordData.audio;
+
+    try {
+      const { sound } = await Audio.Sound.createAsync(audioFile);
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Error playing sound: ", error);
+    }
+  }
+
+  React.useEffect(() => {
+    if (!exerciseData.reverse) {
+      playSound();
+    }
+
+    return () => {
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
+  }, []);
 
   const isTablet = height / width < 1.6;
 

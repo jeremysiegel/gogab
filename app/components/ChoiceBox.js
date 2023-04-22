@@ -10,7 +10,7 @@ import fonts from "../config/fonts";
 
 // Creates a selectable box.
 
-function ChoiceBox({ title, onPress, style, currentObjects }) {
+function ChoiceBox({ title, onPress, style, currentObjects, data, reverse }) {
   const [selected, setSelected] = useState(false);
   useEffect(() => {
     setSelected(currentObjects.includes(title));
@@ -18,6 +18,8 @@ function ChoiceBox({ title, onPress, style, currentObjects }) {
 
   return (
     <Selectable
+      playAudio={reverse}
+      data={data}
       key={title}
       name={title}
       selected={selected}

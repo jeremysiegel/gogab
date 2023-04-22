@@ -9,9 +9,13 @@ function RenderChoiceBoxes({
   setSelected,
   setAnswerIsCorrect,
   numColumns,
+  reverse,
 }) {
+  console.log(data);
   return (
     <ChoiceBox
+      reverse={reverse}
+      data={data}
       title={title}
       currentObjects={[selected]}
       onPress={() => {

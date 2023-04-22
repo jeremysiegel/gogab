@@ -34,6 +34,7 @@ function MultipleChoiceScreen({ route, navigation }) {
     const renderChoiceBox = (item) => {
       return (
         <RenderChoiceBoxes
+          reverse={data.reverse}
           data={item}
           title={data.reverse ? item.translation : item.word}
           selected={selected}

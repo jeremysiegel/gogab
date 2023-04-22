@@ -35,12 +35,12 @@ const getExerciseData = ({
   const reverse = data.reverse;
   // If this is a phrase screen, get the phrase.
   let phraseData = "";
-  let wordData = {}
+  let wordData = {};
 
   try {
-    wordData = dictionary[data.word]
+    wordData = dictionary[data.word];
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 
   if (
@@ -167,7 +167,12 @@ const getExerciseData = ({
       });
     }
   }
-
+  // Get words for phrases
+  if (data.screenType === "sentenceBuilder" || data.screenType === "newWord") {
+    strippedWordArray.forEach((word) => {
+      selections.push(dictionary[word]);
+    });
+  }
   // Shuffle selections.
   const shuffledSelections = shuffle(selections);
   // Return object.
@@ -211,9 +216,9 @@ const getExerciseData = ({
     ...data,
   };
 
+  console.log(exerciseData);
   return exerciseData;
 };
-
 export default {
   getExerciseData,
 };

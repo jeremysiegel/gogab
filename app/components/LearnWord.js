@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Audio } from "expo-av";
 
@@ -7,11 +7,10 @@ import AppPopover from "./AppPopover";
 // Creates a word that user can tap for more information (such as translation or pronunciation).
 
 function LearnWord({ style, children, helpText, pronunciation, wordData }) {
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = useState();
   let audio = "";
   try {
     audio = wordData.audio;
-    console.log(wordData);
   } catch (error) {
     console.log(error);
   }
@@ -25,7 +24,7 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return sound
       ? () => {
           sound.unloadAsync();

@@ -28,18 +28,21 @@ function MatchingGame({ data, setComplete }) {
     translationArray.push(element.translation);
   });
 
-  const renderChoiceBox = (itemKey) => {
+  const renderChoiceBox = (item, translation) => {
+    const title = translation ? item.translation : item.word;
     return (
       <ChoiceBox
-        title={itemKey}
+        reverse={translation ? true : false}
+        data={item}
+        title={title}
         onPress={() => {
-          setSelected(itemKey);
-          checkMatch(itemKey);
+          setSelected(title);
+          checkMatch(title);
         }}
         currentObjects={currentObjects}
         style={[
-          correctObjects.includes(itemKey) ? styles.correct : null,
-          incorrectObjects.includes(itemKey) ? styles.incorrect : null,
+          correctObjects.includes(title) ? styles.correct : null,
+          incorrectObjects.includes(title) ? styles.incorrect : null,
         ]}
       />
     );
@@ -120,7 +123,7 @@ function MatchingGame({ data, setComplete }) {
               scrollEnabled={false}
               data={data}
               keyExtractor={(item) => item.word} //has to be unique
-              renderItem={({ item }) => renderChoiceBox(item.word)}
+              renderItem={({ item }) => renderChoiceBox(item)}
               numColumns={1}
               extraData={selected}
             />
@@ -130,7 +133,7 @@ function MatchingGame({ data, setComplete }) {
               scrollEnabled={false}
               data={shuffledMatches}
               keyExtractor={(item) => item.translation} //has to be unique
-              renderItem={({ item }) => renderChoiceBox(item.translation)}
+              renderItem={({ item }) => renderChoiceBox(item, true)}
               numColumns={1}
               extraData={selected}
             />

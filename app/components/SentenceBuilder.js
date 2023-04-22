@@ -9,11 +9,29 @@ import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
 import { moderateScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
+import { Audio } from "expo-av";
 
 // Creates a UI sentence builder element.
 
 function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
+  const [sound, setSound] = useState();
+
+  async function playSound(audio) {
+    const { sound } = await Audio.Sound.createAsync(audio);
+    setSound(sound);
+
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   const ref = useRef(DuoDragDropRef);
   useEffect(() => {
     const shuffled = shuffle(data.wordArray);
@@ -29,12 +47,28 @@ function SentenceBuilder({ data, setComplete }) {
   if (shuffledData === undefined) {
     return <></>;
   } else {
+    const playAudio = (index) => {
+      const word = shuffledData[index].toLowerCase();
+      let audio = "";
+      data.selections.forEach((selection) => {
+        if (selection.translation.toLowerCase() === word) {
+          audio = selection.audio;
+        }
+      });
+      if (audio) {
+        playSound(audio);
+      }
+    };
+
     return (
       <DuoDragDrop
         ref={ref}
         words={shuffledData}
         wordBankOffsetY={10}
-        onDrop={checkComplete}
+        onDrop={(event) => {
+          checkComplete();
+          playAudio(event.index);
+        }}
         renderWord={() => (
           <Word containerStyle={styles.wordBox} textStyle={styles.text} />
         )}

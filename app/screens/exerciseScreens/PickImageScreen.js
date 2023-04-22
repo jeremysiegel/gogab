@@ -30,6 +30,8 @@ function PickImageScreen({ route, navigation }) {
   const renderChoiceImage = (item) => {
     return (
       <ChoiceImage
+        data={item}
+        reverse={data.reverse}
         item={item}
         title={data.reverse ? item.translation : item.word}
         selectedItem={selected}
