@@ -86,6 +86,7 @@ const lessonStyles = [
         screens: ["newWord"],
         wordType: ["phrases"],
       },
+      /*
       {
         screens: ["pickImage"],
         wordType: ["words"],
@@ -108,6 +109,7 @@ const lessonStyles = [
         screens: ["multipleChoice"],
         wordType: ["reviewWords"],
       },
+      */
     ],
   },
   {
@@ -117,6 +119,7 @@ const lessonStyles = [
         screens: ["newWord"],
         wordType: ["phrases"],
       },
+
       {
         screens: ["multipleChoice"],
         wordType: ["words"],

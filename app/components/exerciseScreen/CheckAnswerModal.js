@@ -22,7 +22,7 @@ function CheckAnswerModal({
   lessonData,
   skippable, // Lets user skip exercise if true.
 }) {
-  const {country} = useContext(AuthContext)
+  const { country } = useContext(AuthContext);
   return (
     <RNModal
       animationIn={"slideInUp"}
@@ -72,14 +72,14 @@ function CheckAnswerModal({
             <AppButton
               title={correctAnswer ? "Next" : "Okay"}
               style={{ width: skippable && !correctAnswer ? "45%" : "100%" }}
-              onPress={() => {
+              onPress={async () => {
                 if (correctAnswer) {
                   setModalVisible(!modalVisible);
                   navigation.push(nextExerciseType, {
                     exerciseId: nextExercise,
                     lessonId: lessonId,
                     lessonData: lessonData,
-                    country: country
+                    country: country,
                   });
                 } else {
                   setModalVisible(!modalVisible);
@@ -97,7 +97,7 @@ function CheckAnswerModal({
                     exerciseId: nextExercise,
                     lessonId: lessonId,
                     lessonData: lessonData,
-                    country: country
+                    country: country,
                   });
                 }}
               />

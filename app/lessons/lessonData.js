@@ -29,7 +29,7 @@ export default lessonData = [
     lessonId: 4,
     title: "Lesson 4",
     style: 3,
-    reviewWords: ["good", "hello", "where"],
+    // reviewWords: ["good", "hello", "where"],
     phrases: [82],
     prompts: [2],
   },

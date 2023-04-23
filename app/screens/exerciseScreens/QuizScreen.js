@@ -14,11 +14,20 @@ function QuizScreen({
   instruction,
   phrase,
   data,
+  audio = "",
 }) {
   const renderItems = ({ item }) => renderItem(item);
+  if (!audio) {
+    try {
+      audio = data.wordData.audio ? data.wordData.audio : "";
+    } catch (error) {
+      console.log(error);
+    }
+  }
   if (data === undefined) {
     return <></>;
   } else {
+    console.log("data", data.selections);
     return (
       <ExerciseScreen
         instruction={instruction}
@@ -27,6 +36,7 @@ function QuizScreen({
         phrase={phrase}
         answerIsCorrect={answerIsCorrect}
         touched={selected}
+        audio={data.reverse ? undefined : audio}
       >
         <View>
           <FlatList

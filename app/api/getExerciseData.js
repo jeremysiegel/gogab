@@ -4,10 +4,13 @@ import getDictionary from "./getDictionary";
 import shuffle from "../utility/shuffle";
 import lessonObject from "../lessons/lessonData";
 import getElementFromId from "../utility/getElementFromId";
-import getPhraseDictionary from "./getPhraseDictionary";
+import getPhrase from "./getPhrase";
 import stripArray from "../utility/stripArray";
 import punctuate from "../utility/punctuate";
 import translate from "../utility/translate";
+import dictionaryIt from "../lessons/dictionary-it";
+import dictionaryTranslator from "../utility/dictionaryTranslator";
+import phraseDictionaryIt from "../lessons/phraseDictionary-it";
 
 const getExerciseData = ({
   exerciseId,
@@ -18,6 +21,7 @@ const getExerciseData = ({
   matching,
   country,
 }) => {
+  //dictionaryTranslator(dictionaryIt, phraseDictionaryIt);
   // Get lesson length and exercise index for progress bar.
   const exerciseKeys = Object.keys(lessonData);
   const index = exerciseKeys.indexOf(exerciseId.toString());
@@ -50,9 +54,9 @@ const getExerciseData = ({
   ) {
     phraseData =
       data.screenType === "prompt"
-        ? getPhraseDictionary(data.phrase)
-        : getPhraseDictionary(data.word);
-    data.word = phraseData.phraseTranslation.order;
+        ? getPhrase(data.phrase, country)
+        : getPhrase(data.word, country);
+    data.word = phraseData.order;
   }
 
   // Create array of words in lessonData with special characters removed
@@ -131,7 +135,7 @@ const getExerciseData = ({
     // If there is a second phrase, get it.
     let phrase2Data = {};
     if (lessonData[exerciseId].phrase2 && data.screenSubType != "sign") {
-      phrase2Data = getPhraseDictionary(lessonData[exerciseId].phrase2);
+      phrase2Data = getPhrase(lessonData[exerciseId].phrase2, country);
       const phraseData2 = phrase2Data.phraseTranslation.order.split(" ");
       let translateArray = stripArray({ arrayToStrip: phraseData2 });
 
@@ -144,8 +148,14 @@ const getExerciseData = ({
       selections = [...choices];
     } else {
       choices.forEach((choice) => {
-        const phrase = getPhraseDictionary(choice);
-        const phraseArray = phrase.phraseTranslation.order.split(" ");
+        const phrase = getPhrase(choice, country);
+        let audio = "";
+        try {
+          audio = phrase.audio;
+        } catch (error) {
+          console.log(error);
+        }
+        const phraseArray = phrase.order.split(" ");
         let translateArray = stripArray({
           arrayToStrip: phraseArray,
           removeUnderscore: phrase2 ? true : false,
@@ -162,19 +172,21 @@ const getExerciseData = ({
           correct: lessonData[exerciseId].correctChoice.includes(choice)
             ? true
             : false,
+          audio: audio,
         };
         selections.push(selection);
       });
     }
   }
+  // Shuffle selections.
+  let shuffledSelections = shuffle(selections);
   // Get words for phrases
   if (data.screenType === "sentenceBuilder" || data.screenType === "newWord") {
+    shuffledSelections = [];
     strippedWordArray.forEach((word) => {
-      selections.push(dictionary[word]);
+      shuffledSelections.push(dictionary[word]);
     });
   }
-  // Shuffle selections.
-  const shuffledSelections = shuffle(selections);
   // Return object.
   const exerciseData = {
     nextExerciseType: nextExerciseType,

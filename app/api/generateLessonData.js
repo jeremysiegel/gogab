@@ -4,7 +4,7 @@ import getElementFromId from "../utility/getElementFromId";
 import allPrompts from "../lessons/prompts";
 import subLessons from "../lessons/subLessons";
 import stripArray from "../utility/stripArray";
-import getPhraseDictionary from "./getPhraseDictionary";
+import getPhrase from "./getPhrase";
 
 /*
 Takes in lessonData and creates a lesson
@@ -12,11 +12,11 @@ from the lessonStyle. Used by SectionScreen to
 generate data object for getExerciseData.
 */
 
-function getPhraseData(phrases) {
+function getPhraseData(phrases, country) {
   let wordArray = [];
   phrases.forEach((phraseId) => {
-    const phraseData = getPhraseDictionary(phraseId);
-    const phrase = phraseData["phraseMain"]["order"];
+    const phraseData = getPhrase(phraseId, country);
+    const phrase = phraseData["order"];
     const phraseArray = phrase ? phrase.split(" ") : [];
     const strippedWordArray = stripArray({ arrayToStrip: phraseArray });
     strippedWordArray.forEach((word) => {
@@ -26,10 +26,10 @@ function getPhraseData(phrases) {
   return wordArray;
 }
 
-function generateLessonData(lessonId, sectionLessons) {
+function generateLessonData(lessonId, sectionLessons, country) {
   // Gets data for lesson
   const data = getElementFromId(lessonData, "lessonId", lessonId);
-  data.words = getPhraseData(data.phrases);
+  data.words = getPhraseData(data.phrases, country);
   // Gets data about the style and sequence of lesson
   const style = getElementFromId(lessonStyles, "styleId", data.style);
   let sequence = style.sequence;

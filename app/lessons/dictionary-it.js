@@ -193,7 +193,7 @@ export default dictionary = {
     pronunciation: "oon-DEE-chee",
     audio: require("../assets/audio/it/W32.mp3"),
   },
-  English: {
+  english: {
     wordIdNum: "W33",
     translation: "Inglese",
     pronunciation: "een-GLEH-zeh",

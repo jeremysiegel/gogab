@@ -18,7 +18,7 @@ const exerciseId = 1;
 
 function SectionScreen({ navigation, route }) {
   const { section, setLessonData, setLesson } = useContext(LessonContext);
-const {country} = useContext(AuthContext)
+  const { country } = useContext(AuthContext);
   const sectionData = getElementFromId(sections, "sectionId", section);
   // Makes a deep copy.
   const allLessons = JSON.parse(JSON.stringify(lessonData));
@@ -32,21 +32,25 @@ const {country} = useContext(AuthContext)
   const renderItems = ({ item }) => {
     return (
       <View style={styles.buttonContainer}>
-      <SectionButton
-      title={item.title}
-        onPress={() => {
-          const lesson = generateLessonData(item.lessonId, sectionLessons);
-          setLessonData(lesson);
-          setLesson(item.lessonId);
-          navigation.push(lesson[exerciseId].screenType, {
-            screen: lesson[exerciseId].screenType,
-            exerciseId: exerciseId,
-            lessonId: item.lessonId,
-            lessonData: lesson,
-            country: country
-          });
-        }}
-      />
+        <SectionButton
+          title={item.title}
+          onPress={() => {
+            const lesson = generateLessonData(
+              item.lessonId,
+              sectionLessons,
+              country
+            );
+            setLessonData(lesson);
+            setLesson(item.lessonId);
+            navigation.push(lesson[exerciseId].screenType, {
+              screen: lesson[exerciseId].screenType,
+              exerciseId: exerciseId,
+              lessonId: item.lessonId,
+              lessonData: lesson,
+              country: country,
+            });
+          }}
+        />
       </View>
     );
   };
@@ -55,8 +59,8 @@ const {country} = useContext(AuthContext)
     <BackgroundScreen>
       <View style={styles.container}>
         <View style={styles.textBox}>
-      <AppText style={styles.header}>{sectionData.title}</AppText>
-      </View>
+          <AppText style={styles.header}>{sectionData.title}</AppText>
+        </View>
         <View>
           <FlatList
             scrollEnabled={false}
@@ -82,15 +86,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   buttonContainer: {
-flexDirection: "column",
-alignItems: "space-around",
-margin: 20
-//justifyContent: "space-between",
-//flex:1,
+    flexDirection: "column",
+    alignItems: "space-around",
+    margin: 20,
+    //justifyContent: "space-between",
+    //flex:1,
   },
   header: {
-marginLeft: scale(40),
-fontSize: moderateScale(40)
+    marginLeft: scale(40),
+    fontSize: moderateScale(40),
   },
 });
 

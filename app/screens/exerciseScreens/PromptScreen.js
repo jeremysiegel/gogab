@@ -112,9 +112,15 @@ function PromptScreen({ route, navigation }) {
     );
   }, []);
 
+  let audio = "";
+  try {
+    audio = data.phraseData.audio ? data.phraseData.audio : "";
+  } catch (error) {
+    console.log(error);
+  }
   const renderChoiceBox = (item) => {
     // for ? chats : signs
-    //const boxText = promptData ? promptData.prompt : item.word;
+    // const boxText = promptData ? promptData.prompt : item.word;
     let boxText = "";
     if (item.title) {
       item.title.forEach((word) => {
@@ -131,6 +137,7 @@ function PromptScreen({ route, navigation }) {
         setSelected={setSelected}
         setAnswerIsCorrect={setAnswerIsCorrect}
         numColumns={numColumns}
+        reverse={audio}
       />
     );
   };
@@ -147,6 +154,7 @@ function PromptScreen({ route, navigation }) {
         instruction={instruction}
         phrase={prompt}
         data={data}
+        audio={audio}
       />
     );
   }

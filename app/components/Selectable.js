@@ -16,28 +16,36 @@ function Selectable({
 }) {
   const backgroundColor = selected ? colors.selected : undefined;
   const [sound, setSound] = useState();
+
   let audio = "";
+
   try {
     audio = data.audio;
   } catch (error) {
     console.log(error);
   }
+
   async function playSound() {
     if (audio && playAudio) {
-      const { sound } = await Audio.Sound.createAsync(data.audio);
-      setSound(sound);
+      try {
+        const { sound } = await Audio.Sound.createAsync(audio);
+        setSound(sound);
 
-      await sound.playAsync();
+        await sound.playAsync();
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     return sound
       ? () => {
           sound.unloadAsync();
         }
       : undefined;
   }, [sound]);
+
   return (
     <Pressable
       key={name}
