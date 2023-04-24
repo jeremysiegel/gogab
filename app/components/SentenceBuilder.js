@@ -41,6 +41,7 @@ function SentenceBuilder({ data, setComplete }) {
   // Tests if the user inputed array of words equals the original wordArray.
   const checkComplete = () => {
     const answered = ref.current?.getAnsweredWords();
+    console.log(data)
     setComplete(arrayEquals(answered, data.wordArray));
   };
 

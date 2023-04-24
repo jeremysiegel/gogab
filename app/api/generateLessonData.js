@@ -16,7 +16,7 @@ function getPhraseData(phrases, country) {
   let wordArray = [];
   phrases.forEach((phraseId) => {
     const phraseData = getPhrase(phraseId, country);
-    const phrase = phraseData["order"];
+    const phrase = phraseData.phraseTranslation["order"];
     const phraseArray = phrase ? phrase.split(" ") : [];
     const strippedWordArray = stripArray({ arrayToStrip: phraseArray });
     strippedWordArray.forEach((word) => {

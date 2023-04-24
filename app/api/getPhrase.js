@@ -1,7 +1,7 @@
 import phraseDictionaryEn from "../lessons/phraseDictionary-en";
 import getElementFromId from "../utility/getElementFromId";
 import phraseDictionaryIt from "../lessons/phraseDictionary-it";
-// TODO: Fix
+// TODO: Fix phraseId
 function getPhrase(phraseIdGiven, country) {
   let phraseId = "P" + phraseIdGiven;
   let phraseDictionary = phraseDictionaryEn;
@@ -16,7 +16,12 @@ function getPhrase(phraseIdGiven, country) {
       console.log("Unsupported country");
       break;
   }
-  const phrase = getElementFromId(phraseDictionary, "phraseId", phraseId);
+  const phraseTranslation = getElementFromId(phraseDictionary, "phraseId", phraseId);
+  const phraseMain = getElementFromId(phraseDictionaryEn, "phraseId", phraseIdGiven);
+  const phrase = {
+    phraseTranslation: phraseTranslation,
+    phraseMain: phraseMain
+  }
   return phrase;
 }
 

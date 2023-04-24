@@ -52,11 +52,12 @@ const getExerciseData = ({
     data.screenType === "newWord" ||
     data.screenType === "prompt"
   ) {
+    console.log("data", data)
     phraseData =
       data.screenType === "prompt"
         ? getPhrase(data.phrase, country)
         : getPhrase(data.word, country);
-    data.word = phraseData.order;
+    data.word = phraseData.phraseTranslation.order;
   }
 
   // Create array of words in lessonData with special characters removed

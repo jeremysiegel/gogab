@@ -57,6 +57,7 @@ const lessonStyles = [
         screens: ["newWord"],
         wordType: ["phrases"],
       },
+      
       {
         screens: ["multipleChoice"],
         wordType: ["words"],
@@ -68,6 +69,7 @@ const lessonStyles = [
       {
         screens: ["matching"],
       },
+      
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
@@ -100,16 +102,18 @@ const lessonStyles = [
       {
         screens: ["matching"],
       },
+      */
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
         reverse: true,
       },
+
       {
         screens: ["multipleChoice"],
         wordType: ["reviewWords"],
       },
-      */
+      
     ],
   },
   {
@@ -133,6 +137,7 @@ const lessonStyles = [
       {
         screens: ["matching"],
       },
+      
       {
         screens: ["sentenceBuilder"],
         wordType: ["phrases"],
