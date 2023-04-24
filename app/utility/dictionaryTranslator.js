@@ -6,7 +6,7 @@ export default function translatePhrases(dictionary, phrases) {
   let translatedPhrases = [];
   for (let i = 0; i < phrases.length; i++) {
     let phrase = phrases[i];
-    let wordsSplit = phrase.order.split(" ");
+    let wordsSplit = phrase.phraseTranslation.order.split(" ");
     let words = stripArray({ arrayToStrip: wordsSplit });
     let wordsTranslated = [];
     try {

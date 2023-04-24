@@ -39,10 +39,15 @@ function SentenceBuilder({ data, setComplete }) {
   }, []);
 
   // Tests if the user inputed array of words equals the original wordArray.
+  // Returns correct in two cases:
+  // 1. User correctly puts words in order in new languague.
+  // 2. User correctly puts words in order in original language.
   const checkComplete = () => {
     const answered = ref.current?.getAnsweredWords();
-    console.log(data)
-    setComplete(arrayEquals(answered, data.wordArray));
+    const correct =
+      arrayEquals(answered, data.wordArray) ||
+      arrayEquals(answered, data.phraseData.phraseMainTranslation);
+    setComplete(correct);
   };
 
   if (shuffledData === undefined) {

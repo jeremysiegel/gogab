@@ -52,7 +52,6 @@ const getExerciseData = ({
     data.screenType === "newWord" ||
     data.screenType === "prompt"
   ) {
-    console.log("data", data)
     phraseData =
       data.screenType === "prompt"
         ? getPhrase(data.phrase, country)
@@ -156,7 +155,7 @@ const getExerciseData = ({
         } catch (error) {
           console.log(error);
         }
-        const phraseArray = phrase.order.split(" ");
+        const phraseArray = phrase.phraseTranslation.order.split(" ");
         let translateArray = stripArray({
           arrayToStrip: phraseArray,
           removeUnderscore: phrase2 ? true : false,
