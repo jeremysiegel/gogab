@@ -27,7 +27,6 @@ function QuizScreen({
   if (data === undefined) {
     return <></>;
   } else {
-    console.log("data", data.selections);
     return (
       <ExerciseScreen
         instruction={instruction}

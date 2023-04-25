@@ -5,8 +5,7 @@ import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import instructionText from "../../lessons/instructionText";
 import RenderLearnWord from "../../components/RenderLearnWord";
 import SentenceBuilder from "../../components/SentenceBuilder";
-import AppText from "../../components/AppText";
-
+import stripArray from "../../utility/stripArray";
 // Creates a user-interactive sentence builder screen.
 
 function SentenceBuilderScreen({ route, navigation }) {
@@ -17,9 +16,13 @@ function SentenceBuilderScreen({ route, navigation }) {
   useEffect(() => {
     const setUpData = getExerciseData.getExerciseData({ ...route.params });
     setData(setUpData);
-    const phraseMain = setUpData.phraseData.phraseMain.order.split(" ");
+    const phraseArray = stripArray({
+      arrayToStrip: setUpData.phraseData.phraseMain.order.split(" "),
+      removeSpecialCharacters: false,
+      removeUnderscore: true,
+    });
     const setUpPhrase = (
-      <RenderLearnWord data={setUpData} learnWordArray={phraseMain} />
+      <RenderLearnWord data={setUpData} learnWordArray={phraseArray} />
     );
     setPhrase(setUpPhrase);
   }, []);

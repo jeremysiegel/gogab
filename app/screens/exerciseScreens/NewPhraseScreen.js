@@ -23,7 +23,6 @@ function NewPhraseScreen({ route, navigation }) {
   } catch (error) {
     console.log(error);
   }
-  console.log(data);
   const RenderPhrase = () => {
     const phraseArray = stripArray({
       arrayToStrip: data.phraseData.phraseMain.order.split(" "),
