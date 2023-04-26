@@ -5,27 +5,41 @@ import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "./AppText";
 import colors from "../config/colors";
+import LessonCard from "./LessonCard";
+import getPhrase from "../api/getPhrase";
+import stripArray from "../utility/stripArray";
 
 // Creates a button that appears to have 3D reaction when pressed.
 
 function SectionButton({
   title,
   textColor = colors.white,
-  color = colors.primary,
-  buttonBorderColor = colors.primaryTint,
+  color = colors.secondary ,
+  buttonBorderColor = colors.secondary,
   borderTopWidth = 0,
   onPress,
   disabled,
   style,
   opacity = "",
-  children
+  children,
+  lessonData,
+  country
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
-
   const [pressed, setPressed] = useState(false);
+
+  const phraseData = getPhrase(lessonData.phrases[0], country);
+  let phraseMain = [];
+if(phraseData.phraseMain.order) {
+  phraseMain = phraseData.phraseMain.order.split(" ");
+}
+const phraseMainStripped = stripArray({arrayToStrip: phraseMain, removeSpecialCharacters: false, removeUnderscore:true});
+const phraseMainText = "hello, how are you?"+"\n" +"good, and you?" 
+//const phraseMainText = phraseMainStripped.join(" ");
+
+
   return (
-      <View style = {styles.container}>
     <Pressable
       disabled={disabled}
       style={[
@@ -43,19 +57,32 @@ function SectionButton({
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-         <MaterialCommunityIcons
+      <View style = {styles.cardContainer}>
+            <MaterialCommunityIcons
             name={"star"}
             color={colors.gold}
             size={40}
+         
           />
+        <LessonCard title ={title} subtitle={phraseMainText ? phraseMainText : "review"}/>
+        </View>
+   
+          
     </Pressable>
-          <AppText>{title}</AppText>
-          </View>
+       
+          
 
   );
+  
+  
 }
 
 const styles = StyleSheet.create({
+
+  cardContainer:{
+    flexDirection: "row",
+    alignItems: "center"
+  },
   container: {
     flexDirection: "column",
     alignItems: "center",

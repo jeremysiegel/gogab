@@ -23,6 +23,7 @@ function Icon({
   labelSize = 26,
   labelWeight = "main",
   iconType,
+  
 }) {
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -41,7 +42,8 @@ function Icon({
             name={name}
             color={iconColor}
             size={iconSize}
-          />
+
+            />
         )}
         {iconType === "Ionicons" && (
           <Ionicons name={name} color={iconColor} size={iconSize} />

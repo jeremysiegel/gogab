@@ -31,14 +31,17 @@ function getPhrase(phraseIdGiven, country) {
     "phraseId",
     phraseIdGiven
   );
-  let phraseMainTranslation = stripArray({
-    arrayToStrip: phraseMain.order.split(" "),
-  });
-  phraseMainTranslation = translate(phraseMainTranslation, dictionary);
+  let phraseMainTranslation = []
+  if (phraseMain) {
+    phraseMainTranslation = stripArray({
+      arrayToStrip: phraseMain.order.split(" "),
+    });
+    phraseMainTranslation = translate(phraseMainTranslation, dictionary);
+  }
   const phrase = {
-    phraseTranslation: phraseTranslation,
-    phraseMain: phraseMain,
-    phraseMainTranslation: phraseMainTranslation,
+    phraseTranslation: phraseTranslation ? phraseTranslation : {},
+    phraseMain: phraseMain ? phraseMain : {},
+    phraseMainTranslation: phraseMainTranslation ? phraseMainTranslation : [],
   };
   return phrase;
 }

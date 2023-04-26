@@ -33,6 +33,8 @@ function SectionScreen({ navigation, route }) {
     return (
       <View style={styles.buttonContainer}>
         <SectionButton
+        lessonData={item}
+        country={country}
           title={item.title}
           onPress={() => {
             const lesson = generateLessonData(
@@ -61,14 +63,14 @@ function SectionScreen({ navigation, route }) {
         <View style={styles.textBox}>
           <AppText style={styles.header}>{sectionData.title}</AppText>
         </View>
-        <View>
+        <View style={styles.listContainer}>
           <FlatList
-            scrollEnabled={false}
+            scrollEnabled={true}
             data={sectionLessons}
             keyExtractor={(item) => item.lessonId}
             renderItem={renderItems}
-            numColumns={2}
-            columnWrapperStyle={styles.listContainer}
+            numColumns={1}
+           // columnWrapperStyle={styles.listContainer}
           />
         </View>
       </View>
@@ -79,15 +81,15 @@ function SectionScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-evenly",
+   // justifyContent: "space-evenly",
   },
   listContainer: {
     flex: 1,
-    justifyContent: "space-evenly",
+  //  justifyContent: "space-evenly",
   },
   buttonContainer: {
     flexDirection: "column",
-    alignItems: "space-around",
+   // alignItems: "space-around",
     margin: 20,
     //justifyContent: "space-between",
     //flex:1,
