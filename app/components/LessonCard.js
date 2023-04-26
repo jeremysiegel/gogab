@@ -31,7 +31,7 @@ flex:1,
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
     color: colors.secondary,
     
   },

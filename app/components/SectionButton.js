@@ -29,15 +29,21 @@ function SectionButton({
   const borderColor = buttonBorderColor + opacity;
   const [pressed, setPressed] = useState(false);
 
-  const phraseData = getPhrase(lessonData.phrases[0], country);
+  let phraseMainText = ""
+  
+for(var  i = 0; i < lessonData.phrases.length; i++) {
+  const phraseData = getPhrase(lessonData.phrases[i], country);
   let phraseMain = [];
 if(phraseData.phraseMain.order) {
   phraseMain = phraseData.phraseMain.order.split(" ");
 }
 const phraseMainStripped = stripArray({arrayToStrip: phraseMain, removeSpecialCharacters: false, removeUnderscore:true});
-const phraseMainText = "hello, how are you?"+"\n" +"good, and you?" 
-//const phraseMainText = phraseMainStripped.join(" ");
 
+phraseMainText = phraseMainText + phraseMainStripped.join(" ");
+if (i < lessonData.phrases.length - 1) {
+  phraseMainText = phraseMainText + "\n\n"
+}
+}
 
   return (
     <Pressable

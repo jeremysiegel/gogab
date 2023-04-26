@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ScrollView } from "react-native";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
@@ -11,6 +11,7 @@ import SectionButton from "../components/SectionButton";
 import BackgroundScreen from "../components/BackgroundScreen";
 import { scale, moderateScale } from "../utility/scaler";
 import AuthContext from "../navigation/authContext";
+import colors from "../config/colors";
 
 // Section screen.
 
@@ -57,14 +58,17 @@ function SectionScreen({ navigation, route }) {
     );
   };
 
+  const header =    <View style={styles.textBox}>
+  <AppText style={styles.header}>{sectionData.title}</AppText>
+</View>
+
   return (
-    <BackgroundScreen>
+ 
       <View style={styles.container}>
-        <View style={styles.textBox}>
-          <AppText style={styles.header}>{sectionData.title}</AppText>
-        </View>
-        <View style={styles.listContainer}>
+     
           <FlatList
+          ListHeaderComponent={header}
+          ListHeaderComponentStyle={styles.listHeader}
             scrollEnabled={true}
             data={sectionLessons}
             keyExtractor={(item) => item.lessonId}
@@ -72,27 +76,27 @@ function SectionScreen({ navigation, route }) {
             numColumns={1}
            // columnWrapperStyle={styles.listContainer}
           />
-        </View>
+        
       </View>
-    </BackgroundScreen>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   // justifyContent: "space-evenly",
+  backgroundColor: colors.backgroundBlue
   },
-  listContainer: {
-    flex: 1,
-  //  justifyContent: "space-evenly",
+  listHeader: {
+    marginVertical: 20,
   },
   buttonContainer: {
     flexDirection: "column",
-   // alignItems: "space-around",
-    margin: 20,
-    //justifyContent: "space-between",
-    //flex:1,
+    marginHorizontal: 20,
+    marginVertical: 5,
+    maxWidth: 400,
+    justifyContent: "center",
+ 
   },
   header: {
     marginLeft: scale(40),
