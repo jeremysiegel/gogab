@@ -14,7 +14,7 @@ import stripArray from "../utility/stripArray";
 function SectionButton({
   title,
   textColor = colors.white,
-  color = colors.secondary ,
+  color = colors.secondary,
   buttonBorderColor = colors.secondary,
   borderTopWidth = 0,
   onPress,
@@ -23,27 +23,31 @@ function SectionButton({
   opacity = "",
   children,
   lessonData,
-  country
+  country,
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
   const [pressed, setPressed] = useState(false);
 
-  let phraseMainText = ""
-  
-for(var  i = 0; i < lessonData.phrases.length; i++) {
-  const phraseData = getPhrase(lessonData.phrases[i], country);
-  let phraseMain = [];
-if(phraseData.phraseMain.order) {
-  phraseMain = phraseData.phraseMain.order.split(" ");
-}
-const phraseMainStripped = stripArray({arrayToStrip: phraseMain, removeSpecialCharacters: false, removeUnderscore:true});
+  let phraseMainText = "";
 
-phraseMainText = phraseMainText + phraseMainStripped.join(" ");
-if (i < lessonData.phrases.length - 1) {
-  phraseMainText = phraseMainText + "\n\n"
-}
-}
+  for (var i = 0; i < lessonData.phrases.length; i++) {
+    const phraseData = getPhrase(lessonData.phrases[i], country);
+    let phraseMain = [];
+    if (phraseData.phraseMain.order) {
+      phraseMain = phraseData.phraseMain.order.split(" ");
+    }
+    const phraseMainStripped = stripArray({
+      arrayToStrip: phraseMain,
+      removeSpecialCharacters: false,
+      removeUnderscore: true,
+    });
+
+    phraseMainText = phraseMainText + phraseMainStripped.join(" ");
+    if (i < lessonData.phrases.length - 1) {
+      phraseMainText = phraseMainText + "\n";
+    }
+  }
 
   return (
     <Pressable
@@ -63,44 +67,34 @@ if (i < lessonData.phrases.length - 1) {
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <View style = {styles.cardContainer}>
-            <MaterialCommunityIcons
-            name={"star"}
-            color={colors.gold}
-            size={40}
-         
-          />
-        <LessonCard title ={title} subtitle={phraseMainText ? phraseMainText : "review"}/>
-        </View>
-   
-          
+      <View style={styles.cardContainer}>
+        <MaterialCommunityIcons name={"star"} color={colors.gold} size={40} />
+        <LessonCard
+          title={title}
+          subtitle={phraseMainText ? phraseMainText : "review"}
+        />
+      </View>
     </Pressable>
-       
-          
-
   );
-  
-  
 }
 
 const styles = StyleSheet.create({
-
-  cardContainer:{
+  cardContainer: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   container: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-   // flex:1,
-  //  margin: 20,
+    // flex:1,
+    //  margin: 20,
   },
-    button: {
+  button: {
     padding: 12,
     borderRadius: 7,
-   // justifyContent: "center",
-  //  alignItems: "center",
+    // justifyContent: "center",
+    //  alignItems: "center",
     marginTop: 4,
     marginBottom: 5,
     maxWidth: 600,
