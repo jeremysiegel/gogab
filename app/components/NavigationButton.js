@@ -7,12 +7,11 @@ import AppText from "./AppText";
 import colors from "../config/colors";
 import LessonCard from "./LessonCard";
 
-
 // Creates a button that appears to have 3D reaction when pressed.
 
-function SectionButton({
+function NavigationButton({
   title,
-  textColor = colors.white,
+  titleColor = colors.secondary,
   color = colors.secondary,
   buttonBorderColor = colors.secondary,
   borderTopWidth = 0,
@@ -20,39 +19,41 @@ function SectionButton({
   disabled,
   style,
   opacity = "",
- subtitle
+  subtitle,
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
   const [pressed, setPressed] = useState(false);
 
-
   return (
-    <Pressable
-      disabled={disabled}
-      style={[
-        {
-          backgroundColor: backgroundColor,
-          borderTopWidth: borderTopWidth,
-          borderColor: borderColor,
-        },
-        styles.button,
-        style,
-        !pressed && styles.buttonBorder,
-        pressed && styles.buttonPressed,
-      ]}
-      onPressIn={() => setPressed(true)}
-      onPressOut={() => setPressed(false)}
-      onPress={onPress}
-    >
-      <View style={styles.cardContainer}>
-        <MaterialCommunityIcons name={"star"} color={colors.gold} size={40} />
-        <LessonCard
-          title={title}
-          subtitle={subtitle}
-        />
-      </View>
-    </Pressable>
+    <View style={styles.container}>
+      <Pressable
+        disabled={disabled}
+        style={[
+          {
+            backgroundColor: backgroundColor,
+            borderTopWidth: borderTopWidth,
+            borderColor: borderColor,
+          },
+          styles.button,
+          style,
+          !pressed && styles.buttonBorder,
+          pressed && styles.buttonPressed,
+        ]}
+        onPressIn={() => setPressed(true)}
+        onPressOut={() => setPressed(false)}
+        onPress={onPress}
+      >
+        <View style={styles.cardContainer}>
+          <MaterialCommunityIcons name={"star"} color={colors.gold} size={40} />
+          <LessonCard
+            title={title}
+            subtitle={subtitle}
+            titleColor={titleColor}
+          />
+        </View>
+      </Pressable>
+    </View>
   );
 }
 
@@ -63,10 +64,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "column",
-    alignItems: "center",
+    marginHorizontal: 20,
+    marginVertical: 5,
+    maxWidth: 400,
     justifyContent: "center",
-    // flex:1,
-    //  margin: 20,
   },
   button: {
     padding: 12,
@@ -94,4 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SectionButton;
+export default NavigationButton;

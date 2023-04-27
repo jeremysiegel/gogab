@@ -9,8 +9,8 @@ function BackgroundScreen({ children }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
-    paddingTop: 0
+    backgroundColor: colors.backgroundBlue,
+    paddingTop: 0,
   },
 });
 

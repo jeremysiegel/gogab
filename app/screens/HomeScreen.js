@@ -1,42 +1,45 @@
 import React, { useContext } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
-import AppButton from "../components/AppButton";
-import Screen from "../components/Screen";
+import { View, StyleSheet, SectionList } from "react-native";
+import NavigationButton from "../components/NavigationButton";
 import sections from "../lessons/sections";
 import LessonContext from "../navigation/lessonContext";
-import colors from "../config/colors";
 import BackgroundScreen from "../components/BackgroundScreen";
-
+import colors from "../config/colors";
+import AppText from "../components/AppText";
+import { moderateScale, scale } from "../utility/scaler";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
   const { setSection } = useContext(LessonContext);
   const renderItems = ({ item }) => {
+    console.log(item);
     return (
-      <AppButton
+      <NavigationButton
+        lessonData={item}
         title={item.title}
         onPress={() => {
           setSection(item.sectionId);
-          navigation.push("section");
+          navigation.push("section", {
+            sectionData: item,
+          });
         }}
-        style={styles.button}
       />
     );
   };
 
   return (
-    <BackgroundScreen style={{ backgroundColor: colors.backgroundBlue }}>
+    <BackgroundScreen>
       <View style={styles.container}>
-        <View>
-          <FlatList
-            scrollEnabled={false}
-            data={sections}
-            keyExtractor={(item) => item.sectionId}
-            renderItem={renderItems}
-            numColumns={2}
-            columnWrapperStyle={styles.listContainer}
-          />
-        </View>
+        <SectionList
+          scrollEnabled={true}
+          sections={sections}
+          keyExtractor={(item, index) => item + index}
+          renderItem={renderItems}
+          numColumns={1}
+          renderSectionHeader={({ section: { title } }) => (
+            <AppText style={styles.header}>{title}</AppText>
+          )}
+        />
       </View>
     </BackgroundScreen>
   );
@@ -45,15 +48,11 @@ function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
+    marginBottom: 70,
   },
-  listContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  button: {
-    width: "40%",
-    margin: 20,
+  header: {
+    marginLeft: scale(40),
+    fontSize: moderateScale(40),
   },
 });
 
