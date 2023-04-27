@@ -42,6 +42,7 @@ function getPhrase(phraseIdGiven, country) {
     phraseTranslation: phraseTranslation ? phraseTranslation : {},
     phraseMain: phraseMain ? phraseMain : {},
     phraseMainTranslation: phraseMainTranslation ? phraseMainTranslation : [],
+    
   };
   return phrase;
 }

@@ -6,8 +6,7 @@ import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./AppText";
 import colors from "../config/colors";
 import LessonCard from "./LessonCard";
-import getPhrase from "../api/getPhrase";
-import stripArray from "../utility/stripArray";
+
 
 // Creates a button that appears to have 3D reaction when pressed.
 
@@ -21,33 +20,12 @@ function SectionButton({
   disabled,
   style,
   opacity = "",
-  children,
-  lessonData,
-  country,
+ subtitle
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
   const [pressed, setPressed] = useState(false);
 
-  let phraseMainText = "";
-
-  for (var i = 0; i < lessonData.phrases.length; i++) {
-    const phraseData = getPhrase(lessonData.phrases[i], country);
-    let phraseMain = [];
-    if (phraseData.phraseMain.order) {
-      phraseMain = phraseData.phraseMain.order.split(" ");
-    }
-    const phraseMainStripped = stripArray({
-      arrayToStrip: phraseMain,
-      removeSpecialCharacters: false,
-      removeUnderscore: true,
-    });
-
-    phraseMainText = phraseMainText + phraseMainStripped.join(" ");
-    if (i < lessonData.phrases.length - 1) {
-      phraseMainText = phraseMainText + "\n";
-    }
-  }
 
   return (
     <Pressable
@@ -71,7 +49,7 @@ function SectionButton({
         <MaterialCommunityIcons name={"star"} color={colors.gold} size={40} />
         <LessonCard
           title={title}
-          subtitle={phraseMainText ? phraseMainText : "review"}
+          subtitle={subtitle}
         />
       </View>
     </Pressable>

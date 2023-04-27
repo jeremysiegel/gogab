@@ -12,6 +12,8 @@ import BackgroundScreen from "../components/BackgroundScreen";
 import { scale, moderateScale } from "../utility/scaler";
 import AuthContext from "../navigation/authContext";
 import colors from "../config/colors";
+import getPhrase from "../api/getPhrase";
+import stripArray from "../utility/stripArray";
 
 // Section screen.
 
@@ -31,12 +33,36 @@ function SectionScreen({ navigation, route }) {
   });
 
   const renderItems = ({ item }) => {
+
+  let phraseMainText = "";
+
+  for (var i = 0; i < item.phrases.length; i++) {
+    const phraseData = getPhrase(item.phrases[i], country);
+    let phraseMain = [];
+    if (phraseData.phraseMain.order) {
+      phraseMain = phraseData.phraseMain.order.split(" ");
+    }
+    const phraseMainStripped = stripArray({
+      arrayToStrip: phraseMain,
+      removeSpecialCharacters: false,
+      removeUnderscore: true,
+    });
+
+    phraseMainText = phraseMainText + phraseMainStripped.join(" ");
+    if (i < item.phrases.length - 1) {
+      phraseMainText = phraseMainText + "\n";
+    }
+  }
+  if(!phraseMainText) {
+    phraseMainText = "review"
+  }
     return (
       <View style={styles.buttonContainer}>
         <SectionButton
         lessonData={item}
         country={country}
           title={item.title}
+          subtitle={phraseMainText}
           onPress={() => {
             const lesson = generateLessonData(
               item.lessonId,

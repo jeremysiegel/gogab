@@ -14,12 +14,13 @@ import stripArray from "../../utility/stripArray";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getExerciseData.getExerciseData(route.params);
+  console.log(data)
   const instruction = instructionText.say;
 
   let audioFiles = "";
 
   try {
-    audioFiles = data.phraseData.audio;
+    audioFiles = data.phraseData.phraseTranslation.audio;
   } catch (error) {
     console.log(error);
   }

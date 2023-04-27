@@ -114,7 +114,7 @@ function PromptScreen({ route, navigation }) {
 
   let audio = "";
   try {
-    audio = data.phraseData.audio ? data.phraseData.audio : "";
+    audio = data.phraseData.phraseTranslation.audio ? data.phraseData.phraseTranslation.audio : "";
   } catch (error) {
     console.log(error);
   }
