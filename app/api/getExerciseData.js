@@ -151,7 +151,7 @@ const getExerciseData = ({
         const phrase = getPhrase(choice, country);
         let audio = "";
         try {
-          audio = phrase.audio;
+          audio = phrase.phraseTranslation.audio;
         } catch (error) {
           console.log(error);
         }
