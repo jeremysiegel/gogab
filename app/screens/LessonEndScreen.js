@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import AppButton from "../components/AppButton";
 import { CommonActions } from "@react-navigation/native";
@@ -6,7 +6,9 @@ import BackgroundScreen from "../components/BackgroundScreen";
 import AppLottie from "../components/AppLottie";
 import colors from "../config/colors";
 import ExerciseHeader from "../components/exerciseScreen/ExerciseHeader";
-
+import cache from "../utility/cache";
+import AuthContext from "../navigation/authContext";
+import sections from "../lessons/sections";
 const endLotties = [
   require("../assets/endLesson1.json"),
   require("../assets/endLesson2.json"),
@@ -17,9 +19,41 @@ const endLotties = [
 ];
 
 function LessonEndScreen({ navigation, route }) {
+  let sectionParams = {};
+  sections.forEach((level) => {
+    level.data.forEach((section) => {
+      if (section.lessons.includes(route.params.lessonId)) {
+        sectionParams = section;
+      }
+    });
+  });
+
   const quizLength = Object.keys(route.params.lessonData).length;
   const lottieNumber = Math.floor(Math.random() * endLotties.length);
   const lottie = endLotties[lottieNumber];
+  const { country } = useContext(AuthContext);
+
+  const getCompletedLessons = async () => {
+    let cachedCompletedLessons = await cache.get("completedLessons");
+    if (!cachedCompletedLessons) {
+      cachedCompletedLessons = {};
+    }
+    if (!cachedCompletedLessons.hasOwnProperty(country)) {
+      cachedCompletedLessons = { [country]: [route.params.lessonId] };
+    } else if (
+      !cachedCompletedLessons[country].includes(route.params.lessonId)
+    ) {
+      cachedCompletedLessons[country].push(route.params.lessonId);
+    }
+    cache.store("completedLessons", cachedCompletedLessons);
+  };
+
+  useEffect(() => {
+    async function updateCompletedLessons() {
+      await getCompletedLessons();
+    }
+    updateCompletedLessons();
+  }, []);
 
   return (
     <BackgroundScreen>
@@ -39,7 +73,10 @@ function LessonEndScreen({ navigation, route }) {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 1,
-                  routes: [{ name: "homeTab" }, { name: "section" }],
+                  routes: [
+                    { name: "homeTab" },
+                    { name: "section", params: { sectionData: sectionParams } },
+                  ],
                 })
               );
             }}
@@ -53,7 +90,10 @@ function LessonEndScreen({ navigation, route }) {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 1,
-                  routes: [{ name: "homeTab" }, { name: "section" }],
+                  routes: [
+                    { name: "homeTab" },
+                    { name: "section", params: { sectionData: sectionParams } },
+                  ],
                 })
               );
             }}

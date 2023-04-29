@@ -14,16 +14,16 @@ generate data object for getExerciseData.
 
 function getWordsFromPhrases(phrases, country) {
   let words = [];
-  phrases.forEach(phrase => {
+  phrases.forEach((phrase) => {
     let phraseData = getPhrase(phrase, country);
     let phraseArray = phraseData.phraseTranslation.order.split(" ");
-    phraseArray = stripArray({arrayToStrip: phraseArray});
-    phraseArray.forEach(word => {
-words.push(word);
-    })
+    phraseArray = stripArray({ arrayToStrip: phraseArray });
+    phraseArray.forEach((word) => {
+      words.push(word);
+    });
   });
   return words;
-  }
+}
 
 function getPhraseData(phrases, country) {
   let wordArray = [];
@@ -59,13 +59,11 @@ function generateLessonData(lessonId, sectionLessons, country) {
   if (sequence[0].screens[0] === "review") {
     // Pulls words, phrases, and prompts from all lessons in section
     function getWords(lessonData) {
-
       let words = [];
       let phrases = [];
       let prompts = [];
       lessonData.forEach((lesson) => {
         const lessonWords = getWordsFromPhrases(lesson.phrases, country);
-        console.log(lesson)
         lessonWords ? (words = words.concat(lessonWords)) : (words = words);
         lesson.phrases
           ? (phrases = phrases.concat(lesson.phrases))

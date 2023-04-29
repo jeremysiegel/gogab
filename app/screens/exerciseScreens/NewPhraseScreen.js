@@ -14,7 +14,6 @@ import stripArray from "../../utility/stripArray";
 
 function NewPhraseScreen({ route, navigation }) {
   const data = getExerciseData.getExerciseData(route.params);
-  console.log(data)
   const instruction = instructionText.say;
 
   let audioFiles = "";

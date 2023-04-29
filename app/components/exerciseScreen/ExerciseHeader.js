@@ -13,6 +13,8 @@ import LessonContext from "../../navigation/lessonContext";
 import { CommonActions } from "@react-navigation/native";
 import { moderateScale } from "../../utility/scaler";
 import constants from "../../config/constants";
+import { useRoute } from "@react-navigation/native";
+import sections from "../../lessons/sections";
 
 // Creates header for exercise screen.
 function ExerciseHeader({
@@ -22,6 +24,16 @@ function ExerciseHeader({
   exitable = true,
 }) {
   const { height } = useWindowDimensions();
+  const route = useRoute();
+  let sectionParams = {};
+  sections.forEach((level) => {
+    level.data.forEach((section) => {
+      if (section.lessons.includes(route.params.lessonId)) {
+        sectionParams = section;
+      }
+    });
+  });
+
   // Alert if user tries to exit lesson.
   const closeAlert = () => {
     Alert.alert(
@@ -39,7 +51,10 @@ function ExerciseHeader({
             navigation.dispatch(
               CommonActions.reset({
                 index: 1,
-                routes: [{ name: "homeTab" }, { name: "section" }],
+                routes: [
+                  { name: "homeTab" },
+                  { name: "section", params: { sectionData: sectionParams } },
+                ],
               })
             );
           },

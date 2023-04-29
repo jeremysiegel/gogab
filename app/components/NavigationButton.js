@@ -20,6 +20,7 @@ function NavigationButton({
   style,
   opacity = "",
   subtitle,
+  complete = false,
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
@@ -45,7 +46,11 @@ function NavigationButton({
         onPress={onPress}
       >
         <View style={styles.cardContainer}>
-          <MaterialCommunityIcons name={"star"} color={colors.gold} size={40} />
+          <MaterialCommunityIcons
+            name={"star"}
+            color={complete ? colors.gold : colors.white}
+            size={40}
+          />
           <LessonCard
             title={title}
             subtitle={subtitle}

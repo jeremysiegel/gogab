@@ -12,7 +12,6 @@ import { moderateScale, scale } from "../utility/scaler";
 function HomeScreen({ navigation }) {
   const { setSection } = useContext(LessonContext);
   const renderItems = ({ item }) => {
-    console.log(item);
     return (
       <NavigationButton
         lessonData={item}
