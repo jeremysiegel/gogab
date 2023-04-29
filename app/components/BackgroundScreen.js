@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native";
 import Screen from "./Screen";
 import colors from "../config/colors";
 
-function BackgroundScreen({ children }) {
-  return <Screen style={styles.container}>{children}</Screen>;
+function BackgroundScreen({ style, children }) {
+  return <Screen style={[styles.container, style]}>{children}</Screen>;
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.backgroundBlue,
+    backgroundColor: colors.background,
     paddingTop: 0,
   },
 });

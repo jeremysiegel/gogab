@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { View, StyleSheet, FlatList, ScrollView } from "react-native";
 import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
@@ -24,7 +24,11 @@ function SectionScreen({ navigation, route }) {
   const { section, setLessonData, setLesson } = useContext(LessonContext);
   const { country } = useContext(AuthContext);
   const [completedLessons, setCompletedLessons] = useState();
+  const flatListRef = useRef(null);
 
+  let continuing = route.params.hasOwnProperty("completedLesson");
+  let previousLesson = continuing ? route.params.completedLesson : undefined;
+  let nextLessonIndex = 0;
   useEffect(() => {
     async function getCompletedLessons() {
       let cachedCompletedLessons = await cache.get("completedLessons");
@@ -48,7 +52,10 @@ function SectionScreen({ navigation, route }) {
         sectionLessons.push(lesson);
       }
     });
-    const renderItems = ({ item }) => {
+    const renderItems = ({ item, index }) => {
+      if (continuing && item.lessonId === previousLesson) {
+        nextLessonIndex = index + 1;
+      }
       let phraseMainText = "";
       let complete = completedLessons[country].includes(item.lessonId);
 
@@ -111,6 +118,7 @@ function SectionScreen({ navigation, route }) {
     return (
       <View style={styles.container}>
         <FlatList
+          ref={flatListRef}
           ListHeaderComponent={header}
           ListHeaderComponentStyle={styles.listHeader}
           scrollEnabled={true}
@@ -118,6 +126,14 @@ function SectionScreen({ navigation, route }) {
           keyExtractor={(item) => item.lessonId}
           renderItem={renderItems}
           numColumns={1}
+          onLayout={() => {
+            if (continuing) {
+              flatListRef.current?.scrollToIndex({
+                index: nextLessonIndex,
+                animated: false,
+              });
+            }
+          }}
           // columnWrapperStyle={styles.listContainer}
         />
       </View>
@@ -127,7 +143,7 @@ function SectionScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.backgroundBlue,
+    backgroundColor: colors.background,
   },
   listHeader: {
     marginVertical: 20,

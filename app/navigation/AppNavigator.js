@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -23,6 +24,14 @@ export default function AppNavigator() {
           margin: 10,
           borderTopWidth: 0,
           elevation: 2,
+          // backgroundColor: "transparent",
+          shadowColor: colors.dark,
+          shadowOffset: {
+            width: 0,
+            height: 10,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.5,
         },
 
         tabBarLabelStyle: {

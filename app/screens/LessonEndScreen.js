@@ -75,7 +75,13 @@ function LessonEndScreen({ navigation, route }) {
                   index: 1,
                   routes: [
                     { name: "homeTab" },
-                    { name: "section", params: { sectionData: sectionParams } },
+                    {
+                      name: "section",
+                      params: {
+                        sectionData: sectionParams,
+                        completedLesson: route.params.lessonId,
+                      },
+                    },
                   ],
                 })
               );
@@ -90,10 +96,7 @@ function LessonEndScreen({ navigation, route }) {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 1,
-                  routes: [
-                    { name: "homeTab" },
-                    { name: "section", params: { sectionData: sectionParams } },
-                  ],
+                  routes: [{ name: "homeTab" }],
                 })
               );
             }}
