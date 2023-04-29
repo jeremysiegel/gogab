@@ -20,10 +20,12 @@ function AppPopover({
       offset={StatusBar.currentHeight}
       trigger={(triggerProps) => {
         return (
-          <View style={underlineStyle}>
-            <Text style={[defaultStyles.text, style]} {...triggerProps}>
-              {displayText}
-            </Text>
+          <View style={{ overflow: "hidden" }}>
+            <View style={underlineStyle}>
+              <Text style={[defaultStyles.text, style]} {...triggerProps}>
+                {displayText}
+              </Text>
+            </View>
           </View>
         );
       }}

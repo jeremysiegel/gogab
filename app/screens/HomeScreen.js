@@ -34,9 +34,14 @@ function HomeScreen({ navigation }) {
           sections={sections}
           keyExtractor={(item, index) => item + index}
           renderItem={renderItems}
+          stickySectionHeadersEnabled={false}
           numColumns={1}
           renderSectionHeader={({ section: { title } }) => (
-            <AppText style={styles.header}>{title}</AppText>
+            <View style={styles.headerContainer}>
+              <View style={styles.headerBackground}>
+                <AppText style={styles.headerText}>{title}</AppText>
+              </View>
+            </View>
           )}
         />
       </View>
@@ -49,9 +54,25 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 70,
   },
+  container: {
+    backgroundColor: "#f2f2f2",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+    paddingVertical: 10,
+  },
+  headerBackground: {
+    backgroundColor: "#ffe5b4",
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
   header: {
-    marginLeft: scale(40),
-    fontSize: moderateScale(40),
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+    marginLeft: 10,
   },
 });
 

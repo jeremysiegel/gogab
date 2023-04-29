@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { Audio } from "expo-av";
 
 import AppPopover from "./AppPopover";
@@ -48,11 +48,14 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
 const styles = StyleSheet.create({
   text: {
     textTransform: "lowercase",
+    textDecorationLine: Platform.OS === "ios" ? "underline" : undefined,
+    textDecorationStyle: "dotted",
+    textDecorationColor: colors.secondary + 80,
   },
   underline: {
-    borderBottomWidth: 1,
+    borderBottomWidth: Platform.OS === "android" ? 1 : undefined,
     borderBottomColor: colors.secondary + 80,
-    borderStyle: "dotted",
+    borderStyle: Platform.OS === "android" ? "dotted" : undefined,
   },
 });
 

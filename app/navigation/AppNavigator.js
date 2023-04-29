@@ -24,7 +24,6 @@ export default function AppNavigator() {
           margin: 10,
           borderTopWidth: 0,
           elevation: 2,
-          // backgroundColor: "transparent",
           shadowColor: colors.dark,
           shadowOffset: {
             width: 0,
