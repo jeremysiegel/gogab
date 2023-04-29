@@ -16,7 +16,7 @@ function AppButton({
   disabled,
   style,
   opacity = "",
-  children
+  children,
 }) {
   const backgroundColor = color + opacity;
   const borderColor = buttonBorderColor + opacity;
@@ -40,7 +40,9 @@ function AppButton({
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color: textColor }]}>{title}</Text>
+      {title && (
+        <Text style={[styles.buttonText, { color: textColor }]}>{title}</Text>
+      )}
       {children}
     </Pressable>
   );

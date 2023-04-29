@@ -98,20 +98,22 @@ function ExerciseHeader({
           style={[styles.progressBarFill, { flex: animatedValue }]}
         />
       </View>
-      <View style={styles.closeButtonContainer}>
-        <Pressable
-          hitSlop={17}
-          onPress={() => {
-            if (!exitable) {
-              return true;
-            } else {
-              closeAlert();
-            }
-          }}
-        >
-          <AppText style={styles.closeButton}>X</AppText>
-        </Pressable>
-      </View>
+      {exitable && (
+        <View style={styles.closeButtonContainer}>
+          <Pressable
+            hitSlop={17}
+            onPress={() => {
+              if (!exitable) {
+                return true;
+              } else {
+                closeAlert();
+              }
+            }}
+          >
+            <AppText style={styles.closeButton}>X</AppText>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 }
