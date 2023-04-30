@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, StyleSheet, SectionList } from "react-native";
+import { View, StyleSheet, SectionList, Pressable } from "react-native";
 import NavigationButton from "../components/NavigationButton";
 import sections from "../lessons/sections";
 import LessonContext from "../navigation/lessonContext";
@@ -7,12 +7,24 @@ import BackgroundScreen from "../components/BackgroundScreen";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import { moderateScale, scale } from "../utility/scaler";
+import LessonCard from "../components/LessonCard";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
   const { setSection } = useContext(LessonContext);
   const renderItems = ({ item }) => {
     return (
+      <Pressable
+        onPress={() => {
+          setSection(item.sectionId);
+          navigation.push("section", {
+            sectionData: item,
+          });
+        }}
+      >
+        <LessonCard title={item.title} />
+      </Pressable>
+      /*
       <NavigationButton
         lessonData={item}
         title={item.title}
@@ -22,7 +34,7 @@ function HomeScreen({ navigation }) {
             sectionData: item,
           });
         }}
-      />
+      />*/
     );
   };
 
@@ -37,12 +49,10 @@ function HomeScreen({ navigation }) {
           stickySectionHeadersEnabled={false}
           numColumns={1}
           renderSectionHeader={({ section: { title } }) => (
-            <View style={styles.headerContainer}>
-              <View style={styles.headerBackground}>
-                <AppText style={styles.headerText}>{title}</AppText>
-              </View>
-            </View>
+            <AppText style={styles.header}>{title}</AppText>
           )}
+          ListFooterComponent={<View />}
+          ListFooterComponentStyle={styles.footer}
         />
       </View>
     </BackgroundScreen>
@@ -50,26 +60,12 @@ function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginBottom: 70,
+  footer: {
+    height: 100, //Makes sure last card displays above bottomTabs
   },
-  container: {
-    backgroundColor: "#f2f2f2",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    paddingVertical: 10,
-  },
-  headerBackground: {
-    backgroundColor: "#ffe5b4",
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    alignItems: "center",
-  },
+
   header: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: "bold",
     color: "#333",
     marginLeft: 10,
