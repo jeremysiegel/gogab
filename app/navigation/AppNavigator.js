@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -8,13 +8,20 @@ import SettingsScreen from "../screens/SettingsScreen";
 import WorldMapScreen from "../screens/WorldMapScreen";
 import colors from "../config/colors";
 import AppHeader from "../components/AppHeader";
+import AuthContext from "./authContext";
+import getFlag from "../utility/getFlag";
 
 const Tab = createBottomTabNavigator();
 
-export default function AppNavigator({ route }) {
+export default function AppNavigator() {
+  const { country } = useContext(AuthContext);
+  const image = getFlag(country);
   return (
     <Tab.Navigator
       screenOptions={{
+        headerStyle: {
+          height: 120,
+        },
         tabBarShowLabel: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.primary + 70,
@@ -47,7 +54,7 @@ export default function AppNavigator({ route }) {
         name="Learn"
         component={HomeScreen}
         options={() => ({
-          headerTitle: () => <AppHeader title={"Learn"} />,
+          headerTitle: () => <AppHeader title={"Learn"} image={image} />,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="open-book" color={color} size={35} />
           ),
