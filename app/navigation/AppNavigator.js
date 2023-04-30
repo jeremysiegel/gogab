@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -7,10 +7,11 @@ import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import WorldMapScreen from "../screens/WorldMapScreen";
 import colors from "../config/colors";
+import AppHeader from "../components/AppHeader";
 
 const Tab = createBottomTabNavigator();
 
-export default function AppNavigator() {
+export default function AppNavigator({ route }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -45,18 +46,18 @@ export default function AppNavigator() {
       <Tab.Screen
         name="Learn"
         component={HomeScreen}
-        options={{
-          //headerShown: false,
+        options={() => ({
+          headerTitle: () => <AppHeader title={"Learn"} />,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="open-book" color={color} size={35} />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="My World Map"
         component={WorldMapScreen}
         options={{
-          //  headerShown: false,
+          headerTitle: () => <AppHeader title={"My World Map"} />,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="earth" color={color} size={35} />
           ),
@@ -66,7 +67,8 @@ export default function AppNavigator() {
         name="Settings"
         component={SettingsScreen}
         options={{
-          //  headerShown: false,
+          headerTitle: () => <AppHeader title={"Settings"} />,
+
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="cog-outline"
