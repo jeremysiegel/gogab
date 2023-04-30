@@ -12,7 +12,6 @@ function WorldMapScreen(props) {
   return (
     <BackgroundScreen>
       <ScrollView>
-        <AppText style={styles.title}>My World Tour</AppText>
         <ScrollView
           style={styles.scrollContainer}
           horizontal={true}
@@ -34,15 +33,6 @@ const styles = StyleSheet.create({
   },
   worldContainer: {
     flex: 1,
-  },
-  title: {
-    fontSize: 44,
-    // fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 16,
-    color: colors.worldMapPrimary,
-    fontFamily: fonts.bold,
-    //textTransform: "uppercase",
   },
 });
 

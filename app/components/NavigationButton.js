@@ -9,56 +9,11 @@ import LessonCard from "./LessonCard";
 
 // Creates a button that appears to have 3D reaction when pressed.
 
-function NavigationButton({
-  title,
-  titleColor = colors.secondary,
-  color = colors.secondary,
-  buttonBorderColor = colors.secondary,
-  borderTopWidth = 0,
-  onPress,
-  disabled,
-  style,
-  opacity = "",
-  subtitle,
-  complete = false,
-}) {
-  const backgroundColor = color + opacity;
-  const borderColor = buttonBorderColor + opacity;
-  const [pressed, setPressed] = useState(false);
-
+function NavigationButton({ title, subtitle, onPress, style }) {
   return (
-    <View style={styles.container}>
-      <Pressable
-        disabled={disabled}
-        style={[
-          {
-            backgroundColor: backgroundColor,
-            borderTopWidth: borderTopWidth,
-            borderColor: borderColor,
-          },
-          styles.button,
-          style,
-          !pressed && styles.buttonBorder,
-          pressed && styles.buttonPressed,
-        ]}
-        onPressIn={() => setPressed(true)}
-        onPressOut={() => setPressed(false)}
-        onPress={onPress}
-      >
-        <View style={styles.cardContainer}>
-          <MaterialCommunityIcons
-            name={"star"}
-            color={complete ? colors.gold : colors.white}
-            size={40}
-          />
-          <LessonCard
-            title={title}
-            subtitle={subtitle}
-            titleColor={titleColor}
-          />
-        </View>
-      </Pressable>
-    </View>
+    <Pressable style={style} onPress={onPress}>
+      <LessonCard title={title} subtitle={subtitle} />
+    </Pressable>
   );
 }
 

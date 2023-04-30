@@ -81,13 +81,8 @@ function SectionScreen({ navigation, route }) {
       }
       return (
         <NavigationButton
-          titleColor={colors.primary}
-          color={colors.primaryTint}
-          buttonBorderColor={colors.primaryTint}
-          lessonData={item}
-          country={country}
-          title={item.title}
-          subtitle={phraseMainText}
+          subtitle={item.title}
+          title={phraseMainText}
           complete={complete}
           onPress={() => {
             const lesson = generateLessonData(

@@ -14,30 +14,20 @@ function HomeScreen({ navigation }) {
   const { setSection } = useContext(LessonContext);
   const renderItems = ({ item }) => {
     return (
-      <Pressable
-        onPress={() => {
-          setSection(item.sectionId);
-          navigation.push("section", {
-            sectionData: item,
-          });
-        }}
-      >
-        <LessonCard title={item.title} />
-      </Pressable>
-      /*
-      <NavigationButton
-        lessonData={item}
-        title={item.title}
-        onPress={() => {
-          setSection(item.sectionId);
-          navigation.push("section", {
-            sectionData: item,
-          });
-        }}
-      />*/
+      <View style={styles.cardContainer}>
+        <NavigationButton
+          lessonData={item}
+          title={item.title}
+          onPress={() => {
+            setSection(item.sectionId);
+            navigation.push("section", {
+              sectionData: item,
+            });
+          }}
+        />
+      </View>
     );
   };
-
   return (
     <BackgroundScreen>
       <View style={styles.container}>
@@ -60,15 +50,23 @@ function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingLeft: 40,
+  },
+  cardContainer: {
+    paddingLeft: 20,
+  },
   footer: {
     height: 100, //Makes sure last card displays above bottomTabs
   },
 
   header: {
-    fontSize: 34,
+    fontSize: 40,
     fontWeight: "bold",
-    color: "#333",
+    color: colors.darkText,
     marginLeft: 10,
+    marginBottom: 30,
+    marginTop: 40,
   },
 });
 

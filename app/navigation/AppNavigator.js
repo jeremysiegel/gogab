@@ -43,30 +43,30 @@ export default function AppNavigator() {
       }}
     >
       <Tab.Screen
-        name="home"
+        name="Learn"
         component={HomeScreen}
         options={{
-          headerShown: false,
+          //headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="open-book" color={color} size={35} />
           ),
         }}
       />
       <Tab.Screen
-        name="worldMap"
+        name="My World Map"
         component={WorldMapScreen}
         options={{
-          headerShown: false,
+          //  headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="earth" color={color} size={35} />
           ),
         }}
       />
       <Tab.Screen
-        name="settings"
+        name="Settings"
         component={SettingsScreen}
         options={{
-          headerShown: false,
+          //  headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="cog-outline"
