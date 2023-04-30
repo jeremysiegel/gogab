@@ -2,12 +2,22 @@ import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 import colors from "../config/colors";
+import Icon from "./Icon";
 
-const LessonCard = ({ title, subtitle, titleColor, style }) => {
+const LessonCard = ({
+  title,
+  subtitle,
+  titleColor,
+  sectionColor,
+  cornerColor,
+  icon,
+}) => {
   return (
     <View style={styles.card}>
-      <View style={styles.topBox}>
-        <View style={styles.semiCircle} />
+      <View style={[styles.topBox, { backgroundColor: sectionColor }]}>
+        <View style={[styles.semiCircle, { backgroundColor: cornerColor }]}>
+          <View style={styles.iconContainer}>{icon}</View>
+        </View>
         <AppText style={[{ color: titleColor }, styles.title]}>{title}</AppText>
       </View>
       {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
@@ -25,12 +35,14 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    flex: 1,
-    elevation: 5,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  iconContainer: {
+    padding: 7,
   },
   topBox: {
     backgroundColor: colors.primary,
@@ -48,10 +60,11 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     width: 70,
-    height: 70,
+    height: 60,
     borderBottomLeftRadius: 70,
     borderTopEndRadius: 10,
     backgroundColor: colors.primaryTint,
+    alignItems: "flex-end",
   },
   title: {
     fontSize: 24,

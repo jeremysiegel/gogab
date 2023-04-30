@@ -36,32 +36,32 @@ export default sections = [
     data: [
       {
         sectionId: 6,
-        title: "Eating 2",
+        title: "Eating",
         lessons: [28, 29, 30, 31, 32, 33, 34],
       },
       {
         sectionId: 7,
-        title: "Greetings 2",
+        title: "Greetings",
         lessons: [35, 36, 39, 40, 41],
       },
       {
         sectionId: 8,
-        title: "Shopping 2",
+        title: "Shopping",
         lessons: [42, 43, 44, 45, 46],
       },
       {
         sectionId: 9,
-        title: "Time 2",
+        title: "Time",
         lessons: [47, 48, 49, 50, 51],
       },
       {
         sectionId: 10,
-        title: "Getting around 2",
+        title: "Getting around",
         lessons: [52, 53, 54, 55, 56, 57],
       },
       {
         sectionId: 11,
-        title: "Eating 3",
+        title: "Eating",
         lessons: [58, 59, 60, 61, 62, 63],
       },
     ],
@@ -71,22 +71,22 @@ export default sections = [
     data: [
       {
         sectionId: 12,
-        title: "Greetings 3",
+        title: "Greetings",
         lessons: [64, 65, 66, 67, 68, 69],
       },
       {
         sectionId: 13,
-        title: "Eating 4",
+        title: "Eating",
         lessons: [70, 71, 72, 73, 74],
       },
       {
         sectionId: 14,
-        title: "Getting around 3",
+        title: "Getting around",
         lessons: [75, 76, 78, 79, 80, 81],
       },
       {
         sectionId: 15,
-        title: "Shopping 3",
+        title: "Shopping",
         lessons: [82, 83, 84, 85],
       },
     ],

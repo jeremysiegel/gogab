@@ -1,18 +1,29 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import React from "react";
+import { StyleSheet, Pressable } from "react-native";
 import { moderateScale } from "../utility/scaler";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
-import AppText from "./AppText";
-import colors from "../config/colors";
 import LessonCard from "./LessonCard";
 
 // Creates a button that appears to have 3D reaction when pressed.
 
-function NavigationButton({ title, subtitle, onPress, style }) {
+function NavigationButton({
+  title,
+  subtitle,
+  onPress,
+  style,
+  sectionColor,
+  cornerColor,
+  icon,
+}) {
   return (
     <Pressable style={style} onPress={onPress}>
-      <LessonCard title={title} subtitle={subtitle} />
+      <LessonCard
+        title={title}
+        subtitle={subtitle}
+        sectionColor={sectionColor}
+        cornerColor={cornerColor}
+        icon={icon}
+      />
     </Pressable>
   );
 }

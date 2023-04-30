@@ -8,16 +8,54 @@ import colors from "../config/colors";
 import AppText from "../components/AppText";
 import { moderateScale, scale } from "../utility/scaler";
 import LessonCard from "../components/LessonCard";
+import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
   const { setSection } = useContext(LessonContext);
-  const renderItems = ({ item }) => {
+  const renderItems = ({ item, section }) => {
+    let sectionColor = colors.primary;
+    let cornerColor = colors.primaryTint;
+    switch (section.title) {
+      case "Level 2":
+        sectionColor = colors.orange;
+        cornerColor = colors.orangeTint;
+        break;
+      case "Level 3":
+        sectionColor = colors.secondaryCard;
+        cornerColor = colors.secondaryCardTint;
+        break;
+      default:
+        sectionColor = colors.primary;
+        cornerColor = colors.primaryTint;
+        break;
+    }
+    let iconName = "bubbles";
+    switch (item.title) {
+      case "Shopping":
+        iconName = "handbag";
+        break;
+      case "Eating":
+        iconName = "cup";
+        break;
+      case "Time":
+        iconName = "clock";
+        break;
+      case "Getting around":
+        iconName = "plane";
+        break;
+    }
+    const icon = (
+      <SimpleLineIcons size={33} color={sectionColor} name={iconName} />
+    );
     return (
       <View style={styles.cardContainer}>
         <NavigationButton
+          icon={icon}
           lessonData={item}
           title={item.title}
+          sectionColor={sectionColor}
+          cornerColor={cornerColor}
           onPress={() => {
             setSection(item.sectionId);
             navigation.push("section", {
@@ -51,7 +89,7 @@ function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 40,
+    paddingLeft: 30,
   },
   cardContainer: {
     paddingLeft: 20,

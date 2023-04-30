@@ -123,10 +123,14 @@ function SectionScreen({ navigation, route }) {
           numColumns={1}
           onLayout={() => {
             if (continuing) {
-              flatListRef.current?.scrollToIndex({
-                index: nextLessonIndex,
-                animated: false,
-              });
+              try {
+                flatListRef.current?.scrollToIndex({
+                  index: nextLessonIndex,
+                  animated: false,
+                });
+              } catch (error) {
+                console.log(error);
+              }
             }
           }}
           // columnWrapperStyle={styles.listContainer}
