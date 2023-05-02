@@ -15,6 +15,7 @@ import colors from "../config/colors";
 import getPhrase from "../api/getPhrase";
 import stripArray from "../utility/stripArray";
 import cache from "../utility/cache";
+import { FontAwesome } from "@expo/vector-icons";
 
 // Section screen.
 
@@ -47,11 +48,13 @@ function SectionScreen({ navigation, route }) {
     // Makes a deep copy.
     const allLessons = JSON.parse(JSON.stringify(lessonData));
     const sectionLessons = [];
+
     allLessons.forEach((lesson) => {
       if (sectionData.lessons.includes(lesson.lessonId)) {
         sectionLessons.push(lesson);
       }
     });
+
     const renderItems = ({ item, index }) => {
       if (continuing && item.lessonId === previousLesson) {
         nextLessonIndex = index + 1;
@@ -80,27 +83,39 @@ function SectionScreen({ navigation, route }) {
         phraseMainText = "review";
       }
       return (
-        <NavigationButton
-          subtitle={item.title}
-          title={phraseMainText}
-          complete={complete}
-          onPress={() => {
-            const lesson = generateLessonData(
-              item.lessonId,
-              sectionLessons,
-              country
-            );
-            setLessonData(lesson);
-            setLesson(item.lessonId);
-            navigation.push(lesson[exerciseId].screenType, {
-              screen: lesson[exerciseId].screenType,
-              exerciseId: exerciseId,
-              lessonId: item.lessonId,
-              lessonData: lesson,
-              country: country,
-            });
-          }}
-        />
+        <View style={styles.cardContainer}>
+          <NavigationButton
+            subtitle={item.title}
+            title={phraseMainText}
+            sectionColor={route.params.sectionColor}
+            cornerColor={route.params.cornerColor}
+            complete={complete}
+            icon={
+              <FontAwesome
+                name={"star"}
+                size={30}
+                color={complete ? colors.gold : route.params.sectionColor}
+                style={{ padding: 5 }}
+              />
+            }
+            onPress={() => {
+              const lesson = generateLessonData(
+                item.lessonId,
+                sectionLessons,
+                country
+              );
+              setLessonData(lesson);
+              setLesson(item.lessonId);
+              navigation.push(lesson[exerciseId].screenType, {
+                screen: lesson[exerciseId].screenType,
+                exerciseId: exerciseId,
+                lessonId: item.lessonId,
+                lessonData: lesson,
+                country: country,
+              });
+            }}
+          />
+        </View>
       );
     };
 
@@ -143,13 +158,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingLeft: 30,
   },
   listHeader: {
     marginVertical: 20,
   },
   header: {
-    marginLeft: scale(40),
     fontSize: moderateScale(40),
+    fontWeight: "bold",
+    color: colors.darkText,
+    marginLeft: scale(10),
+    marginBottom: 30,
+    marginTop: 40,
+  },
+  cardContainer: {
+    paddingLeft: 20,
   },
 });
 

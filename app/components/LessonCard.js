@@ -18,7 +18,11 @@ const LessonCard = ({
         <View style={[styles.semiCircle, { backgroundColor: cornerColor }]}>
           <View style={styles.iconContainer}>{icon}</View>
         </View>
-        <AppText style={[{ color: titleColor }, styles.title]}>{title}</AppText>
+        <View style={styles.titleContainer}>
+          <AppText style={[{ color: titleColor }, styles.title]}>
+            {title}
+          </AppText>
+        </View>
       </View>
       {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
     </View>
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     width: 300,
-    height: 140,
+    minHeight: 140,
     margin: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -40,6 +44,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
     elevation: 2,
+  },
+  titleContainer: {
+    width: 220,
   },
   iconContainer: {
     padding: 7,
@@ -52,7 +59,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
-    height: 100,
+    minHeight: 110,
     position: "relative",
   },
   semiCircle: {
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.darkText,
     paddingLeft: 20,
-    paddingTop: 5,
+    paddingVertical: 5,
   },
 });
 

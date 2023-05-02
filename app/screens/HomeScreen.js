@@ -6,9 +6,8 @@ import LessonContext from "../navigation/lessonContext";
 import BackgroundScreen from "../components/BackgroundScreen";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
+import { SimpleLineIcons } from "@expo/vector-icons";
 import { moderateScale, scale } from "../utility/scaler";
-import LessonCard from "../components/LessonCard";
-import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
@@ -60,6 +59,8 @@ function HomeScreen({ navigation }) {
             setSection(item.sectionId);
             navigation.push("section", {
               sectionData: item,
+              sectionColor: sectionColor,
+              cornerColor: cornerColor,
             });
           }}
         />
@@ -99,10 +100,10 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    fontSize: 40,
+    fontSize: moderateScale(40),
     fontWeight: "bold",
     color: colors.darkText,
-    marginLeft: 10,
+    marginLeft: scale(10),
     marginBottom: 30,
     marginTop: 40,
   },
