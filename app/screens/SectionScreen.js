@@ -130,7 +130,6 @@ function SectionScreen({ navigation, route }) {
         <FlatList
           ref={flatListRef}
           ListHeaderComponent={header}
-          ListHeaderComponentStyle={styles.listHeader}
           scrollEnabled={true}
           data={sectionLessons}
           keyExtractor={(item) => item.lessonId}
@@ -160,9 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     paddingLeft: 30,
   },
-  listHeader: {
-    marginVertical: 20,
-  },
+
   header: {
     fontSize: moderateScale(40),
     fontWeight: "bold",

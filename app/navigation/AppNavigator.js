@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 

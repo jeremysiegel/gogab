@@ -9,11 +9,10 @@ import SentenceBuilderScreen from "../screens/exerciseScreens/SentenceBuilderScr
 import PromptScreen from "../screens/exerciseScreens/PromptScreen";
 import TipScreen from "../screens/exerciseScreens/TipScreen";
 import SectionScreen from "../screens/SectionScreen";
-import HomeScreen from "../screens/HomeScreen";
 import LessonEndScreen from "../screens/LessonEndScreen";
 import AppNavigator from "./AppNavigator";
 import LessonContext from "./lessonContext";
-
+import AppHeader from "../components/AppHeader";
 const Stack = createNativeStackNavigator();
 
 export default function LessonNavigator() {
@@ -41,7 +40,10 @@ export default function LessonNavigator() {
         <Stack.Screen
           name="section"
           component={SectionScreen}
-          options={{ headerShown: true, headerTitle: "" }}
+          options={{
+            headerShown: true,
+            headerTitle: "",
+          }}
         />
 
         <Stack.Screen name="end" component={LessonEndScreen} />

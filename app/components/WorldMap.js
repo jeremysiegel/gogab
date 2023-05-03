@@ -314,7 +314,7 @@ const WorldMap = (props) => {
               {
                 backgroundColor: selectedCountries.includes(item.name)
                   ? colors.worldMapPrimary + "90"
-                  : colors.light,
+                  : colors.grey,
               },
             ]}
             onPress={() => toggleCountrySelection(item.name)}
@@ -353,8 +353,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 10,
     marginVertical: 2,
-    borderWidth: 1,
-    borderColor: "grey",
+    // borderWidth: 1,
+    // borderColor: "grey",
     width: 200,
   },
   worldContainer: {
