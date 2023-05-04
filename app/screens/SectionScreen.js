@@ -16,17 +16,17 @@ import getPhrase from "../api/getPhrase";
 import stripArray from "../utility/stripArray";
 import cache from "../utility/cache";
 import { FontAwesome } from "@expo/vector-icons";
-
+import getCardColor from "../utility/getCardColor";
 // Section screen.
 
 const exerciseId = 1;
 
 function SectionScreen({ navigation, route }) {
-  const { section, setLessonData, setLesson } = useContext(LessonContext);
+  const { level, setLessonData, setLesson } = useContext(LessonContext);
   const { country } = useContext(AuthContext);
   const [completedLessons, setCompletedLessons] = useState();
   const flatListRef = useRef(null);
-
+  const { sectionColor, cornerColor } = getCardColor(level);
   let continuing = route.params.hasOwnProperty("completedLesson");
   let previousLesson = continuing ? route.params.completedLesson : undefined;
   let nextLessonIndex = 0;
@@ -87,14 +87,14 @@ function SectionScreen({ navigation, route }) {
           <NavigationButton
             subtitle={item.title}
             title={phraseMainText}
-            sectionColor={route.params.sectionColor}
-            cornerColor={route.params.cornerColor}
+            sectionColor={sectionColor}
+            cornerColor={cornerColor}
             complete={complete}
             icon={
               <FontAwesome
                 name={"star"}
                 size={30}
-                color={complete ? colors.gold : route.params.sectionColor}
+                color={complete ? colors.gold : sectionColor}
                 style={{ padding: 5 }}
               />
             }

@@ -8,27 +8,25 @@ import colors from "../config/colors";
 import AppText from "../components/AppText";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { moderateScale, scale } from "../utility/scaler";
+import getCardColor from "../utility/getCardColor";
+import fonts from "../config/fonts";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
-  const { setSection } = useContext(LessonContext);
+  const { setSection, setLevel } = useContext(LessonContext);
   const renderItems = ({ item, section }) => {
-    let sectionColor = colors.primary;
-    let cornerColor = colors.primaryTint;
+    let level = 1;
     switch (section.title) {
       case "Level 2":
-        sectionColor = colors.orange;
-        cornerColor = colors.orangeTint;
+        level = 2;
         break;
       case "Level 3":
-        sectionColor = colors.secondaryCard;
-        cornerColor = colors.secondaryCardTint;
+        level = 3;
         break;
       default:
-        sectionColor = colors.primary;
-        cornerColor = colors.primaryTint;
         break;
     }
+    const { sectionColor, cornerColor } = getCardColor(level);
     let iconName = "bubbles";
     switch (item.title) {
       case "Shopping":
@@ -57,10 +55,10 @@ function HomeScreen({ navigation }) {
           cornerColor={cornerColor}
           onPress={() => {
             setSection(item.sectionId);
+            setLevel(item.level);
+
             navigation.push("section", {
               sectionData: item,
-              sectionColor: sectionColor,
-              cornerColor: cornerColor,
             });
           }}
         />
@@ -101,7 +99,8 @@ const styles = StyleSheet.create({
 
   header: {
     fontSize: moderateScale(40),
-    fontWeight: "bold",
+    fontFamily: fonts.bold,
+    //fontWeight: "bold",
     color: colors.darkText,
     marginLeft: scale(10),
     marginBottom: 30,

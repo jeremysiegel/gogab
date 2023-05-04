@@ -19,6 +19,7 @@ export default function LessonNavigator() {
   const [lessonData, setLessonData] = useState();
   const [lesson, setLesson] = useState();
   const [section, setSection] = useState();
+  const [level, setLevel] = useState();
   return (
     <LessonContext.Provider
       value={{
@@ -28,6 +29,8 @@ export default function LessonNavigator() {
         setSection,
         lesson,
         setLesson,
+        level,
+        setLevel,
       }}
     >
       <Stack.Navigator

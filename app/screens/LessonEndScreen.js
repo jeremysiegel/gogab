@@ -9,6 +9,7 @@ import ExerciseHeader from "../components/exerciseScreen/ExerciseHeader";
 import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
 import sections from "../lessons/sections";
+import Screen from "../components/Screen";
 const endLotties = [
   require("../assets/endLesson1.json"),
   require("../assets/endLesson2.json"),
@@ -56,7 +57,7 @@ function LessonEndScreen({ navigation, route }) {
   }, []);
 
   return (
-    <BackgroundScreen>
+    <Screen>
       <ExerciseHeader
         currentIndex={quizLength}
         quizLength={quizLength}
@@ -103,7 +104,7 @@ function LessonEndScreen({ navigation, route }) {
           />
         </View>
       </View>
-    </BackgroundScreen>
+    </Screen>
   );
 }
 
