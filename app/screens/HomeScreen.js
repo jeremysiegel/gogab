@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, SectionList, Pressable } from "react-native";
 import NavigationButton from "../components/NavigationButton";
 import sections from "../lessons/sections";
@@ -10,11 +10,25 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import { moderateScale, scale } from "../utility/scaler";
 import getCardColor from "../utility/getCardColor";
 import fonts from "../config/fonts";
+import getCompletedLessons from "../utility/getCompletedLessons";
+import AuthContext from "../navigation/authContext";
+import checkArrayIncludesAll from "../utility/checkArrayIncludesAll";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
+  const [completedLessons, setCompletedLessons] = useState();
   const { setSection, setLevel } = useContext(LessonContext);
+  const { country } = useContext(AuthContext);
+
+  useEffect(() => {
+    getCompletedLessons(country, setCompletedLessons);
+  }, []);
+
   const renderItems = ({ item, section }) => {
+    const complete = checkArrayIncludesAll(
+      item.lessons,
+      completedLessons[country]
+    );
     let level = 1;
     switch (section.title) {
       case "Level 2":
@@ -43,7 +57,11 @@ function HomeScreen({ navigation }) {
         break;
     }
     const icon = (
-      <SimpleLineIcons size={33} color={sectionColor} name={iconName} />
+      <SimpleLineIcons
+        size={33}
+        color={complete ? colors.gold : sectionColor}
+        name={iconName}
+      />
     );
     return (
       <View style={styles.cardContainer}>
@@ -65,25 +83,29 @@ function HomeScreen({ navigation }) {
       </View>
     );
   };
-  return (
-    <BackgroundScreen>
-      <View style={styles.container}>
-        <SectionList
-          scrollEnabled={true}
-          sections={sections}
-          keyExtractor={(item, index) => item + index}
-          renderItem={renderItems}
-          stickySectionHeadersEnabled={false}
-          numColumns={1}
-          renderSectionHeader={({ section: { title } }) => (
-            <AppText style={styles.header}>{title}</AppText>
-          )}
-          ListFooterComponent={<View />}
-          ListFooterComponentStyle={styles.footer}
-        />
-      </View>
-    </BackgroundScreen>
+
+  const renderSectionHeader = ({ section: { title } }) => (
+    <AppText style={styles.header}>{title}</AppText>
   );
+  if (completedLessons) {
+    return (
+      <BackgroundScreen>
+        <View style={styles.container}>
+          <SectionList
+            scrollEnabled={true}
+            sections={sections}
+            keyExtractor={(item, index) => item + index}
+            renderItem={renderItems}
+            stickySectionHeadersEnabled={false}
+            numColumns={1}
+            renderSectionHeader={renderSectionHeader}
+            ListFooterComponent={<View />}
+            ListFooterComponentStyle={styles.footer}
+          />
+        </View>
+      </BackgroundScreen>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -99,12 +121,10 @@ const styles = StyleSheet.create({
 
   header: {
     fontSize: moderateScale(40),
-    fontFamily: fonts.bold,
-    //fontWeight: "bold",
+    fontFamily: fonts.main,
     color: colors.darkText,
+    margin: 30,
     marginLeft: scale(10),
-    marginBottom: 30,
-    marginTop: 40,
   },
 });
 

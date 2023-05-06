@@ -1,22 +1,19 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { View, StyleSheet, FlatList, ScrollView } from "react-native";
-import Screen from "../components/Screen";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
 import LessonContext from "../navigation/lessonContext";
-import sections from "../lessons/sections";
-import getElementFromId from "../utility/getElementFromId";
 import AppText from "../components/AppText";
 import NavigationButton from "../components/NavigationButton";
-import BackgroundScreen from "../components/BackgroundScreen";
 import { scale, moderateScale } from "../utility/scaler";
 import AuthContext from "../navigation/authContext";
 import colors from "../config/colors";
 import getPhrase from "../api/getPhrase";
 import stripArray from "../utility/stripArray";
-import cache from "../utility/cache";
 import { FontAwesome } from "@expo/vector-icons";
 import getCardColor from "../utility/getCardColor";
+import getCompletedLessons from "../utility/getCompletedLessons";
+
 // Section screen.
 
 const exerciseId = 1;
@@ -31,17 +28,7 @@ function SectionScreen({ navigation, route }) {
   let previousLesson = continuing ? route.params.completedLesson : undefined;
   let nextLessonIndex = 0;
   useEffect(() => {
-    async function getCompletedLessons() {
-      let cachedCompletedLessons = await cache.get("completedLessons");
-      if (!cachedCompletedLessons) {
-        cachedCompletedLessons = {};
-      }
-      if (!cachedCompletedLessons.hasOwnProperty(country)) {
-        cachedCompletedLessons = { [country]: [] };
-      }
-      setCompletedLessons(cachedCompletedLessons);
-    }
-    getCompletedLessons();
+    getCompletedLessons(country, setCompletedLessons);
   }, []);
   if (completedLessons) {
     const sectionData = route.params.sectionData;
@@ -162,7 +149,6 @@ const styles = StyleSheet.create({
 
   header: {
     fontSize: moderateScale(40),
-    fontWeight: "bold",
     color: colors.darkText,
     marginLeft: scale(10),
     marginBottom: 30,

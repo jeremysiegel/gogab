@@ -10,7 +10,7 @@ import getFlag from "../utility/getFlag";
 import lessonData from "../lessons/lessonData";
 import colors from "../config/colors";
 import { moderateScale } from "../utility/scaler";
-
+import Backdrop from "../components/Backdrop";
 function SettingsScreen(props) {
   const { country, setCountry } = useContext(AuthContext);
 
@@ -57,7 +57,7 @@ function SettingsScreen(props) {
     return (
       <BackgroundScreen>
         <View style={styles.container}>
-          <View style={styles.currentCourseContainer}>
+          <Backdrop color={colors.grey} style={{ margin: 30 }}>
             <View style={styles.countryNameContainer}>
               <AppText style={styles.countryName}>{countryName}</AppText>
               <Image source={image} style={styles.image} />
@@ -69,7 +69,7 @@ function SettingsScreen(props) {
                 {lessonsCompleted} / {totalLessons}
               </AppText>
             </View>
-          </View>
+          </Backdrop>
           <View style={styles.selectContainer}>
             <AppText style={styles.itemHeader}>Select course</AppText>
             <Select
@@ -99,12 +99,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
-  },
-  currentCourseContainer: {
-    backgroundColor: colors.grey + 90,
-    padding: 20,
-    margin: 30,
-    borderRadius: 10,
   },
 
   selectContainer: {
