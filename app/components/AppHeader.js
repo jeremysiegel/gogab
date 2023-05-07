@@ -1,6 +1,7 @@
 import { StyleSheet, View, Image } from "react-native";
 import AppText from "./AppText";
 import colors from "../config/colors";
+import { moderateScale, scale } from "../utility/scaler";
 
 const AppHeader = ({ title, image }) => {
   return (
@@ -16,11 +17,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 10,
+    paddingLeft: moderateScale(20),
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: moderateScale(24),
+
+    fontFamily: "assistantBold",
   },
   image: {
     width: 30,

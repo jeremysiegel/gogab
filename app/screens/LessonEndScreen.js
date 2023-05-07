@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import AppButton from "../components/AppButton";
 import { CommonActions } from "@react-navigation/native";
-import BackgroundScreen from "../components/BackgroundScreen";
 import AppLottie from "../components/AppLottie";
 import colors from "../config/colors";
 import ExerciseHeader from "../components/exerciseScreen/ExerciseHeader";

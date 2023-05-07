@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import DuoDragDrop, {
   Word,
   Lines,
@@ -7,11 +7,13 @@ import DuoDragDrop, {
 } from "@jamsch/react-native-duo-drag-drop";
 import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
-import { moderateScale } from "../utility/scaler";
+import { moderateScale, verticalScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
 import { Audio } from "expo-av";
 
 // Creates a UI sentence builder element.
+
+const { width } = Dimensions.get("screen");
 
 function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
@@ -67,38 +69,47 @@ function SentenceBuilder({ data, setComplete }) {
     };
 
     return (
-      <DuoDragDrop
-        ref={ref}
-        words={shuffledData}
-        wordBankOffsetY={10}
-        onDrop={(event) => {
-          checkComplete();
-          playAudio(event.index);
-        }}
-        renderWord={() => (
-          <Word containerStyle={styles.wordBox} textStyle={styles.text} />
-        )}
-        renderLines={(props) => (
-          <Lines
-            {...props}
-            lineStyle={{
-              borderWidth: 0,
-              borderBottomWidth: 0,
-              borderBottomColor: "transparent",
-            }}
-            renderTopLine={false}
-            containerStyle={styles.lineBox}
-          />
-        )}
-      />
+      <View style={styles.container}>
+        <DuoDragDrop
+          ref={ref}
+          words={shuffledData}
+          wordBankOffsetY={10}
+          onDrop={(event) => {
+            checkComplete();
+            playAudio(event.index);
+          }}
+          renderWord={() => (
+            <Word containerStyle={styles.wordBox} textStyle={styles.text} />
+          )}
+          renderLines={(props) => (
+            <Lines
+              {...props}
+              lineStyle={{
+                borderWidth: 0,
+                borderBottomWidth: 0,
+                borderBottomColor: "transparent",
+              }}
+              renderTopLine={false}
+              containerStyle={styles.lineBox}
+            />
+          )}
+        />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: width > 600 ? (width - 600) / 2 : undefined,
+    // maxWidth: 600,
+    marginTop: verticalScale(20),
+  },
   lineBox: {
     backgroundColor: colors.selected + "30",
     borderRadius: 4,
+    //marginLeft: 250,
   },
   wordBox: {
     backgroundColor: colors.selected,

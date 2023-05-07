@@ -8,6 +8,7 @@ import Screen from "../Screen";
 import ExerciseFooter from "./ExerciseFooter";
 import defaultStyles from "../../config/styles";
 import BackButtonExitHandler from "../../utility/backHandler";
+import { scale, verticalScale, moderateScale } from "../../utility/scaler";
 
 // Generates container screen for exercises.
 // Displays in order of instruction, phrase, then exercise.
@@ -68,7 +69,7 @@ function ExerciseScreen({
         {(instruction || phrase) && (
           <View
             style={[
-              { marginLeft: isTablet ? 0.1 * width : 20 },
+              { marginLeft: isTablet ? 0.1 * width : 30 },
               styles.textContainer,
             ]}
           >
@@ -84,7 +85,7 @@ function ExerciseScreen({
                 style={[
                   {
                     marginLeft: isTablet ? 30 : 10,
-                    marginTop: isTablet ? 15 : 10,
+                    marginTop: isTablet ? 30 : 20,
                   },
                   styles.phraseContainer,
                 ]}
@@ -118,14 +119,13 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   textContainer: {
-    margin: 20,
+    margin: scale(10),
   },
   children: {
     flex: 1,
     justifyContent: "space-around",
   },
   phraseContainer: {
-    //  marginTop: 10,
     flexDirection: "row",
     flexWrap: "wrap",
   },

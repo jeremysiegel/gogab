@@ -9,6 +9,7 @@ import colors from "../config/colors";
 import AppHeader from "../components/AppHeader";
 import AuthContext from "./authContext";
 import getFlag from "../utility/getFlag";
+import { Platform } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,8 +20,9 @@ export default function AppNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerStyle: {
-          height: 120,
+          height: Platform.OS === "ios" ? 90 : 130,
         },
+        headerTitle: false,
         tabBarShowLabel: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.primary + 70,
@@ -53,7 +55,8 @@ export default function AppNavigator() {
         name="Learn"
         component={HomeScreen}
         options={() => ({
-          headerTitle: () => <AppHeader title={"Learn"} image={image} />,
+          headerLeft: () => <AppHeader title={"Learn"} image={image} />,
+          headerTitle: "",
           tabBarIcon: ({ color, size }) => (
             <Entypo name="open-book" color={color} size={35} />
           ),
@@ -63,7 +66,9 @@ export default function AppNavigator() {
         name="My World Map"
         component={WorldMapScreen}
         options={{
-          headerTitle: () => <AppHeader title={"My World Map"} />,
+          headerLeft: () => <AppHeader title={"My World Map"} />,
+          headerTitle: "",
+
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="earth" color={color} size={35} />
           ),
@@ -73,8 +78,8 @@ export default function AppNavigator() {
         name="Settings"
         component={SettingsScreen}
         options={{
-          headerTitle: () => <AppHeader title={"Settings"} />,
-
+          headerLeft: () => <AppHeader title={"Settings"} />,
+          headerTitle: "",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="cog-outline"

@@ -1,28 +1,26 @@
 import React from "react";
 import { View, StyleSheet, ScrollView, Dimensions } from "react-native";
 import WorldMap from "../components/WorldMap";
-import BackgroundScreen from "../components/BackgroundScreen";
-import AppText from "../components/AppText";
-import colors from "../config/colors";
-import fonts from "../config/fonts";
+import Screen from "../components/Screen";
 
-const screenWidth = Dimensions.get("window").width;
-
+const screenWidth = Dimensions.get("screen").width;
 function WorldMapScreen(props) {
   return (
-    <BackgroundScreen>
+    <Screen>
       <ScrollView>
         <ScrollView
           style={styles.scrollContainer}
           horizontal={true}
-          contentOffset={{ x: screenWidth / 2, y: 0 }}
+          contentOffset={
+            screenWidth < 500 ? { x: screenWidth / 2, y: 0 } : undefined
+          }
         >
           <View style={styles.worldContainer}>
             <WorldMap />
           </View>
         </ScrollView>
       </ScrollView>
-    </BackgroundScreen>
+    </Screen>
   );
 }
 

@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Image } from "react-native";
-import BackgroundScreen from "../components/BackgroundScreen";
 import { Select } from "native-base";
 import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
-import WorldMap from "../components/WorldMap";
 import AppText from "../components/AppText";
 import getFlag from "../utility/getFlag";
 import lessonData from "../lessons/lessonData";
 import colors from "../config/colors";
-import { moderateScale } from "../utility/scaler";
+import { moderateScale, scale } from "../utility/scaler";
 import Backdrop from "../components/Backdrop";
+import Screen from "../components/Screen";
+
 function SettingsScreen(props) {
   const { country, setCountry } = useContext(AuthContext);
 
@@ -55,13 +55,16 @@ function SettingsScreen(props) {
     }
 
     return (
-      <BackgroundScreen>
-        <View style={styles.container}>
-          <Backdrop color={colors.grey} style={{ margin: 30 }}>
-            <View style={styles.countryNameContainer}>
-              <AppText style={styles.countryName}>{countryName}</AppText>
-              <Image source={image} style={styles.image} />
-            </View>
+      <Screen>
+        <ScrollView style={styles.container}>
+          <View style={styles.countryNameContainer}>
+            <AppText style={styles.countryName}>{countryName}</AppText>
+            <Image source={image} style={styles.image} />
+          </View>
+          <Backdrop
+            color={colors.primary}
+            style={{ marginLeft: scale(20), marginTop: 30 }}
+          >
             <View style={styles.lessonsCompletedContainer}>
               <AppText style={styles.itemHeader}>Lesson progress:</AppText>
               <AppText style={styles.itemHeader}>
@@ -72,25 +75,27 @@ function SettingsScreen(props) {
           </Backdrop>
           <View style={styles.selectContainer}>
             <AppText style={styles.itemHeader}>Select course</AppText>
-            <Select
-              selectedValue={country}
-              minWidth="200"
-              placeholder="Choose Country"
-              _selectedItem={{
-                bg: colors.primary,
-              }}
-              mt={1}
-              onValueChange={(itemValue) => {
-                setCountry(itemValue);
-                cache.store("country", itemValue);
-              }}
-            >
-              <Select.Item label="Italy" value="it" />
-              <Select.Item label="Mexico" value="es" />
-            </Select>
+            <Backdrop color={colors.primary} style={{ flex: 1, width: 280 }}>
+              <Select
+                selectedValue={country}
+                placeholder="Choose Country"
+                _selectedItem={{
+                  bg: colors.primary,
+                }}
+                style={{ fontSize: 18 }}
+                mt={1}
+                onValueChange={(itemValue) => {
+                  setCountry(itemValue);
+                  cache.store("country", itemValue);
+                }}
+              >
+                <Select.Item label="Italy" value="it" />
+                <Select.Item label="Mexico" value="es" />
+              </Select>
+            </Backdrop>
           </View>
-        </View>
-      </BackgroundScreen>
+        </ScrollView>
+      </Screen>
     );
   }
 }
@@ -99,12 +104,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
+    marginTop: 20,
   },
 
   selectContainer: {
     flex: 1,
-    marginTop: 100,
-    marginHorizontal: 30,
+    marginTop: 50,
+    marginHorizontal: scale(20),
     maxWidth: 400,
   },
   image: {
@@ -123,8 +129,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   countryNameContainer: {
+    marginHorizontal: scale(20),
+
     flexDirection: "row",
-    marginBottom: 20,
+    marginVertical: 20,
     alignItems: "center",
   },
 });

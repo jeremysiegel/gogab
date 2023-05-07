@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 
 import AppText from "../../components/AppText";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
@@ -12,11 +12,14 @@ import Icon from "../../components/Icon";
 import colors from "../../config/colors";
 import AppButton from "../../components/AppButton";
 import { Audio } from "expo-av";
+import { scale } from "../../utility/scaler";
 // Creates screen to learn a new word or phrase.
 // Displays word and translation.
 // TODO: add button to replay phrase
 
 function NewPhraseScreen({ route, navigation }) {
+  const { width } = Dimensions.get("screen");
+  console.log(width);
   const data = getExerciseData.getExerciseData(route.params);
   const instruction = instructionText.say;
 
@@ -89,6 +92,8 @@ function NewPhraseScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    maxWidth: 600,
+    alignSelf: "center",
   },
   replayContainer: {
     alignSelf: "center",
@@ -110,13 +115,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   phraseContainer: {
-    marginTop: 22,
+    marginTop: scale(22),
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    marginHorizontal: 30,
   },
 });
 

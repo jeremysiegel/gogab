@@ -303,6 +303,7 @@ const WorldMap = (props) => {
         </Svg>
       </View>
       <FlatList
+        scrollEnabled={false}
         data={countriesData}
         contentContainerStyle={styles.buttonList}
         numColumns={4}
@@ -365,7 +366,7 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.red,
     // borderRadius: 50,
     padding: 20,
-    marginLeft: 15,
+    marginLeft: 35,
   },
   worldBackground: {
     //flex: 1,

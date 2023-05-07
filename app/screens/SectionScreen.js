@@ -13,7 +13,7 @@ import stripArray from "../utility/stripArray";
 import { FontAwesome } from "@expo/vector-icons";
 import getCardColor from "../utility/getCardColor";
 import getCompletedLessons from "../utility/getCompletedLessons";
-
+import Screen from "../components/Screen";
 // Section screen.
 
 const exerciseId = 1;
@@ -113,49 +113,47 @@ function SectionScreen({ navigation, route }) {
     );
 
     return (
-      <View style={styles.container}>
-        <FlatList
-          ref={flatListRef}
-          ListHeaderComponent={header}
-          scrollEnabled={true}
-          data={sectionLessons}
-          keyExtractor={(item) => item.lessonId}
-          renderItem={renderItems}
-          numColumns={1}
-          onLayout={() => {
-            if (continuing) {
-              try {
-                flatListRef.current?.scrollToIndex({
-                  index: nextLessonIndex,
-                  animated: false,
-                });
-              } catch (error) {
-                console.log(error);
+      <Screen>
+        <View>
+          <FlatList
+            ref={flatListRef}
+            ListHeaderComponent={header}
+            scrollEnabled={true}
+            data={sectionLessons}
+            keyExtractor={(item) => item.lessonId}
+            renderItem={renderItems}
+            numColumns={1}
+            onLayout={() => {
+              if (continuing) {
+                try {
+                  flatListRef.current?.scrollToIndex({
+                    index: nextLessonIndex,
+                    animated: false,
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
               }
-            }
-          }}
-          // columnWrapperStyle={styles.listContainer}
-        />
-      </View>
+            }}
+            // columnWrapperStyle={styles.listContainer}
+          />
+        </View>
+      </Screen>
     );
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    paddingLeft: 30,
-  },
-
   header: {
     fontSize: moderateScale(40),
     color: colors.darkText,
     marginLeft: scale(10),
     marginBottom: 30,
-    marginTop: 40,
+    marginTop: Platform.OS === "ios" ? 40 : 0,
+    marginLeft: moderateScale(30),
   },
   cardContainer: {
-    paddingLeft: 20,
+    alignItems: "center",
+    margin: 20,
   },
 });
 

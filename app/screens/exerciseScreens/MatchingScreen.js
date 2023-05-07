@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { View } from "react-native";
 import ExerciseScreen from "../../components/exerciseScreen/ExerciseScreen";
 import MatchingGame from "../../components/MatchingGame";
 import getExerciseData from "../../api/getExerciseData";

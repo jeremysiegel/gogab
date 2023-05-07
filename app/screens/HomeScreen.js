@@ -1,21 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, SectionList, Pressable } from "react-native";
+import {
+  View,
+  StyleSheet,
+  SectionList,
+  Dimensions,
+  Platform,
+} from "react-native";
 import NavigationButton from "../components/NavigationButton";
 import sections from "../lessons/sections";
 import LessonContext from "../navigation/lessonContext";
-import BackgroundScreen from "../components/BackgroundScreen";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { moderateScale, scale } from "../utility/scaler";
+import { moderateScale } from "../utility/scaler";
 import getCardColor from "../utility/getCardColor";
 import fonts from "../config/fonts";
 import getCompletedLessons from "../utility/getCompletedLessons";
 import AuthContext from "../navigation/authContext";
 import checkArrayIncludesAll from "../utility/checkArrayIncludesAll";
+import Screen from "../components/Screen";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
+  const { width } = Dimensions.get("screen");
   const [completedLessons, setCompletedLessons] = useState();
   const { setSection, setLevel } = useContext(LessonContext);
   const { country } = useContext(AuthContext);
@@ -74,7 +81,6 @@ function HomeScreen({ navigation }) {
           onPress={() => {
             setSection(item.sectionId);
             setLevel(item.level);
-
             navigation.push("section", {
               sectionData: item,
             });
@@ -89,31 +95,28 @@ function HomeScreen({ navigation }) {
   );
   if (completedLessons) {
     return (
-      <BackgroundScreen>
-        <View style={styles.container}>
+      <Screen>
+        <View>
           <SectionList
             scrollEnabled={true}
             sections={sections}
             keyExtractor={(item, index) => item + index}
             renderItem={renderItems}
             stickySectionHeadersEnabled={false}
-            numColumns={1}
             renderSectionHeader={renderSectionHeader}
             ListFooterComponent={<View />}
             ListFooterComponentStyle={styles.footer}
           />
         </View>
-      </BackgroundScreen>
+      </Screen>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 30,
-  },
   cardContainer: {
-    paddingLeft: 20,
+    alignItems: "center",
+    margin: 20,
   },
   footer: {
     height: 100, //Makes sure last card displays above bottomTabs
@@ -121,10 +124,10 @@ const styles = StyleSheet.create({
 
   header: {
     fontSize: moderateScale(40),
-    fontFamily: fonts.main,
     color: colors.darkText,
     margin: 30,
-    marginLeft: scale(10),
+    marginTop: Platform.OS === "ios" ? 40 : 0,
+    marginLeft: moderateScale(30),
   },
 });
 

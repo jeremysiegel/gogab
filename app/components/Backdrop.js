@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-function Backdrop({ children, color, transparency = 90, style }) {
+function Backdrop({ children, color, transparency = 30, style }) {
   return (
     <View
       style={[
