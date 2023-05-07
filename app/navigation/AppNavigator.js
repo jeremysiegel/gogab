@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -47,6 +48,7 @@ export default function AppNavigator() {
           marginVertical: 2,
         },
         tabBarIconStyle: {
+          width: 40,
           //  marginBottom: 2,
         },
       }}
