@@ -13,6 +13,7 @@ import LessonNavigator from "./app/navigation/LessonNavigator";
 import useFonts from "./hooks/useFonts";
 import { LogBox } from "react-native";
 import cache from "./app/utility/cache";
+import OnboardingScreen from "./app/screens/OnboardingScreen";
 
 export default function App() {
   LogBox.ignoreLogs([
@@ -75,7 +76,8 @@ export default function App() {
         <NavigationContainer>
           <NativeBaseProvider>
             <View style={styles.container}>
-              <LessonNavigator />
+             {/*} <LessonNavigator /> {*/}
+             <OnboardingScreen/>
             </View>
           </NativeBaseProvider>
         </NavigationContainer>
