@@ -2,7 +2,7 @@ import stripArray from "./stripArray";
 
 export default function phraseCoder(phrases, dictionaryCommon) {
   phrases.forEach((phrase) => {
-    const wordArray = phrase.phraseTranslation.order.split(" ");
+    const wordArray = phrase.order.split(" ");
     const orderByWordId = [];
     const strippedWordArray = stripArray(wordArray);
     strippedWordArray.forEach((word) => {

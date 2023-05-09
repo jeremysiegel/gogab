@@ -2,519 +2,783 @@
 
 export default dictionary = {
   a: {
+    wordIdNum: "W1",
     translation: "un",
     pronunciation: "oon",
+    audio: require("../assets/audio/es/W1.mp3"),
   },
   a_little: {
+    wordIdNum: "W2",
     translation: "un poco",
     pronunciation: "oon poko",
+    audio: require("../assets/audio/es/W2.mp3"),
   },
   airport: {
+    wordIdNum: "W3",
     translation: "aeropuerto",
     pronunciation: "air-o-pwer-tow",
+    audio: require("../assets/audio/es/W3.mp3"),
   },
   all: {
+    wordIdNum: "W4",
     translation: "todo",
     pronunciation: "tow-doe",
+    audio: require("../assets/audio/es/W4.mp3"),
   },
   and: {
+    wordIdNum: "W5",
     translation: "y",
     pronunciation: "ee",
+    audio: require("../assets/audio/es/W5.mp3"),
   },
   are_you: {
+    wordIdNum: "W6",
     translation: "eres",
     pronunciation: "airez",
-  },
-  bakery: {
-    translation: "panadería",
-    pronunciation: "pahn-a-dare-ee-ah",
-  },
-  bathroom: {
-    translation: "baño",
-    pronunciation: "banyo",
-  },
-  beans: {
-    translation: "frijoles",
-    pronunciation: "free-hole-ez",
-  },
-  beef: {
-    translation: "carne de res",
-    pronunciation: "karn-ay deh rez",
-  },
-  beer: {
-    translation: "cerveza",
-    pronunciation: "servayzah",
-  },
-  bon_appetit: {
-    translation: "Buen provecho",
-    pronunciation: "bwen pro--vay-cho",
-  },
-  bread: {
-    translation: "pan",
-    pronunciation: "pahn",
-  },
-  bus: {
-    translation: "autobús",
-    pronunciation: "awtoe-boos",
-  },
-  change: {
-    translation: "cambiar",
-    pronunciation: "kahm-bee-ar",
-  },
-  check: {
-    translation: "la quenta",
-    pronunciation: "la kwentah",
-  },
-  cheers: {
-    translation: "salud",
-    pronunciation: "salood",
-  },
-  cheese: {
-    translation: "queso",
-    pronunciation: "kayso",
-  },
-  chicken: {
-    translation: "pollo",
-    pronunciation: "poy-yo",
-  },
-  closed: {
-    translation: "cerrado",
-    pronunciation: "sehradoe",
-  },
-  coffee: {
-    translation: "café",
-    pronunciation: "kafay",
-  },
-  cold: {
-    translation: "frío",
-    pronunciation: "free-oh",
-  },
-  cost: {
-    translation: "quanto",
-    pronunciation: "kwantoe",
-  },
-  day: {
-    translation: "día",
-    pronunciation: "dee-ah",
-  },
-  downtown: {
-    translation: "centro",
-    pronunciation: "sentroh",
-  },
-  drinks: {
-    translation: "bebidas",
-    pronunciation: "b-b-dahs",
-  },
-  eggs: {
-    translation: "huevos",
-    pronunciation: "wayvos",
-  },
-  eight: {
-    translation: "ocho",
-    pronunciation: "ohcho",
-  },
-  eleven: {
-    translation: "once",
-    pronunciation: "ownsay",
-  },
-  English: {
-    translation: "Inglés",
-    pronunciation: "eenglehs",
-  },
-  entrance: {
-    translation: "entrada",
-    pronunciation: "entrah-da",
-  },
-  excuse_me: {
-    translation: "perdón",
-    pronunciation: "pear-done",
-  },
-  excuse_me2: {
-    translation: "con permiso",
-    pronunciation: "con pearmisso",
-  },
-  exit: {
-    translation: "salida",
-    pronunciation: "sal-ee-dah",
-  },
-  fifty: {
-    translation: "cincuenta",
-    pronunciation: "seen-kwen-tah",
-  },
-  fifteen: {
-    translation: "quince",
-    pronunciation: "keensay",
-  },
-  first: {
-    translation: "primero",
-    pronunciation: "pree-mare-oh",
-  },
-  fish: {
-    translation: "pescado",
-    pronunciation: "pehs-kah-doe",
-  },
-  five: {
-    translation: "cinco",
-    pronunciation: "seen-koh",
-  },
-  for: {
-    translation: "para",
-    pronunciation: "pahrah",
-  },
-  forty_five: {
-    translation: "Cuarenta y cinco",
-    pronunciation: "kwahrehntah ee seen-koh",
-  },
-  four: {
-    translation: "cuatro",
-    pronunciation: "kwah-troe",
-  },
-  free: {
-    translation: "gratis",
-    pronunciation: "grahteess",
-  },
-  good: {
-    translation: "bien",
-    pronunciation: "bee-en",
-  },
-  good_afternoon: {
-    translation: "buenas tardes",
-    pronunciation: "bwenass tahrdays",
-  },
-  good_morning: {
-    translation: "buenos días",
-    pronunciation: "bwenose dee-as",
-  },
-  good_night: {
-    translation: "buenas noches",
-    pronunciation: "bweanass no-chez",
-  },
-  goodbye: {
-    translation: "adiós",
-    pronunciation: "ah-dee-ose",
-  },
-  half: {
-    translation: "medio",
-    pronunciation: "mee-dee-oh",
-  },
-  hello: {
-    translation: "hola",
-    pronunciation: "owe-la",
-  },
-  here: {
-    translation: "aquí",
-    pronunciation: "ah-key",
-  },
-  hot: {
-    translation: "caliente",
-    pronunciation: "cahlee-ehntay",
-  },
-  hotel: {
-    translation: "hotel",
-    pronunciation: "owetell",
-  },
-  hour: {
-    translation: "hora",
-    pronunciation: "or-ah",
-  },
-  how_are_you: {
-    translation: "cómo estás",
-    pronunciation: "komo ess-tah",
-  },
-  how_much: {
-    translation: "cuánto",
-    pronunciation: "kwantoe",
-  },
-  i_need: {
-    translation: "necesito",
-    pronunciation: "ness-ee-seetoe",
-  },
-  i_understand: {
-    translation: "entiendo",
-    pronunciation: "ehn-tea-en-doe",
-  },
-  is: {
-    translation: "esta",
-    pronunciation: "esstah",
-  },
-  is_it: {
-    translation: "lo es",
-    pronunciation: "low ess",
-  },
-  is_there: {
-    translation: "hay",
-    pronunciation: "hey",
-  },
-  large: {
-    translation: "grande",
-    pronunciation: "grahn-day",
-  },
-  left: {
-    translation: "izquierda",
-    pronunciation: "iz-key-air-da",
-  },
-  lets_go: {
-    translation: "vamos",
-    pronunciation: "vahmos",
-  },
-  market: {
-    translation: "mercado",
-    pronunciation: "mehr-kahdoe",
-  },
-  meat: {
-    translation: "carne",
-    pronunciation: "karn-ay",
-  },
-  menu: {
-    translation: "menú",
-    pronunciation: "men-oo",
-  },
-  milk: {
-    translation: "leche",
-    pronunciation: "le-chay",
-  },
-  minutes: {
-    translation: "minutos",
-    pronunciation: "mee-noo-toes",
-  },
-  mushrooms: {
-    translation: "hongos",
-    pronunciation: "hongos",
-  },
-  my: {
-    translation: "mi",
-    pronunciation: "mee",
-  },
-  name: {
-    translation: "nombre",
-    pronunciation: "nome-bray",
-  },
-  next: {
-    translation: "próximo",
-    pronunciation: "prox-ee-mo",
-  },
-  night: {
-    translation: "noche",
-    pronunciation: "no-chay",
-  },
-  nine: {
-    translation: "nueve",
-    pronunciation: "noo-eh-vay",
-  },
-  no: {
-    translation: "no",
-    pronunciation: "no",
-  },
-  one: {
-    translation: "uno",
-    pronunciation: "oono",
-  },
-  open: {
-    translation: "abierto",
-    pronunciation: "ah-bee-airtoe",
-  },
-  pharmacy: {
-    translation: "farmacia",
-    pronunciation: "farma-see-ah",
-  },
-  please: {
-    translation: "por favor",
-    pronunciation: "pour fav-or",
-  },
-  pork: {
-    translation: "cerdo",
-    pronunciation: "sehrdoe",
-  },
-  receipt: {
-    translation: "recibo",
-    pronunciation: "re-see-bow",
-  },
-  recommend: {
-    translation: "recomendar",
-    pronunciation: "rek-oh-mendar",
-  },
-  reservation: {
-    translation: "reserva",
-    pronunciation: "reeservah",
-  },
-  return: {
-    translation: "regreso",
-    pronunciation: "re-gresso",
-  },
-  right: {
-    translation: "derecho",
-    pronunciation: "dehrecho",
-  },
-  salt: {
-    translation: "sal",
-    pronunciation: "sal",
-  },
-  second: {
-    translation: "segundo",
-    pronunciation: "seh-goon-doe",
-  },
-  seven: {
-    translation: "siete",
-    pronunciation: "see-eh-tay",
-  },
-  six: {
-    translation: "seis",
-    pronunciation: "say-ss",
-  },
-  small: {
-    translation: "pequeño",
-    pronunciation: "p-cane-yo",
-  },
-  sorry: {
-    translation: "lo siento",
-    pronunciation: "low see-en-toe",
-  },
-  speak: {
-    translation: "hablar",
-    pronunciation: "ha-blarr",
-  },
-  spicy: {
-    translation: "picante",
-    pronunciation: "p-cahn-tay",
-  },
-  station: {
-    translation: "estación",
-    pronunciation: "es-tay-shion",
-  },
-  street: {
-    translation: "calle",
-    pronunciation: "kai-ay",
-  },
-  sugar: {
-    translation: "azúcar",
-    pronunciation: "ah-zoo-car",
-  },
-  taxi: {
-    translation: "taxi",
-    pronunciation: "taxi",
-  },
-  ten: {
-    translation: "diez",
-    pronunciation: "dee-ez",
-  },
-  thank_you: {
-    translation: "gracias",
-    pronunciation: "grah-see-ahs",
-  },
-  the: {
-    translation: "el",
-    pronunciation: "el",
-  },
-  thirty: {
-    translation: "treinta",
-    pronunciation: "trehn-tah",
-  },
-  this: {
-    translation: "este",
-    pronunciation: "esstay",
-  },
-  three: {
-    translation: "tres",
-    pronunciation: "trace",
-  },
-  ticket: {
-    translation: "boleto",
-    pronunciation: "bowleto",
-  },
-  time: {
-    translation: "tiempo",
-    pronunciation: "tea-em-po",
-  },
-  toilet_paper: {
-    translation: "papel higiénico",
-    pronunciation: "pah-pel hee-jen-eeko",
-  },
-  train: {
-    translation: "tren",
-    pronunciation: "tren",
-  },
-  twelve: {
-    translation: "doce",
-    pronunciation: "doe-say",
-  },
-  twenty: {
-    translation: "veinte",
-    pronunciation: "bee-en-tah",
-  },
-  two: {
-    translation: "dos",
-    pronunciation: "dose",
-  },
-  very: {
-    translation: "muy",
-    pronunciation: "muye",
-  },
-  water: {
-    translation: "agua",
-    pronunciation: "ahgwah",
-  },
-  what: {
-    translation: "qué",
-    pronunciation: "kay",
-  },
-  where: {
-    translation: "dónde",
-    pronunciation: "d-own-day",
-  },
-  where_to: {
-    translation: "a donde",
-    pronunciation: "a d-own-day",
-  },
-  wine: {
-    translation: "vino",
-    pronunciation: "vee-no",
-  },
-  with: {
-    translation: "con",
-    pronunciation: "con",
-  },
-  without: {
-    translation: "sin",
-    pronunciation: "seen",
-  },
-  yes: {
-    translation: "sí",
-    pronunciation: "see",
-  },
-  you: {
-    translation: "tú",
-    pronunciation: "too",
-  },
-  youre_welcome: {
-    translation: "de nada",
-    pronunciation: "de nahdah",
-  },
-  twenty_five: {
-    translation: "veinticinco",
-    pronunciation: "benty-seenko",
-  },
-  does_this: {
-    translation: "este",
-    pronunciation: "estay",
-  },
-  tomatos: {
-    translation: "tomate",
-    pronunciation: "tow-matay",
+    audio: require("../assets/audio/es/W6.mp3"),
   },
   at_the: {
+    wordIdNum: "W7",
     translation: "en el",
     pronunciation: "en el",
+    audio: require("../assets/audio/es/W7.mp3"),
   },
-  supermarket: {
-    translation: "supermercado",
-    pronunciation: "supermehrcado",
+  bakery: {
+    wordIdNum: "W8",
+    translation: "panadería",
+    pronunciation: "pahn-a-dare-ee-ah",
+    audio: require("../assets/audio/es/W8.mp3"),
+  },
+  bathroom: {
+    wordIdNum: "W9",
+    translation: "baño",
+    pronunciation: "banyo",
+    audio: require("../assets/audio/es/W9.mp3"),
+  },
+  beans: {
+    wordIdNum: "W10",
+    translation: "frijoles",
+    pronunciation: "free-hole-ez",
+    audio: require("../assets/audio/es/W10.mp3"),
+  },
+  beef: {
+    wordIdNum: "W11",
+    translation: "carne de res",
+    pronunciation: "karn-ay deh rez",
+    audio: require("../assets/audio/es/W11.mp3"),
+  },
+  beer: {
+    wordIdNum: "W12",
+    translation: "cerveza",
+    pronunciation: "servayzah",
+    audio: require("../assets/audio/es/W12.mp3"),
+  },
+  bon_appetit: {
+    wordIdNum: "W13",
+    translation: "buen provecho",
+    pronunciation: "bwen pro--vay-cho",
+    audio: require("../assets/audio/es/W13.mp3"),
+  },
+  bread: {
+    wordIdNum: "W14",
+    translation: "pan",
+    pronunciation: "pahn",
+    audio: require("../assets/audio/es/W14.mp3"),
+  },
+  bus: {
+    wordIdNum: "W15",
+    translation: "autobús",
+    pronunciation: "awtoe-boos",
+    audio: require("../assets/audio/es/W15.mp3"),
+  },
+  change: {
+    wordIdNum: "W16",
+    translation: "cambiar",
+    pronunciation: "kahm-bee-ar",
+    audio: require("../assets/audio/es/W16.mp3"),
+  },
+  check: {
+    wordIdNum: "W17",
+    translation: "la quenta",
+    pronunciation: "la kwentah",
+    audio: require("../assets/audio/es/W17.mp3"),
+  },
+  cheers: {
+    wordIdNum: "W18",
+    translation: "salud",
+    pronunciation: "salood",
+    audio: require("../assets/audio/es/W18.mp3"),
+  },
+  cheese: {
+    wordIdNum: "W19",
+    translation: "queso",
+    pronunciation: "kayso",
+    audio: require("../assets/audio/es/W19.mp3"),
+  },
+  chicken: {
+    wordIdNum: "W20",
+    translation: "pollo",
+    pronunciation: "poy-yo",
+    audio: require("../assets/audio/es/W20.mp3"),
+  },
+  closed: {
+    wordIdNum: "W21",
+    translation: "cerrado",
+    pronunciation: "sehradoe",
+    audio: require("../assets/audio/es/W21.mp3"),
+  },
+  coffee: {
+    wordIdNum: "W22",
+    translation: "café",
+    pronunciation: "kafay",
+    audio: require("../assets/audio/es/W22.mp3"),
+  },
+  cold: {
+    wordIdNum: "W23",
+    translation: "frío",
+    pronunciation: "free-oh",
+    audio: require("../assets/audio/es/W23.mp3"),
+  },
+  cost: {
+    wordIdNum: "W24",
+    translation: "quanto",
+    pronunciation: "kwantoe",
+    audio: require("../assets/audio/es/W24.mp3"),
+  },
+  day: {
+    wordIdNum: "W25",
+    translation: "día",
+    pronunciation: "dee-ah",
+    audio: require("../assets/audio/es/W25.mp3"),
   },
   do_you: {
+    wordIdNum: "W26",
     translation: "tú",
     pronunciation: "too",
+    audio: require("../assets/audio/es/W26.mp3"),
   },
-  need: {
+  does_this: {
+    wordIdNum: "W27",
+    translation: "este",
+    pronunciation: "estay",
+    audio: require("../assets/audio/es/W27.mp3"),
+  },
+  downtown: {
+    wordIdNum: "W28",
+    translation: "centro",
+    pronunciation: "sentroh",
+    audio: require("../assets/audio/es/W28.mp3"),
+  },
+  drinks: {
+    wordIdNum: "W29",
+    translation: "bebidas",
+    pronunciation: "b-b-dahs",
+    audio: require("../assets/audio/es/W29.mp3"),
+  },
+  eggs: {
+    wordIdNum: "W30",
+    translation: "huevos",
+    pronunciation: "wayvos",
+    audio: require("../assets/audio/es/W30.mp3"),
+  },
+  eight: {
+    wordIdNum: "W31",
+    translation: "ocho",
+    pronunciation: "ohcho",
+    audio: require("../assets/audio/es/W31.mp3"),
+  },
+  eleven: {
+    wordIdNum: "W32",
+    translation: "once",
+    pronunciation: "ownsay",
+    audio: require("../assets/audio/es/W32.mp3"),
+  },
+  english: {
+    wordIdNum: "W33",
+    translation: "inglés",
+    pronunciation: "eenglehs",
+    audio: require("../assets/audio/es/W33.mp3"),
+  },
+  entrance: {
+    wordIdNum: "W34",
+    translation: "entrada",
+    pronunciation: "entrah-da",
+    audio: require("../assets/audio/es/W34.mp3"),
+  },
+  excuse_me: {
+    wordIdNum: "W35",
+    translation: "perdón",
+    pronunciation: "pear-done",
+    audio: require("../assets/audio/es/W35.mp3"),
+  },
+  excuse_me2: {
+    wordIdNum: "W36",
+    translation: "con permiso",
+    pronunciation: "con pearmisso",
+    audio: require("../assets/audio/es/W36.mp3"),
+  },
+  exit: {
+    wordIdNum: "W37",
+    translation: "salida",
+    pronunciation: "sal-ee-dah",
+    audio: require("../assets/audio/es/W37.mp3"),
+  },
+  fifteen: {
+    wordIdNum: "W38",
+    translation: "quince",
+    pronunciation: "keensay",
+    audio: require("../assets/audio/es/W38.mp3"),
+  },
+  fifty: {
+    wordIdNum: "W39",
+    translation: "cincuenta",
+    pronunciation: "seen-kwen-tah",
+    audio: require("../assets/audio/es/W39.mp3"),
+  },
+  first: {
+    wordIdNum: "W40",
+    translation: "primero",
+    pronunciation: "pree-mare-oh",
+    audio: require("../assets/audio/es/W40.mp3"),
+  },
+  fish: {
+    wordIdNum: "W41",
+    translation: "pescado",
+    pronunciation: "pehs-kah-doe",
+    audio: require("../assets/audio/es/W41.mp3"),
+  },
+  five: {
+    wordIdNum: "W42",
+    translation: "cinco",
+    pronunciation: "seen-koh",
+    audio: require("../assets/audio/es/W42.mp3"),
+  },
+  for: {
+    wordIdNum: "W43",
+    translation: "para",
+    pronunciation: "pahrah",
+    audio: require("../assets/audio/es/W43.mp3"),
+  },
+  forty_five: {
+    wordIdNum: "W44",
+    translation: "cuarenta y cinco",
+    pronunciation: "kwahrehntah ee seen-koh",
+    audio: require("../assets/audio/es/W44.mp3"),
+  },
+  four: {
+    wordIdNum: "W45",
+    translation: "cuatro",
+    pronunciation: "kwah-troe",
+    audio: require("../assets/audio/es/W45.mp3"),
+  },
+  free: {
+    wordIdNum: "W46",
+    translation: "gratis",
+    pronunciation: "grahteess",
+    audio: require("../assets/audio/es/W46.mp3"),
+  },
+  good: {
+    wordIdNum: "W47",
+    translation: "bien",
+    pronunciation: "bee-en",
+    audio: require("../assets/audio/es/W47.mp3"),
+  },
+  good_afternoon: {
+    wordIdNum: "W48",
+    translation: "buenas tardes",
+    pronunciation: "bwenass tahrdays",
+    audio: require("../assets/audio/es/W48.mp3"),
+  },
+  good_morning: {
+    wordIdNum: "W49",
+    translation: "buenos días",
+    pronunciation: "bwenose dee-as",
+    audio: require("../assets/audio/es/W49.mp3"),
+  },
+  good_night: {
+    wordIdNum: "W50",
+    translation: "buenas noches",
+    pronunciation: "bweanass no-chez",
+    audio: require("../assets/audio/es/W50.mp3"),
+  },
+  goodbye: {
+    wordIdNum: "W51",
+    translation: "adiós",
+    pronunciation: "ah-dee-ose",
+    audio: require("../assets/audio/es/W51.mp3"),
+  },
+  half: {
+    wordIdNum: "W52",
+    translation: "medio",
+    pronunciation: "mee-dee-oh",
+    audio: require("../assets/audio/es/W52.mp3"),
+  },
+  hello: {
+    wordIdNum: "W53",
+    translation: "hola",
+    pronunciation: "owe-la",
+    audio: require("../assets/audio/es/W53.mp3"),
+  },
+  here: {
+    wordIdNum: "W54",
+    translation: "aquí",
+    pronunciation: "ah-key",
+    audio: require("../assets/audio/es/W54.mp3"),
+  },
+  hot: {
+    wordIdNum: "W55",
+    translation: "caliente",
+    pronunciation: "cahlee-ehntay",
+    audio: require("../assets/audio/es/W55.mp3"),
+  },
+  hotel: {
+    wordIdNum: "W56",
+    translation: "hotel",
+    pronunciation: "owetell",
+    audio: require("../assets/audio/es/W56.mp3"),
+  },
+  hour: {
+    wordIdNum: "W57",
+    translation: "hora",
+    pronunciation: "or-ah",
+    audio: require("../assets/audio/es/W57.mp3"),
+  },
+  how_are_you: {
+    wordIdNum: "W58",
+    translation: "cómo estás",
+    pronunciation: "komo ess-tah",
+    audio: require("../assets/audio/es/W58.mp3"),
+  },
+  how_many: {
+    wordIdNum: "W59",
+    translation: "cuantos",
+    pronunciation: "kwantos",
+    audio: require("../assets/audio/es/W59.mp3"),
+  },
+  how_much: {
+    wordIdNum: "W60",
+    translation: "cuánto",
+    pronunciation: "kwantoe",
+    audio: require("../assets/audio/es/W60.mp3"),
+  },
+  i_need: {
+    wordIdNum: "W61",
     translation: "necesito",
     pronunciation: "ness-ee-seetoe",
+    audio: require("../assets/audio/es/W61.mp3"),
+  },
+  i_understand: {
+    wordIdNum: "W62",
+    translation: "entiendo",
+    pronunciation: "ehn-tea-en-doe",
+    audio: require("../assets/audio/es/W62.mp3"),
+  },
+  is: {
+    wordIdNum: "W63",
+    translation: "esta",
+    pronunciation: "esstah",
+    audio: require("../assets/audio/es/W63.mp3"),
+  },
+  is_it: {
+    wordIdNum: "W64",
+    translation: "lo es",
+    pronunciation: "low ess",
+    audio: require("../assets/audio/es/W64.mp3"),
+  },
+  is_there: {
+    wordIdNum: "W65",
+    translation: "hay",
+    pronunciation: "hey",
+    audio: require("../assets/audio/es/W65.mp3"),
+  },
+  large: {
+    wordIdNum: "W66",
+    translation: "grande",
+    pronunciation: "grahn-day",
+    audio: require("../assets/audio/es/W66.mp3"),
+  },
+  left: {
+    wordIdNum: "W67",
+    translation: "izquierda",
+    pronunciation: "iz-key-air-da",
+    audio: require("../assets/audio/es/W67.mp3"),
+  },
+  lets_go: {
+    wordIdNum: "W68",
+    translation: "vamos",
+    pronunciation: "vahmos",
+    audio: require("../assets/audio/es/W68.mp3"),
+  },
+  market: {
+    wordIdNum: "W69",
+    translation: "mercado",
+    pronunciation: "mehr-kahdoe",
+    audio: require("../assets/audio/es/W69.mp3"),
+  },
+  meat: {
+    wordIdNum: "W70",
+    translation: "carne",
+    pronunciation: "karn-ay",
+    audio: require("../assets/audio/es/W70.mp3"),
+  },
+  menu: {
+    wordIdNum: "W71",
+    translation: "menú",
+    pronunciation: "men-oo",
+    audio: require("../assets/audio/es/W71.mp3"),
+  },
+  milk: {
+    wordIdNum: "W72",
+    translation: "leche",
+    pronunciation: "le-chay",
+    audio: require("../assets/audio/es/W72.mp3"),
+  },
+  minutes: {
+    wordIdNum: "W73",
+    translation: "minutos",
+    pronunciation: "mee-noo-toes",
+    audio: require("../assets/audio/es/W73.mp3"),
+  },
+  mushrooms: {
+    wordIdNum: "W74",
+    translation: "hongos",
+    pronunciation: "hongos",
+    audio: require("../assets/audio/es/W74.mp3"),
+  },
+  my: {
+    wordIdNum: "W75",
+    translation: "mi",
+    pronunciation: "mee",
+    audio: require("../assets/audio/es/W75.mp3"),
+  },
+  name: {
+    wordIdNum: "W76",
+    translation: "nombre",
+    pronunciation: "nome-bray",
+    audio: require("../assets/audio/es/W76.mp3"),
+  },
+  need: {
+    wordIdNum: "W77",
+    translation: "necesito",
+    pronunciation: "ness-ee-seetoe",
+    audio: require("../assets/audio/es/W77.mp3"),
+  },
+  next: {
+    wordIdNum: "W78",
+    translation: "próximo",
+    pronunciation: "prox-ee-mo",
+    audio: require("../assets/audio/es/W78.mp3"),
+  },
+  night: {
+    wordIdNum: "W79",
+    translation: "noche",
+    pronunciation: "no-chay",
+    audio: require("../assets/audio/es/W79.mp3"),
+  },
+  nine: {
+    wordIdNum: "W80",
+    translation: "nueve",
+    pronunciation: "noo-eh-vay",
+    audio: require("../assets/audio/es/W80.mp3"),
+  },
+  no: {
+    wordIdNum: "W81",
+    translation: "no",
+    pronunciation: "no",
+    audio: require("../assets/audio/es/W81.mp3"),
+  },
+  one: {
+    wordIdNum: "W82",
+    translation: "uno",
+    pronunciation: "oono",
+    audio: require("../assets/audio/es/W82.mp3"),
+  },
+  open: {
+    wordIdNum: "W83",
+    translation: "abierto",
+    pronunciation: "ah-bee-airtoe",
+    audio: require("../assets/audio/es/W83.mp3"),
+  },
+  pharmacy: {
+    wordIdNum: "W84",
+    translation: "farmacia",
+    pronunciation: "farma-see-ah",
+    audio: require("../assets/audio/es/W84.mp3"),
+  },
+  please: {
+    wordIdNum: "W85",
+    translation: "por favor",
+    pronunciation: "pour fav-or",
+    audio: require("../assets/audio/es/W85.mp3"),
+  },
+  pork: {
+    wordIdNum: "W86",
+    translation: "cerdo",
+    pronunciation: "sehrdoe",
+    audio: require("../assets/audio/es/W86.mp3"),
+  },
+  receipt: {
+    wordIdNum: "W87",
+    translation: "recibo",
+    pronunciation: "re-see-bow",
+    audio: require("../assets/audio/es/W87.mp3"),
+  },
+  recommend: {
+    wordIdNum: "W88",
+    translation: "recomendar",
+    pronunciation: "rek-oh-mendar",
+    audio: require("../assets/audio/es/W88.mp3"),
+  },
+  reservation: {
+    wordIdNum: "W89",
+    translation: "reserva",
+    pronunciation: "reeservah",
+    audio: require("../assets/audio/es/W89.mp3"),
+  },
+  return: {
+    wordIdNum: "W90",
+    translation: "regreso",
+    pronunciation: "re-gresso",
+    audio: require("../assets/audio/es/W90.mp3"),
+  },
+  right: {
+    wordIdNum: "W91",
+    translation: "derecho",
+    pronunciation: "dehrecho",
+    audio: require("../assets/audio/es/W91.mp3"),
+  },
+  salt: {
+    wordIdNum: "W92",
+    translation: "sal",
+    pronunciation: "sal",
+    audio: require("../assets/audio/es/W92.mp3"),
+  },
+  second: {
+    wordIdNum: "W93",
+    translation: "segundo",
+    pronunciation: "seh-goon-doe",
+    audio: require("../assets/audio/es/W93.mp3"),
+  },
+  seven: {
+    wordIdNum: "W94",
+    translation: "siete",
+    pronunciation: "see-eh-tay",
+    audio: require("../assets/audio/es/W94.mp3"),
+  },
+  six: {
+    wordIdNum: "W95",
+    translation: "seis",
+    pronunciation: "say-ss",
+    audio: require("../assets/audio/es/W95.mp3"),
+  },
+  small: {
+    wordIdNum: "W96",
+    translation: "pequeño",
+    pronunciation: "p-cane-yo",
+    audio: require("../assets/audio/es/W96.mp3"),
+  },
+  sorry: {
+    wordIdNum: "W97",
+    translation: "lo siento",
+    pronunciation: "low see-en-toe",
+    audio: require("../assets/audio/es/W97.mp3"),
+  },
+  speak: {
+    wordIdNum: "W98",
+    translation: "hablar",
+    pronunciation: "ha-blarr",
+    audio: require("../assets/audio/es/W98.mp3"),
+  },
+  spicy: {
+    wordIdNum: "W99",
+    translation: "picante",
+    pronunciation: "p-cahn-tay",
+    audio: require("../assets/audio/es/W99.mp3"),
+  },
+  station: {
+    wordIdNum: "W100",
+    translation: "estación",
+    pronunciation: "es-tay-shion",
+    audio: require("../assets/audio/es/W100.mp3"),
+  },
+  street: {
+    wordIdNum: "W101",
+    translation: "calle",
+    pronunciation: "kai-ay",
+    audio: require("../assets/audio/es/W101.mp3"),
+  },
+  sugar: {
+    wordIdNum: "W102",
+    translation: "azúcar",
+    pronunciation: "ah-zoo-car",
+    audio: require("../assets/audio/es/W102.mp3"),
+  },
+  supermarket: {
+    wordIdNum: "W103",
+    translation: "supermercado",
+    pronunciation: "supermehrcado",
+    audio: require("../assets/audio/es/W103.mp3"),
+  },
+  taxi: {
+    wordIdNum: "W104",
+    translation: "taxi",
+    pronunciation: "taxi",
+    audio: require("../assets/audio/es/W104.mp3"),
+  },
+  ten: {
+    wordIdNum: "W105",
+    translation: "diez",
+    pronunciation: "dee-ez",
+    audio: require("../assets/audio/es/W105.mp3"),
+  },
+  thank_you: {
+    wordIdNum: "W106",
+    translation: "gracias",
+    pronunciation: "grah-see-ahs",
+    audio: require("../assets/audio/es/W106.mp3"),
+  },
+  the: {
+    wordIdNum: "W107",
+    translation: "el",
+    pronunciation: "el",
+    audio: require("../assets/audio/es/W107.mp3"),
+  },
+  thirty: {
+    wordIdNum: "W108",
+    translation: "treinta",
+    pronunciation: "trehn-tah",
+    audio: require("../assets/audio/es/W108.mp3"),
+  },
+  this: {
+    wordIdNum: "W109",
+    translation: "este",
+    pronunciation: "esstay",
+    audio: require("../assets/audio/es/W109.mp3"),
+  },
+  three: {
+    wordIdNum: "W110",
+    translation: "tres",
+    pronunciation: "trace",
+    audio: require("../assets/audio/es/W110.mp3"),
+  },
+  ticket: {
+    wordIdNum: "W111",
+    translation: "boleto",
+    pronunciation: "bowleto",
+    audio: require("../assets/audio/es/W111.mp3"),
+  },
+  time: {
+    wordIdNum: "W112",
+    translation: "tiempo",
+    pronunciation: "tea-em-po",
+    audio: require("../assets/audio/es/W112.mp3"),
+  },
+  toilet_paper: {
+    wordIdNum: "W113",
+    translation: "papel higiénico",
+    pronunciation: "pah-pel hee-jen-eeko",
+    audio: require("../assets/audio/es/W113.mp3"),
+  },
+  tomatos: {
+    wordIdNum: "W114",
+    translation: "tomate",
+    pronunciation: "tow-matay",
+    audio: require("../assets/audio/es/W114.mp3"),
+  },
+  train: {
+    wordIdNum: "W115",
+    translation: "tren",
+    pronunciation: "tren",
+    audio: require("../assets/audio/es/W115.mp3"),
+  },
+  twelve: {
+    wordIdNum: "W116",
+    translation: "doce",
+    pronunciation: "doe-say",
+    audio: require("../assets/audio/es/W116.mp3"),
+  },
+  twenty: {
+    wordIdNum: "W117",
+    translation: "veinte",
+    pronunciation: "bee-en-tah",
+    audio: require("../assets/audio/es/W117.mp3"),
+  },
+  twenty_five: {
+    wordIdNum: "W118",
+    translation: "veinticinco",
+    pronunciation: "benty-seenko",
+    audio: require("../assets/audio/es/W118.mp3"),
+  },
+  two: {
+    wordIdNum: "W119",
+    translation: "dos",
+    pronunciation: "dose",
+    audio: require("../assets/audio/es/W119.mp3"),
+  },
+  very: {
+    wordIdNum: "W120",
+    translation: "muy",
+    pronunciation: "muye",
+    audio: require("../assets/audio/es/W120.mp3"),
+  },
+  water: {
+    wordIdNum: "W121",
+    translation: "agua",
+    pronunciation: "ahgwah",
+    audio: require("../assets/audio/es/W121.mp3"),
+  },
+  what: {
+    wordIdNum: "W122",
+    translation: "qué",
+    pronunciation: "kay",
+    audio: require("../assets/audio/es/W122.mp3"),
+  },
+  where: {
+    wordIdNum: "W123",
+    translation: "dónde",
+    pronunciation: "d-own-day",
+    audio: require("../assets/audio/es/W123.mp3"),
+  },
+  where_to: {
+    wordIdNum: "W124",
+    translation: "a donde",
+    pronunciation: "a d-own-day",
+    audio: require("../assets/audio/es/W124.mp3"),
+  },
+  wine: {
+    wordIdNum: "W125",
+    translation: "vino",
+    pronunciation: "vee-no",
+    audio: require("../assets/audio/es/W125.mp3"),
+  },
+  with: {
+    wordIdNum: "W126",
+    translation: "con",
+    pronunciation: "con",
+    audio: require("../assets/audio/es/W126.mp3"),
+  },
+  without: {
+    wordIdNum: "W127",
+    translation: "sin",
+    pronunciation: "seen",
+    audio: require("../assets/audio/es/W127.mp3"),
+  },
+  yes: {
+    wordIdNum: "W128",
+    translation: "sí",
+    pronunciation: "see",
+    audio: require("../assets/audio/es/W128.mp3"),
+  },
+  you: {
+    wordIdNum: "W129",
+    translation: "tú",
+    pronunciation: "too",
+    audio: require("../assets/audio/es/W129.mp3"),
+  },
+  youre_welcome: {
+    wordIdNum: "W130",
+    translation: "de nada",
+    pronunciation: "de nahdah",
+    audio: require("../assets/audio/es/W130.mp3"),
   },
 };

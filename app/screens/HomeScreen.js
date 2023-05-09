@@ -19,6 +19,9 @@ import getCompletedLessons from "../utility/getCompletedLessons";
 import AuthContext from "../navigation/authContext";
 import checkArrayIncludesAll from "../utility/checkArrayIncludesAll";
 import Screen from "../components/Screen";
+import translatePhrases from "../utility/dictionaryTranslator";
+import phraseDisctionaryEs from "../lessons/phraseDisctionary-es";
+import dictionaryEs from "../lessons/dictionary-es";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {

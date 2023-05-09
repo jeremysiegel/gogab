@@ -4,6 +4,7 @@ import phraseDictionaryIt from "../lessons/phraseDictionary-it";
 import getDictionary from "./getDictionary";
 import stripArray from "../utility/stripArray";
 import translate from "../utility/translate";
+import phraseDisctionaryEs from "../lessons/phraseDisctionary-es";
 // TODO: Fix phraseId
 
 function getPhrase(phraseIdGiven, country) {
@@ -11,7 +12,7 @@ function getPhrase(phraseIdGiven, country) {
   let phraseDictionary = phraseDictionaryEn;
   switch (country) {
     case "es":
-      phraseDictionary = phraseDictionaryIt;
+      phraseDictionary = phraseDisctionaryEs;
       break;
     case "it":
       phraseDictionary = phraseDictionaryIt;
@@ -31,7 +32,7 @@ function getPhrase(phraseIdGiven, country) {
     "phraseId",
     phraseIdGiven
   );
-  let phraseMainTranslation = []
+  let phraseMainTranslation = [];
   if (phraseMain) {
     phraseMainTranslation = stripArray({
       arrayToStrip: phraseMain.order.split(" "),
@@ -42,7 +43,6 @@ function getPhrase(phraseIdGiven, country) {
     phraseTranslation: phraseTranslation ? phraseTranslation : {},
     phraseMain: phraseMain ? phraseMain : {},
     phraseMainTranslation: phraseMainTranslation ? phraseMainTranslation : [],
-    
   };
   return phrase;
 }
