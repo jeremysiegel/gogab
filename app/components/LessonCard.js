@@ -7,8 +7,8 @@ import Icon from "./Icon";
 const LessonCard = ({
   title,
   subtitle,
-  titleColor = colors.black,
-  sectionColor = colors.white,
+  titleColor,
+  sectionColor,
   cornerColor,
   icon,
 }) => {
@@ -19,7 +19,7 @@ const LessonCard = ({
           <View style={styles.iconContainer}>{icon}</View>
         </View>
         <View style={styles.titleContainer}>
-          <AppText style={[ styles.title, { color: titleColor }]}>
+          <AppText style={[styles.title, { color: titleColor }]}>
             {title}
           </AppText>
         </View>

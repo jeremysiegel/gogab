@@ -14,6 +14,7 @@ import useFonts from "./hooks/useFonts";
 import { LogBox } from "react-native";
 import cache from "./app/utility/cache";
 import OnboardingScreen from "./app/screens/OnboardingScreen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 export default function App() {
   LogBox.ignoreLogs([
@@ -76,8 +77,7 @@ export default function App() {
         <NavigationContainer>
           <NativeBaseProvider>
             <View style={styles.container}>
-             {/*} <LessonNavigator /> {*/}
-             <OnboardingScreen/>
+              {country ? <LessonNavigator /> : <AuthNavigator />}
             </View>
           </NativeBaseProvider>
         </NavigationContainer>

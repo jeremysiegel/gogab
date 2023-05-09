@@ -19,7 +19,6 @@ import { scale } from "../../utility/scaler";
 
 function NewPhraseScreen({ route, navigation }) {
   const { width } = Dimensions.get("screen");
-  console.log(width);
   const data = getExerciseData.getExerciseData(route.params);
   const instruction = instructionText.say;
 

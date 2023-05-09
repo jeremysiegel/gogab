@@ -6,15 +6,13 @@ export default function getCardColor(level) {
   switch (level) {
     case 2:
       sectionColor = colors.orange;
-      cornerColor = colors.orangeTint;
+      cornerColor = colors.orangeShade;
       break;
     case 3:
       sectionColor = colors.secondaryCard;
       cornerColor = colors.secondaryCardTint;
       break;
     default:
-      sectionColor = colors.primary;
-      cornerColor = colors.primaryTint;
       break;
   }
   return {

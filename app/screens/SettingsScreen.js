@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView, Image } from "react-native";
+import { View, StyleSheet, ScrollView, Image, Alert } from "react-native";
 import { Select } from "native-base";
 import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
@@ -10,6 +10,7 @@ import colors from "../config/colors";
 import { moderateScale, scale } from "../utility/scaler";
 import Backdrop from "../components/Backdrop";
 import Screen from "../components/Screen";
+import AppButton from "../components/AppButton";
 
 function SettingsScreen(props) {
   const { country, setCountry } = useContext(AuthContext);
@@ -17,6 +18,46 @@ function SettingsScreen(props) {
   const [completedLessons, setCompletedLessons] = useState();
   const [ready, setReady] = useState(false);
   const image = getFlag(country);
+
+  const resetAlert = () =>
+    Alert.alert(
+      "Erase all data",
+      "This will erase everything you have ever done in the app. Click on 'cancel' to cancel.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: resetSecondAlert,
+        },
+      ],
+      { cancelable: true }
+    );
+
+  const resetSecondAlert = () =>
+    Alert.alert(
+      "Are you sure?",
+      "This can't be undone. Click on 'cancel' to cancel.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            console.log("ore");
+            setCountry(null);
+            cache.resetApp();
+          },
+        },
+      ],
+      { cancelable: true }
+    );
 
   useEffect(() => {
     async function getCompletedLessons() {
@@ -47,7 +88,7 @@ function SettingsScreen(props) {
         countryName = "Italy";
         break;
       case "es":
-        countryName = "Mexico";
+        countryName = "Latin America";
         break;
 
       default:
@@ -57,14 +98,14 @@ function SettingsScreen(props) {
     return (
       <Screen>
         <ScrollView style={styles.container}>
-          <View style={styles.countryNameContainer}>
-            <AppText style={styles.countryName}>{countryName}</AppText>
-            <Image source={image} style={styles.image} />
-          </View>
           <Backdrop
-            color={colors.primary}
-            style={{ marginLeft: scale(20), marginTop: 30 }}
+            color={colors.primaryTint30}
+            style={{ borderRadiusTop: 10 }}
           >
+            <View style={styles.countryNameContainer}>
+              <AppText style={styles.countryName}>{countryName}</AppText>
+              <Image source={image} style={styles.image} />
+            </View>
             <View style={styles.lessonsCompletedContainer}>
               <AppText style={styles.itemHeader}>Lesson progress:</AppText>
               <AppText style={styles.itemHeader}>
@@ -75,7 +116,10 @@ function SettingsScreen(props) {
           </Backdrop>
           <View style={styles.selectContainer}>
             <AppText style={styles.itemHeader}>Select course</AppText>
-            <Backdrop color={colors.primary} style={{ flex: 1, width: 280 }}>
+            <Backdrop
+              color={colors.primaryTint30}
+              style={{ flex: 1, width: 280 }}
+            >
               <Select
                 selectedValue={country}
                 placeholder="Choose Country"
@@ -90,9 +134,12 @@ function SettingsScreen(props) {
                 }}
               >
                 <Select.Item label="Italy" value="it" />
-                <Select.Item label="Mexico" value="es" />
+                <Select.Item label="Latin America" value="es" />
               </Select>
             </Backdrop>
+          </View>
+          <View style={styles.resetContainer}>
+            <AppButton title="Reset App" onPress={resetAlert} />
           </View>
         </ScrollView>
       </Screen>
@@ -104,13 +151,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
-    marginTop: 20,
+    paddingTop: 10,
+    marginBottom: 80,
   },
-
+  resetContainer: {
+    flex: 1,
+    height: 200,
+    width: "50%",
+    alignSelf: "flex-end",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
   selectContainer: {
     flex: 1,
     marginTop: 50,
-    marginHorizontal: scale(20),
+    // marginHorizontal: scale(20),
     maxWidth: 400,
   },
   image: {
@@ -125,14 +180,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   countryName: {
-    fontSize: moderateScale(44),
-    marginBottom: 12,
+    fontSize: moderateScale(40),
+    marginBottom: 20,
   },
   countryNameContainer: {
-    marginHorizontal: scale(20),
+    // marginHorizontal: scale(20),
 
     flexDirection: "row",
-    marginVertical: 20,
+    marginTop: Platform.OS === "ios" ? 40 : 0,
     alignItems: "center",
   },
 });
