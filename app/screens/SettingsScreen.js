@@ -7,13 +7,12 @@ import AppText from "../components/AppText";
 import getFlag from "../utility/getFlag";
 import lessonData from "../lessons/lessonData";
 import colors from "../config/colors";
-import { moderateScale, scale } from "../utility/scaler";
+import { moderateScale } from "../utility/scaler";
 import Backdrop from "../components/Backdrop";
 import Screen from "../components/Screen";
 import AppButton from "../components/AppButton";
 import defaultStyles from "../config/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { color } from "react-native-reanimated";
 
 function SettingsScreen(props) {
   const { country, setCountry } = useContext(AuthContext);
