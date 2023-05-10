@@ -1,4 +1,4 @@
-import Bugsnag from "@bugsnag/expo";
+//import Bugsnag from "@bugsnag/expo";
 //import * as Analytics from "expo-firebase-analytics";
 
 import ExpoMixpanelAnalytics from "@bothrs/expo-mixpanel-analytics";
@@ -23,12 +23,11 @@ const start = () => Bugsnag.start();
 
 const logEvent = async (eventTitle, data) => {
   try {
-   // await Analytics.logEvent(eventTitle, data);
+    // await Analytics.logEvent(eventTitle, data);
     mixpanel.track(eventTitle, data);
   } catch (error) {
     console.log(error);
   }
 };
 
-
-export default { identify, logBug, start, logEvent};
+export default { identify, logBug, start, logEvent };

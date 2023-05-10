@@ -8,6 +8,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@bothrs/expo-mixpanel-analytics": "^2.0.3",
     "@expo/vector-icons": "^13.0.0",
     "@jamsch/react-native-duo-drag-drop": "^1.1.1",
     "@react-native-async-storage/async-storage": "~1.17.3",
