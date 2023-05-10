@@ -115,8 +115,8 @@ function SettingsScreen(props) {
               <Image source={image} style={styles.image} />
             </View>
             <View style={styles.lessonsCompletedContainer}>
-              <AppText style={styles.itemHeader}>Lesson progress:</AppText>
-              <AppText style={styles.itemHeader}>
+              <AppText style={[styles.itemHeader, styles.itemHeader2]}>Lesson progress:</AppText>
+              <AppText style={[styles.itemHeader, styles.itemHeader2]}>
                 {"  "}
                 {lessonsCompleted} / {totalLessons}
               </AppText>
@@ -150,7 +150,7 @@ function SettingsScreen(props) {
           <View style={styles.feedback}>
             <AppText>Leave feedback</AppText>
             <View style={styles.chevronContainer}>
-            <MaterialCommunityIcons name={"chevron-double-right"} size={30} color={colors.black} />
+            <MaterialCommunityIcons name={"chevron-double-right"} size={30} color={colors.darkText} />
             </View>
           </View>
             </Pressable>
@@ -194,15 +194,19 @@ const styles = StyleSheet.create({
 
   itemHeader: {
     fontSize: moderateScale(34),
-    marginBottom: 12,
+     marginBottom: 12,
+    color: colors.secondary
   },
+  itemHeader2:{
+color: colors.darkText
+  },
+
   countryName: {
     fontSize: moderateScale(40),
-    marginBottom: 20,
+    color: colors.secondary
   },
   countryNameContainer: {
-    // marginHorizontal: scale(20),
-
+  paddingBottom: 20,
     flexDirection: "row",
     marginTop: Platform.OS === "ios" ? 40 : 0,
     alignItems: "center",
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems: "flex-end",
     justifyContent: "center",
-    paddingTop: 5
+   paddingTop: 5
   }
 
 });
