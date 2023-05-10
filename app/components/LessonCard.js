@@ -3,6 +3,7 @@ import { Platform, StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 import colors from "../config/colors";
 import Icon from "./Icon";
+import defaultStyles from "../config/styles";
 
 const LessonCard = ({
   title,
@@ -35,14 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 300,
     minHeight: 140,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+...defaultStyles.elevated
   },
   titleContainer: {
     width: 220,

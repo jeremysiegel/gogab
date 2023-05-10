@@ -119,14 +119,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 200,
     height: 70,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+    ...defaultStyles.elevated,
+
     justifyContent: "center",
     marginVertical: 10,
   },

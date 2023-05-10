@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView, Image, Alert } from "react-native";
+import { View, StyleSheet, ScrollView, Image, Alert, Pressable, Linking } from "react-native";
 import { Select } from "native-base";
 import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
@@ -11,6 +11,9 @@ import { moderateScale, scale } from "../utility/scaler";
 import Backdrop from "../components/Backdrop";
 import Screen from "../components/Screen";
 import AppButton from "../components/AppButton";
+import defaultStyles from "../config/styles";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { color } from "react-native-reanimated";
 
 function SettingsScreen(props) {
   const { country, setCountry } = useContext(AuthContext);
@@ -18,6 +21,11 @@ function SettingsScreen(props) {
   const [completedLessons, setCompletedLessons] = useState();
   const [ready, setReady] = useState(false);
   const image = getFlag(country);
+
+  const handleFeedbackPress = () => {
+ Linking.openURL("https://forms.gle/PNfPcffVMEEbYjgn6")
+
+  }
 
   const resetAlert = () =>
     Alert.alert(
@@ -115,11 +123,11 @@ function SettingsScreen(props) {
             </View>
           </Backdrop>
           <View style={styles.selectContainer}>
-            <AppText style={styles.itemHeader}>Select course</AppText>
             <Backdrop
               color={colors.primaryTint30}
               style={{ flex: 1, width: 280 }}
             >
+            <AppText style={styles.itemHeader}>Select course</AppText>
               <Select
                 selectedValue={country}
                 placeholder="Choose Country"
@@ -138,6 +146,14 @@ function SettingsScreen(props) {
               </Select>
             </Backdrop>
           </View>
+            <Pressable onPress={handleFeedbackPress}>
+          <View style={styles.feedback}>
+            <AppText>Leave feedback</AppText>
+            <View style={styles.chevronContainer}>
+            <MaterialCommunityIcons name={"chevron-double-right"} size={30} color={colors.black} />
+            </View>
+          </View>
+            </Pressable>
           <View style={styles.resetContainer}>
             <AppButton title="Reset App" onPress={resetAlert} />
           </View>
@@ -152,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
     paddingTop: 10,
-    marginBottom: 80,
+ 
   },
   resetContainer: {
     flex: 1,
@@ -161,6 +177,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     justifyContent: "flex-end",
     alignItems: "flex-end",
+    marginBottom: 80
   },
   selectContainer: {
     flex: 1,
@@ -190,6 +207,24 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 40 : 0,
     alignItems: "center",
   },
+  feedback: {
+    flexDirection: "row",
+    ...defaultStyles.elevated,
+    padding: 10,
+    alignItems: "center",
+    backgroundColor: colors.primaryTint30,
+    borderRadius: 5,
+    marginTop: 50,
+   // height: 50,
+    width: 200
+  },
+  chevronContainer: {
+    flex:1,
+    alignItems: "flex-end",
+    justifyContent: "center",
+    paddingTop: 5
+  }
+
 });
 
 export default SettingsScreen;
