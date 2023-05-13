@@ -24,7 +24,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import logger from "../utility/logger";
 
 function SettingsScreen(props) {
-  const { country, setCountry, setUser } = useContext(AuthContext);
+  const { country, setCountry, user, setUser } = useContext(AuthContext);
 
   const [completedLessons, setCompletedLessons] = useState();
   const [ready, setReady] = useState(false);
@@ -38,6 +38,10 @@ function SettingsScreen(props) {
 
   const handleCountryChange = (country) => {
     setCountry(country);
+    console.log(user);
+    user.country = country;
+    setUser(user);
+    console.log(user);
     logger.logEvent("newCountry", "country", country);
     cache.store("country", country);
   };

@@ -46,6 +46,7 @@ export default function App() {
     const userData = await cache.get("user");
     if (userData) {
       logger.identify(userData.uuid);
+      logger.logEvent("returnUser", "country", userData.country);
       if (userData.firstLogin === true) {
         userData.firstLogin = false;
         cache.store("user", userData);

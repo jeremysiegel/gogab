@@ -26,10 +26,13 @@ function OnboardingScreen({ navigation }) {
     return uuid;
   };
 
-  const createUser = () => {
+  const createUser = (country) => {
     const uuid = identify();
+    logger.logEvent("newUser", "country", country);
     const user = {
       uuid: uuid,
+      firstCountry: selected,
+      country: selected,
       //joinYear: currentYear,
       firstLogin: true,
       //userAppDownloadDate: manipulateDates.today,
@@ -41,7 +44,6 @@ function OnboardingScreen({ navigation }) {
   };
 
   const handlePress = (country) => {
-    logger.logEvent("firstCountry", "country", country);
     setSelected(country);
   };
   const countryCardStyle = (countryName) => ({
@@ -114,7 +116,7 @@ function OnboardingScreen({ navigation }) {
               title={"Let's Go!"}
               onPress={() => {
                 setCountry(selected);
-                createUser();
+                createUser(selected);
                 navigation.navigate("Home");
               }}
               style={{ minWidth: "50%", maxWidth: 300 }}

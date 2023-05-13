@@ -36,7 +36,7 @@ function LessonEndScreen({ navigation, route }) {
   const { country } = useContext(AuthContext);
 
   const pushCompletedLessons = async () => {
-    logger.logEvent("complete", route.params.lessonId);
+    logger.logEvent("complete", "lesson", route.params.lessonId);
 
     let cachedCompletedLessons = await cache.get("completedLessons");
     if (!cachedCompletedLessons) {
