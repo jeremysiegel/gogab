@@ -1,6 +1,6 @@
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 
-const prefix = "cache";
+const prefix = "cached";
 
 const store = async (key, value) => {
   try {
@@ -30,16 +30,17 @@ const get = async (key) => {
 
 const resetApp = async () => {
   try {
-    await AsyncStorageLib.clear();
+    const keys = await AsyncStorageLib.getAllKeys();
+    clear(keys);
   } catch (error) {
     console.log(error);
   }
 };
 
-const clear = (params) => {
+const clear = async (params) => {
   params.forEach(async (param) => {
     try {
-      await AsyncStorageLib.removeItem(prefix + param);
+      await AsyncStorageLib.removeItem(param);
     } catch (error) {
       console.log(error);
     }

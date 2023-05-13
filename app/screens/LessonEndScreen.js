@@ -9,6 +9,8 @@ import cache from "../utility/cache";
 import AuthContext from "../navigation/authContext";
 import sections from "../lessons/sections";
 import Screen from "../components/Screen";
+import logger from "../utility/logger";
+
 const endLotties = [
   require("../assets/endLesson1.json"),
   require("../assets/endLesson2.json"),
@@ -33,7 +35,9 @@ function LessonEndScreen({ navigation, route }) {
   const lottie = endLotties[lottieNumber];
   const { country } = useContext(AuthContext);
 
-  const getCompletedLessons = async () => {
+  const pushCompletedLessons = async () => {
+    logger.logEvent("complete", route.params.lessonId);
+
     let cachedCompletedLessons = await cache.get("completedLessons");
     if (!cachedCompletedLessons) {
       cachedCompletedLessons = {};
@@ -50,7 +54,7 @@ function LessonEndScreen({ navigation, route }) {
 
   useEffect(() => {
     async function updateCompletedLessons() {
-      await getCompletedLessons();
+      await pushCompletedLessons();
     }
     updateCompletedLessons();
   }, []);

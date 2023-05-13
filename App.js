@@ -44,13 +44,17 @@ export default function App() {
 
   const restoreUser = async () => {
     const userData = await cache.get("user");
-    //logger.identify(userData.uuid);
-    // If you write new data:   cache.store("user", userData);
-
+    if (userData) {
+      logger.identify(userData.uuid);
+      if (userData.firstLogin === true) {
+        userData.firstLogin = false;
+        cache.store("user", userData);
+      }
+      await getCountry();
+    }
     setUser(userData);
 
     await LoadFonts();
-    await getCountry();
     let userWorldCountries = await cache.get("worldMapCountries");
     userWorldCountries
       ? setSelectedCountries(userWorldCountries)
@@ -95,7 +99,7 @@ export default function App() {
         <NavigationContainer>
           <NativeBaseProvider>
             <View style={styles.container}>
-              {country ? <LessonNavigator /> : <AuthNavigator />}
+              {user ? <LessonNavigator /> : <AuthNavigator />}
             </View>
           </NativeBaseProvider>
         </NavigationContainer>

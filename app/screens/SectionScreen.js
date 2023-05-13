@@ -14,6 +14,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import getCardColor from "../utility/getCardColor";
 import getCompletedLessons from "../utility/getCompletedLessons";
 import Screen from "../components/Screen";
+import logger from "../utility/logger";
 // Section screen.
 
 const exerciseId = 1;
@@ -86,6 +87,7 @@ function SectionScreen({ navigation, route }) {
               />
             }
             onPress={() => {
+              logger.logEvent("lesson", "lesson", item.lessonId);
               const lesson = generateLessonData(
                 item.lessonId,
                 sectionLessons,

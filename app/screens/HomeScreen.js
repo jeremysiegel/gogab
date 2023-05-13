@@ -83,6 +83,7 @@ function HomeScreen({ navigation }) {
           sectionColor={sectionColor}
           cornerColor={cornerColor}
           onPress={() => {
+            logger.logEvent("section", "section", item.sectionId);
             setSection(item.sectionId);
             setLevel(item.level);
             navigation.push("section", {

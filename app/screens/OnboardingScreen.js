@@ -41,6 +41,7 @@ function OnboardingScreen({ navigation }) {
   };
 
   const handlePress = (country) => {
+    logger.logEvent("firstCountry", "country", country);
     setSelected(country);
   };
   const countryCardStyle = (countryName) => ({

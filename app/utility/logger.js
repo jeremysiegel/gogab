@@ -22,10 +22,12 @@ const logBug = (error) => Bugsnag.notify(error);
 
 const start = () => Bugsnag.start();
 
-const logEvent = async (eventTitle, data) => {
+const logEvent = async (eventTitle, paramTitle, data) => {
+  const eventData = {};
+  eventData[paramTitle] = data;
   try {
     // await Analytics.logEvent(eventTitle, data);
-    mixpanel.track(eventTitle, data);
+    mixpanel.track(eventTitle, eventData);
   } catch (error) {
     console.log(error);
   }
