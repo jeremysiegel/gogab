@@ -17,7 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.evolutus.luna",
+      "bundleIdentifier": "com.evolutus.gogab",
       "buildNumber": "1.0.0"
     },
     "android": {
