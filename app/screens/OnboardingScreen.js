@@ -146,8 +146,9 @@ const styles = StyleSheet.create({
   countryCard: {
     backgroundColor: colors.white,
     borderRadius: 10,
-    width: 200,
-    height: 70,
+    padding: 10,
+    //width: 300,
+    // height: 70,
     ...defaultStyles.elevated,
 
     justifyContent: "center",

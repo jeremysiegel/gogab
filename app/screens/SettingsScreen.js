@@ -15,7 +15,7 @@ import AppText from "../components/AppText";
 import getFlag from "../utility/getFlag";
 import lessonData from "../lessons/lessonData";
 import colors from "../config/colors";
-import { moderateScale } from "../utility/scaler";
+import { moderateScale, scale } from "../utility/scaler";
 import Backdrop from "../components/Backdrop";
 import Screen from "../components/Screen";
 import AppButton from "../components/AppButton";
@@ -187,8 +187,8 @@ function SettingsScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 20,
-    paddingTop: 10,
+    marginHorizontal: scale(30),
+    paddingTop: 20,
   },
   resetContainer: {
     flex: 1,
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
   countryNameContainer: {
     paddingBottom: 20,
     flexDirection: "row",
-    marginTop: Platform.OS === "ios" ? 40 : 0,
+    marginTop: Platform.OS === "ios" ? 20 : 0,
     alignItems: "center",
   },
   feedback: {
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 50,
     // height: 50,
-    width: 200,
+    maxWidth: 300,
   },
   chevronContainer: {
     flex: 1,
