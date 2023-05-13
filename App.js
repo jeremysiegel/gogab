@@ -15,12 +15,17 @@ import { LogBox } from "react-native";
 import cache from "./app/utility/cache";
 import OnboardingScreen from "./app/screens/OnboardingScreen";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import logger from "./app/utility/logger";
+import setUniqueID from "./app/utility/setUniqueId";
+
+logger.start();
 
 export default function App() {
   LogBox.ignoreLogs([
     'Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.',
   ]);
 
+  const [user, setUser] = useState();
   const [isReady, setIsReady] = useState();
   const [country, setCountry] = useState();
   const [selectedCountries, setSelectedCountries] = useState([]);
@@ -35,6 +40,21 @@ export default function App() {
       cachedCountry = "it";
     }
     setCountry(cachedCountry);
+  };
+
+  const restoreUser = async () => {
+    const userData = await cache.get("user");
+    //logger.identify(userData.uuid);
+    // If you write new data:   cache.store("user", userData);
+
+    setUser(userData);
+
+    await LoadFonts();
+    await getCountry();
+    let userWorldCountries = await cache.get("worldMapCountries");
+    userWorldCountries
+      ? setSelectedCountries(userWorldCountries)
+      : setSelectedCountries([]);
   };
 
   useEffect(() => {
@@ -55,15 +75,6 @@ export default function App() {
     prepare();
   }, []);
 
-  const restoreUser = async () => {
-    await LoadFonts();
-    await getCountry();
-    let userWorldCountries = await cache.get("worldMapCountries");
-    userWorldCountries
-      ? setSelectedCountries(userWorldCountries)
-      : setSelectedCountries([]);
-  };
-
   if (!isReady) {
     return null;
   }
@@ -71,7 +82,14 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <AuthContext.Provider
-        value={{ country, setCountry, selectedCountries, setSelectedCountries }}
+        value={{
+          country,
+          setCountry,
+          selectedCountries,
+          setSelectedCountries,
+          user,
+          setUser,
+        }}
       >
         <StatusBar translucent={true} />
         <NavigationContainer>

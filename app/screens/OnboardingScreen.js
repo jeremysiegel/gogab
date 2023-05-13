@@ -10,10 +10,35 @@ import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import Selectable from "../components/Selectable";
 import AppButton from "../components/AppButton";
+import setUniqueID from "../utility/setUniqueId";
+import logger from "../utility/logger";
+import cache from "../utility/cache";
 
 function OnboardingScreen({ navigation }) {
   const { setCountry } = useContext(AuthContext);
   const [selected, setSelected] = useState();
+  const authContext = useContext(AuthContext);
+
+  //This function creates unique id for user.
+  const identify = () => {
+    const uuid = setUniqueID();
+    logger.identify(uuid);
+    return uuid;
+  };
+
+  const createUser = () => {
+    const uuid = identify();
+    const user = {
+      uuid: uuid,
+      //joinYear: currentYear,
+      firstLogin: true,
+      //userAppDownloadDate: manipulateDates.today,
+      //userLastLogin: manipulateDates.today,
+      //userPreviousLogin: manipulateDates.today,
+    };
+    authContext.setUser(user);
+    cache.store("user", user);
+  };
 
   const handlePress = (country) => {
     setSelected(country);
@@ -88,6 +113,7 @@ function OnboardingScreen({ navigation }) {
               title={"Let's Go!"}
               onPress={() => {
                 setCountry(selected);
+                createUser();
                 navigation.navigate("Home");
               }}
               style={{ minWidth: "50%", maxWidth: 300 }}

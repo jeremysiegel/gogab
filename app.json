@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tripty",
-    "slug": "tripty",
+    "name": "GoGab",
+    "slug": "GoGab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -34,6 +34,9 @@
     "extra": {
       "eas": {
         "projectId": "f63a1a48-37db-48eb-a0ae-1e2e3f4444a9"
+      },
+      "bugsnag": {
+        "apiKey": "4e2c20f476a944ae1c1d03e353676367"
       }
     }
   }

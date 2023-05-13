@@ -22,6 +22,7 @@ import Screen from "../components/Screen";
 import translatePhrases from "../utility/dictionaryTranslator";
 import phraseDisctionaryEs from "../lessons/phraseDisctionary-es";
 import dictionaryEs from "../lessons/dictionary-es";
+import logger from "../utility/logger";
 // Home screen of app.
 
 function HomeScreen({ navigation }) {
@@ -135,4 +136,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-
