@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "GoGab",
-    "slug": "tripty",
-    "version": "1.0.0",
+    "slug": "GoGab",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.evolutus.gogab",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +26,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.evolutus.gogab",
-      "versionCode": 1
+      "versionCode": 2
     },
     "androidStatusBar": {
       "backgroundColor": "#ffffff"
@@ -35,11 +35,11 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "eas": {
-        "projectId": "f63a1a48-37db-48eb-a0ae-1e2e3f4444a9"
-      },
       "bugsnag": {
         "apiKey": "4e2c20f476a944ae1c1d03e353676367"
+      },
+      "eas": {
+        "projectId": "22561344-b6c7-43a2-b437-348282ceceee"
       }
     }
   }
