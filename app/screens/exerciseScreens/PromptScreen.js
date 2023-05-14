@@ -114,7 +114,9 @@ function PromptScreen({ route, navigation }) {
 
   let audio = "";
   try {
-    audio = data.phraseData.phraseTranslation.audio ? data.phraseData.phraseTranslation.audio : "";
+    audio = data.phraseData.phraseTranslation.audio
+      ? data.phraseData.phraseTranslation.audio
+      : "";
   } catch (error) {
     console.log(error);
   }
@@ -155,6 +157,7 @@ function PromptScreen({ route, navigation }) {
         phrase={prompt}
         data={data}
         audio={audio}
+        skippable={true}
       />
     );
   }

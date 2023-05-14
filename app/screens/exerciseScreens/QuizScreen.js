@@ -15,6 +15,7 @@ function QuizScreen({
   phrase,
   data,
   audio = "",
+  skippable = false,
 }) {
   const renderItems = ({ item }) => renderItem(item);
   if (!audio) {
@@ -36,6 +37,7 @@ function QuizScreen({
         answerIsCorrect={answerIsCorrect}
         touched={selected}
         audio={data.reverse ? undefined : audio}
+        skippable={skippable}
       >
         <View>
           <FlatList

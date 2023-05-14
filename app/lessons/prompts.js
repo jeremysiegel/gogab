@@ -9,7 +9,7 @@ export default prompts = [
     phrase: 2,
     phrase2: null,
     icon: [],
-    choices: [15, 4],
+    choices: [4, 15],
     correctChoice: [4],
   },
   {
@@ -54,7 +54,7 @@ export default prompts = [
     phrase: 96,
     phrase2: null,
     icon: [],
-    choices: [3, 93, 94],
+    choices: [93, 3, 94],
     correctChoice: [93],
   },
   {
@@ -109,7 +109,7 @@ export default prompts = [
     phrase: 103,
     phrase2: null,
     icon: [],
-    choices: [15, 16, 7],
+    choices: [16, 15],
     correctChoice: [16],
   },
   {
@@ -175,7 +175,7 @@ export default prompts = [
     phrase: 113,
     phrase2: null,
     icon: ["taxi", "FontAwesome5"],
-    choices: [111, 113],
+    choices: [113, 111],
     correctChoice: [113],
   },
   {
@@ -275,7 +275,7 @@ export default prompts = [
     phrase2: 122,
     icon: [],
     choices: [122, 99, 101],
-    correctChoice: [100],
+    correctChoice: [122],
   },
   {
     promptId: 26,
@@ -297,7 +297,7 @@ export default prompts = [
     phrase2: 124,
     icon: [],
     choices: [124, 125],
-    correctChoice: [123],
+    correctChoice: [124],
   },
   {
     promptId: 28,

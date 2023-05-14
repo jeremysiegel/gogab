@@ -147,6 +147,7 @@ const getExerciseData = ({
     if (typeof choices[0] === "string") {
       selections = [...choices];
     } else {
+      console.log(choices);
       choices.forEach((choice) => {
         const phrase = getPhrase(choice, country);
         let audio = "";
