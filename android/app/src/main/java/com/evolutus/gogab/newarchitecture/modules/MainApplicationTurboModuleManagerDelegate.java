@@ -1,4 +1,4 @@
-package com.evolutus212.tripty.newarchitecture.modules;
+package com.evolutus.gogab.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

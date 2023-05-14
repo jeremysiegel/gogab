@@ -1,4 +1,4 @@
-package com.evolutus212.tripty;
+package com.evolutus.gogab;
 
 import android.os.Build;
 import android.os.Bundle;
