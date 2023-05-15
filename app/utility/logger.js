@@ -8,12 +8,12 @@ const mixpanel = new ExpoMixpanelAnalytics("c7b3050ee5bde893af5938391d92f57b");
 
 const identify = (id) => {
   if (id) {
-    //  mixpanel.identify(id);
+    mixpanel.identify(id);
   } else {
     // Failsafe -- will only id individual session. Not stored.
     let uuid = "";
     uuid = setUniqueID();
-    //  mixpanel.identify(uuid);
+    mixpanel.identify(uuid);
   }
 };
 

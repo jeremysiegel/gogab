@@ -1,6 +1,7 @@
 // Sublessons - Organized by LessonId
 
 export default subLessons = {
+  /*
   2: [
     {
       screenType: "tip",
@@ -10,4 +11,5 @@ export default subLessons = {
       displayAfter: 1,
     },
   ],
+  */
 };

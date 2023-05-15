@@ -76,10 +76,10 @@ function NewPhraseScreen({ route, navigation }) {
             style={styles.button}
           >
             <Icon
-              name={"replay"}
-              iconType={"MaterialCommunityIcons"}
+              name={"volume-medium-outline"}
+              iconType={"Ionicons"}
               backgroundColor={colors.secondary}
-              size={30}
+              size={40}
             />
           </AppButton>
         </View>
