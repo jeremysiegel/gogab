@@ -7,13 +7,17 @@ import setUniqueID from "./setUniqueId";
 const mixpanel = new ExpoMixpanelAnalytics("c7b3050ee5bde893af5938391d92f57b");
 
 const identify = (id) => {
-  if (id) {
-    mixpanel.identify(id);
-  } else {
-    // Failsafe -- will only id individual session. Not stored.
-    let uuid = "";
-    uuid = setUniqueID();
-    mixpanel.identify(uuid);
+  try {
+    if (id) {
+      mixpanel.identify(id);
+    } else {
+      // Failsafe -- will only id individual session. Not stored.
+      let uuid = "";
+      uuid = setUniqueID();
+      mixpanel.identify(uuid);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -23,9 +27,9 @@ const logBug = (error) => Bugsnag.notify(error);
 const start = () => Bugsnag.start();
 
 const logEvent = async (eventTitle, paramTitle, data) => {
-  const eventData = {};
-  eventData[paramTitle] = data;
   try {
+    const eventData = {};
+    eventData[paramTitle] = data;
     // await Analytics.logEvent(eventTitle, data);
     mixpanel.track(eventTitle, eventData);
   } catch (error) {

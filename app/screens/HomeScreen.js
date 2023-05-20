@@ -34,12 +34,12 @@ function HomeScreen({ navigation }) {
   useEffect(() => {
     getCompletedLessons(country, setCompletedLessons);
   }, []);
-
   const renderItems = ({ item, section }) => {
     const complete = checkArrayIncludesAll(
       item.lessons,
       completedLessons[country]
     );
+
     let level = 1;
     switch (section.title) {
       case "Level 2":

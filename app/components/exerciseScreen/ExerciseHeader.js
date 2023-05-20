@@ -15,6 +15,7 @@ import { moderateScale } from "../../utility/scaler";
 import constants from "../../config/constants";
 import { useRoute } from "@react-navigation/native";
 import sections from "../../lessons/sections";
+import logger from "../../utility/logger";
 
 // Creates header for exercise screen.
 function ExerciseHeader({
@@ -48,6 +49,7 @@ function ExerciseHeader({
         {
           text: "Quit",
           onPress: () => {
+            logger.logEvent("Exit lesson", "exercise", currentIndex);
             navigation.dispatch(
               CommonActions.reset({
                 index: 1,
