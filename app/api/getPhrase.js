@@ -6,12 +6,17 @@ import stripArray from "../utility/stripArray";
 import translate from "../utility/translate";
 import phraseDisctionaryEs from "../lessons/phraseDisctionary-es";
 // TODO: Fix phraseId
+// TODO: CEB phrase dictionary needed
 
 function getPhrase(phraseIdGiven, country) {
   let phraseId = "P" + phraseIdGiven;
   let phraseDictionary = phraseDictionaryEn;
   switch (country) {
     case "es":
+      phraseDictionary = phraseDisctionaryEs;
+      break;
+    // Need to create phrases for CEB
+    case "ceb":
       phraseDictionary = phraseDisctionaryEs;
       break;
     case "it":
