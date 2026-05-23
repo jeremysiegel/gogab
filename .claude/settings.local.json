@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"exit:$?\")",
+      "Bash(npx expo *)",
+      "Read(//c/Program Files/Eclipse Adoptium/**)",
+      "Read(//c/Program Files/Java/**)",
+      "Read(//c/Program Files/**)",
+      "Bash(powershell -NoProfile -Command '[Environment]::GetEnvironmentVariable\\('\\\\''Path'\\\\'','\\\\''Machine'\\\\''\\) -split '\\\\'';'\\\\'' | Where-Object { $_ -match '\\\\''java|jdk|Adoptium'\\\\'' }')",
+      "Bash(powershell -NoProfile -Command '[Environment]::GetEnvironmentVariable\\('\\\\''Path'\\\\'','\\\\''User'\\\\''\\) -split '\\\\'';'\\\\'' | Where-Object { $_ -match '\\\\''java|jdk|Adoptium'\\\\'' }')",
+      "Bash(powershell -NoProfile -Command \"'Machine: ' + [Environment]::GetEnvironmentVariable\\('JAVA_HOME','Machine'\\); 'User: ' + [Environment]::GetEnvironmentVariable\\('JAVA_HOME','User'\\)\")",
+      "Bash(\"C:\\\\Program Files\\\\Eclipse Adoptium\\\\jdk-17.0.19.10-hotspot\\\\bin\\\\java.exe\" -version)",
+      "Bash(powershell -NoProfile -Command '$env:Path=[Environment]::GetEnvironmentVariable\\('\\\\''Path'\\\\'','\\\\''Machine'\\\\''\\)+'\\\\'';'\\\\''+[Environment]::GetEnvironmentVariable\\('\\\\''Path'\\\\'','\\\\''User'\\\\''\\); java -version; '\\\\''JAVA_HOME='\\\\''+[Environment]::GetEnvironmentVariable\\('\\\\''JAVA_HOME'\\\\'','\\\\''Machine'\\\\''\\)')",
+      "Bash(powershell *)",
+      "Bash(C:\\\\Users\\\\Jerem\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe devices *)",
+      "Read(//c/Users/Jerem/AppData/Local/Android/Sdk/platform-tools/**)",
+      "Bash(./adb.exe kill-server *)",
+      "Bash(./adb.exe start-server *)",
+      "Bash(./adb.exe devices *)",
+      "Bash(yarn android *)",
+      "Bash(node -e ' *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Jerem\\\\OneDrive\\\\Documents\\\\tripty\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(git check-ignore *)",
+      "Bash(node scripts/generateAudioId.js)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const d='app/assets/audio/id';let n=0;for\\(const f of fs.readdirSync\\(d\\)\\){if\\(f.endsWith\\('.mp3'\\)\\){fs.unlinkSync\\(d+'/'+f\\);n++;}}console.log\\('deleted',n,'old clips'\\);\")"
+    ]
+  }
+}

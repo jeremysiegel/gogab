@@ -108,6 +108,16 @@ function OnboardingScreen({ navigation }) {
                 <AppText style={styles.countryName}>Latin America</AppText>
               </View>
             </Pressable>
+            <Pressable onPress={() => handlePress("lao")}>
+              <View style={countryCardStyle("lao")}>
+                <AppText style={styles.countryName}>Laos</AppText>
+              </View>
+            </Pressable>
+            <Pressable onPress={() => handlePress("id")}>
+              <View style={countryCardStyle("id")}>
+                <AppText style={styles.countryName}>Indonesia</AppText>
+              </View>
+            </Pressable>
           </View>
         </Animated.View>
         <View style={styles.buttonContainer}>

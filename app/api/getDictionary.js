@@ -1,6 +1,8 @@
 import dictionaryEs from "../lessons/dictionary-es";
 import dictionaryIt from "../lessons/dictionary-it";
 import dictionaryCeb from "../lessons/dictionary-ceb";
+import dictionaryLao from "../lessons/dictionary-lao";
+import dictionaryId from "../lessons/dictionary-id";
 import dictionaryCommon from "../lessons/dictionary-common";
 
 function getDictionary(country) {
@@ -13,6 +15,12 @@ function getDictionary(country) {
     },
     ceb: {
       dictionary: dictionaryCeb,
+    },
+    lao: {
+      dictionary: dictionaryLao,
+    },
+    id: {
+      dictionary: dictionaryId,
     },
   };
 

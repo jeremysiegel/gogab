@@ -38,10 +38,8 @@ function SettingsScreen(props) {
 
   const handleCountryChange = (country) => {
     setCountry(country);
-    console.log(user);
     user.country = country;
     setUser(user);
-    console.log(user);
     logger.logEvent("newCountry", "country", country);
     cache.store("country", country);
   };
@@ -116,6 +114,12 @@ function SettingsScreen(props) {
       case "es":
         countryName = "Latin America";
         break;
+      case "lao":
+        countryName = "Laos";
+        break;
+      case "id":
+        countryName = "Indonesia";
+        break;
 
       default:
         break;
@@ -160,6 +164,8 @@ function SettingsScreen(props) {
               >
                 <Select.Item label="Italy" value="it" />
                 <Select.Item label="Latin America" value="es" />
+                <Select.Item label="Laos" value="lao" />
+                <Select.Item label="Indonesia" value="id" />
               </Select>
             </Backdrop>
           </View>

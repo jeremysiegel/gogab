@@ -5,6 +5,8 @@ import getDictionary from "./getDictionary";
 import stripArray from "../utility/stripArray";
 import translate from "../utility/translate";
 import phraseDisctionaryEs from "../lessons/phraseDisctionary-es";
+import phraseDictionaryId from "../lessons/phraseDictionary-id";
+import phraseDictionaryLao from "../lessons/phraseDictionary-lao";
 // TODO: Fix phraseId
 // TODO: CEB phrase dictionary needed
 
@@ -15,15 +17,17 @@ function getPhrase(phraseIdGiven, country) {
     case "es":
       phraseDictionary = phraseDisctionaryEs;
       break;
-    // Need to create phrases for CEB
-    case "ceb":
-      phraseDictionary = phraseDisctionaryEs;
-      break;
     case "it":
       phraseDictionary = phraseDictionaryIt;
       break;
+    case "id":
+      phraseDictionary = phraseDictionaryId;
+      break;
+    case "lao":
+      phraseDictionary = phraseDictionaryLao;
+      break;
     default:
-      console.log("Unsupported country");
+      phraseDictionary = phraseDisctionaryEs;
       break;
   }
   const dictionary = getDictionary(country);
