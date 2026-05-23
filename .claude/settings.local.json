@@ -23,7 +23,21 @@
       "Bash(Select-Object Name)",
       "Bash(git check-ignore *)",
       "Bash(node scripts/generateAudioId.js)",
-      "Bash(node -e \"const fs=require\\('fs'\\);const d='app/assets/audio/id';let n=0;for\\(const f of fs.readdirSync\\(d\\)\\){if\\(f.endsWith\\('.mp3'\\)\\){fs.unlinkSync\\(d+'/'+f\\);n++;}}console.log\\('deleted',n,'old clips'\\);\")"
+      "Bash(node -e \"const fs=require\\('fs'\\);const d='app/assets/audio/id';let n=0;for\\(const f of fs.readdirSync\\(d\\)\\){if\\(f.endsWith\\('.mp3'\\)\\){fs.unlinkSync\\(d+'/'+f\\);n++;}}console.log\\('deleted',n,'old clips'\\);\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Jerem\\\\OneDrive\\\\Documents\\\\tripty\" -Force)",
+      "Bash(Select-Object Name, FullName)",
+      "PowerShell(head *)",
+      "mcp__context7__query-docs",
+      "Bash(git checkout *)",
+      "Bash(git rm *)",
+      "Bash(npm install *)",
+      "Bash(npx expo-doctor *)",
+      "Bash(npm why *)",
+      "Bash(npm view *)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"console.log\\(require\\('expo-audio/package.json'\\).version\\)\")",
+      "Bash(node -e \"const p=require\\('@bugsnag/expo/package.json'\\); console.log\\('deps:',JSON.stringify\\(p.dependencies,null,1\\)\\); console.log\\('peer:',JSON.stringify\\(p.peerDependencies,null,1\\)\\);\")",
+      "Bash(git add *)"
     ]
   }
 }

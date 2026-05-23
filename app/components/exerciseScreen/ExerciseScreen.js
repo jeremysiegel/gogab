@@ -1,6 +1,6 @@
 import { View, StyleSheet, useWindowDimensions } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Audio } from "expo-av";
+import { createAudioPlayer } from "expo-audio";
 
 import AppText from "../AppText";
 import ExerciseHeader from "./ExerciseHeader";
@@ -28,27 +28,19 @@ function ExerciseScreen({
 }) {
   BackButtonExitHandler();
 
-  const [sound, setSound] = useState();
-
-  async function playSound() {
+  useEffect(() => {
+    let player;
     if (audio) {
       try {
-        const { sound } = await Audio.Sound.createAsync(audio);
-        setSound(sound);
-
-        await sound.playAsync();
+        player = createAudioPlayer(audio);
+        player.play();
       } catch (error) {
         console.log(error);
       }
     }
-  }
-
-  useEffect(() => {
-    playSound();
     return () => {
-      if (sound) {
-        sound.stopAsync();
-        sound.unloadAsync();
+      if (player) {
+        player.remove();
       }
     };
   }, []);

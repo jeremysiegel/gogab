@@ -9,7 +9,7 @@ import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
 import { moderateScale, verticalScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
-import { Audio } from "expo-av";
+import { createAudioPlayer } from "expo-audio";
 
 // Creates a UI sentence builder element.
 
@@ -17,22 +17,21 @@ const { width } = Dimensions.get("screen");
 
 function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
-  const [sound, setSound] = useState();
+  const [player, setPlayer] = useState();
 
-  async function playSound(audio) {
-    const { sound } = await Audio.Sound.createAsync(audio);
-    setSound(sound);
-
-    await sound.playAsync();
+  function playSound(audio) {
+    const newPlayer = createAudioPlayer(audio);
+    setPlayer(newPlayer);
+    newPlayer.play();
   }
 
   useEffect(() => {
-    return sound
+    return player
       ? () => {
-          sound.unloadAsync();
+          player.remove();
         }
       : undefined;
-  }, [sound]);
+  }, [player]);
 
   const ref = useRef(DuoDragDropRef);
   useEffect(() => {

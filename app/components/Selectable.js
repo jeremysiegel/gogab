@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Pressable } from "react-native";
 import colors from "../config/colors";
-import { Audio } from "expo-av";
+import { createAudioPlayer } from "expo-audio";
 
 // Creates an UI element that changes background color if selected.
 
@@ -15,7 +15,7 @@ function Selectable({
   playAudio = false,
 }) {
   const backgroundColor = selected ? colors.selected : undefined;
-  const [sound, setSound] = useState();
+  const [player, setPlayer] = useState();
 
   let audio = "";
 
@@ -25,13 +25,12 @@ function Selectable({
     console.log(error);
   }
 
-  async function playSound() {
+  function playSound() {
     if (audio && playAudio) {
       try {
-        const { sound } = await Audio.Sound.createAsync(audio);
-        setSound(sound);
-
-        await sound.playAsync();
+        const newPlayer = createAudioPlayer(audio);
+        setPlayer(newPlayer);
+        newPlayer.play();
       } catch (error) {
         console.log(error);
       }
@@ -39,12 +38,12 @@ function Selectable({
   }
 
   React.useEffect(() => {
-    return sound
+    return player
       ? () => {
-          sound.unloadAsync();
+          player.remove();
         }
       : undefined;
-  }, [sound]);
+  }, [player]);
 
   return (
     <Pressable

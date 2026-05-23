@@ -11,7 +11,7 @@ import stripArray from "../../utility/stripArray";
 import Icon from "../../components/Icon";
 import colors from "../../config/colors";
 import AppButton from "../../components/AppButton";
-import { Audio } from "expo-av";
+import { createAudioPlayer } from "expo-audio";
 import { scale } from "../../utility/scaler";
 // Creates screen to learn a new word or phrase.
 // Displays word and translation.
@@ -30,13 +30,10 @@ function NewPhraseScreen({ route, navigation }) {
     console.log(error);
   }
 
-  const playSound = async (soundFilePath) => {
-    // load the sound file
-    const soundObject = new Audio.Sound();
+  const playSound = (soundFilePath) => {
     try {
-      await soundObject.loadAsync(soundFilePath);
-      // play the sound
-      await soundObject.playAsync();
+      const player = createAudioPlayer(soundFilePath);
+      player.play();
     } catch (error) {
       console.log("Failed to load the sound", error);
     }

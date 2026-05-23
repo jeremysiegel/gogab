@@ -1,6 +1,12 @@
 node_modules/
 .expo/
 dist/
+dist-verify/
+
+# Native projects are generated via Expo prebuild (CNG) — not committed
+/android
+/ios
+
 scripts/.env
 npm-debug.*
 *.jks
