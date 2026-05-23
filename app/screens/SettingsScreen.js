@@ -7,6 +7,7 @@ import {
   Alert,
   Pressable,
   Linking,
+  Platform,
 } from "react-native";
 import { Select } from "native-base";
 import cache from "../utility/cache";
@@ -59,7 +60,7 @@ function SettingsScreen(props) {
           onPress: resetSecondAlert,
         },
       ],
-      { cancelable: true }
+      { cancelable: true },
     );
 
   const resetSecondAlert = () =>
@@ -80,7 +81,7 @@ function SettingsScreen(props) {
           },
         },
       ],
-      { cancelable: true }
+      { cancelable: true },
     );
 
   useEffect(() => {

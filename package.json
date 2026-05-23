@@ -8,8 +8,6 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@bothrs/expo-mixpanel-analytics": "^2.0.3",
-    "@bugsnag/expo": "^52.0.0",
     "@expo/vector-icons": "~14.0.4",
     "@jamsch/react-native-duo-drag-drop": "^1.1.1",
     "@react-native-async-storage/async-storage": "1.23.1",
@@ -18,16 +16,13 @@
     "@react-navigation/native": "^6.1.0",
     "@react-navigation/native-stack": "^6.9.5",
     "@react-navigation/stack": "^6.3.8",
+    "buffer": "^6.0.3",
     "expo": "^52.0.0",
-    "expo-application": "~6.0.2",
     "expo-audio": "~0.3.5",
     "expo-constants": "~17.0.8",
     "expo-crypto": "~14.0.2",
     "expo-dev-client": "~5.0.20",
-    "expo-device": "~7.0.3",
-    "expo-file-system": "~18.0.12",
     "expo-font": "~13.0.4",
-    "expo-secure-store": "~14.0.1",
     "expo-splash-screen": "~0.29.24",
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "~4.0.9",
@@ -47,10 +42,8 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
-  },
-  "overrides": {
-    "expo-constants": "~17.0.8"
+    "@babel/core": "^7.12.9",
+    "@types/react": "~18.3.12"
   },
   "expo": {
     "doctor": {

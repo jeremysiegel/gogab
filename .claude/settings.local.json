@@ -37,7 +37,15 @@
       "Bash(npm ls *)",
       "Bash(node -e \"console.log\\(require\\('expo-audio/package.json'\\).version\\)\")",
       "Bash(node -e \"const p=require\\('@bugsnag/expo/package.json'\\); console.log\\('deps:',JSON.stringify\\(p.dependencies,null,1\\)\\); console.log\\('peer:',JSON.stringify\\(p.peerDependencies,null,1\\)\\);\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(node -e \"const p=require\\('react-native-svg/package.json'\\); console.log\\('deps:',JSON.stringify\\(p.dependencies\\)\\); console.log\\('peer:',JSON.stringify\\(p.peerDependencies\\)\\)\")",
+      "Bash(node -e \"try{console.log\\('buffer version', require\\('buffer/package.json'\\).version\\)}catch\\(e\\){console.log\\('buffer NOT resolvable from root'\\)}\")",
+      "PowerShell(java *)",
+      "Bash(node -e \"console.log\\(require\\('expo-modules-core/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('expo/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\('expo', require\\('expo/package.json'\\).version\\); console.log\\('expo-modules-core', require\\('expo-modules-core/package.json'\\).version\\); console.log\\('native-base', require\\('native-base/package.json'\\).version\\); console.log\\('react-native', require\\('react-native/package.json'\\).version\\)\")",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\Program Files\\\\Eclipse Adoptium\\\\jdk-17.0.19.10-hotspot\"; $env:PATH = \"$env:JAVA_HOME\\\\bin;$env:PATH\"; & \"$PWD\\\\android\\\\gradlew.bat\" -p android app:assembleDebug -x lint -x test -PreactNativeArchitectures=arm64-v8a 2>&1 | Select-Object -Last 30)",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\Program Files\\\\Eclipse Adoptium\\\\jdk-17.0.19.10-hotspot\"; $env:PATH = \"$env:JAVA_HOME\\\\bin;$env:PATH\"; $env:ANDROID_HOME = \"C:\\\\Users\\\\Jerem\\\\AppData\\\\Local\\\\Android\\\\Sdk\"; & \"$PWD\\\\android\\\\gradlew.bat\" -p android app:assembleDebug -x lint -x test -PreactNativeArchitectures=arm64-v8a 2>&1 | Select-Object -Last 30)"
     ]
   }
 }

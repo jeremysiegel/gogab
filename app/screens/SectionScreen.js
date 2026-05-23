@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { View, StyleSheet, FlatList, ScrollView } from "react-native";
+import { Platform, View, StyleSheet, FlatList, ScrollView } from "react-native";
 import lessonData from "../lessons/lessonData";
 import generateLessonData from "../api/generateLessonData";
 import LessonContext from "../navigation/lessonContext";
@@ -91,7 +91,7 @@ function SectionScreen({ navigation, route }) {
               const lesson = generateLessonData(
                 item.lessonId,
                 sectionLessons,
-                country
+                country,
               );
               setLessonData(lesson);
               setLesson(item.lessonId);

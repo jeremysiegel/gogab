@@ -36,9 +36,6 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "bugsnag": {
-        "apiKey": "4e2c20f476a944ae1c1d03e353676367"
-      },
       "eas": {
         "projectId": "22561344-b6c7-43a2-b437-348282ceceee"
       }

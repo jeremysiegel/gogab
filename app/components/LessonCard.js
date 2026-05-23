@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 300,
     minHeight: 140,
-...defaultStyles.elevated
+    ...defaultStyles.elevated,
   },
   titleContainer: {
     width: 220,

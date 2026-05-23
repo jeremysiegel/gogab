@@ -37,7 +37,7 @@ function HomeScreen({ navigation }) {
   const renderItems = ({ item, section }) => {
     const complete = checkArrayIncludesAll(
       item.lessons,
-      completedLessons[country]
+      completedLessons[country],
     );
 
     let level = 1;

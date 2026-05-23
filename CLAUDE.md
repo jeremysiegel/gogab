@@ -44,7 +44,7 @@ When adding a language: add `dictionary-<lang>.js`, register it in `getDictionar
 Small pure helpers compose the pipeline: `stripArray` (removes punctuation/underscores), `translate` (English keys → target-language words via a dictionary), `punctuate`, `shuffle`, `getElementFromId` (finds an object in an array by a key field — used pervasively since lesson/phrase data are arrays). 
 
 - `cache.js` — thin AsyncStorage wrapper; **all keys are prefixed with `"cached"`** and values wrapped as `{ value, timestamp }`. Use `cache.store`/`cache.get` rather than AsyncStorage directly. Persisted keys include `user`, `country`, `worldMapCountries`.
-- `logger.js` — wraps Bugsnag (crash reporting, `start`/`logBug`) and Mixpanel (`identify`/`logEvent`). `logger.start()` runs once in `App.js`. API/MX keys are currently hard-coded here and in `app.json`.
+- `logger.js` — no-op logging shim exposing `start`/`logBug`/`identify`/`logEvent` (logs to console in `__DEV__`). Bugsnag and Mixpanel were removed; the API is kept so the ~7 call sites don't change. `logger.start()` runs once in `App.js`.
 
 ### Styling
 `app/config/` holds `colors.js`, `fonts.js`, `styles.js`, `constants.js`. UI uses NativeBase (`NativeBaseProvider` in `App.js`) and `@rneui/themed`. Fonts load via `hooks/useFonts.js` while the splash screen is held.
