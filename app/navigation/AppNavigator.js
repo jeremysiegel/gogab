@@ -6,6 +6,7 @@ import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import WorldMapScreen from "../screens/WorldMapScreen";
+import DictionaryScreen from "../screens/dictionary/DictionaryScreen";
 import colors from "../config/colors";
 import AppHeader from "../components/AppHeader";
 import AuthContext from "./authContext";
@@ -63,6 +64,21 @@ export default function AppNavigator() {
             <Entypo name="open-book" color={color} size={35} />
           ),
         })}
+      />
+      <Tab.Screen
+        name="Dictionary"
+        component={DictionaryScreen}
+        options={{
+          headerLeft: () => <AppHeader title={"Dictionary"} />,
+          headerTitle: "",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="book-open-variant"
+              color={color}
+              size={35}
+            />
+          ),
+        }}
       />
       <Tab.Screen
         name="My World Map"
