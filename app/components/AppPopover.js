@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StatusBar, View } from "react-native";
+import { Text, View } from "react-native";
 import { Popover } from "native-base";
 import defaultStyles from "../config/styles";
 
@@ -17,7 +17,6 @@ function AppPopover({
   return (
     <Popover
       onOpen={onOpen}
-      offset={StatusBar.currentHeight}
       trigger={(triggerProps) => {
         return (
           <View style={{ overflow: "hidden" }}>

@@ -2,7 +2,7 @@
 // Needed because some languages put words in different orders.
 // Each word in a phrase should have a corresponding entry in the word dictionary.
 
-export default phraseDictionary = [
+export default [
   {
     phraseId: 1,
     order: "Where is the bathroom?",

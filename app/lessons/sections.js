@@ -1,6 +1,6 @@
 // Section organizer
 
-export default sections = [
+export default [
   {
     title: "Level 1",
     data: [

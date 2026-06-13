@@ -1,6 +1,6 @@
 // Spanish dictionary.
 
-export default dictionary = {
+export default {
   a: {
     wordIdNum: "W1",
     translation: "un",

@@ -1,4 +1,4 @@
-export default phraseDictionary = [
+export default [
   {
     phraseId: "P1",
     order: "Where is the bathroom?",

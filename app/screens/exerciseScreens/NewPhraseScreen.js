@@ -11,7 +11,7 @@ import stripArray from "../../utility/stripArray";
 import Icon from "../../components/Icon";
 import colors from "../../config/colors";
 import AppButton from "../../components/AppButton";
-import { createAudioPlayer } from "expo-audio";
+import playSoundUtil from "../../utility/playSound";
 import { scale } from "../../utility/scaler";
 // Creates screen to learn a new word or phrase.
 // Displays word and translation.
@@ -31,12 +31,7 @@ function NewPhraseScreen({ route, navigation }) {
   }
 
   const playSound = (soundFilePath) => {
-    try {
-      const player = createAudioPlayer(soundFilePath);
-      player.play();
-    } catch (error) {
-      console.log("Failed to load the sound", error);
-    }
+    playSoundUtil(soundFilePath);
   };
 
   const RenderPhrase = () => {
@@ -45,8 +40,12 @@ function NewPhraseScreen({ route, navigation }) {
       removeSpecialCharacters: false,
       removeUnderscore: true,
     });
-    return phraseArray.map((item) => {
-      return <AppText style={defaultStyles.practiceWord}>{item} </AppText>;
+    return phraseArray.map((item, index) => {
+      return (
+        <AppText key={index} style={defaultStyles.practiceWord}>
+          {item}{" "}
+        </AppText>
+      );
     });
   };
   return (

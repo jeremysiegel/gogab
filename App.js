@@ -1,3 +1,4 @@
+import "./app/utility/backHandlerShim"; // must run before native-base loads
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
@@ -6,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { setAudioModeAsync } from "expo-audio";
 
 import AuthContext from "./app/navigation/authContext";
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -34,10 +36,14 @@ export default function App() {
     await useFonts();
   };
 
-  const getCountry = async () => {
+  const getCountry = async (userData) => {
+    // The dedicated "country" cache key is only written when the user changes
+    // language in Settings. Fall back to the country stored on the user record
+    // (set at onboarding) before defaulting to Italian, so reloads keep the
+    // user's actual language.
     let cachedCountry = await cache.get("country");
     if (!cachedCountry) {
-      cachedCountry = "it";
+      cachedCountry = userData?.country || "it";
     }
     setCountry(cachedCountry);
   };
@@ -51,7 +57,7 @@ export default function App() {
         userData.firstLogin = false;
         cache.store("user", userData);
       }
-      await getCountry();
+      await getCountry(userData);
     }
     setUser(userData);
 
@@ -67,6 +73,8 @@ export default function App() {
       try {
         // Keep the splash screen visible while we fetch resources
         await SplashScreen.preventAutoHideAsync();
+        // Play sound even when the iOS ringer/silent switch is on.
+        await setAudioModeAsync({ playsInSilentMode: true });
         // Pre-load fonts, make any API calls you need to do here
         await restoreUser();
       } catch (e) {

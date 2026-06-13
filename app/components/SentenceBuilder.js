@@ -9,7 +9,7 @@ import colors from "../config/colors";
 import shuffle from "../utility/shuffle";
 import { moderateScale, verticalScale } from "../utility/scaler";
 import arrayEquals from "../utility/arrayEquals";
-import { createAudioPlayer } from "expo-audio";
+import playSound from "../utility/playSound";
 
 // Creates a UI sentence builder element.
 
@@ -19,10 +19,8 @@ function SentenceBuilder({ data, setComplete }) {
   const [shuffledData, setShuffledData] = useState();
   const [player, setPlayer] = useState();
 
-  function playSound(audio) {
-    const newPlayer = createAudioPlayer(audio);
-    setPlayer(newPlayer);
-    newPlayer.play();
+  function handlePlay(audio) {
+    setPlayer(playSound(audio));
   }
 
   useEffect(() => {
@@ -63,7 +61,7 @@ function SentenceBuilder({ data, setComplete }) {
         }
       });
       if (audio) {
-        playSound(audio);
+        handlePlay(audio);
       }
     };
 

@@ -1,6 +1,6 @@
 // Master dictionary.
 
-export default dictionary = {
+export default {
   a: {
     word: "a",
     icon: "A",

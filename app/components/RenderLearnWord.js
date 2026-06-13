@@ -22,9 +22,8 @@ function RenderLearnWord({
       });
     }
     return (
-      <>
+      <React.Fragment key={index}>
         <LearnWord
-          key={index}
           style={defaultStyles.learnWord}
           helpText={helpText[index]}
           pronunciation={data.helpTextArray[index]}
@@ -33,7 +32,7 @@ function RenderLearnWord({
           {item}
         </LearnWord>
         <AppText> </AppText>
-      </>
+      </React.Fragment>
     );
   });
 }

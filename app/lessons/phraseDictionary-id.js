@@ -4,7 +4,7 @@
 // (the/a) are dropped, possessives/adjectives follow the noun, and "what time"
 // is expressed as "hour how_much" (jam berapa).
 
-export default phraseDictionaryId = [
+export default [
   {
     phraseId: "P1",
     order: "where bathroom?",

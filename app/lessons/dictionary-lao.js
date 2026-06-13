@@ -1,4 +1,4 @@
-export default dictionary = {
+export default {
   a: {
     wordIdNum: "W1",
     translation: "nueng", // Lao for "one"

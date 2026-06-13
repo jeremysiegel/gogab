@@ -4,7 +4,7 @@
 // adjectives/possessives follow the noun, and location questions put the question
 // word last (e.g. "bathroom where" = hong nam yu sai).
 
-export default phraseDictionaryLao = [
+export default [
   {
     phraseId: "P1",
     order: "bathroom where?",

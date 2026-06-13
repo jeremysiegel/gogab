@@ -10,7 +10,9 @@ function AppLottie({ source, loop }) {
       source={source}
       autoPlay
       loop={loop}
-      style={{ alignSelf: "center" }}
+      // lottie-react-native 7.x collapses an unsized view to 0 (older versions
+      // used the animation's intrinsic size), so give it explicit dimensions.
+      style={{ width: width * 0.9, height: width * 0.9, alignSelf: "center" }}
     />
   );
 }

@@ -1,6 +1,6 @@
 // Sublessons - Organized by LessonId
 
-export default subLessons = {
+export default {
   /*
   2: [
     {

@@ -50,6 +50,6 @@ Small pure helpers compose the pipeline: `stripArray` (removes punctuation/under
 `app/config/` holds `colors.js`, `fonts.js`, `styles.js`, `constants.js`. UI uses NativeBase (`NativeBaseProvider` in `App.js`) and `@rneui/themed`. Fonts load via `hooks/useFonts.js` while the splash screen is held.
 
 ## Conventions & gotchas
-- Many data files use bare assignment exports (`export default dictionary = {...}` / `lessonData = [...]`) — an implicit global. Match the existing pattern in those files rather than "fixing" it, to avoid breaking lookups elsewhere.
+- Data files use plain `export default {...}` / `export default [...]`. They previously used the bare-assignment form (`export default dictionary = {...}`), which created an implicit global and throws `property "X" doesn't exist` under SDK 55's strict-mode Hermes — don't reintroduce it. Consumers always use the default import.
 - The same English word/phrase key threads through lessonData → generateLessonData → getExerciseData → dictionary lookup. A typo or a key missing from `dictionary-common.js` silently drops the word (see the `&&` guard in `getDictionary.js`).
 - Errors in the data path are generally swallowed with `try/catch` + `console.log`; expect missing-data bugs to surface as empty screens, not crashes.

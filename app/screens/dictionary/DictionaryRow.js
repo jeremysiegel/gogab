@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { createAudioPlayer } from "expo-audio";
 
+import playSound from "../../utility/playSound";
 import AppText from "../../components/AppText";
 import colors from "../../config/colors";
 import fonts from "../../config/fonts";
@@ -12,11 +12,9 @@ import fonts from "../../config/fonts";
 function DictionaryRow({ english, translation, pronunciation, audio }) {
   const [player, setPlayer] = useState();
 
-  function playSound() {
+  function handlePlay() {
     if (audio) {
-      const newPlayer = createAudioPlayer(audio);
-      setPlayer(newPlayer);
-      newPlayer.play();
+      setPlayer(playSound(audio));
     }
   }
 
@@ -38,7 +36,7 @@ function DictionaryRow({ english, translation, pronunciation, audio }) {
         <AppText style={styles.english}>{english}</AppText>
       </View>
       <Pressable
-        onPress={playSound}
+        onPress={handlePlay}
         disabled={!audio}
         hitSlop={10}
         style={styles.speaker}

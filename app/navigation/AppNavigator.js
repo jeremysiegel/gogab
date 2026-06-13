@@ -12,12 +12,14 @@ import AppHeader from "../components/AppHeader";
 import AuthContext from "./authContext";
 import getFlag from "../utility/getFlag";
 import { Platform } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
   const { country } = useContext(AuthContext);
   const image = getFlag(country);
+  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -33,6 +35,9 @@ export default function AppNavigator() {
           position: "absolute",
           borderRadius: 30,
           margin: 10,
+          // Edge-to-edge (SDK 55) draws behind the system nav bar; lift the
+          // floating tab pill above it so the icons aren't clipped.
+          marginBottom: insets.bottom + 10,
           borderTopWidth: 0,
           elevation: 2,
           shadowColor: colors.dark,
@@ -44,13 +49,17 @@ export default function AppNavigator() {
           shadowRadius: 3.5,
         },
 
-        tabBarLabelStyle: {
-          fontSize: Platform.OS === "ios" ? 14 : 13,
-          marginVertical: 2,
+        // Remove the tab item's default vertical padding (reserved for the
+        // hidden label) and center the icon within the short pill, so the
+        // bottom of the icons isn't clipped.
+        tabBarItemStyle: {
+          height: 55,
+          paddingVertical: 0,
+          justifyContent: "center",
         },
         tabBarIconStyle: {
           width: 40,
-          //  marginBottom: 2,
+          height: 40,
         },
       }}
     >

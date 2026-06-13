@@ -1,6 +1,6 @@
 import * as Font from "expo-font";
 
-export default useFonts = async () =>
+export default async () =>
   await Font.loadAsync({
     assistant: require("../assets/fonts/Assistant-Regular.ttf"),
     assistantSemiBold: require("../assets/fonts/Assistant-SemiBold.ttf"),

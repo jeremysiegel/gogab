@@ -1,6 +1,6 @@
 // Prompts
 
-export default prompts = [
+export default [
   {
     promptId: 1,
     screenType: "prompt",

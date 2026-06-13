@@ -1,6 +1,6 @@
 // Data used to generate lessons.
 
-export default lessonData = [
+export default [
   {
     lessonId: 1,
     title: "Lesson 1",

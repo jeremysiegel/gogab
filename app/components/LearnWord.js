@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet } from "react-native";
-import { createAudioPlayer } from "expo-audio";
+
+import playSound from "../utility/playSound";
 
 import AppPopover from "./AppPopover";
 import colors from "../config/colors";
@@ -16,11 +17,9 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
     console.log(error);
   }
 
-  function playSound() {
+  function handlePress() {
     if (audio) {
-      const newPlayer = createAudioPlayer(wordData.audio);
-      setPlayer(newPlayer);
-      newPlayer.play();
+      setPlayer(playSound(wordData.audio));
     }
   }
 
@@ -34,7 +33,7 @@ function LearnWord({ style, children, helpText, pronunciation, wordData }) {
 
   return (
     <AppPopover
-      onOpen={playSound}
+      onOpen={handlePress}
       style={[styles.text, style]}
       underlineStyle={styles.underline}
       displayText={children}

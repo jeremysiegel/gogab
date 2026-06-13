@@ -56,14 +56,15 @@ const INSTRUCTIONS =
     "Indonesian accent. The text is Indonesian, not English.";
 const CONCURRENCY = parseInt(process.env.TTS_CONCURRENCY || "4", 10);
 
-// --- Load the data files (they use a bare `export default X = {...}` global) ---
+// --- Load the data files (they use `export default {...}`, optionally with a
+// legacy `export default X = {...}` named-global form) ---
 function loadDefault(file) {
   const src = fs.readFileSync(file, "utf8");
-  // Swap the bare ESM-ish export for a CommonJS assignment. Also neutralize any
+  // Swap the ESM export for a CommonJS assignment. Also neutralize any
   // `require("...mp3")` asset calls (Metro-only; node can't resolve them) so the
   // file can be evaluated for its data even after audio fields are added.
   const cjs = src
-    .replace(/export\s+default\s+\w+\s*=/, "module.exports =")
+    .replace(/export\s+default\s+(?:\w+\s*=\s*)?/, "module.exports = ")
     .replace(/require\(\s*"[^"]*"\s*\)/g, '""');
   const sandbox = { module: { exports: {} } };
   vm.runInNewContext(cjs, sandbox, { filename: file });

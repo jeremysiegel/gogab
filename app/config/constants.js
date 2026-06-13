@@ -1,3 +1,3 @@
-export default constants = {
+export default {
   shortHeight: 700,
 };

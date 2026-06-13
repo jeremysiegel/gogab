@@ -1,6 +1,6 @@
 // Bahasa Indonesia dictionary.
 
-export default dictionary = {
+export default {
   a: {
     wordIdNum: "W1",
     translation: "satu",
